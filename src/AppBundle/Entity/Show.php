@@ -182,6 +182,11 @@
     private $event;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Member", mappedBy="show")
+     */
+    private $member;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="show")
      */
     private $post;
@@ -634,6 +639,22 @@
     public function setPost($post): void
     {
       $this->post = $post;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMember()
+    {
+      return $this->member;
+    }
+
+    /**
+     * @param mixed $member
+     */
+    public function setMember($member): void
+    {
+      $this->member = $member;
     }
 
 
