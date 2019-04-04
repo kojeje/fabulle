@@ -9,6 +9,7 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
+  use Symfony\Component\Validator\Mapping\ClassMetadata;
 
   //    Colonnes de la table
   /**
@@ -54,10 +55,21 @@
      * @ORM\Column(type="string", nullable=true)
      */
     private $instru;
+
     /**
      * @ORM\Column(type="string")
      */
     private $photo;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $photo_alt;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $photo_description;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -79,10 +91,7 @@
      */
     private $show;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="post", inversedBy="member")
-     */
-    private $post;
+    
 
     /**
      * @return mixed
@@ -244,10 +253,37 @@
       $this->instru = $instru;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPhotoAlt()
+    {
+      return $this->photo_alt;
+    }
 
+    /**
+     * @param mixed $photo_alt
+     */
+    public function setPhotoAlt($photo_alt): void
+    {
+      $this->photo_alt = $photo_alt;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getPhotoDescription()
+    {
+      return $this->photo_description;
+    }
 
-
+    /**
+     * @param mixed $photo_description
+     */
+    public function setPhotoDescription($photo_description): void
+    {
+      $this->photo_description = $photo_description;
+    }
 
 
   }

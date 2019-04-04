@@ -9,11 +9,12 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
+  use Symfony\Component\Validator\Mapping\ClassMetadata;
 
   //    Colonnes de la table
   /**
    * @ORM\Table(name="show")
-   * @ORM\Entity(repositoryClass="AppBundle\Repository\ShowsRepository")
+   * @ORM\Entity(repositoryClass="AppBundle\Repository\ShowRepository")
    */
 
   class show
@@ -93,9 +94,29 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt1;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description1;
+
+
+    /**
+     * @ORM\Column(type="string",)
      */
     private $img2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description2;
 
 
     /**
@@ -106,12 +127,40 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    private $img_alt3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description3;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $img4;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    private $img_alt4;
+
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $affiche;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $affiche_alt;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $affiche_description;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -180,6 +229,11 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="show")
      */
     private $event;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="show")
+     */
+    private $referencies;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Member", mappedBy="show")
@@ -656,6 +710,186 @@
     {
       $this->member = $member;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReferencies()
+    {
+      return $this->referencies;
+    }
+
+    /**
+     * @param mixed $referencies
+     */
+    public function setReferencies($referencies): void
+    {
+      $this->referencies = $referencies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt1()
+    {
+      return $this->img_alt1;
+    }
+
+    /**
+     * @param mixed $img_alt1
+     */
+    public function setImgAlt1($img_alt1): void
+    {
+      $this->img_alt1 = $img_alt1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription1()
+    {
+      return $this->img_description1;
+    }
+
+    /**
+     * @param mixed $img_description1
+     */
+    public function setImgDescription1($img_description1): void
+    {
+      $this->img_description1 = $img_description1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt2()
+    {
+      return $this->img_alt2;
+    }
+
+    /**
+     * @param mixed $img_alt2
+     */
+    public function setImgAlt2($img_alt2): void
+    {
+      $this->img_alt2 = $img_alt2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription2()
+    {
+      return $this->img_description2;
+    }
+
+    /**
+     * @param mixed $img_description2
+     */
+    public function setImgDescription2($img_description2): void
+    {
+      $this->img_description2 = $img_description2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt3()
+    {
+      return $this->img_alt3;
+    }
+
+    /**
+     * @param mixed $img_alt3
+     */
+    public function setImgAlt3($img_alt3): void
+    {
+      $this->img_alt3 = $img_alt3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription3()
+    {
+      return $this->img_description3;
+    }
+
+    /**
+     * @param mixed $img_description3
+     */
+    public function setImgDescription3($img_description3): void
+    {
+      $this->img_description3 = $img_description3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt4()
+    {
+      return $this->img_alt4;
+    }
+
+    /**
+     * @param mixed $img_alt4
+     */
+    public function setImgAlt4($img_alt4): void
+    {
+      $this->img_alt4 = $img_alt4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription4()
+    {
+      return $this->img_description4;
+    }
+
+    /**
+     * @param mixed $img_description4
+     */
+    public function setImgDescription4($img_description4): void
+    {
+      $this->img_description4 = $img_description4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAfficheAlt()
+    {
+      return $this->affiche_alt;
+    }
+
+    /**
+     * @param mixed $affiche_alt
+     */
+    public function setAfficheAlt($affiche_alt): void
+    {
+      $this->affiche_alt = $affiche_alt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAfficheDescription()
+    {
+      return $this->affiche_description;
+    }
+
+    /**
+     * @param mixed $affiche_description
+     */
+    public function setAfficheDescription($affiche_description): void
+    {
+      $this->affiche_description = $affiche_description;
+    }
+
+
+
+
 
 
 

@@ -76,14 +76,17 @@
       $queryBuilder = $this
         ->createQueryBuilder('p');
       $query=$queryBuilder
-//          eq SELECT sql
+
         ->leftJoin('p.event', 'e')
         ->leftJoin('p.show','s')
         ->leftJoin('p.member', 'm')
+        ->leftJoin('p.place','pl')
+//          eq SELECT sql
         ->select('p')
         ->addSelect('e')
         ->addSelect('s')
         ->addSelect('m')
+        ->addSelect('pl')
 //          eq WHERE  sql        eq Like        eq OR sql
         ->where(
           '
@@ -106,9 +109,9 @@
                           OR e.thumbnail LIKE :word
                           OR e.description LIKE :word
                           OR e.date LIKE :word
-                          OR e.place_name LIKE :word
-                          OR e.cp LIKE :word
-                          OR e.commune LIKE :word
+                          OR pl.place_name LIKE :word
+                          OR pl.cp LIKE :word
+                          OR pl.commune LIKE :word
                           OR s.titre LIKE :word
                           OR s.sub1 LIKE :word
                           OR s.text1 LIKE :word

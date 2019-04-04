@@ -9,6 +9,7 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
+  use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 
   //    Colonnes de la table
@@ -32,8 +33,13 @@
     }
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 50,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
 
     private $titre;
@@ -52,9 +58,29 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt1;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description1;
+
+
+    /**
+     * @ORM\Column(type="string",)
      */
     private $img2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description2;
 
 
     /**
@@ -65,54 +91,133 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    private $img_alt3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description3;
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $img4;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $intro;
+    private $img_alt4;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $sub1;
+    private $img_description4;
+
+
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 15,
+     *      max = 255,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $intro;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $sub1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 2000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text1;
+
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub2;
+
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 2000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text2;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub3;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 2000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text3;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub4;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 2000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text4;
 
 //  Relations
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="post")
+     * @ORM\ManyToOne(targetEntity="event", inversedBy="post")
      */
     private $event;
 
@@ -121,10 +226,6 @@
 //     */
 //    private $user;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="post")
-     */
-    private $member;
 
     /**
      * @ORM\ManyToOne(targetEntity="show", inversedBy="post")
@@ -433,6 +534,134 @@
     public function setShow($show): void
     {
       $this->show = $show;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt1()
+    {
+      return $this->img_alt1;
+    }
+
+    /**
+     * @param mixed $img_alt1
+     */
+    public function setImgAlt1($img_alt1): void
+    {
+      $this->img_alt1 = $img_alt1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription1()
+    {
+      return $this->img_description1;
+    }
+
+    /**
+     * @param mixed $img_description1
+     */
+    public function setImgDescription1($img_description1): void
+    {
+      $this->img_description1 = $img_description1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt2()
+    {
+      return $this->img_alt2;
+    }
+
+    /**
+     * @param mixed $img_alt2
+     */
+    public function setImgAlt2($img_alt2): void
+    {
+      $this->img_alt2 = $img_alt2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription2()
+    {
+      return $this->img_description2;
+    }
+
+    /**
+     * @param mixed $img_description2
+     */
+    public function setImgDescription2($img_description2): void
+    {
+      $this->img_description2 = $img_description2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt3()
+    {
+      return $this->img_alt3;
+    }
+
+    /**
+     * @param mixed $img_alt3
+     */
+    public function setImgAlt3($img_alt3): void
+    {
+      $this->img_alt3 = $img_alt3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription3()
+    {
+      return $this->img_description3;
+    }
+
+    /**
+     * @param mixed $img_description3
+     */
+    public function setImgDescription3($img_description3): void
+    {
+      $this->img_description3 = $img_description3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt4()
+    {
+      return $this->img_alt4;
+    }
+
+    /**
+     * @param mixed $img_alt4
+     */
+    public function setImgAlt4($img_alt4): void
+    {
+      $this->img_alt4 = $img_alt4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription4()
+    {
+      return $this->img_description4;
+    }
+
+    /**
+     * @param mixed $img_description4
+     */
+    public function setImgDescription4($img_description4): void
+    {
+      $this->img_description4 = $img_description4;
     }
 
 
