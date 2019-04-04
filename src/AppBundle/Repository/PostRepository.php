@@ -52,6 +52,24 @@
       return $results;
     }
 
+    public function getPostbyShowId($id)
+    {
+      $queryBuilder =$this->createQueryBuilder('p');
+
+      $query = $queryBuilder
+        ->leftJoin('p.show','s')
+        ->select('p')
+        ->addSelect('s')
+        ->where('s.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery();
+//                    eq fetch
+
+      $results = $query->getResult();
+
+      return $results;
+    }
+
 
     public function getAllbyWord($word)
     {

@@ -11,21 +11,21 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class ShowRepository extends EntityRepository
+  class MemberRepository extends EntityRepository
   {
-    public function getAllShow($show)
+    public function getAllMember($member)
     {
 // QueryBuilder => Pour éxecuter des requêtes
 // Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
 
       $queryBuilder =$this
-        ->createQueryBuilder('s');
+        ->createQueryBuilder('m');
       $query = $queryBuilder
 
-        ->select('s')
+        ->select('m')
 
 //              Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('show', $show)
+        ->setParameter('member', $member)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
         ->getQuery();
 
@@ -34,14 +34,14 @@
       return $results;
     }
 
-    public function getShowbyType($type)
+    public function getMemberbyMetier($metier)
     {
-      $queryBuilder =$this->createQueryBuilder('s');
+      $queryBuilder =$this->createQueryBuilder('m');
 
       $query = $queryBuilder
-        ->select('s')
-        ->where('s.type = :type')
-        ->setParameter('type', $type)
+        ->select('m')
+        ->where('m.metier = :metier')
+        ->setParameter('metier', $metier)
         ->getQuery();
 //                    eq fetch
 
@@ -50,14 +50,16 @@
       return $results;
     }
 
-    public function getShowbyAge($min_age)
+    public function getMemberbyShowId($id)
     {
-      $queryBuilder =$this->createQueryBuilder('s');
+      $queryBuilder =$this->createQueryBuilder('m');
 
       $query = $queryBuilder
-        ->select('s')
-        ->where('s.min_age = :min_age')
-        ->setParameter('min_age', $min_age)
+        ->leftJoin('m.show','s')
+        ->select('m')
+        ->addSelect('s')
+        ->where('s.id = :id')
+        ->setParameter('id', $id)
         ->getQuery();
 //                    eq fetch
 
@@ -65,4 +67,5 @@
 
       return $results;
     }
+
   }
