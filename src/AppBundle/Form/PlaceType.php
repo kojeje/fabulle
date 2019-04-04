@@ -12,7 +12,7 @@
   use Symfony\Component\Form\FormBuilderInterface;
 
 
-  class ShowType extends AbstractType
+  class PlaceType extends AbstractType
   {
     /**
      * {@inheritdoc}
