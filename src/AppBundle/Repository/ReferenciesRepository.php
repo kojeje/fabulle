@@ -11,7 +11,7 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class EventRepository extends EntityRepository
+  class ReferenciesRepository extends EntityRepository
   {
     public function getAllReferencies($referencies)
     {

@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: fr
     img_directory: '%kernel.project_dir%/web/assets/uploads/img'
+    pdf_directory: '%kernel.project_dir%/web/assets/uploads/pdf'
 
 framework:
 

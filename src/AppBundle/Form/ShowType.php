@@ -69,7 +69,11 @@
             ]
           ]
         )
-        ->add('img1', FileType::class, array('data_class' => null))
+        ->add('img1', FileType::class, [
+          'data_class' => null,
+//          @todo mimeType
+          ]
+        )
         ->add('img_alt1')
         ->add('img_description1')
         ->add('img2', FileType::class, array('data_class' => null))
