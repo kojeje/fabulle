@@ -31,6 +31,11 @@
      */
     private $avatar_alt;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $avatar_description;
+
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
@@ -90,6 +95,24 @@
     {
       $this->avatar_alt = $avatar_alt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarDescription()
+    {
+      return $this->avatar_description;
+    }
+
+    /**
+     * @param mixed $avatar_description
+     */
+    public function setAvatarDescription($avatar_description): void
+    {
+      $this->avatar_description = $avatar_description;
+    }
+
+
 
 
 

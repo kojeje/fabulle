@@ -4,6 +4,16 @@ parameters:
     #parameter_name: value
 
 services:
+
+    profile.edit:
+        class: AppBundle\Form\UserType
+        alias: 'fos_user.profile.form.factory'
+        public: true
+    app.form.registration:
+        class: AppBundle\Form\UserType
+        tags:
+        - { name: form.type, alias: app_user_registration }
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

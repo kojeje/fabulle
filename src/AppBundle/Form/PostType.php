@@ -3,13 +3,14 @@
 
   namespace AppBundle\Form;
   use AppBundle\Entity\Post;
-  use Symfony\Component\OptionsResolver\OptionsResolver;
   use Symfony\Component\Form\AbstractType;
+  use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-  use Symfony\Component\Form\FormBuilderInterface;
+  use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 
   class PostType extends AbstractType
@@ -23,27 +24,44 @@
         ->add('titre')
         ->add('category',ChoiceType::class,
           [
-            'choice' => [
+            'choices' => [
               'Le petit mot' => 'le petit mot',
               'Actu' => 'actu',
               'Histoire' => 'histoire'
             ]
           ]
           )
-
-        ->add('img1', FileType::class, array('data_class' => null))
+        ->add('img1', FileType::class, [
+              'data_class' => null,
+              'label' => 'Image1 (jpg)',
+          ]
+        )
         ->add('img_alt1')
         ->add('img_description1')
-        ->add('img2', FileType::class, array('data_class' => null))
+
+        ->add('img2', FileType::class, [
+            'data_class' => null,
+            'label' => 'Image2 (jpg)'
+          ]
+        )
         ->add('img_alt2')
         ->add('img_description2')
-        ->add('img3', FileType::class, array('data_class' => null))
+
+        ->add('img3', FileType::class, [
+            'data_class' => null,
+            'label' => 'Image3 (jpg)'
+          ]
+        )
         ->add('img_alt3')
         ->add('img_description3')
-        ->add('img4', FileType::class, array('data_class' => null))
+
+        ->add('img4', FileType::class, [
+            'data_class' => null,
+            'label' => 'Image4 (jpg)'
+          ]
+        )
         ->add('img_alt4')
         ->add('img_description4')
-
 
 
         ->add('intro', TextareaType::class,
@@ -55,7 +73,6 @@
             ]
           ]
         )
-
         ->add('sub1')
         ->add('text1', TextareaType::class,
           [
@@ -96,6 +113,8 @@
             ]
           ]
         )
+
+        ->add('youtube')
         ->add('submit', SubmitType::class)
       ;
        }

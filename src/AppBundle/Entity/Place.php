@@ -26,10 +26,12 @@
      */
     private $id;
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
+
+
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
@@ -112,6 +114,11 @@
      *
      */
     private $place_long;
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
 
 
 //  Relations
@@ -312,6 +319,22 @@
     public function setEvent($event): void
     {
       $this->event = $event;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
     }
 
 

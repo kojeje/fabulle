@@ -26,9 +26,9 @@
      */
     private $id;
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
 
     /**
@@ -82,6 +82,11 @@
      */
     private $bio;
 
+    /**
+     * @ORM\Column(type="datetimetz")
+     */
+    private $publiele;
+
     // Relations
 
 
@@ -91,7 +96,7 @@
      */
     private $show;
 
-    
+
 
     /**
      * @return mixed
@@ -283,6 +288,22 @@
     public function setPhotoDescription($photo_description): void
     {
       $this->photo_description = $photo_description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
     }
 
 

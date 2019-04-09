@@ -1,0 +1,198 @@
+{% extends "@App/base_admin.html.twig" %}
+
+{% block flash %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block form %}
+    <div class="register">
+        <div class="createUser_logo">
+            <div class="img">
+                <img src="{{ asset('assets/img/logo_test.png') }}" alt="img">
+            </div>
+            <h2 class="statut"><span>{{ app.user.username }} ! <br> </span>Créez votre spectacle ! </h2>
+        </div>
+        {{ form_start(formShow, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
+            <div class="form_container">
+                <h2>Votre spectacle</h2>
+                <div class="field">
+                    {{ form_errors(formShow.titre) }}
+                    {{ form_label(formShow.titre,null,
+                        {
+                            'label':'Titre',
+                        }
+                    )
+                    }}
+                    {{ form_widget(formShow.titre, {'attr': {"class":'titre'}}) }}
+                </div>
+
+                <div class="field">
+                    {{ form_errors(formShow.style) }}
+                    {{ form_label(formShow.style) }}
+                    {{ form_widget(formShow.style, {'attr': {"class":'select'}}) }}
+                </div>
+
+                <div class="img_bloc">
+                    <div class="field">
+                        {{ form_errors(formShow.img1) }}
+                        {{ form_label(formShow.img1) }}
+                        {{ form_widget(formShow.img1, {'attr': {"class":'img'}}) }}
+
+                        {{ form_errors(formShow.img_alt1) }}
+                        {{ form_label(formShow.img_alt1) }}
+                        {{ form_widget(formShow.img_alt1) }}
+
+                        {{ form_errors(formShow.img_description1) }}
+                        {{ form_label(formShow.img_description1) }}
+                        {{ form_widget(formShow.img_description1) }}
+                    </div>
+                </div>
+
+                <div class="img_bloc">
+                    <div class="field">
+                        {{ form_errors(formShow.img2) }}
+                        {{ form_label(formShow.img2) }}
+                        {{ form_widget(formShow.img2, {'attr': {"class":'img'}}) }}
+
+                        {{ form_errors(formShow.img_alt2) }}
+                        {{ form_label(formShow.img_alt2) }}
+                        {{ form_widget(formShow.img_alt2) }}
+
+                        {{ form_errors(formShow.img_description2) }}
+                        {{ form_label(formShow.img_description2) }}
+                        {{ form_widget(formShow.img_description2) }}
+                    </div>
+                </div>
+                <div class="img_bloc">
+                    <div class="field">
+                        {{ form_errors(formShow.img3) }}
+                        {{ form_label(formShow.img3) }}
+                        {{ form_widget(formShow.img3, {'attr': {"class":'img'}}) }}
+
+                        {{ form_errors(formShow.img_alt3) }}
+                        {{ form_label(formShow.img_alt3) }}
+                        {{ form_widget(formShow.img_alt3) }}
+
+                        {{ form_errors(formShow.img_description3) }}
+                        {{ form_label(formShow.img_description3) }}
+                        {{ form_widget(formShow.img_description3) }}
+                    </div>
+                </div>
+                <div class="img_bloc">
+                    <div class="field">
+                        {{ form_errors(formShow.img4) }}
+                        {{ form_label(formShow.img4) }}
+                        {{ form_widget(formShow.img4, {'attr': {"class":'img'}}) }}
+
+                        {{ form_errors(formShow.img_alt4) }}
+                        {{ form_label(formShow.img_alt4) }}
+                        {{ form_widget(formShow.img_alt4) }}
+
+                        {{ form_errors(formShow.img_description4) }}
+                        {{ form_label(formShow.img_description4) }}
+                        {{ form_widget(formShow.img_description4) }}
+                    </div>
+                </div>
+
+                <div class="img_bloc">
+                    <div class="field">
+                        {{ form_errors(formShow.affiche) }}
+                        {{ form_label(formShow.affiche) }}
+                        {{ form_widget(formShow.affiche, {'attr': {"class":'img'}}) }}
+
+                        {{ form_errors(formShow.affiche_alt) }}
+                        {{ form_label(formShow.affiche_alt) }}
+                        {{ form_widget(formShow.affiche_alt) }}
+
+                        {{ form_errors(formShow.affiche_description) }}
+                        {{ form_label(formShow.affiche_description) }}
+                        {{ form_widget(formShow.affiche_description) }}
+                    </div>
+                </div>
+                <div class="contenu_text">
+                    <div class="textarea">
+                        {{ form_errors(formShow.intro) }}
+                        {{ form_label(formShow.intro) }}
+                        {{ form_widget(formShow.intro) }}
+                    </div>
+                    <div class="bloc_text">
+                        <div class="sub">
+                            {{ form_errors(formShow.sub1) }}
+                            {{ form_label(formShow.sub1) }}
+                            {{ form_widget(formShow.sub1) }}
+                        </div>
+                        <div class="textarea">
+                            {{ form_errors(formShow.text1) }}
+                            {{ form_label(formShow.text1) }}
+                            {{ form_widget(formShow.text1) }}
+                        </div>
+                    </div>
+
+                    <div class="bloc_text">
+                        <div class="sub">
+                            {{ form_errors(formShow.sub2) }}
+                            {{ form_label(formShow.sub2) }}
+                            {{ form_widget(formShow.sub2) }}
+                        </div>
+                        <div class="textarea">
+                            {{ form_errors(formShow.text2) }}
+                            {{ form_label(formShow.text2) }}
+                            {{ form_widget(formShow.text2) }}
+                        </div>
+                    </div>
+                    <div class="bloc_text">
+                        <div class="sub">
+                            {{ form_errors(formShow.sub3) }}
+                            {{ form_label(formShow.sub3) }}
+                            {{ form_widget(formShow.sub3) }}
+                        </div>
+                        <div class="textarea">
+                            {{ form_errors(formShow.text3) }}
+                            {{ form_label(formShow.text3) }}
+                            {{ form_widget(formShow.text3) }}
+                        </div>
+                    </div>
+                    <div class="bloc_text">
+                        <div class="sub">
+                            {{ form_errors(formShow.sub4) }}
+                            {{ form_label(formShow.sub4) }}
+                            {{ form_widget(formShow.sub4) }}
+                        </div>
+                        <div class="textarea">
+                            {{ form_errors(formShow.text4) }}
+                            {{ form_label(formShow.text4) }}
+                            {{ form_widget(formShow.text4) }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field">
+                            {{ form_errors(formShow.tek1) }}
+                            {{ form_label(formShow.tek1) }}
+                            {{ form_widget(formShow.tek1, {'attr': {"class":'img'}}) }}
+                        </div>
+                    </div>
+                    <div class="bloc_video">
+                        <div class="textarea">
+                            {{ form_errors(formShow.youtube) }}
+                            {{ form_label(formShow.youtube) }}
+                            {{ form_widget(formShow.youtube) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="f_type">
+                    {{ form_widget(formShow.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+                </div>
+
+            </div>
+
+
+        {{ form_end(formShow) }}
+    </div>
+{% endblock %}
+

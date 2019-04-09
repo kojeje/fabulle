@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    {% include "@App/default/head.html.twig" %}
+</head>
+<body>
+<div class="flash">
+    {% block flash %}{% endblock %}
+</div>
+<div class="form">
+    {% block form %}{% endblock %}
+</div>
+{% block connexioncontent %}{% endblock %}
+
+</body>
+</html>

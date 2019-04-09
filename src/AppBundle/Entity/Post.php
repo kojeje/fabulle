@@ -9,7 +9,7 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
-  use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 
 
   //    Colonnes de la table
@@ -27,9 +27,10 @@
      */
     private $id;
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
 
     /**
@@ -49,10 +50,19 @@
      *
      */
     private $category;
-
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img1;
 
@@ -67,8 +77,14 @@
     private $img_description1;
 
 
+
     /**
-     * @ORM\Column(type="string",)
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img2;
 
@@ -85,6 +101,11 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img3;
 
@@ -98,9 +119,13 @@
      */
     private $img_description3;
 
-
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img4;
 
@@ -141,7 +166,7 @@
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
      *      min = 10,
-     *      max = 2000,
+     *      max = 5000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
@@ -163,7 +188,7 @@
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
      *      min = 10,
-     *      max = 2000,
+     *      max = 5000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
@@ -185,7 +210,7 @@
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
      *      min = 10,
-     *      max = 2000,
+     *      max = 5000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
@@ -207,17 +232,22 @@
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
      *      min = 10,
-     *      max = 2000,
+     *      max = 5000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
     private $text4;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $youtube;
+
 //  Relations
 
     /**
-     * @ORM\ManyToOne(targetEntity="event", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="post")
      */
     private $event;
 
@@ -228,7 +258,7 @@
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="show", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="Show", inversedBy="post")
      */
     private $show;
 
@@ -662,6 +692,38 @@
     public function setImgDescription4($img_description4): void
     {
       $this->img_description4 = $img_description4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutube()
+    {
+      return $this->youtube;
+    }
+
+    /**
+     * @param mixed $youtube
+     */
+    public function setYoutube($youtube): void
+    {
+      $this->youtube = $youtube;
     }
 
 

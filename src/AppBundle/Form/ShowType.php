@@ -1,12 +1,9 @@
 <?php
-
-
   namespace AppBundle\Form;
   use AppBundle\Entity\Show;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\FileType;
-  use Symfony\Component\Form\Extension\Core\Type\IntegerType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -71,25 +68,40 @@
         )
         ->add('img1', FileType::class, [
           'data_class' => null,
-//          @todo mimeType
+
           ]
         )
         ->add('img_alt1')
         ->add('img_description1')
-        ->add('img2', FileType::class, array('data_class' => null))
+
+        ->add('img2', FileType::class, [
+          'data_class' => null,
+          ]
+        )
         ->add('img_alt2')
         ->add('img_description2')
-        ->add('img3', FileType::class, array('data_class' => null))
+        ->add('img3', FileType::class, [
+          'data_class' => null,
+          ]
+        )
         ->add('img_alt3')
         ->add('img_description3')
-        ->add('img4', FileType::class, array('data_class' => null))
+
+        ->add('img4', FileType::class, [
+          'data_class' => null,
+          ]
+        )
         ->add('img_alt4')
         ->add('img_description4')
-        ->add('affiche', FileType::class, array('data_class' => null))
-        ->add('affiche_alt4')
-        ->add('affiche_description4')
 
-        ->add('categorie', ChoiceType::class,
+        ->add('affiche', FileType::class, [
+          'data_class' => null,
+            ]
+        )
+        ->add('affiche_alt')
+        ->add('affiche_description')
+
+        ->add('style', ChoiceType::class,
           [
             'choices' => [
               'Conte musical' => 'conte_musical',
@@ -97,9 +109,9 @@
             ]
           ]
         )
-        ->add('tek', FileType::class)
+        ->add('tek1', FileType::class)
 
-
+        ->add('youtube')
 
 
         ->add('submit', SubmitType::class)

@@ -17,7 +17,7 @@
    * @ORM\Entity(repositoryClass="AppBundle\Repository\ShowRepository")
    */
 
-  class show
+  class Show
   {
     /**
      * @ORM\Column(type="integer")
@@ -25,11 +25,11 @@
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
+
 
     /**
      * @ORM\Column(type="string")
@@ -39,56 +39,112 @@
     private $titre;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 15,
+     *      max = 255,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $intro;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub1;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 5000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text1;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub2;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 5000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text2;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub3;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 5000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text3;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 100,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $sub4;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 5000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
     private $text4;
 
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img1;
 
@@ -103,8 +159,14 @@
     private $img_description1;
 
 
+
     /**
-     * @ORM\Column(type="string",)
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img2;
 
@@ -121,6 +183,11 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img3;
 
@@ -134,9 +201,13 @@
      */
     private $img_description3;
 
-
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img4;
 
@@ -145,7 +216,10 @@
      */
     private $img_alt4;
 
-
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description4;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -166,13 +240,12 @@
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $type;
+    private $style;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     *
      */
-    private $tek;
+    private $tek1;
 
 
     /**
@@ -222,6 +295,16 @@
      *
      */
     private $jauge_max;
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $youtube;
 
     // Relations
 
@@ -244,6 +327,8 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="show")
      */
     private $post;
+
+
 
 //  Getters & Setters
 
@@ -490,33 +575,33 @@
     /**
      * @return mixed
      */
-    public function getType()
+    public function getStyle()
     {
-      return $this->type;
+      return $this->style;
     }
 
     /**
-     * @param mixed $type
+     * @param mixed $style
      */
-    public function setType($type): void
+    public function setStyle($style): void
     {
-      $this->type = $type;
+      $this->style = $style;
     }
 
     /**
      * @return mixed
      */
-    public function getTek()
+    public function getTek1()
     {
-      return $this->tek;
+      return $this->tek1;
     }
 
     /**
      * @param mixed $tek
      */
-    public function setTek($tek): void
+    public function setTek1($tek1): void
     {
-      $this->tek = $tek;
+      $this->tek1 = $tek1;
     }
 
     /**
@@ -886,6 +971,56 @@
     {
       $this->affiche_description = $affiche_description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIntro()
+    {
+      return $this->intro;
+    }
+
+    /**
+     * @param mixed $intro
+     */
+    public function setIntro($intro): void
+    {
+      $this->intro = $intro;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutube()
+    {
+      return $this->youtube;
+    }
+
+    /**
+     * @param mixed $youtube
+     */
+    public function setYoutube($youtube): void
+    {
+      $this->youtube = $youtube;
+    }
+
+
 
 
 

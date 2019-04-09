@@ -11,12 +11,10 @@
   use Symfony\Component\Validator\Constraints as Assert;
   use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-  //    Colonnes de la table
   /**
    * @ORM\Table(name="event")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
    */
-
   class Event
   {
     /**
@@ -26,9 +24,9 @@
      */
     private $id;
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
 
     /**
@@ -46,7 +44,7 @@
      * @ORM\Column(type="string")
      * @Assert\Length(
      *      min = 15,
-     *      max = 255,
+     *      max = 5000,
      *      minMessage = "La longueur minimum du contenu doit-être de
      * {{ limit }} caractères"
      * )
@@ -67,7 +65,10 @@
      */
     private $email;
 
-
+    /**
+     * @ORM\Column(type="datetimetz")
+     */
+    private $publiele;
 
     //  Relations
 
@@ -77,12 +78,12 @@
     private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="show", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="Show", inversedBy="event")
      */
     private $show;
 
     /**
-     * @ORM\ManyToOne(targetEntity="place", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="event")
      */
     private $place;
 
@@ -228,7 +229,20 @@
     public function setEmail($email): void
     {
       $this->email = $email;
-    }
+    }/**
+   * @return mixed
+   */
+public function getPubliele()
+{
+  return $this->publiele;
+}/**
+   * @param mixed $publiele
+   */
+public function setPubliele($publiele): void
+{
+  $this->publiele = $publiele;
+}
+
 
 
 
