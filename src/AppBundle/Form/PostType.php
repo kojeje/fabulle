@@ -60,6 +60,11 @@
             'label' => 'Image4 (jpg)'
           ]
         )
+        ->add('tek1', FileType::class, [
+            'data_class' => null,
+            'label' => 'Fiche technique (pdf)'
+          ]
+        )
         ->add('img_alt4')
         ->add('img_description4')
 

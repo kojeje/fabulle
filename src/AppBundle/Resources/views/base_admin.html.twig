@@ -10,7 +10,8 @@
 <div class="form">
     {% block form %}{% endblock %}
 </div>
-{% block connexioncontent %}{% endblock %}
 
+{% block connexioncontent %}{% endblock %}
+{% include "@App/default/script.html.twig" %}
 </body>
 </html>

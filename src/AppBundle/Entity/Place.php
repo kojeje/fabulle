@@ -120,6 +120,26 @@
      */
     private $publiele;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_description1;
+
 
 //  Relations
     /**
@@ -335,6 +355,54 @@
     public function setPubliele($publiele): void
     {
       $this->publiele = $publiele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg1()
+    {
+      return $this->img1;
+    }
+
+    /**
+     * @param mixed $img1
+     */
+    public function setImg1($img1): void
+    {
+      $this->img1 = $img1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt1()
+    {
+      return $this->img_alt1;
+    }
+
+    /**
+     * @param mixed $img_alt1
+     */
+    public function setImgAlt1($img_alt1): void
+    {
+      $this->img_alt1 = $img_alt1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDescription1()
+    {
+      return $this->img_description1;
+    }
+
+    /**
+     * @param mixed $img_description1
+     */
+    public function setImgDescription1($img_description1): void
+    {
+      $this->img_description1 = $img_description1;
     }
 
 

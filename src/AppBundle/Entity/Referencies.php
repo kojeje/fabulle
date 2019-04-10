@@ -7,7 +7,6 @@
    */
 
   namespace AppBundle\Entity;
-  namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
   use Symfony\Component\Validator\Mapping\ClassMetadata;
@@ -27,10 +26,12 @@
      */
     private $id;
 
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function __construct()
     {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
+      $this->setPubliele(new \DateTime());
     }
+
+
 
 
     /**
@@ -51,9 +52,15 @@
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
+
     //  Relations
     /**
-     * @ORM\ManyToOne(targetEntity="show", inversedBy="referencies")
+     * @ORM\ManyToOne(targetEntity="Show", inversedBy="referencies")
      */
     private $show;
 
@@ -157,7 +164,19 @@
       $this->show = $show;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
 
-
-
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
+    }
   }

@@ -1,0 +1,157 @@
+{% extends "@App/base_admin.html.twig" %}
+
+{% block flash %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block form %}
+    <div class="register">
+        <div class="createUser_logo">
+            <div class="img">
+                <img src="{{ asset('assets/img/logo_test.png') }}" alt="img">
+            </div>
+            <h2 class="statut"><span>{{ app.user.username }} ! <br> </span>Créez votre lieu ! </h2>
+
+
+        </div>
+        {{ form_start(formPlace, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
+        <div class="form_container">
+            <h2>Votre lieu</h2>
+            <div class="field">
+                {{ form_errors(formPlace.place_name) }}
+                {{ form_label(formPlace.place_name,null,
+                    {
+                        'label':'Nom du Lieu',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_name, {'attr': {"class":'titre'}}) }}
+            </div>
+            <div class="field">
+                {{ form_errors(formPlace.place_ad1) }}
+                {{ form_label(formPlace.place_ad1,null,
+                    {
+                        'label':'adresse 1',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_ad1) }}
+            </div>
+            <div class="field">
+                {{ form_errors(formPlace.place_ad2) }}
+                {{ form_label(formPlace.place_ad2,null,
+                    {
+                        'label':'adresse 2',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_ad2) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.cp) }}
+                {{ form_label(formPlace.cp,null,
+                    {
+                        'label':'CP',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.cp) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.commune) }}
+                {{ form_label(formPlace.commune,null,
+                    {
+                        'label':'Commune',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.commune) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.place_url) }}
+                {{ form_label(formPlace.place_url,null,
+                    {
+                        'label':'url',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_url) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.place_mail) }}
+                {{ form_label(formPlace.place_mail,null,
+                    {
+                        'label':'email',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_mail) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.place_tel) }}
+                {{ form_label(formPlace.place_tel,null,
+                    {
+                        'label':'tel',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_tel) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.place_lat) }}
+                {{ form_label(formPlace.place_lat,null,
+                    {
+                        'label':'latitude',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_lat) }}
+            </div>
+            <div class="field col-md-4">
+                {{ form_errors(formPlace.place_long) }}
+                {{ form_label(formPlace.place_long,null,
+                    {
+                        'label':'longitude',
+                    }
+                )
+                }}
+                {{ form_widget(formPlace.place_long) }}
+            </div>
+
+
+
+
+            <div class="img_bloc">
+                <div class="field">
+                    {{ form_errors(formPlace.img1) }}
+                    {{ form_label(formPlace.img1) }}
+                    {{ form_widget(formPlace.img1, {'attr': {"class":'img'}}) }}
+
+                    {{ form_errors(formPlace.img_alt1) }}
+                    {{ form_label(formPlace.img_alt1) }}
+                    {{ form_widget(formPlace.img_alt1) }}
+
+                    {{ form_errors(formPlace.img_description1) }}
+                    {{ form_label(formPlace.img_description1) }}
+                    {{ form_widget(formPlace.img_description1) }}
+                </div>
+            </div>
+
+
+
+
+            <div class="f_type">
+                {{ form_widget(formPlace.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+            </div>
+
+        </div>
+
+
+        {{ form_end(formPlace) }}
+    </div>
+{% endblock %}
+

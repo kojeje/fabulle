@@ -109,7 +109,10 @@
             ]
           ]
         )
-        ->add('tek1', FileType::class)
+        ->add('tek1', FileType::class, [
+          'data_class' => null,
+          ]
+        )
 
         ->add('youtube')
 

@@ -9,8 +9,8 @@
 
 
 
-  use AppBundle\Entity\Show;
-  use AppBundle\Form\ShowType;
+  use AppBundle\Entity\Place;
+  use AppBundle\Form\PlaceType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
@@ -19,19 +19,19 @@
 
 
 
-  class AdminShowController extends Controller
+  class AdminPlaceController extends Controller
   {
 
     /**
-     * @Route("/admin/create_show", name="create_show")
+     * @Route("/admin/create_place", name="create_place")
      */
 
-    public function formCreatePost(Request $request)
+    public function formCreatePlace(Request $request)
 
     {
 
-      /* Création d'un nouveau formulaire à partir d'un gabarit "Showtype" */
-      $form = $this->createForm(ShowType::class, new Show);
+      /* Création d'un nouveau formulaire à partir d'un gabarit "Pagetype" */
+      $form = $this->createForm(PlaceType::class, new Place);
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
       Donc la variable $form contient maintenant aussi les données de $_POST*/
@@ -42,17 +42,15 @@
 
 
         /* Si le formulaire respecte les contraintes */
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
 
-          for ($i=1; $i<=6; $i++)
-          {
+
 
             /* On récupère une entité photo grâce aux données envoyées par le formulaire */
-            $img=$form->getData();
+            $img1=$form->getData();
 
-            $getImg = 'getImg'.$i;
-            $File= $img->$getImg();
+            $getImg1 = 'getImg1';
+            $File= $img1->$getImg1();
 
 
             /* Renomme l'image pour éviter les doublons de nom */
@@ -69,69 +67,40 @@
               echo $e->getMessage();
             }
 
-            $setImg = 'setImg'.$i;
-            $img->$setImg($filename);
-
-          }
-          /* On récupère une entité pdf grâce aux données envoyées par le formulaire */
-          $tek=$form->getData();
-
-          $getTek = 'getTek';
-          $File= $tek->$getTek();
-
-
-          /* Renomme l'image pour éviter les doublons de nom */
-
-          $filename = md5(uniqid()) . '.' . $File->guessExtension();
-
-          try {
-
-            $File->move(
-              $this->getParameter('pdf_directory'),
-              $filename
-            );
-          } catch (FileException $e) {
-            echo $e->getMessage();
-          }
-
-          $setTek = 'setTek';
-          $tek->$setTek($filename);
+            $setImg = 'setImg1';
+            $img1->$setImg($filename);
 
 
           /* Je récupère l'entité manager de doctrine */
           $entityManager = $this->getDoctrine()->getManager();
-          $entityManager2 = $this->getDoctrine()->getManager();
-
 
           /* Je stocke temporairement les données dans l'unité de travail */
-          $entityManager->persist($img);
-          $entityManager2->persist($tek);
+          $entityManager->persist($img1);
 
           /* Je "pousse" les données dans la Bdd*/
           $entityManager->flush();
-          $entityManager2->flush();
 
           /* J'affiche un message flash confirmant l'enregistrement */
           $this->addFlash(
             'notice',
-            'Le spectacle a été enregistré'
+            'L\'article été enregistré'
           );
         } else {
           /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
           $this->addFlash(
             'error',
-            'Le spectacle n\'a pas pu être enregistré'
+            'L\'article n\'a pas pu être enregistré'
           );
         }
-//                /* Je redirige ensuite sur la liste des pages*/
-//                return $this->redirectToRoute('admin_pages');
+//                /* Je redirige ensuite sur la liste des places*/
+//                return $this->redirectToRoute('admin_places');
       }
 
-      /* Quand j'arrive sur la route "ajout_page_form" je vais directement sur le formulaire dont les champs sont définis dans le ShowType,
+      /* Quand j'arrive sur la route "create_place" je vais directement sur le formulaire dont les champs sont définis dans le PlaceType,
       et qui seront affichés dans la twig*/
-      return $this->render('@App/admin/CreateShow.html.twig',
+      return $this->render('@App/admin/CreatePlace.html.twig',
         [
-          'formShow' => $form->createView()
+          'formPlace' => $form->createView()
         ]);
 
     }

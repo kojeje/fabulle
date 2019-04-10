@@ -239,10 +239,8 @@
      */
     private $text4;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $youtube;
+
+
 
 //  Relations
 
