@@ -54,7 +54,15 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $instru;
+    private $instru1;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $instru2;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $instru3;
 
     /**
      * @ORM\Column(type="string")
@@ -92,7 +100,7 @@
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="show", inversedBy="member")
+     * @ORM\ManyToOne(targetEntity="Show", inversedBy="member")
      */
     private $show;
 
@@ -245,17 +253,49 @@
     /**
      * @return mixed
      */
-    public function getInstru()
+    public function getInstru1()
     {
-      return $this->instru;
+      return $this->instru1;
     }
 
     /**
      * @param mixed $instru
      */
-    public function setInstru($instru): void
+    public function setInstru1($instru1): void
     {
-      $this->instru = $instru;
+      $this->instru1 = $instru1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstru2()
+    {
+      return $this->instru2;
+    }
+
+    /**
+     * @param mixed $instru2
+     */
+    public function setInstru2($instru2): void
+    {
+      $this->instru2 = $instru2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstru3()
+    {
+      return $this->instru3;
+    }
+
+    /**
+     * @param mixed $instru3
+     */
+    public function setInstru3($instru3): void
+    {
+      $this->instru3 = $instru3;
     }
 
     /**
