@@ -16,23 +16,30 @@
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder
-        ->add('place_name')
-        ->add('place_ad1')
-        ->add('place_ad2')
-        ->add('cp')
-        ->add('commune')
-        ->add('place_url')
-        ->add('place_tel')
-        ->add('place_mail')
-        ->add('place_lat')
-        ->add('place_long')
-        ->add('img1', FileType::class, [
-            'data_class' => null,
-            'label' => 'Image1 (jpg)',
+        ->add('nom')
+        ->add('description', TextareaType::class,
+          [
+            'attr' => [
+              'class'=>'textarea',
+              'rows' => '50',
+              'cols' => '50'
+            ]
           ]
         )
-        ->add('img_alt1')
-        ->add('img_description1')
+        ->add('img', FileType::class, [
+            'data_class' => null,
+            'label' => 'Image (jpg)',
+          ]
+        )
+        ->add('img_alt')
+        ->add('ad1')
+        ->add('ad2')
+        ->add('cp')
+        ->add('commune')
+        ->add('tel')
+        ->add('site')
+        ->add('email')
+        ->add('gmap')
         ->add('submit', SubmitType::class)
       ;
     }

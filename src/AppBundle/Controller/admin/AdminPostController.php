@@ -21,7 +21,7 @@
 
   class AdminPostController extends Controller
   {
-
+//CREATION D'ARTICLE
     /**
      * @Route("/admin/create_post", name="create_post")
      */
@@ -105,5 +105,32 @@
 
     }
 
-//
+//    UPDATE ARTICLE
+    /**
+     * @Route("/admin/update_post/{id}", name="admin_update_post")
+     */
+    public function updatePostAction(Request $request, $id)
+    {
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $post = $repository->find($id);
+      $form = $this->createForm(PostType::class, $post);
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid())
+      {
+        $post = $form->getData();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($post);
+        $entityManager->flush();
+        /* Affiche un message flash */
+        $this->addFlash(
+          'notice',
+          'Le contenu de l\'article a été modifié'
+        );
+        return $this->redirectToRoute('admin_post');
+      }
+      return $this->render('@App/admin/UpdatePost.html.twig',
+        [
+          'formPost' => $form->createView()
+        ]);
+    }
   }

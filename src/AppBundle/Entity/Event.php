@@ -28,6 +28,15 @@
     {
       $this->setPubliele(new \DateTime());
     }
+    /**
+     * @ORM\Column(type="datetimetz")
+     */
+    private $publiele;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $category;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -39,6 +48,8 @@
      * )
      */
     private $titre;
+
+
 
     /**
      * @ORM\Column(type="string")
@@ -57,18 +68,15 @@
     private $date;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
-    private $tel;
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $email;
+    private $img;
 
     /**
-     * @ORM\Column(type="datetimetz")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $publiele;
+    private $img_alt;
+
 
     //  Relations
 
@@ -87,6 +95,8 @@
      */
     private $place;
 
+
+
     /**
      * @return mixed
      */
@@ -101,6 +111,22 @@
     public function setId($id): void
     {
       $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
     }
 
     /**
@@ -154,6 +180,38 @@
     /**
      * @return mixed
      */
+    public function getImg()
+    {
+      return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+      $this->img = $img;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt()
+    {
+      return $this->img_alt;
+    }
+
+    /**
+     * @param mixed $img_alt
+     */
+    public function setImgAlt($img_alt): void
+    {
+      $this->img_alt = $img_alt;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPost()
     {
       return $this->post;
@@ -202,53 +260,18 @@
     /**
      * @return mixed
      */
-    public function getTel()
+    public function getCategory()
     {
-      return $this->tel;
+      return $this->category;
     }
 
     /**
-     * @param mixed $tel
+     * @param mixed $category
      */
-    public function setTel($tel): void
+    public function setCategory($category): void
     {
-      $this->tel = $tel;
+      $this->category = $category;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-      return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-      $this->email = $email;
-    }/**
-   * @return mixed
-   */
-public function getPubliele()
-{
-  return $this->publiele;
-}/**
-   * @param mixed $publiele
-   */
-public function setPubliele($publiele): void
-{
-  $this->publiele = $publiele;
-}
-
-
-
-
-
-
-
 
 
   }

@@ -15,33 +15,26 @@
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder
+
+
         ->add('titre')
-        ->add('intro', TextareaType::class,
+        ->add('dispo_boolean')
+        ->add('text1', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '20',
+              'rows' => '50',
               'cols' => '50'
             ]
           ]
         )
 
-        ->add('sub1')
-        ->add('text1', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '20',
-              'cols' => '50'
-            ]
-          ]
-        )
         ->add('sub2')
         ->add('text2', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '20',
+              'rows' => '50',
               'cols' => '50'
             ]
           ]
@@ -51,7 +44,7 @@
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '20',
+              'rows' => '50',
               'cols' => '50'
             ]
           ]
@@ -61,47 +54,61 @@
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '20',
+              'rows' => '50',
               'cols' => '50'
             ]
           ]
         )
+
         ->add('img1', FileType::class, [
           'data_class' => null,
+            'label' => 'affiche'
 
           ]
         )
         ->add('img_alt1')
-        ->add('img_description1')
 
         ->add('img2', FileType::class, [
           'data_class' => null,
           ]
         )
         ->add('img_alt2')
-        ->add('img_description2')
+        ->add('slider_boolean')
+        ->add('sl_caption')
         ->add('img3', FileType::class, [
           'data_class' => null,
+            'label' => 'slider-1'
           ]
         )
         ->add('img_alt3')
-        ->add('img_description3')
 
         ->add('img4', FileType::class, [
           'data_class' => null,
+            'label' => 'slider-2'
           ]
         )
         ->add('img_alt4')
-        ->add('img_description4')
 
-        ->add('affiche', FileType::class, [
+
+        ->add('img5', FileType::class, [
           'data_class' => null,
+            'label' => 'slider-3'
             ]
         )
-        ->add('affiche_alt')
-        ->add('affiche_description')
+        ->add('img_alt5')
 
-        ->add('style', ChoiceType::class,
+        ->add('img6', FileType::class, [
+            'data_class' => null,
+            'label' => 'slider-4'
+          ]
+        )
+        ->add('img_alt6')
+
+        ->add('video_boolean')
+        ->add('youtube')
+
+
+        ->add('genre', ChoiceType::class,
           [
             'choices' => [
               'Conte musical' => 'conte_musical',
@@ -109,12 +116,16 @@
             ]
           ]
         )
-        ->add('tek1', FileType::class, [
-          'data_class' => null,
-          ]
-        )
+        ->add('duree')
+        ->add('min_age')
+        ->add('max_age')
+        ->add('min_artist')
+        ->add('max_artist')
+        ->add('tarif')
+        ->add('creation_date')
 
-        ->add('youtube')
+
+
 
 
         ->add('submit', SubmitType::class)

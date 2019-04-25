@@ -8,8 +8,6 @@
 
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
-  use Symfony\Component\Validator\Constraints as Assert;
-  use Symfony\Component\Validator\Mapping\ClassMetadata;
 
   //    Colonnes de la table
   /**
@@ -26,13 +24,24 @@
      */
     private $id;
 
+// --------------------------------
+
+    // date de publication
+
     public function __construct()
     {
       $this->setPubliele(new \DateTime());
     }
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
 
-
-
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -46,17 +55,7 @@
      * @ORM\Column(type="string")
      */
     private $commune;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="datetimetz")
-     *
-     */
-    private $publiele;
+//------------------------------------------------------------------------------
 
     //  Relations
     /**
@@ -64,9 +63,8 @@
      */
     private $show;
 
-
-
-//  Getters & Setters
+//------------------------------------------------------------------------------
+    //  Getters & Setters
 
     /**
      * @return mixed
@@ -82,6 +80,38 @@
     public function setId($id): void
     {
       $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubliele()
+    {
+      return $this->publiele;
+    }
+
+    /**
+     * @param mixed $publiele
+     */
+    public function setPubliele($publiele): void
+    {
+      $this->publiele = $publiele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+      return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
+    {
+      $this->date = $date;
     }
 
     /**
@@ -135,22 +165,6 @@
     /**
      * @return mixed
      */
-    public function getDate()
-    {
-      return $this->date;
-    }
-
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date): void
-    {
-      $this->date = $date;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getShow()
     {
       return $this->show;
@@ -164,19 +178,8 @@
       $this->show = $show;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPubliele()
-    {
-      return $this->publiele;
-    }
 
-    /**
-     * @param mixed $publiele
-     */
-    public function setPubliele($publiele): void
-    {
-      $this->publiele = $publiele;
-    }
-  }
+
+
+
+     }

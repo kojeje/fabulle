@@ -1,0 +1,61 @@
+{% extends "@App/base_admin.html.twig" %}
+
+{% block flash %}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block form %}
+    <div class="register">
+        <div class="createUser_logo">
+            <div class="img">
+                <img src="{{ asset('assets/img/logo_test.png') }}" alt="img">
+            </div>
+            <h2 class="statut"><span>{{ app.user.username }} ! <br> </span>Créez votre référence ! </h2>
+
+
+        </div>
+        {{ form_start(formEvent, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
+        <div class="form_container">
+            <h2>Votre référence</h2>
+
+            <div class="field col-md-4">
+                {{ form_errors(formEvent.place) }}
+                {{ form_label(formEvent.place,null,
+                    {
+                        'label':'nom de la salle',
+                    }
+                )
+                }}
+                {{ form_widget(formEvent.place, {'attr': {"class":'titre'}}) }}
+            </div>
+
+            <div class="field col-md-4">
+                {{ form_errors(formEvent.date) }}
+                {{ form_label(formEvent.date,null,
+                    {
+                        'label':'date',
+                    }
+                )
+                }}
+                {{ form_widget(formEvent.date, {'attr': {"class":'titre'}}) }}
+            </div>
+
+
+
+
+
+            <div class="f_type">
+                {{ form_widget(formEvent.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+            </div>
+
+        </div>
+
+
+        {{ form_end(formEvent) }}
+    </div>
+{% endblock %}
+

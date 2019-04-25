@@ -22,20 +22,16 @@
     protected $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
-    private $avatar;
+    private $img;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $avatar_alt;
+    private $img_alt;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $avatar_description;
-
+    // Champs définis par FOS_USER
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
@@ -45,8 +41,12 @@
     public function __construct()
     {
       parent::__construct();
-      // your own logic
+
     }
+
+    //------------------------------------------------------------------------------
+    //  Getters & Setters
+
 
     /**
      * @return mixed
@@ -67,49 +67,33 @@
     /**
      * @return mixed
      */
-    public function getAvatar()
+    public function getImg()
     {
-      return $this->avatar;
+      return $this->img;
     }
 
     /**
-     * @param mixed $avatar
+     * @param mixed $img
      */
-    public function setAvatar($avatar): void
+    public function setImg($img): void
     {
-      $this->avatar = $avatar;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAvatarAlt()
-    {
-      return $this->avatar_alt;
-    }
-
-    /**
-     * @param mixed $avatar_alt
-     */
-    public function setAvatarAlt($avatar_alt): void
-    {
-      $this->avatar_alt = $avatar_alt;
+      $this->img = $img;
     }
 
     /**
      * @return mixed
      */
-    public function getAvatarDescription()
+    public function getImgAlt()
     {
-      return $this->avatar_description;
+      return $this->img_alt;
     }
 
     /**
-     * @param mixed $avatar_description
+     * @param mixed $img_alt
      */
-    public function setAvatarDescription($avatar_description): void
+    public function setImgAlt($img_alt): void
     {
-      $this->avatar_description = $avatar_description;
+      $this->img_alt = $img_alt;
     }
 
 

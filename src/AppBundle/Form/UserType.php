@@ -25,11 +25,10 @@
     {
       $builder
 
-        ->add('avatar_alt')
-        ->add('avatar_description3')
-        ->add('avatar', FileType::class, [
+        ->add('img_alt')
+        ->add('img', FileType::class, [
             'data_class' => null,
-            'label' => 'Image4 (jpg, png)'
+            'label' => 'avatar (jpg, png)'
           ]
         )
         ->add('username')

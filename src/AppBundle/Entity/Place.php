@@ -9,7 +9,7 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
-  use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 
   //    Colonnes de la table
   /**
@@ -26,53 +26,45 @@
      */
     private $id;
 
+
     public function __construct()
     {
       $this->setPubliele(new \DateTime());
     }
 
+    /**
+     * @ORM\Column(type="datetimetz")
+     *
+     */
+    private $publiele;
+
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+
+    private $nom;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage =
-     *     "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage =
-     *     "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
 
-    private $place_name;
+    private $description;
+
+
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage =
-     *     "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage =
-     *     "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
 
-    private $place_ad1;
+    private $ad1;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage =
-     *     "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage =
-     *     "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
 
-    private $place_ad2;
+    private $ad2;
 
     /**
      * @ORM\Column(type="integer", length=5, nullable=true)
@@ -89,36 +81,25 @@
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $place_url;
+    private $tel;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $site;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $place_tel;
+    private $email;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      *
      */
-    private $place_mail;
+    private $gmap;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
-    private $place_lat;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     */
-    private $place_long;
-    /**
-     * @ORM\Column(type="datetimetz")
-     *
-     */
-    private $publiele;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -128,17 +109,13 @@
      * )
      *
      */
-    private $img1;
+    private $img;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $img_alt1;
+    private $img_alt;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_description1;
 
 
 //  Relations
@@ -147,7 +124,9 @@
      */
     private $event;
 
-//  Getters & Setters
+  //------------------------------------------------------------------------------
+    //  Getters & Setters
+
 
     /**
      * @return mixed
@@ -168,49 +147,81 @@
     /**
      * @return mixed
      */
-    public function getPlaceName()
+    public function getPubliele()
     {
-      return $this->place_name;
+      return $this->publiele;
     }
 
     /**
-     * @param mixed $place_name
+     * @param mixed $publiele
      */
-    public function setPlaceName($place_name): void
+    public function setPubliele($publiele): void
     {
-      $this->place_name = $place_name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlaceAd1()
-    {
-      return $this->place_ad1;
-    }
-
-    /**
-     * @param mixed $place_ad1
-     */
-    public function setPlaceAd1($place_ad1): void
-    {
-      $this->place_ad1 = $place_ad1;
+      $this->publiele = $publiele;
     }
 
     /**
      * @return mixed
      */
-    public function getPlaceAd2()
+    public function getNom()
     {
-      return $this->place_ad2;
+      return $this->nom;
     }
 
     /**
-     * @param mixed $place_ad2
+     * @param mixed $nom
      */
-    public function setPlaceAd2($place_ad2): void
+    public function setNom($nom): void
     {
-      $this->place_ad2 = $place_ad2;
+      $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+      return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+      $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAd1()
+    {
+      return $this->ad1;
+    }
+
+    /**
+     * @param mixed $ad1
+     */
+    public function setAd1($ad1): void
+    {
+      $this->ad1 = $ad1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAd2()
+    {
+      return $this->ad2;
+    }
+
+    /**
+     * @param mixed $ad2
+     */
+    public function setAd2($ad2): void
+    {
+      $this->ad2 = $ad2;
     }
 
     /**
@@ -248,81 +259,97 @@
     /**
      * @return mixed
      */
-    public function getPlaceUrl()
+    public function getTel()
     {
-      return $this->place_url;
+      return $this->tel;
     }
 
     /**
-     * @param mixed $place_url
+     * @param mixed $tel
      */
-    public function setPlaceUrl($place_url): void
+    public function setTel($tel): void
     {
-      $this->place_url = $place_url;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlaceTel()
-    {
-      return $this->place_tel;
-    }
-
-    /**
-     * @param mixed $place_tel
-     */
-    public function setPlaceTel($place_tel): void
-    {
-      $this->place_tel = $place_tel;
+      $this->tel = $tel;
     }
 
     /**
      * @return mixed
      */
-    public function getPlaceMail()
+    public function getSite()
     {
-      return $this->place_mail;
+      return $this->site;
     }
 
     /**
-     * @param mixed $place_mail
+     * @param mixed $site
      */
-    public function setPlaceMail($place_mail): void
+    public function setSite($site): void
     {
-      $this->place_mail = $place_mail;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlaceLat()
-    {
-      return $this->place_lat;
-    }
-
-    /**
-     * @param mixed $place_lat
-     */
-    public function setPlaceLat($place_lat): void
-    {
-      $this->place_lat = $place_lat;
+      $this->site = $site;
     }
 
     /**
      * @return mixed
      */
-    public function getPlaceLong()
+    public function getEmail()
     {
-      return $this->place_long;
+      return $this->email;
     }
 
     /**
-     * @param mixed $place_long
+     * @param mixed $email
      */
-    public function setPlaceLong($place_long): void
+    public function setEmail($email): void
     {
-      $this->place_long = $place_long;
+      $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGmap()
+    {
+      return $this->gmap;
+    }
+
+    /**
+     * @param mixed $gmap
+     */
+    public function setGmap($gmap): void
+    {
+      $this->gmap = $gmap;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+      return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+      $this->img = $img;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt()
+    {
+      return $this->img_alt;
+    }
+
+    /**
+     * @param mixed $img_alt
+     */
+    public function setImgAlt($img_alt): void
+    {
+      $this->img_alt = $img_alt;
     }
 
     /**
@@ -341,69 +368,7 @@
       $this->event = $event;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPubliele()
-    {
-      return $this->publiele;
-    }
 
-    /**
-     * @param mixed $publiele
-     */
-    public function setPubliele($publiele): void
-    {
-      $this->publiele = $publiele;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImg1()
-    {
-      return $this->img1;
-    }
-
-    /**
-     * @param mixed $img1
-     */
-    public function setImg1($img1): void
-    {
-      $this->img1 = $img1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt1()
-    {
-      return $this->img_alt1;
-    }
-
-    /**
-     * @param mixed $img_alt1
-     */
-    public function setImgAlt1($img_alt1): void
-    {
-      $this->img_alt1 = $img_alt1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgDescription1()
-    {
-      return $this->img_description1;
-    }
-
-    /**
-     * @param mixed $img_description1
-     */
-    public function setImgDescription1($img_description1): void
-    {
-      $this->img_description1 = $img_description1;
-    }
 
 
 

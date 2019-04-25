@@ -2,6 +2,7 @@
 
 
   namespace AppBundle\Form;
+
   use AppBundle\Entity\Post;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\FormBuilderInterface;
@@ -60,11 +61,8 @@
             'label' => 'Image4 (jpg)'
           ]
         )
-        ->add('tek1', FileType::class, [
-            'data_class' => null,
-            'label' => 'Fiche technique (pdf)'
-          ]
-        )
+
+
         ->add('img_alt4')
         ->add('img_description4')
 

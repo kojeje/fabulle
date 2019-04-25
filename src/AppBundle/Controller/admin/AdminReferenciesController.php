@@ -82,4 +82,34 @@
     }
 
 //
+
+
+  //    UPDATE Reference
+  /**
+   * @Route("/admin/update_referencies/{id}", name="admin_update_referencies")
+   */
+  public function updateReferenciesAction(Request $request, $id)
+  {
+    $repository = $this->getDoctrine()->getRepository(Referencies::class);
+    $referencies = $repository->find($id);
+    $form = $this->createForm(ReferenciesType::class, $referencies);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid())
+    {
+      $referencies = $form->getData();
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->persist($referencies);
+      $entityManager->flush();
+      /* Affiche un message flash */
+      $this->addFlash(
+        'notice',
+        'Le contenu de l\'article a été modifié'
+      );
+      return $this->redirectToRoute('admin_referencies');
+    }
+    return $this->render('@App/admin/UpdateReferencies.html.twig',
+      [
+        'formReferencies' => $form->createView()
+      ]);
+  }
   }

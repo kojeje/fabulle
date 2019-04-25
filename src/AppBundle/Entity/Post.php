@@ -34,30 +34,50 @@
     }
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 50,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-
-    private $titre;
-
-    /**
-     * @ORM\Column(type="string")
-     *
-     */
-    private $category;
-    /**
      * @ORM\Column(type="datetimetz")
      *
      */
     private $publiele;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
+     *
+     */
+    private $category;
+
+    // --------------------------------
+
+    //Titre
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     */
+
+    private $titre;
+
+// --------------------------------
+    // Corps de l'article
+
+    // texte principal
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 5000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+
+    private $text1;
+
+
+    // image principale
+
+    /**
+     * @ORM\Column(type="string")
      * @Assert\File(maxSize="10000000",
      * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
      * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
@@ -67,17 +87,40 @@
     private $img1;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
      */
     private $img_alt1;
 
+// --------------------------------
+
+    // sub_title optionnel
+
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 255,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
-    private $img_description1;
 
+    private $sub2;
 
+    // Texte optionnel
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 10000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text2;
+
+    // image optionnelle
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\File(maxSize="10000000",
@@ -93,11 +136,76 @@
      */
     private $img_alt2;
 
+    //_____________________________________
+
+    // sub_title optionnel
+
+
+
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 255,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
      */
-    private $img_description2;
+    private $sub3;
 
+    // Texte optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 10000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text3;
+
+    // sub_title optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 255,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $sub4;
+
+    // texte optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      min = 50,
+     *      max = 10000
+     *   ,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text4;
+
+
+//--------------------------------------------------------------------
+//  SLIDER
+//_____________________________________________________________________
+
+
+    // Presence slider booléen
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $slider_boolean;
+
+    // image slider
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -114,10 +222,7 @@
      */
     private $img_alt3;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_description3;
+    // image slider
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -134,110 +239,49 @@
      */
     private $img_alt4;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_description4;
-
+    // image slider
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 15,
-     *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $intro;
+    private $img5;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 100,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $sub1;
+    private $img_alt5;
+
+    // image slider
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $text1;
+    private $img6;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 100,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $sub2;
+    private $img_alt6;
+
+    // Caption slider
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $text2;
+    private $sl_caption;
+//-------------------------------------------------------------
+//  VIDEO
+//_____________________________________________________________
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $video_boolean;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 100,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
      */
-    private $sub3;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text3;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 100,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $sub4;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text4;
+    private $youtube;
 
 
 
@@ -249,16 +293,16 @@
      */
     private $event;
 
-//    /**
-//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="post")
-//     */
-//    private $user;
-
-
     /**
      * @ORM\ManyToOne(targetEntity="Show", inversedBy="post")
      */
     private $show;
+
+
+
+//------------------------------------------------------------------------------
+    //  Getters & Setters
+
 
     /**
      * @return mixed
@@ -279,17 +323,17 @@
     /**
      * @return mixed
      */
-    public function getTitre()
+    public function getPubliele()
     {
-      return $this->titre;
+      return $this->publiele;
     }
 
     /**
-     * @param mixed $titre
+     * @param mixed $publiele
      */
-    public function setTitre($titre): void
+    public function setPubliele($publiele): void
     {
-      $this->titre = $titre;
+      $this->publiele = $publiele;
     }
 
     /**
@@ -311,97 +355,17 @@
     /**
      * @return mixed
      */
-    public function getImg1()
+    public function getTitre()
     {
-      return $this->img1;
+      return $this->titre;
     }
 
     /**
-     * @param mixed $img1
+     * @param mixed $titre
      */
-    public function setImg1($img1): void
+    public function setTitre($titre): void
     {
-      $this->img1 = $img1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImg2()
-    {
-      return $this->img2;
-    }
-
-    /**
-     * @param mixed $img2
-     */
-    public function setImg2($img2): void
-    {
-      $this->img2 = $img2;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImg3()
-    {
-      return $this->img3;
-    }
-
-    /**
-     * @param mixed $img3
-     */
-    public function setImg3($img3): void
-    {
-      $this->img3 = $img3;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImg4()
-    {
-      return $this->img4;
-    }
-
-    /**
-     * @param mixed $img4
-     */
-    public function setImg4($img4): void
-    {
-      $this->img4 = $img4;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIntro()
-    {
-      return $this->intro;
-    }
-
-    /**
-     * @param mixed $intro
-     */
-    public function setIntro($intro): void
-    {
-      $this->intro = $intro;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSub1()
-    {
-      return $this->sub1;
-    }
-
-    /**
-     * @param mixed $sub1
-     */
-    public function setSub1($sub1): void
-    {
-      $this->sub1 = $sub1;
+      $this->titre = $titre;
     }
 
     /**
@@ -418,6 +382,38 @@
     public function setText1($text1): void
     {
       $this->text1 = $text1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg1()
+    {
+      return $this->img1;
+    }
+
+    /**
+     * @param mixed $img1
+     */
+    public function setImg1($img1): void
+    {
+      $this->img1 = $img1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt1()
+    {
+      return $this->img_alt1;
+    }
+
+    /**
+     * @param mixed $img_alt1
+     */
+    public function setImgAlt1($img_alt1): void
+    {
+      $this->img_alt1 = $img_alt1;
     }
 
     /**
@@ -450,6 +446,38 @@
     public function setText2($text2): void
     {
       $this->text2 = $text2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg2()
+    {
+      return $this->img2;
+    }
+
+    /**
+     * @param mixed $img2
+     */
+    public function setImg2($img2): void
+    {
+      $this->img2 = $img2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt2()
+    {
+      return $this->img_alt2;
+    }
+
+    /**
+     * @param mixed $img_alt2
+     */
+    public function setImgAlt2($img_alt2): void
+    {
+      $this->img_alt2 = $img_alt2;
     }
 
     /**
@@ -519,6 +547,198 @@
     /**
      * @return mixed
      */
+    public function getSliderBoolean()
+    {
+      return $this->slider_boolean;
+    }
+
+    /**
+     * @param mixed $slider_boolean
+     */
+    public function setSliderBoolean($slider_boolean): void
+    {
+      $this->slider_boolean = $slider_boolean;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg3()
+    {
+      return $this->img3;
+    }
+
+    /**
+     * @param mixed $img3
+     */
+    public function setImg3($img3): void
+    {
+      $this->img3 = $img3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt3()
+    {
+      return $this->img_alt3;
+    }
+
+    /**
+     * @param mixed $img_alt3
+     */
+    public function setImgAlt3($img_alt3): void
+    {
+      $this->img_alt3 = $img_alt3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg4()
+    {
+      return $this->img4;
+    }
+
+    /**
+     * @param mixed $img4
+     */
+    public function setImg4($img4): void
+    {
+      $this->img4 = $img4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt4()
+    {
+      return $this->img_alt4;
+    }
+
+    /**
+     * @param mixed $img_alt4
+     */
+    public function setImgAlt4($img_alt4): void
+    {
+      $this->img_alt4 = $img_alt4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg5()
+    {
+      return $this->img5;
+    }
+
+    /**
+     * @param mixed $img5
+     */
+    public function setImg5($img5): void
+    {
+      $this->img5 = $img5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt5()
+    {
+      return $this->img_alt5;
+    }
+
+    /**
+     * @param mixed $img_alt5
+     */
+    public function setImgAlt5($img_alt5): void
+    {
+      $this->img_alt5 = $img_alt5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg6()
+    {
+      return $this->img6;
+    }
+
+    /**
+     * @param mixed $img6
+     */
+    public function setImg6($img6): void
+    {
+      $this->img6 = $img6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt6()
+    {
+      return $this->img_alt6;
+    }
+
+    /**
+     * @param mixed $img_alt6
+     */
+    public function setImgAlt6($img_alt6): void
+    {
+      $this->img_alt6 = $img_alt6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlCaption()
+    {
+      return $this->sl_caption;
+    }
+
+    /**
+     * @param mixed $sl_caption
+     */
+    public function setSlCaption($sl_caption): void
+    {
+      $this->sl_caption = $sl_caption;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoBoolean()
+    {
+      return $this->video_boolean;
+    }
+
+    /**
+     * @param mixed $video_boolean
+     */
+    public function setVideoBoolean($video_boolean): void
+    {
+      $this->video_boolean = $video_boolean;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutube()
+    {
+      return $this->youtube;
+    }
+
+    /**
+     * @param mixed $youtube
+     */
+    public function setYoutube($youtube): void
+    {
+      $this->youtube = $youtube;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getEvent()
     {
       return $this->event;
@@ -541,22 +761,6 @@
     }
 
     /**
-     * @return mixed
-     */
-    public function getMember()
-    {
-      return $this->member;
-    }
-
-    /**
-     * @param mixed $member
-     */
-    public function setMember($member): void
-    {
-      $this->member = $member;
-    }
-
-    /**
      * @param mixed $show
      */
     public function setShow($show): void
@@ -564,165 +768,6 @@
       $this->show = $show;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImgAlt1()
-    {
-      return $this->img_alt1;
-    }
-
-    /**
-     * @param mixed $img_alt1
-     */
-    public function setImgAlt1($img_alt1): void
-    {
-      $this->img_alt1 = $img_alt1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgDescription1()
-    {
-      return $this->img_description1;
-    }
-
-    /**
-     * @param mixed $img_description1
-     */
-    public function setImgDescription1($img_description1): void
-    {
-      $this->img_description1 = $img_description1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt2()
-    {
-      return $this->img_alt2;
-    }
-
-    /**
-     * @param mixed $img_alt2
-     */
-    public function setImgAlt2($img_alt2): void
-    {
-      $this->img_alt2 = $img_alt2;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgDescription2()
-    {
-      return $this->img_description2;
-    }
-
-    /**
-     * @param mixed $img_description2
-     */
-    public function setImgDescription2($img_description2): void
-    {
-      $this->img_description2 = $img_description2;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt3()
-    {
-      return $this->img_alt3;
-    }
-
-    /**
-     * @param mixed $img_alt3
-     */
-    public function setImgAlt3($img_alt3): void
-    {
-      $this->img_alt3 = $img_alt3;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgDescription3()
-    {
-      return $this->img_description3;
-    }
-
-    /**
-     * @param mixed $img_description3
-     */
-    public function setImgDescription3($img_description3): void
-    {
-      $this->img_description3 = $img_description3;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt4()
-    {
-      return $this->img_alt4;
-    }
-
-    /**
-     * @param mixed $img_alt4
-     */
-    public function setImgAlt4($img_alt4): void
-    {
-      $this->img_alt4 = $img_alt4;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgDescription4()
-    {
-      return $this->img_description4;
-    }
-
-    /**
-     * @param mixed $img_description4
-     */
-    public function setImgDescription4($img_description4): void
-    {
-      $this->img_description4 = $img_description4;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPubliele()
-    {
-      return $this->publiele;
-    }
-
-    /**
-     * @param mixed $publiele
-     */
-    public function setPubliele($publiele): void
-    {
-      $this->publiele = $publiele;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getYoutube()
-    {
-      return $this->youtube;
-    }
-
-    /**
-     * @param mixed $youtube
-     */
-    public function setYoutube($youtube): void
-    {
-      $this->youtube = $youtube;
-    }
 
 
 

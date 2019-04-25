@@ -40,24 +40,24 @@
 
       if ($form->isSubmitted()) {
 
-
         /* Si le formulaire respecte les contraintes */
         if ($form->isValid())
         {
 
-          for ($i=1; $i<=6; $i++)
-          {
+          $show = $form->getData();
+
+          for ($i=1; $i<=5; $i++) {
 
             /* On récupère une entité photo grâce aux données envoyées par le formulaire */
-            $img=$form->getData();
 
-            $getImg = 'getImg'.$i;
-            $File= $img->$getImg();
-
+            $getterName = 'getImg'.$i;
+            $File = $show->$getterName();
 
             /* Renomme l'image pour éviter les doublons de nom */
 
             $filename = md5(uniqid()) . '.' . $File->guessExtension();
+
+
 
             try {
 
@@ -69,15 +69,15 @@
               echo $e->getMessage();
             }
 
-            $setImg = 'setImg'.$i;
-            $img->$setImg($filename);
-
+            $setImg = 'setImg' . $i;
+            $show->$setImg($filename);
           }
-          /* On récupère une entité pdf grâce aux données envoyées par le formulaire */
-          $tek=$form->getData();
 
-          $getTek = 'getTek';
-          $File= $tek->$getTek();
+          /* On récupère une entité pdf grâce aux données envoyées par le formulaire */
+
+
+          $getterName2 = 'getTek1';
+          $File = $show->$getterName2();
 
 
           /* Renomme l'image pour éviter les doublons de nom */
@@ -94,28 +94,29 @@
             echo $e->getMessage();
           }
 
-          $setTek = 'setTek';
-          $tek->$setTek($filename);
+          $setTek1 = 'setTek1';
+          $show->$setTek1($filename);
 
 
           /* Je récupère l'entité manager de doctrine */
           $entityManager = $this->getDoctrine()->getManager();
-          $entityManager2 = $this->getDoctrine()->getManager();
+
 
 
           /* Je stocke temporairement les données dans l'unité de travail */
-          $entityManager->persist($img);
-          $entityManager2->persist($tek);
+          $entityManager->persist($File);
+          $entityManager->persist($tek);
 
           /* Je "pousse" les données dans la Bdd*/
           $entityManager->flush();
-          $entityManager2->flush();
+          $entityManager->flush();
 
           /* J'affiche un message flash confirmant l'enregistrement */
           $this->addFlash(
             'notice',
             'Le spectacle a été enregistré'
           );
+
         } else {
           /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
           $this->addFlash(
