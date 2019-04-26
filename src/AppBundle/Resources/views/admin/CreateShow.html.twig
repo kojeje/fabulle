@@ -9,187 +9,360 @@
 {% endblock %}
 
 {% block form %}
-    <div class="register">
-        <div class="createUser_logo">
-            <div class="img">
-                <img src="{{ asset('assets/img/logo_test.png') }}" alt="img">
-            </div>
-            <h2 class="statut"><span>{{ app.user.username }} ! <br> </span>Créez votre spectacle ! </h2>
+
+    <div class="register container">
+        <a id="article-anch" class="anch d-none d-md-block"></a>
+
+{# ENTETE DU FORMULAIRE #}
+        <div class="createUser_logo row">
+            <div class="offset-md-2 d-none d-md-block"></div>
+            <h2 class="statut col-6 col-md-4">{{ app.user.username }} !</h2>
+            <p class="statut col-6 col-md-4">
+                <span>Créez votre spectacle ! </span>
+            </p>
+            <div class="offset-md-2 d-block d-md-none"></div>
         </div>
+
+
+{# FORMULAIRE #}
         {{ form_start(formShow, {attr: {novalidate: 'novalidate', class:'formulaire container'}}) }}
-        <h2>Votre spectacle</h2>
+
         <div class="form_container">
-            <div class="field">
-                {{ form_errors(formShow.titre) }}
-                {{ form_widget(formShow.titre, {'attr': {"class":'titre', 'placeholder':'TITRE'}}) }}
+            <h1>Votre spectacle</h1>
 
-            </div>
+        {#CHAMPS#}
 
-            <div class="field">
-                {{ form_errors(formShow.style) }}
-                {{ form_label(formShow.style) }}
-                {{ form_widget(formShow.style, {'attr': {"class":'select'}}) }}
-            </div>
+            {#CORPS DE LA PAGE#}
 
-            <div class="img_bloc">
-                <div class="field row">
-                    {{ form_errors(formShow.img1) }}
-                    {{ form_widget(formShow.img1, {'attr': {"class":'img'}}) }}
-                    {{ form_label(formShow.img1) }}
+            <div class="corps row">
 
-                    {{ form_errors(formShow.img_alt1) }}
-                    {{ form_widget(formShow.img_alt1, {'attr': {"class":'alt'}}) }}
-                    {{ form_label(formShow.img_alt1) }}
 
-                    {{ form_errors(formShow.img_description1) }}
-                    {{ form_widget(formShow.img_description1, {'attr': {"class":'img_desc'}}) }}
-                    {{ form_label(formShow.img_description1) }}
+                <h2 class="col-6 col-md-3">Le titre</h2>
+                <div class="field col-6 col-md-3">
+                    {{ form_errors(formShow.titre) }}
+                    {{ form_widget(formShow.titre, {'attr': {"class":'titre'}}) }}
                 </div>
-            </div>
+                <p class="col-6 col-md-3">dispo</p>
+                <div class="field col-6 col-md-3">
 
-            <div class="img_bloc">
-                <div class="field row">
-                    {{ form_errors(formShow.img2) }}
-                    {{ form_widget(formShow.img2, {'attr': {"class":'img col-md-4'}}) }}
-                    {{ form_label(formShow.img2) }}
-
-                    {{ form_errors(formShow.img_alt2) }}
-                    {{ form_widget(formShow.img_alt2, {'attr': {"class":'alt col-md-4'}}) }}
-                    {{ form_label(formShow.img_alt2) }}
-
-                    {{ form_errors(formShow.img_description2) }}
-                    {{ form_widget(formShow.img_description2, {'attr': {"class":'img_desc col-md-4'}}) }}
-                    {{ form_label(formShow.img_description2) }}
-                </div>
-            </div>
-            <div class="img_bloc">
-                <div class="field row">
-                    {{ form_errors(formShow.img3) }}
-                    {{ form_widget(formShow.img3, {'attr': {"class":'img col-md-4'}}) }}
-                    {{ form_label(formShow.img3) }}
-
-                    {{ form_errors(formShow.img_alt3) }}
-                    {{ form_widget(formShow.img_alt3, {'attr': {"class":'alt col-md-4'}}) }}
-                    {{ form_label(formShow.img_alt3) }}
-
-                    {{ form_errors(formShow.img_description3) }}
-                    {{ form_widget(formShow.img_description3, {'attr': {"class":'img_desc col-md-4'}}) }}
-                    {{ form_label(formShow.img_description3) }}
-                </div>
-            </div>
-            <div class="img_bloc">
-                <div class="field row">
-                    {{ form_errors(formShow.img4) }}
-                    {{ form_widget(formShow.img4, {'attr': {"class":'img col-md-4'}}) }}
-                    {{ form_label(formShow.img4) }}
-
-                    {{ form_errors(formShow.img_alt4) }}
-                    {{ form_widget(formShow.img_alt4, {'attr': {"class":'alt col-md-4'}}) }}
-                    {{ form_label(formShow.img_alt4) }}
-
-                    {{ form_errors(formShow.img_description4) }}
-                    {{ form_widget(formShow.img_description4, {'attr': {"class":'img_desc col-md-4'}}) }}
-                    {{ form_label(formShow.img_description4) }}
-                </div>
-            </div>
-
-            <div class="img_bloc">
-                <div class="field row">
-                    {{ form_errors(formShow.img5) }}
-                    {{ form_widget(formShow.img5, {'attr': {"class":'img col-md-4'}}) }}
-                    {{ form_label(formShow.img5) }}
-
-                    {{ form_errors(formShow.img_alt5) }}
-                    {{ form_widget(formShow.img_alt5, {'attr': {"class":'alt col-md-4'}}) }}
-                    {{ form_label(formShow.img_alt5) }}
-
-                    {{ form_errors(formShow.img_description5) }}
-                    {{ form_widget(formShow.img_description5, {'attr': {"class":'img_desc col-md-4'}}) }}
-                    {{ form_label(formShow.img_description5) }}
+                    {{ form_errors(formShow.dispo_boolean) }}
+                    {{ form_widget(formShow.dispo_boolean, {'attr': {"class":'bouton'}}) }}
                 </div>
 
 
-            <div class="bloc_text">
-                {{ form_errors(formShow.intro) }}
-                {{ form_label(formShow.intro) }}
-                {{ form_widget(formShow.intro) }}
-            </div>
-            <div class="bloc_text">
-                <div class="sub">
-                    {{ form_errors(formShow.sub1) }}
-                    {{ form_label(formShow.sub1) }}
-                    {{ form_widget(formShow.sub1) }}
-                </div>
-                <div class="textarea">
+                <hr class="col-md-11">
+
+
+                <h2 class="col-8">Texte principal</h2>
+                <div class="offset-md-3 d-none d-md-block"></div>
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="textarea col-8">
                     {{ form_errors(formShow.text1) }}
-                    {{ form_label(formShow.text1) }}
                     {{ form_widget(formShow.text1) }}
                 </div>
-            </div>
+                <div class="offset-md-3 d-none d-md-block"></div>
 
-            <div class="bloc_text">
-                <div class="sub">
+
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>Image principale</p>
+                    {{ form_errors(formShow.img1) }}
+                    {{ form_widget(formShow.img1, {'attr': {"class":'img'}}) }}
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt1) }}
+                    {{ form_widget(formShow.img_alt1, {'attr': {"class":'alt'}}) }}
+                </div>
+
+
+
+                <hr class="col-md-11">
+
+
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>Image optionnelle</p>
+                    {{ form_errors(formShow.img2) }}
+                    {{ form_widget(formShow.img2, {'attr': {"class":'img'}}) }}
+
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt2) }}
+                    {{ form_widget(formShow.img_alt2, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-md-11">
+                <div class="sub col-8">
+                    <h2 class="col-12">sous-titre optionnel</h2>
                     {{ form_errors(formShow.sub2) }}
-                    {{ form_label(formShow.sub2) }}
                     {{ form_widget(formShow.sub2) }}
                 </div>
-                <div class="textarea">
+
+                <div class="offset-md-4 d-none d-md-block"></div>
+                <div class="textarea col-8">
+
+                    <h2>texte optionnel</h2>
                     {{ form_errors(formShow.text2) }}
-                    {{ form_label(formShow.text2) }}
                     {{ form_widget(formShow.text2) }}
+
                 </div>
-            </div>
-            <div class="bloc_text">
-                <div class="sub">
+                <div class="offset-md-4 d-none d-md-block"></div>
+                <hr class="col-md-11">
+
+                <div class="sub col-8">
+                    <h2>sous-titre optionnel</h2>
                     {{ form_errors(formShow.sub3) }}
-                    {{ form_label(formShow.sub3) }}
                     {{ form_widget(formShow.sub3) }}
                 </div>
-                <div class="textarea">
+                <div class="offset-md-4 d-none d-md-block"></div>
+
+                <div class="textarea col-8">
+                    <h2>texte optionnel</h2>
                     {{ form_errors(formShow.text3) }}
-                    {{ form_label(formShow.text3) }}
                     {{ form_widget(formShow.text3) }}
+
                 </div>
-            </div>
-            <div class="bloc_text">
-                <div class="sub">
+                <hr class="col-md-11">
+                <div class="sub col-8">
+                    <h2>sous-titre optionnel</h2>
                     {{ form_errors(formShow.sub4) }}
-                    {{ form_label(formShow.sub4) }}
                     {{ form_widget(formShow.sub4) }}
                 </div>
-                <div class="textarea">
+                <div class="offset-md-4 d-none d-md-block"></div>
+
+                <div class="textarea col-8">
+                    <h2>texte optionnel</h2>
                     {{ form_errors(formShow.text4) }}
-                    {{ form_label(formShow.text4) }}
                     {{ form_widget(formShow.text4) }}
+
+                </div>
+                <div class="offset-md-4 d-none d-md-block"></div>
+            </div>
+
+            {#SLIDER#}
+            <div class="col-4 col-md-4">
+                <p>presence d'un slider photo?</p>
+                <p>
+                    {{ form_errors(formShow.slider_boolean) }}
+                    {{ form_widget(formShow.slider_boolean) }}
+                </p>
+            </div>
+
+
+            <div class="corps row">
+
+                <H2 class="col-12">SLIDER</H2>
+
+
+
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formShow.img3) }}
+                    {{ form_widget(formShow.img3, {'attr': {"class":'img'}}) }}
+
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt3) }}
+                    {{ form_widget(formShow.img_alt3, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formShow.img4) }}
+                    {{ form_widget(formShow.img4, {'attr': {"class":'img'}}) }}
+
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt4) }}
+                    {{ form_widget(formShow.img_alt4, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formShow.img5) }}
+                    {{ form_widget(formShow.img5, {'attr': {"class":'img'}}) }}
+
+                </div>
+
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt5) }}
+                    {{ form_widget(formShow.img_alt5, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formShow.img6) }}
+                    {{ form_widget(formShow.img6, {'attr': {"class":'img'}}) }}
+
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formShow.img_alt6) }}
+                    {{ form_widget(formShow.img_alt6, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+
+                <div class="field col-12">
+                    <p>texte slider</p>
+                    {{ form_errors(formShow.sl_caption) }}
+                    {{ form_widget(formShow.sl_caption, {'attr': {"class":'alt'}}) }}
+
                 </div>
             </div>
-            <div class="field">
-                <div class="field">
-                    {{ form_errors(formShow.tek1) }}
-                    {{ form_label(formShow.tek1) }}
-                    {{ form_widget(formShow.tek1, {'attr': {"class":'img'}}) }}
-                </div>
-            </div>
-            <div class="bloc_video">
-                <div class="textarea">
+
+
+            {# VIDEO #}
+
+            <div class="offset-md-2 d-none d-md-block"></div>
+            <div class="corps col-8 col-12 row">
+                <h1 class="col-12">Vidéo</h1>
+
+
+                <p class="col-6 col-md-3">presence d'une video?</p>
+                <p class="col-6 col-md-3">
+                    {{ form_errors(formShow.video_boolean) }}
+                    {{ form_widget(formShow.video_boolean, {'attr': {'class':'case'}}) }}
+                </p>
+                <div class="offset-md-3 d none d-md-block"></div>
+                <div class="offset-md-3 d none d-md-block"></div>
+                <p class="col-12 col-md-3">code d'intégration youtube</p>
+                <p class="col-12 col-md-9">
                     {{ form_errors(formShow.youtube) }}
-                    {{ form_label(formShow.youtube) }}
                     {{ form_widget(formShow.youtube) }}
                 </div>
+
             </div>
 
-        </div>
+            <div class="offset-md-2 d-none d-md-block"></div>
+            <div class="corps row">
+                <h2 class="field col-12 col-md-6">
+                    genre
+                </h2>
+                <div class="field col-12 col-md-3">
+                    {{ form_errors(formShow.genre) }}
+                    {{ form_widget(formShow.genre, {'attr': {"class":'genre'}}) }}
 
-        <div class="f_type">
-            {{ form_widget(formShow.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
-        </div>
+                </div>
+                <div class="offset-md-3"></div>
+                <hr class="col-md-11">
+                <h2 class="field col-12 col-md-6">
+                    date de création
+                </h2>
+                <div class="field col-12 col-md-3">
+                    {{ form_errors(formShow.creation_date) }}
+                    {{ form_widget(formShow.creation_date, {'attr': {"class":'date'}}) }}
 
+                </div>
+                <div class="offset-md-3"></div>
+                <hr class="col-11">
+
+
+                <h2 class="field col-6 col-md-6">
+                    durée
+                </h2>
+                <div class="field col-6 col-md-3">
+                    {{ form_errors(formShow.duree) }}
+                    {{ form_widget(formShow.duree, {'attr': {"class":'date'}}) }}
+
+                </div>
+                <div class="offset-md-3"></div>
+                <hr class="col-md-11">
+
+                <h2 class="field col-12 col-md-12">
+                    ages:
+                </h2>
+                <p class="field col-6 col-md-2">
+                    de
+                </p>
+                <div class="field col-6 col-md-2">
+                    {{ form_errors(formShow.min_age) }}
+                    {{ form_widget(formShow.min_age, {'attr': {"class":'date'}}) }}
+
+                </div>
+                <p class="field col-6 col-md-2">
+                    à
+                </p>
+                <div class="field col-6 col-md-2">
+                    {{ form_errors(formShow.max_age) }}
+                    {{ form_widget(formShow.max_age, {'attr': {"class":'date'}}) }}
+
+                </div>
+                <hr class="col-md-11">
+                <h2 class="field col-12 col-md-12">
+                    nombre d'artistes:
+                </h2>
+                <p class="field col-6 col-md-2">
+                    de
+                </p>
+                <div class="field col-6 col-md-2">
+                    {{ form_errors(formShow.min_artist) }}
+                    {{ form_widget(formShow.min_artist, {'attr': {"class":'date'}}) }}
+
+                </div>
+                <p class="field col-6 col-md-2">
+                    à
+                </p>
+                <div class="field col-6 col-md-2">
+                    {{ form_errors(formShow.max_artist) }}
+                    {{ form_widget(formShow.max_artist, {'attr': {"class":'date'}}) }}
+
+                </div>
+                <hr class="col-md-11">
+                <h2 class="field col-6">
+                    Tarif:
+                </h2>
+                <div class="field col-6">
+                    {{ form_errors(formShow.tarif) }}
+                    {{ form_widget(formShow.tarif, {'attr': {"class":'date'}}) }}
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="offset-6"></div>
+                <div class="submit col-4 ">
+                    {{ form_widget(formShow.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+                </div>
+                <div class="offset-md-2 offset-2"></div>
+            </div>
 
 
 
         {{ form_end(formShow) }}
     </div>
-</div>
+
 {% endblock %}
 
 

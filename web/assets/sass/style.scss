@@ -2,5 +2,103 @@
 @import "partials/states";
 @import "partials/responsive";
 @import "partials/fonts";
+h1, h2, .statut
+{
+  font-size: 25px !important;
+}
+body
+{
+  color: #ffffff;
+  background: #000;
+  width: 100%;
+}
+img
+{
+  display: block;
+  width: 100%;
 
+}
+.genre, .date
+{
+  border: 1px solid $link;
+  background: $white;
+}
+hr
+{
+  color:#ffffff !important;
+  border:2px solid $link !important;
+  width: 100% !important;
+  height: 2px !important;
+  z-index: 500
+}
+input{
+  display:block;
+  width: 100%;
+}
+.links a
+{
+  color: $white;
 
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:rgba(0, 0, 0, 0.8);
+}
+
+.links
+{
+  list-style-type: none;
+}
+.link
+{
+  text-decoration: none;
+}
+.field, h2, p
+{
+  margin-top: 20px;
+}
+.statut
+{
+  color: #000;
+  background: #ffb630;
+  height: 150px;
+  font-size: 40px;
+  vertical-align: middle;
+}
+.corps
+{
+  padding: 20px;
+  border: 3px solid #ffb630;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+
+  margin-bottom: 50px;
+
+}
+.corps p
+{
+  text-align: center;}
+.case
+{
+  width: 12px;
+  height: 12px;
+}
+.createUser_logo
+{
+  margin-bottom: 30px;
+  font-size: 25px;
+  color:#ffb630;
+}
+
+.submit
+{
+  border: 2px solid $white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  color: $white !important;
+}

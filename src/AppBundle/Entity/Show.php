@@ -260,6 +260,11 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img5;
 
@@ -272,6 +277,11 @@
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
      */
     private $img6;
 
@@ -313,7 +323,7 @@
      */
     private $genre;
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      *
      */
     private $duree;
@@ -348,6 +358,7 @@
      *
      */
     private $tarif;
+
 
 //------------------------------------------------------------------------------
 
@@ -994,6 +1005,10 @@
     {
       $this->referencies = $referencies;
     }
+
+
+
+
 
 
 

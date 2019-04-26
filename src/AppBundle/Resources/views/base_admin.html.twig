@@ -4,14 +4,15 @@
     {% include "@App/default/head.html.twig" %}
 </head>
 <body>
-<div class="flash">
+    {% include '@App/default/header.html.twig'%}
+    <div class="flash">
     {% block flash %}{% endblock %}
 </div>
-<div class="form">
+    <div class="form">
     {% block form %}{% endblock %}
 </div>
 
-{% block connexioncontent %}{% endblock %}
-{% include "@App/default/script.html.twig" %}
+    {% block connexioncontent %}{% endblock %}
+    {% include "@App/default/script.html.twig" %}
 </body>
 </html>

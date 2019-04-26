@@ -21,22 +21,8 @@
      */
     protected $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $img;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt;
 
-    // Champs définis par FOS_USER
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-      $metadata->addPropertyConstraint('publieLe', new Assert\DateTime());
-    }
 
     public function __construct()
     {

@@ -46,7 +46,7 @@
 
           $show = $form->getData();
 
-          for ($i=1; $i<=5; $i++) {
+          for ($i=1; $i<=6; $i++) {
 
             /* On récupère une entité photo grâce aux données envoyées par le formulaire */
 
@@ -76,7 +76,7 @@
           /* On récupère une entité pdf grâce aux données envoyées par le formulaire */
 
 
-          $getterName2 = 'getTek1';
+          $getterName2 = 'getTek';
           $File = $show->$getterName2();
 
 
@@ -94,7 +94,7 @@
             echo $e->getMessage();
           }
 
-          $setTek1 = 'setTek1';
+          $setTek1 = 'setTek';
           $show->$setTek1($filename);
 
 

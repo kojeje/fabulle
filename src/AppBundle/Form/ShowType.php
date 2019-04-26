@@ -6,8 +6,10 @@
   use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+  use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\Form\FormBuilderInterface;
+
 
 
   class ShowType extends AbstractType
@@ -16,75 +18,106 @@
     {
       $builder
 
+// disponibilité du spectacle (booléen)
+        ->add('dispo_boolean', CheckboxType::class, [
+          'label'    => 'Cochez si spectacle disponible',
+          'required' => false,
+        ])
+// date de création du spectacle
+        ->add('creation_date')
 
+//--------------------------------------------------------------------
+
+       // CORPS DE L'ARTICLE
+
+//--------------------------------------------------------------------
+// titre du spectacle
         ->add('titre')
-        ->add('dispo_boolean')
+// texte principal/ description
         ->add('text1', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
+              'rows' => '10',
+              'cols' => '24'
             ]
           ]
         )
+// image principale (affiche, logo)
+        ->add('img1', FileType::class, [
+            'data_class' => null,
+
+
+          ]
+        )
+        ->add('img_alt1')
+
+//Sous-titre, texte et image optionnels
 
         ->add('sub2')
         ->add('text2', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
+              'rows' => '10',
+              'cols' => '24'
             ]
           ]
         )
+        ->add('img2', FileType::class, [
+            'data_class' => null,
+          ]
+        )
+        ->add('img_alt2')
+
+//Sous-titre et texte optionnels
         ->add('sub3')
         ->add('text3', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
+              'rows' => '10',
+              'cols' => '24'
             ]
           ]
         )
+//Sous-titre et texte optionnels
         ->add('sub4')
         ->add('text4', TextareaType::class,
           [
             'attr' => [
               'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
+              'rows' => '10',
+              'cols' => '24'
             ]
           ]
         )
 
-        ->add('img1', FileType::class, [
-          'data_class' => null,
-            'label' => 'affiche'
+//--------------------------------------------------------------------
 
-          ]
-        )
-        ->add('img_alt1')
+        // SLIDER
 
-        ->add('img2', FileType::class, [
-          'data_class' => null,
-          ]
-        )
-        ->add('img_alt2')
-        ->add('slider_boolean')
-        ->add('sl_caption')
+//--------------------------------------------------------------------
+
+// Présence d'un slider (booléen)
+
+        ->add('slider_boolean', CheckboxType::class, [
+          'label'    => 'Cochez si presence d\'un slider photo',
+          'required' => false,
+        ])
+
+
+// Images du slider
+
+
         ->add('img3', FileType::class, [
           'data_class' => null,
-            'label' => 'slider-1'
           ]
         )
         ->add('img_alt3')
 
         ->add('img4', FileType::class, [
           'data_class' => null,
-            'label' => 'slider-2'
           ]
         )
         ->add('img_alt4')
@@ -92,21 +125,37 @@
 
         ->add('img5', FileType::class, [
           'data_class' => null,
-            'label' => 'slider-3'
             ]
         )
         ->add('img_alt5')
 
         ->add('img6', FileType::class, [
             'data_class' => null,
-            'label' => 'slider-4'
           ]
         )
         ->add('img_alt6')
 
-        ->add('video_boolean')
-        ->add('youtube')
+// Texte du slider
+        ->add('sl_caption')
 
+//--------------------------------------------------------------------
+
+        // Video
+
+//--------------------------------------------------------------------
+
+// Présence d'une video (booléen)
+        ->add('video_boolean', CheckboxType::class, [
+          'label'    => 'Cochez si presence d\'un insert video',
+          'required' => false,
+        ])
+// Le cas échéant: code d'intégration
+        ->add('youtube')
+//--------------------------------------------------------------------
+
+        // Renseignements et fiche technique du spectacle
+
+//--------------------------------------------------------------------
 
         ->add('genre', ChoiceType::class,
           [
@@ -122,11 +171,6 @@
         ->add('min_artist')
         ->add('max_artist')
         ->add('tarif')
-        ->add('creation_date')
-
-
-
-
 
         ->add('submit', SubmitType::class)
         ;
