@@ -13,9 +13,9 @@
 
   /**
    * @ORM\Table(name="event")
-   * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
+   * @ORM\Entity(repositoryClass="AppBundle\Repository\LeEventRepository")
    */
-  class Event
+  class LeEvent
   {
     /**
      * @ORM\Column(type="integer")
@@ -81,17 +81,17 @@
     //  Relations
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leEvent")
      */
     private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Show", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="Leshow", inversedBy="leEvent")
      */
-    private $show;
+    private $leshow;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Place", inversedBy="event")
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="leEvent")
      */
     private $place;
 
@@ -228,18 +228,19 @@
     /**
      * @return mixed
      */
-    public function getShow()
+    public function getLeshow()
     {
-      return $this->show;
+      return $this->leshow;
     }
 
     /**
-     * @param mixed $show
+     * @param mixed $leshow
      */
-    public function setShow($show): void
+    public function setLeshow($leshow): void
     {
-      $this->show = $show;
+      $this->leshow = $leshow;
     }
+
 
     /**
      * @return mixed

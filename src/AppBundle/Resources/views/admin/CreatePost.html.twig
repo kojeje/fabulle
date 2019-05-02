@@ -1,177 +1,308 @@
 {% extends "@App/base_admin.html.twig" %}
 
 {% block flash %}
-    {% for message in app.flashes('notice') %}
-        <div class="flash-notice">
-            {{ message }}
-        </div>
-    {% endfor %}
+<div class="register container">
+    <a id="article-anch" class="anch d-none d-md-block"></a>
+
+    <!-- ENTETE DU FORMULAIRE -->
+    <div class="createUser_logo row">
+        <div class="offset-md-2 d-none d-md-block"></div>
+        <h2 class="statut col-6 col-md-4">{{ app.user.username }} !</h2>
+        <p class="statut col-6 col-md-4">
+            <span>Rédigez votre article ! </span>
+        </p>
+        <div class="offset-md-2 d-block d-md-none"></div>
+        <div class="offset-md-4 d-block d-md-none"></div>
+        {% for message in app.flashes('notice') %}
+            <div class="col-12 col-md-8 flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
+        <div class="offset-md-4 d-block d-md-none"></div>
+
+    </div>
+
 {% endblock %}
 
 {% block form %}
-    <div class="register">
-        <div class="createUser_logo">
-            <div class="img">
-                <img src="{{ asset('assets/img/logo_test.png') }}" alt="img">
-            </div>
-            <h2 class="statut"><span>{{ app.user.username }} ! <br> </span>Créez votre article ! </h2>
 
 
-        </div>
-        {{ form_start(formPost, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
+
+
+        <!-- FORMULAIRE -->
+        {{ form_start(formPost, {attr: {novalidate: 'novalidate', class:'formulaire container'}}) }}
+
         <div class="form_container">
-            <h2>Votre article</h2>
-            <div class="field">
-                {{ form_errors(formPost.titre) }}
-                {{ form_label(formPost.titre,null,
-                    {
-                        'label':'Titre',
-                    }
-                )
-                }}
-                {{ form_widget(formPost.titre, {'attr': {"class":'titre'}}) }}
-            </div>
+            <h1>Votre article</h1>
 
-            <div class="field c">
-                {{ form_errors(formPost.category) }}
-                {{ form_label(formPost.category) }}
-                {{ form_widget(formPost.category, {'attr': {"class":'select'}}) }}
-            </div>
+            <!--CHAMPS-->
 
-            <div class="img_bloc">
-                <div class="field">
-                    {{ form_errors(formPost.img1) }}
-                    {{ form_label(formPost.img1) }}
-                    {{ form_widget(formPost.img1, {'attr': {"class":'img'}}) }}
+            <!--CORPS DE LA PAGE-->
 
-                    {{ form_errors(formPost.img_alt1) }}
-                    {{ form_label(formPost.img_alt1) }}
-                    {{ form_widget(formPost.img_alt1) }}
+            <div class="corps row">
 
-                    {{ form_errors(formPost.img_description1) }}
-                    {{ form_label(formPost.img_description1) }}
-                    {{ form_widget(formPost.img_description1) }}
+
+                <h2 class="col-6 col-md-3">Le titre</h2>
+                <div class="field col-6 col-md-3">
+                    {{ form_errors(formPost.titre) }}
+                    {{ form_widget(formPost.titre, {'attr': {"class":'titre'}}) }}
                 </div>
-            </div>
+                <p class="col-6 col-md-3">category</p>
+                <div class="field col-6 col-md-3">
 
-            <div class="img_bloc">
-                <div class="field">
+                    {{ form_errors(formPost.category) }}
+                    {{ form_widget(formPost.category, {'attr': {"class":'bouton'}}) }}
+                </div>
+
+              <!--<p class="col-6 col-md-3">Spectacle associé</p> -->
+                <!--<div class="field col-6 col-md-3">-->
+
+                    <!--{{ form_errors(formPost.leshow) }} -->
+                    <!--{{ form_widget(formPost.leshow, {'attr': {"class":'choice'}}) }}-->
+                <!--</div>-->
+                <p class="col-6 col-md-3">Evenement associé</p>
+                <div class="field col-6 col-md-3">
+
+                    {{ form_errors(formPost.leEvent) }}
+                    {{ form_widget(formPost.leEvent, {'attr': {"class":'choice'}}) }}
+                </div>
+
+
+                <hr class="col-md-11">
+
+
+
+                <h2 class="col-8">Texte principal</h2>
+                <div class="offset-md-3 d-none d-md-block"></div>
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="textarea col-8">
+                    {{ form_errors(formPost.text1) }}
+                    {{ form_widget(formPost.text1) }}
+                </div>
+                <div class="offset-md-3 d-none d-md-block"></div>
+
+
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>Image principale</p>
+                    {{ form_errors(formPost.img1) }}
+                    {{ form_widget(formPost.img1, {'attr': {"class":'img'}}) }}
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formPost.img_alt1) }}
+                    {{ form_widget(formPost.img_alt1, {'attr': {"class":'alt'}}) }}
+                </div>
+
+
+
+                <hr class="col-md-11">
+
+
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>Image optionnelle</p>
                     {{ form_errors(formPost.img2) }}
-                    {{ form_label(formPost.img2) }}
                     {{ form_widget(formPost.img2, {'attr': {"class":'img'}}) }}
 
-                    {{ form_errors(formPost.img_alt2) }}
-                    {{ form_label(formPost.img_alt2) }}
-                    {{ form_widget(formPost.img_alt2) }}
-
-                    {{ form_errors(formPost.img_description2) }}
-                    {{ form_label(formPost.img_description2) }}
-                    {{ form_widget(formPost.img_description2) }}
                 </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-4">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formPost.img_alt2) }}
+                    {{ form_widget(formPost.img_alt2, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-md-11">
+                <div class="sub col-8">
+                    <h2 class="col-12">sous-titre optionnel</h2>
+                    {{ form_errors(formPost.sub2) }}
+                    {{ form_widget(formPost.sub2) }}
+                </div>
+
+                <div class="offset-md-4 d-none d-md-block"></div>
+                <div class="textarea col-8">
+
+                    <h2>texte optionnel</h2>
+                    {{ form_errors(formPost.text2) }}
+                    {{ form_widget(formPost.text2) }}
+
+                </div>
+                <div class="offset-md-4 d-none d-md-block"></div>
+                <hr class="col-md-11">
+
+                <div class="sub col-8">
+                    <h2>sous-titre optionnel</h2>
+                    {{ form_errors(formPost.sub3) }}
+                    {{ form_widget(formPost.sub3) }}
+                </div>
+                <div class="offset-md-4 d-none d-md-block"></div>
+
+                <div class="textarea col-8">
+                    <h2>texte optionnel</h2>
+                    {{ form_errors(formPost.text3) }}
+                    {{ form_widget(formPost.text3) }}
+
+                </div>
+                <hr class="col-md-11">
+                <div class="sub col-8">
+                    <h2>sous-titre optionnel</h2>
+                    {{ form_errors(formPost.sub4) }}
+                    {{ form_widget(formPost.sub4) }}
+                </div>
+                <div class="offset-md-4 d-none d-md-block"></div>
+
+                <div class="textarea col-8">
+                    <h2>texte optionnel</h2>
+                    {{ form_errors(formPost.text4) }}
+                    {{ form_widget(formPost.text4) }}
+
+                </div>
+                <div class="offset-md-4 d-none d-md-block"></div>
             </div>
-            <div class="img_bloc">
-                <div class="field">
+
+           <!--SLIDER -->
+            <div class="col-4 col-md-4">
+
+                <p>
+                    {#{{ form_errors(formPost.slider_boolean) }}#}
+                    {#{{ form_widget(formPost.slider_boolean) }}#}
+                    <label for="sl_boolean">Mise en place du carousel?</label>
+                    <input type="checkbox" name="sl_boolean" id="sl_boolean" value="no"
+                    onclick="showHideSlider();">
+                </p>
+            </div>
+
+{% if formPost.img3%}
+<!-- ou if formPost.img3 -->
+
+            <div id="slider" class="corps row">
+
+                <H2 class="col-12">SLIDER</H2>
+
+
+
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
                     {{ form_errors(formPost.img3) }}
-                    {{ form_label(formPost.img3) }}
                     {{ form_widget(formPost.img3, {'attr': {"class":'img'}}) }}
 
-                    {{ form_errors(formPost.img_alt3) }}
-                    {{ form_label(formPost.img_alt3) }}
-                    {{ form_widget(formPost.img_alt3) }}
-
-                    {{ form_errors(formPost.img_description3) }}
-                    {{ form_label(formPost.img_description3) }}
-                    {{ form_widget(formPost.img_description3) }}
                 </div>
-            </div>
-            <div class="img_bloc">
-                <div class="field">
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formPost.img_alt3) }}
+                    {{ form_widget(formPost.img_alt3, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
                     {{ form_errors(formPost.img4) }}
-                    {{ form_label(formPost.img4) }}
                     {{ form_widget(formPost.img4, {'attr': {"class":'img'}}) }}
 
+                </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
                     {{ form_errors(formPost.img_alt4) }}
-                    {{ form_label(formPost.img_alt4) }}
-                    {{ form_widget(formPost.img_alt4) }}
+                    {{ form_widget(formPost.img_alt4, {'attr': {"class":'alt'}}) }}
 
-                    {{ form_errors(formPost.img_description4) }}
-                    {{ form_label(formPost.img_description4) }}
-                    {{ form_widget(formPost.img_description4) }}
-                </div>
-            </div>
-            <div class="contenu_text">
-                <div class="textarea">
-                    {{ form_errors(formPost.intro) }}
-                    {{ form_label(formPost.intro) }}
-                    {{ form_widget(formPost.intro) }}
-                </div>
-                <div class="bloc_text">
-                    <div class="sub">
-                        {{ form_errors(formPost.sub1) }}
-                        {{ form_label(formPost.sub1) }}
-                        {{ form_widget(formPost.sub1) }}
-                    </div>
-                    <div class="textarea">
-                        {{ form_errors(formPost.text1) }}
-                        {{ form_label(formPost.text1) }}
-                        {{ form_widget(formPost.text1) }}
-                    </div>
                 </div>
 
-                <div class="bloc_text">
-                    <div class="sub">
-                        {{ form_errors(formPost.sub2) }}
-                        {{ form_label(formPost.sub2) }}
-                        {{ form_widget(formPost.sub2) }}
-                    </div>
-                    <div class="textarea">
-                        {{ form_errors(formPost.text2) }}
-                        {{ form_label(formPost.text2) }}
-                        {{ form_widget(formPost.text2) }}
-                    </div>
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formPost.img5) }}
+                    {{ form_widget(formPost.img5, {'attr': {"class":'img'}}) }}
+
                 </div>
-                <div class="bloc_text">
-                    <div class="sub">
-                        {{ form_errors(formPost.sub3) }}
-                        {{ form_label(formPost.sub3) }}
-                        {{ form_widget(formPost.sub3) }}
-                    </div>
-                    <div class="textarea">
-                        {{ form_errors(formPost.text3) }}
-                        {{ form_label(formPost.text3) }}
-                        {{ form_widget(formPost.text3) }}
-                    </div>
+
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formPost.img_alt5) }}
+                    {{ form_widget(formPost.img_alt5, {'attr': {"class":'alt'}}) }}
+
                 </div>
-                <div class="bloc_text">
-                    <div class="sub">
-                        {{ form_errors(formPost.sub4) }}
-                        {{ form_label(formPost.sub4) }}
-                        {{ form_widget(formPost.sub4) }}
-                    </div>
-                    <div class="textarea">
-                        {{ form_errors(formPost.text4) }}
-                        {{ form_label(formPost.text4) }}
-                        {{ form_widget(formPost.text4) }}
-                    </div>
+
+                <hr class="col-11">
+
+                <div class="field col-6 col-md-4">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formPost.img6) }}
+                    {{ form_widget(formPost.img6, {'attr': {"class":'img'}}) }}
+
                 </div>
-                <div class="bloc_video">
-                    <div class="textarea">
-                        {{ form_errors(formPost.youtube) }}
-                        {{ form_label(formPost.youtube) }}
-                        {{ form_widget(formPost.youtube) }}
-                    </div>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <div class="field col-6 col-md-6">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formPost.img_alt6) }}
+                    {{ form_widget(formPost.img_alt6, {'attr': {"class":'alt'}}) }}
+
+                </div>
+
+                <hr class="col-11">
+
+
+                <div class="field col-12">
+                    <p>texte slider</p>
+                    {{ form_errors(formPost.sl_caption) }}
+                    {{ form_widget(formPost.sl_caption, {'attr': {"class":'alt'}}) }}
+
                 </div>
             </div>
 
+{% endif %}
+             <!-- VIDEO -->
 
-            <div class="f_type">
+            <div class="offset-md-2 d-none d-md-block"></div>
+            <div class="corps col-8 col-12 row">
+                <h1 class="col-12">Vidéo</h1>
+
+
+                <p class="col-6 col-md-3">presence d'une video?</p>
+                <p class="col-6 col-md-3">
+                    {{ form_errors(formPost.video_boolean) }}
+                    {{ form_widget(formPost.video_boolean, {'attr': {'class':'case'}}) }}
+                </p>
+                <div class="offset-md-3 d none d-md-block"></div>
+                <div class="offset-md-3 d none d-md-block"></div>
+                <p class="col-12 col-md-3">code d'intégration youtube</p>
+                <p class="col-12 col-md-9">
+                    {{ form_errors(formPost.youtube) }}
+                    {{ form_widget(formPost.youtube) }}
+            </div>
+        </div>
+    </div>
+
+
+        <div class="row">
+            <div class="offset-6"></div>
+            <div class="submit col-4 ">
                 {{ form_widget(formPost.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
             </div>
-
+            <div class="offset-md-2 offset-2"></div>
         </div>
+
 
 
         {{ form_end(formPost) }}
-    </div>
+
+
 {% endblock %}
+
 

@@ -13,11 +13,11 @@
 
   //    Colonnes de la table
   /**
-   * @ORM\Table(name="show")
-   * @ORM\Entity(repositoryClass="AppBundle\Repository\ShowRepository")
+   * @ORM\Table(name="leshow")
+   * @ORM\Entity(repositoryClass="AppBundle\Repository\LeshowRepository")
    */
 
-  class Show
+  class Leshow
   {
     /**
      * @ORM\Column(type="integer")
@@ -365,17 +365,17 @@
     // Relations
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="show")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="leshow")
      */
-    private $event;
+    private $leEvent;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="show")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leshow")
      */
     private $post;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="show")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="leshow")
      */
     private $referencies;
 
@@ -961,18 +961,20 @@
     /**
      * @return mixed
      */
-    public function getEvent()
+    public function getLeEvent()
     {
-      return $this->event;
+      return $this->leEvent;
     }
 
     /**
-     * @param mixed $event
+     * @param mixed $leEvent
      */
-    public function setEvent($event): void
+    public function setLeEvent($leEvent): void
     {
-      $this->event = $event;
+      $this->leEvent = $leEvent;
     }
+
+
 
     /**
      * @return mixed

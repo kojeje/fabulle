@@ -120,9 +120,9 @@
 
 //  Relations
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="place")
+     * @ORM\OneToMany(targetEntity="LeEvent", mappedBy="place")
      */
-    private $event;
+    private $leEvent;
 
   //------------------------------------------------------------------------------
     //  Getters & Setters
@@ -355,18 +355,21 @@
     /**
      * @return mixed
      */
-    public function getEvent()
+    public function getLeEvent()
     {
-      return $this->event;
+      return $this->leEvent;
     }
 
     /**
-     * @param mixed $event
+     * @param mixed $leEvent
      */
-    public function setEvent($event): void
+    public function setLeEvent($leEvent): void
     {
-      $this->event = $event;
+      $this->leEvent = $leEvent;
     }
+
+
+
 
 
 

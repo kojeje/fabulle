@@ -11,7 +11,7 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class ShowRepository extends EntityRepository
+  class LeshowRepository extends EntityRepository
   {
     public function getAllShow($show)
     {
@@ -25,7 +25,7 @@
         ->select('s')
 
 //              Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('show', $show)
+        ->setParameter('leshow', $show)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
         ->getQuery();
 
@@ -34,7 +34,7 @@
       return $results;
     }
 
-    public function getShowbyType($type)
+    public function getLeShowbyType($type)
     {
       $queryBuilder =$this->createQueryBuilder('s');
 

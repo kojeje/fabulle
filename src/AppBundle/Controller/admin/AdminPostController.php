@@ -30,7 +30,7 @@
 
     {
 
-      /* Création d'un nouveau formulaire à partir d'un gabarit "Pagetype" */
+      /* Création d'un nouveau formulaire à partir d'un gabarit "PostType" */
       $form = $this->createForm(PostType::class, new Post);
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
@@ -42,9 +42,10 @@
 
 
         /* Si le formulaire respecte les contraintes */
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
 
-          for ($i=1; $i<=4; $i++){
+          for ($i=1; $i<=6; $i++){
 
             /* On récupère une entité photo grâce aux données envoyées par le formulaire */
             $img=$form->getData();

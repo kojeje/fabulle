@@ -11,7 +11,7 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class EventRepository extends EntityRepository
+  class LeEventRepository extends EntityRepository
   {
     public function getAllEvent($event)
     {

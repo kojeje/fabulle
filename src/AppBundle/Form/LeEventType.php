@@ -4,7 +4,7 @@
   namespace AppBundle\Form;
 
 
-  use AppBundle\Entity\Event;
+  use AppBundle\Entity\LeEvent;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,11 +12,12 @@
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\Form\Extension\Core\Type\DateType;
+  use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\FormBuilderInterface;
 
 
 
-  class EventType extends AbstractType
+  class LeEventType extends AbstractType
   {
     /**
      * {@inheritdoc}
@@ -65,7 +66,7 @@
         )
         ->add('show', EntityType::class,
           [
-            'class' => 'AppBundle\Entity\Show',
+            'class' => 'AppBundle\Entity\Leshow',
             'choice_label' => 'titre'
 
           ])
@@ -78,7 +79,7 @@
     public function configureOptions(OptionsResolver $resolver)
     {
       $resolver->setDefaults(array(
-        'data_class' => Event::class,
+        'data_class' => LeEvent::class,
       ));
     }
 

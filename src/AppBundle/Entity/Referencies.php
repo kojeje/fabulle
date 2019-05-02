@@ -59,9 +59,9 @@
 
     //  Relations
     /**
-     * @ORM\ManyToOne(targetEntity="Show", inversedBy="referencies")
+     * @ORM\ManyToOne(targetEntity="Leshow", inversedBy="referencies")
      */
-    private $show;
+    private $leshow;
 
 //------------------------------------------------------------------------------
     //  Getters & Setters
@@ -165,18 +165,20 @@
     /**
      * @return mixed
      */
-    public function getShow()
+    public function getLeshow()
     {
-      return $this->show;
+      return $this->leshow;
     }
 
     /**
-     * @param mixed $show
+     * @param mixed $leshow
      */
-    public function setShow($show): void
+    public function setLeshow($leshow): void
     {
-      $this->show = $show;
+      $this->leshow = $leshow;
     }
+
+
 
 
 

@@ -201,7 +201,7 @@
 
     // Presence slider booléen
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $slider_boolean;
 
@@ -274,7 +274,7 @@
 //_____________________________________________________________
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $video_boolean;
 
@@ -289,14 +289,14 @@
 //  Relations
 
     /**
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="LeEvent", inversedBy="post")
      */
-    private $event;
+    private $leEvent;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Show", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="Leshow", inversedBy="post")
      */
-    private $show;
+    private $leshow;
 
 
 
@@ -739,34 +739,38 @@
     /**
      * @return mixed
      */
-    public function getEvent()
+    public function getLeEvent()
     {
-      return $this->event;
+      return $this->leEvent;
     }
 
     /**
-     * @param mixed $event
+     * @param mixed $leEvent
      */
-    public function setEvent($event): void
+    public function setLeEvent($leEvent): void
     {
-      $this->event = $event;
+      $this->leEvent = $leEvent;
     }
+
+
 
     /**
      * @return mixed
      */
-    public function getShow()
+    public function getLeshow()
     {
-      return $this->show;
+      return $this->leshow;
     }
 
     /**
-     * @param mixed $show
+     * @param mixed $leshow
      */
-    public function setShow($show): void
+    public function setLeshow($leshow): void
     {
-      $this->show = $show;
+      $this->leshow = $leshow;
     }
+
+
 
 
 

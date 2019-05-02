@@ -18,6 +18,11 @@ img
   width: 100%;
 
 }
+.flash-notice
+{
+  background:rgba(0,0,0,0.8);
+  color: $link;
+}
 .genre, .date
 {
   border: 1px solid $link;

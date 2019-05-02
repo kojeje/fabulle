@@ -9,8 +9,8 @@
 
 
 
-  use AppBundle\Entity\Event;
-  use AppBundle\Form\EventType;
+  use AppBundle\Entity\LeEvent;
+  use AppBundle\Form\LeEventType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +20,7 @@
 
 
 
-  class AdminEventController extends Controller
+  class AdminLeEventController extends Controller
   {
 
     /**
@@ -32,7 +32,7 @@
     {
 
       /* Création d'un nouveau formulaire à partir d'un gabarit "Eventtype" */
-      $form = $this->createForm(EventType::class, new Event);
+      $form = $this->createForm(LeEventType::class, new LeEvent);
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
       Donc la variable $form contient maintenant aussi les données de $_POST*/
@@ -75,7 +75,7 @@
 
       /* Quand j'arrive sur la route "ajout_page_form" je vais directement sur le formulaire dont les champs sont définis dans le PostType,
       et qui seront affichés dans la twig*/
-      return $this->render('@App/admin/CreateEvent.html.twig',
+      return $this->render('@App/admin/CreateLeEvent.html.twig',
         [
           'formEvent' => $form->createView()
         ]);

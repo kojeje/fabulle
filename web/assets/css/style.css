@@ -129,6 +129,8 @@ body { color: #ffffff; background: #000; width: 100%; }
 
 img { display: block; width: 100%; }
 
+.flash-notice { background: rgba(0, 0, 0, 0.8); color: #ffce30; }
+
 .genre, .date { border: 1px solid #ffce30; background: #ffffff; }
 
 hr { color: #ffffff !important; border: 2px solid #ffce30 !important; width: 100% !important; height: 2px !important; z-index: 500; }
