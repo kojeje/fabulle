@@ -9,8 +9,8 @@
   use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-  use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+  use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
@@ -33,9 +33,9 @@
           ]
         )
 
-        ->add('leshow', EntityType::class,
+        ->add('leShow', EntityType::class,
           [
-            'class'=> 'AppBundle\Entity\Leshow',
+            'class'=> 'AppBundle\Entity\LeShow',
             'choice_label'=> 'titre'
           ]
         )
@@ -109,11 +109,11 @@
 
 // Présence d'un slider (booléen)
 
-//        ->add('slider_boolean', CheckboxType::class, [
-//          'label'    => 'Cochez si presence d\'un slider photo',
-//          'required' => false,
-//
-//        ])
+        ->add('slider_boolean', CheckboxType::class, [
+          'label'    => 'Cochez si presence d\'un slider photo',
+          'required' => true,
+
+        ])
 
 
 // Images du slider

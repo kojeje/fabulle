@@ -2,11 +2,11 @@
 
   namespace AppBundle\Form;
 
-  use AppBundle\Entity\Leshow;
+  use AppBundle\Entity\LeShow;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\FormBuilderInterface;
-  use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+  use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -14,7 +14,7 @@
 
 
 
-  class LeshowType extends AbstractType
+  class LeShowType extends AbstractType
   {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,7 +23,7 @@
 // disponibilité du spectacle (booléen)
         ->add('dispo_boolean', CheckboxType::class, [
           'label'    => 'Cochez si spectacle disponible',
-          'required' => false,
+          'required' => true,
         ])
 // date de création du spectacle
         ->add('creation_date')
@@ -173,6 +173,13 @@
         ->add('min_artist')
         ->add('max_artist')
         ->add('tarif')
+        // fiche technique (pdf)
+        ->add('fichetek', FileType::class, [
+            'data_class' => null,
+
+
+          ]
+        )
 
         ->add('submit', SubmitType::class)
         ;

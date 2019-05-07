@@ -25,12 +25,12 @@
     {
       $builder
 
-        ->add('img_alt')
-        ->add('img', FileType::class, [
-            'data_class' => null,
-            'label' => 'avatar (jpg, png)'
-          ]
-        )
+          /*->add('img_alt')
+          ->add('img', FileType::class, [
+              'data_class' => null,
+              'label' => 'avatar (jpg, png)'
+            ]
+          )*/
         ->add('username')
         ->add('email', EmailType::class)
         ->add('plainPassword', RepeatedType::class, array(

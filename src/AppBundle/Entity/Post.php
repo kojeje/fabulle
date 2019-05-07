@@ -62,11 +62,9 @@
     // texte principal
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 50,
-     *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -77,7 +75,7 @@
     // image principale
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\File(maxSize="10000000",
      * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
      * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
@@ -87,7 +85,7 @@
     private $img1;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $img_alt1;
 
@@ -98,9 +96,7 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 10,
      *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -112,9 +108,7 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 50,
      *      max = 10000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -136,6 +130,8 @@
      */
     private $img_alt2;
 
+
+
     //_____________________________________
 
     // sub_title optionnel
@@ -145,22 +141,16 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 10,
      *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
     private $sub3;
 
-    // Texte optionnel
-
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 50,
      *      max = 10000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -171,9 +161,7 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 10,
      *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -184,14 +172,12 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 50,
-     *      max = 10000
-     *   ,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
     private $text4;
+
 
 
 //--------------------------------------------------------------------
@@ -285,7 +271,7 @@
 
 
 
-
+// ---------------------------------------------------------------------------
 //  Relations
 
     /**
@@ -294,14 +280,15 @@
     private $leEvent;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Leshow", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="LeShow", inversedBy="post")
      */
-    private $leshow;
-
+    private $leShow;
 
 
 //------------------------------------------------------------------------------
     //  Getters & Setters
+
+
 
 
     /**
@@ -547,6 +534,70 @@
     /**
      * @return mixed
      */
+    public function getVideoBoolean()
+    {
+      return $this->video_boolean;
+    }
+
+    /**
+     * @param mixed $video_boolean
+     */
+    public function setVideoBoolean($video_boolean): void
+    {
+      $this->video_boolean = $video_boolean;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYoutube()
+    {
+      return $this->youtube;
+    }
+
+    /**
+     * @param mixed $youtube
+     */
+    public function setYoutube($youtube): void
+    {
+      $this->youtube = $youtube;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLeEvent()
+    {
+      return $this->leEvent;
+    }
+
+    /**
+     * @param mixed $leEvent
+     */
+    public function setLeEvent($leEvent): void
+    {
+      $this->leEvent = $leEvent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLeShow()
+    {
+      return $this->leShow;
+    }
+
+    /**
+     * @param mixed $leShow
+     */
+    public function setLeShow($leShow): void
+    {
+      $this->leShow = $leShow;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getSliderBoolean()
     {
       return $this->slider_boolean;
@@ -704,71 +755,6 @@
       $this->sl_caption = $sl_caption;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVideoBoolean()
-    {
-      return $this->video_boolean;
-    }
-
-    /**
-     * @param mixed $video_boolean
-     */
-    public function setVideoBoolean($video_boolean): void
-    {
-      $this->video_boolean = $video_boolean;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getYoutube()
-    {
-      return $this->youtube;
-    }
-
-    /**
-     * @param mixed $youtube
-     */
-    public function setYoutube($youtube): void
-    {
-      $this->youtube = $youtube;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLeEvent()
-    {
-      return $this->leEvent;
-    }
-
-    /**
-     * @param mixed $leEvent
-     */
-    public function setLeEvent($leEvent): void
-    {
-      $this->leEvent = $leEvent;
-    }
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getLeshow()
-    {
-      return $this->leshow;
-    }
-
-    /**
-     * @param mixed $leshow
-     */
-    public function setLeshow($leshow): void
-    {
-      $this->leshow = $leshow;
-    }
 
 
 

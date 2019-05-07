@@ -9,10 +9,10 @@
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
-  use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 
   /**
-   * @ORM\Table(name="event")
+   * @ORM\Table(name="LeEvent")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\LeEventRepository")
    */
   class LeEvent
@@ -41,9 +41,7 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Assert\Length(
-     *      min = 10,
-     *      max = 50,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
+     *      max = 255,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -54,9 +52,8 @@
     /**
      * @ORM\Column(type="string")
      * @Assert\Length(
-     *      min = 15,
      *      max = 5000,
-     *      minMessage = "La longueur minimum du contenu doit-être de
+     *      maxMessage = "La longueur maximum du contenu doit-être de
      * {{ limit }} caractères"
      * )
      */
@@ -77,7 +74,7 @@
      */
     private $img_alt;
 
-
+// ---------------------------------------------------------------------------
     //  Relations
 
     /**
@@ -86,16 +83,17 @@
     private $post;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Leshow", inversedBy="leEvent")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LeShow", inversedBy="leEvent")
      */
-    private $leshow;
+    private $leShow;
 
     /**
      * @ORM\ManyToOne(targetEntity="Place", inversedBy="leEvent")
      */
     private $place;
 
-
+//------------------------------------------------------------------------------
+    //  Getters & Setters
 
     /**
      * @return mixed
@@ -228,17 +226,17 @@
     /**
      * @return mixed
      */
-    public function getLeshow()
+    public function getLeShow()
     {
-      return $this->leshow;
+      return $this->leShow;
     }
 
     /**
-     * @param mixed $leshow
+     * @param mixed $leShow
      */
-    public function setLeshow($leshow): void
+    public function setLeShow($leShow): void
     {
-      $this->leshow = $leshow;
+      $this->leShow = $leShow;
     }
 
 

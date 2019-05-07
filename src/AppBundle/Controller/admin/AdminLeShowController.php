@@ -7,8 +7,8 @@
 
 
 
-  use AppBundle\Entity\Post;
-  use AppBundle\Form\PostType;
+  use AppBundle\Entity\LeShow;
+  use AppBundle\Form\LeShowType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
@@ -17,37 +17,37 @@
 
 
 
-  class AdminPostController extends Controller
+  class AdminLeShowController extends Controller
   {
-  // Afficher tous les articles avec droits d'administration
+ // Afficher tous les spectacles avec droits d'administration
 
 
     /**
-     * @Route("/admin/posts", name="admin_posts")
+     * @Route("/admin/shows", name="admin_shows")
      */
-    public function listPostsAdminAction()
+    public function listShowsAdminAction()
     {
-      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
 
-      $posts = $repository->findAll();
+      $leShows = $repository->findAll();
 
-      return $this->render('@App/admin/posts.html.twig',
+      return $this->render('@App/admin/shows.html.twig',
         [
-          'posts' => $posts
+          'leShows' => $leShows
         ]);
     }
 // ----------------------------------------------------------------
-//CREATION D'ARTICLE
+  //CREATION D'ARTICLE "Spectacle"
     /**
-     * @Route("/admin/create_post", name="create_post")
+     * @Route("/admin/create_show", name="create_show")
      */
 
-    public function formCreatePost(Request $request)
+    public function formCreateShow(Request $request)
 
     {
 
-      /* Création d'un nouveau formulaire à partir d'un gabarit "PostType" */
-      $form = $this->createForm(PostType::class, new Post);
+      /* Création d'un nouveau formulaire à partir d'un gabarit "LeShowType" */
+      $form = $this->createForm(LeShowType::class, new LeShow);
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
       Donc la variable $form contient maintenant aussi les données de $_POST*/
@@ -59,10 +59,10 @@
         /* Si le formulaire respecte les contraintes */
         if ($form->isValid()) {
           /* Upload d'image*/
-          /* Compteur pour limiter le nombre d'image, jusqu'à 6 */
+          /* Compteur pour limiter le nombre d'image, jusqu'à 6*/
           for ($i = 1; $i <= 6; $i++) {
 
-            /* On récupère une entité image grâce aux données envoyées par le formulaire */
+            /* On récupère une entité photo grâce aux données envoyées par le formulaire */
             $img = $form->getData();
             $getImg = 'getImg' . $i;
             $File = $img->$getImg();
@@ -80,7 +80,7 @@
                 /* Si réussite, on transfert le fichier dans le bon repertoire*/
 
                 $File->move(
-                  $this->getParameter('pdf_directory'),
+                  $this->getParameter('img_directory'),
                   $filename
                 );
                 /* Si échec on affiche un message d'erreur*/
@@ -97,7 +97,28 @@
 
           }
 
+          $tek = $form->getData();
+          $getFichetek = 'getFichetek';
+          $File = $tek->$getFichetek();
 
+          /* Si il y a une image*/
+          if (!is_null($File)) {
+            $filename = md5(uniqid()) . '.' . $File->guessExtension();
+
+
+            try {
+
+              $File->move(
+                $this->getParameter('img_directory'),
+                $filename
+              );
+            } catch (FileException $e) {
+              echo $e->getMessage();
+            }
+
+            $setImg = 'setFichetek';
+            $img->$setImg($filename);
+          }
 
 
 
@@ -108,7 +129,7 @@
 
           /* Je stocke temporairement les données dans l'unité de travail */
           $entityManager->persist($img);
-
+          $entityManager->persist($tek);
 
 
           /* Je "pousse" les données dans la Bdd*/
@@ -118,25 +139,25 @@
           /* J'affiche un message flash confirmant l'enregistrement */
           $this->addFlash(
             'notice',
-            'L\'article a été enregistré'
+            'Le spectacle a été enregistré'
           );
 
         } else {
           /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
           $this->addFlash(
             'error',
-            'L\'article n\'a pas pu être enregistré'
+            'Le spectacle n\'a pas pu être enregistré'
           );
         }
-//      /* Je redirige ensuite sur la liste des articles*/
-        return $this->redirectToRoute('admin_posts');
+//                /* Je redirige ensuite sur la liste des pages*/
+                return $this->redirectToRoute('admin_shows');
       }
 
       /* Quand j'arrive sur la route "ajout_page_form" je vais directement sur le formulaire dont les champs sont définis dans le LeShowType,
       et qui seront affichés dans la twig*/
-      return $this->render('@App/admin/CreatePost.html.twig',
+      return $this->render('@App/admin/CreateLeShow.html.twig',
         [
-          'formPost' => $form->createView()
+          'formleshow' => $form->createView()
         ]);
 
 

@@ -13,11 +13,11 @@
 
   //    Colonnes de la table
   /**
-   * @ORM\Table(name="leshow")
-   * @ORM\Entity(repositoryClass="AppBundle\Repository\LeshowRepository")
+   * @ORM\Table(name="leShow")
+   * @ORM\Entity(repositoryClass="AppBundle\Repository\LeShowRepository")
    */
 
-  class Leshow
+  class LeShow
   {
     /**
      * @ORM\Column(type="integer")
@@ -35,7 +35,7 @@
       $this->setPubliele(new \DateTime());
     }
     /**
-     * @ORM\Column(type="datetimetz")
+     * @ORM\Column(type="datetimetz", nullable=true)
      *
      */
     private $publiele;
@@ -43,13 +43,13 @@
 
 // --------------------------------
 
-    // disponibilité (booléen)
-
+//    // disponibilité (booléen)
+//
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $dispo_boolean;
-
+//
 
 // --------------------------------
 
@@ -62,7 +62,7 @@
     private $creation_date;
 
 
-// --------------------------------
+    // --------------------------------
 
     //Titre
 
@@ -74,15 +74,15 @@
     private $titre;
 
 // --------------------------------
-  // Corps de l'article
+    // Corps de l'article
 
-  // texte principal
+    // texte principal
 
     /**
      * @ORM\Column(type="string")
      * @Assert\Length(
      *      min = 50,
-     *      max = 5000,
+     *      max = 10000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
@@ -91,10 +91,10 @@
     private $text1;
 
 
-  // image principale
+    // image principale
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\File(maxSize="10000000",
      * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
      * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
@@ -104,212 +104,9 @@
     private $img1;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $img_alt1;
-
-// --------------------------------
-
-    // sub_title optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-
-    private $sub2;
-
-    // Texte optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 50,
-     *      max = 10000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text2;
-
-    // image optionnelle
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img2;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt2;
-
-    //_____________________________________
-
-    // sub_title optionnel
-
-
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $sub3;
-
-    // Texte optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 50,
-     *      max = 10000,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text3;
-
-    // sub_title optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 255,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $sub4;
-
-    // texte optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      min = 50,
-     *      max = 10000
-     *   ,
-     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text4;
-
-
-//--------------------------------------------------------------------
-//  SLIDER
-//_____________________________________________________________________
-
-
-  // Presence slider booléen
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $slider_boolean;
-
-  // image slider
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img3;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt3;
-
-  // image slider
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img4;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt4;
-
-  // image slider
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img5;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt5;
-
-  // image slider
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img6;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt6;
-
-  // Caption slider
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $sl_caption;
-//-------------------------------------------------------------
-//  VIDEO
-//_____________________________________________________________
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $video_boolean;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $youtube;
-
 //-------------------------------------------------------------
 //  données sur le spectacle
 //_____________________________________________________________
@@ -359,23 +156,211 @@
      */
     private $tarif;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="3M",
+     *  mimeTypes = {"application/pdf", "application/x-pdf"},
+     *      mimeTypesMessage = "Seulement un fichier PDF"
+     * )
+     */
+    private $fichetek;
+// --------------------------------
+
+    // sub_title optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+
+    private $sub2;
+
+    // Texte optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 10000,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text2;
+
+    // image optionnelle
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt2;
+
+    //_____________________________________
+
+    // sub_title optionnel
+
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $sub3;
+
+    // Texte optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 10000,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text3;
+
+    // sub_title optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $sub4;
+
+    // texte optionnel
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *      max = 10000,
+     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
+     * )
+     */
+    private $text4;
+
+//--------------------------------------------------------------------
+//  SLIDER
+//_____________________________________________________________________
+
+
+    // Presence slider booléen
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $slider_boolean;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt3;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img4;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt4;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img5;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt5;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img6;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt6;
+
+    // Caption slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sl_caption;
+//-------------------------------------------------------------
+//  VIDEO
+//_____________________________________________________________
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $video_boolean;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $youtube;
+
+
+
 
 //------------------------------------------------------------------------------
 
     // Relations
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="leshow")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="leShow")
      */
     private $leEvent;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leshow")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leShow")
      */
     private $post;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="leshow")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="leShow")
      */
     private $referencies;
 
@@ -508,6 +493,134 @@
     public function setImgAlt1($img_alt1): void
     {
       $this->img_alt1 = $img_alt1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenre()
+    {
+      return $this->genre;
+    }
+
+    /**
+     * @param mixed $genre
+     */
+    public function setGenre($genre): void
+    {
+      $this->genre = $genre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuree()
+    {
+      return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     */
+    public function setDuree($duree): void
+    {
+      $this->duree = $duree;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMinAge()
+    {
+      return $this->min_age;
+    }
+
+    /**
+     * @param mixed $min_age
+     */
+    public function setMinAge($min_age): void
+    {
+      $this->min_age = $min_age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxAge()
+    {
+      return $this->max_age;
+    }
+
+    /**
+     * @param mixed $max_age
+     */
+    public function setMaxAge($max_age): void
+    {
+      $this->max_age = $max_age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMinArtist()
+    {
+      return $this->min_artist;
+    }
+
+    /**
+     * @param mixed $min_artist
+     */
+    public function setMinArtist($min_artist): void
+    {
+      $this->min_artist = $min_artist;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxArtist()
+    {
+      return $this->max_artist;
+    }
+
+    /**
+     * @param mixed $max_artist
+     */
+    public function setMaxArtist($max_artist): void
+    {
+      $this->max_artist = $max_artist;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJaugeMax()
+    {
+      return $this->jauge_max;
+    }
+
+    /**
+     * @param mixed $jauge_max
+     */
+    public function setJaugeMax($jauge_max): void
+    {
+      $this->jauge_max = $jauge_max;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTarif()
+    {
+      return $this->tarif;
+    }
+
+    /**
+     * @param mixed $tarif
+     */
+    public function setTarif($tarif): void
+    {
+      $this->tarif = $tarif;
     }
 
     /**
@@ -833,134 +946,6 @@
     /**
      * @return mixed
      */
-    public function getGenre()
-    {
-      return $this->genre;
-    }
-
-    /**
-     * @param mixed $genre
-     */
-    public function setGenre($genre): void
-    {
-      $this->genre = $genre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDuree()
-    {
-      return $this->duree;
-    }
-
-    /**
-     * @param mixed $duree
-     */
-    public function setDuree($duree): void
-    {
-      $this->duree = $duree;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMinAge()
-    {
-      return $this->min_age;
-    }
-
-    /**
-     * @param mixed $min_age
-     */
-    public function setMinAge($min_age): void
-    {
-      $this->min_age = $min_age;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMaxAge()
-    {
-      return $this->max_age;
-    }
-
-    /**
-     * @param mixed $max_age
-     */
-    public function setMaxAge($max_age): void
-    {
-      $this->max_age = $max_age;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMinArtist()
-    {
-      return $this->min_artist;
-    }
-
-    /**
-     * @param mixed $min_artist
-     */
-    public function setMinArtist($min_artist): void
-    {
-      $this->min_artist = $min_artist;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMaxArtist()
-    {
-      return $this->max_artist;
-    }
-
-    /**
-     * @param mixed $max_artist
-     */
-    public function setMaxArtist($max_artist): void
-    {
-      $this->max_artist = $max_artist;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJaugeMax()
-    {
-      return $this->jauge_max;
-    }
-
-    /**
-     * @param mixed $jauge_max
-     */
-    public function setJaugeMax($jauge_max): void
-    {
-      $this->jauge_max = $jauge_max;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTarif()
-    {
-      return $this->tarif;
-    }
-
-    /**
-     * @param mixed $tarif
-     */
-    public function setTarif($tarif): void
-    {
-      $this->tarif = $tarif;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLeEvent()
     {
       return $this->leEvent;
@@ -973,8 +958,6 @@
     {
       $this->leEvent = $leEvent;
     }
-
-
 
     /**
      * @return mixed
@@ -1008,13 +991,21 @@
       $this->referencies = $referencies;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFichetek()
+    {
+      return $this->fichetek;
+    }
 
-
-
-
-
-
-
+    /**
+     * @param mixed $fichetek
+     */
+    public function setFichetek($fichetek): void
+    {
+      $this->fichetek = $fichetek;
+    }
 
 
       }

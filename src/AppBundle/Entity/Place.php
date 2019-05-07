@@ -117,7 +117,7 @@
     private $img_alt;
 
 
-
+// ---------------------------------------------------------------------------
 //  Relations
     /**
      * @ORM\OneToMany(targetEntity="LeEvent", mappedBy="place")

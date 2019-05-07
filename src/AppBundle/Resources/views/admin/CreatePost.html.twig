@@ -59,8 +59,8 @@
               <!--<p class="col-6 col-md-3">Spectacle associé</p> -->
                 <!--<div class="field col-6 col-md-3">-->
 
-                    <!--{{ form_errors(formPost.leshow) }} -->
-                    <!--{{ form_widget(formPost.leshow, {'attr': {"class":'choice'}}) }}-->
+                    <!--{{ form_errors(formPost.leShow) }} -->
+                    <!--{{ form_widget(formPost.leShow, {'attr': {"class":'choice'}}) }}-->
                 <!--</div>-->
                 <p class="col-6 col-md-3">Evenement associé</p>
                 <div class="field col-6 col-md-3">
@@ -169,11 +169,11 @@
             <div class="col-4 col-md-4">
 
                 <p>
-                    {#{{ form_errors(formPost.slider_boolean) }}#}
-                    {#{{ form_widget(formPost.slider_boolean) }}#}
-                    <label for="sl_boolean">Mise en place du carousel?</label>
-                    <input type="checkbox" name="sl_boolean" id="sl_boolean" value="no"
-                    onclick="showHideSlider();">
+                    {{ form_errors(formPost.slider_boolean) }}
+                    {{ form_widget(formPost.slider_boolean) }}
+                    {#<label for="sl_boolean">Mise en place du carousel?</label>#}
+                    {#<input type="checkbox" name="sl_boolean" id="sl_boolean" value="yes" checked="checked"#}
+                    {#onclick="showHideSlider();">#}
                 </p>
             </div>
 

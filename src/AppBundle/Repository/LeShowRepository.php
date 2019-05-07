@@ -11,9 +11,9 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class LeshowRepository extends EntityRepository
+  class LeShowRepository extends EntityRepository
   {
-    public function getAllShow($show)
+    public function getAllShow($leShow)
     {
 // QueryBuilder => Pour éxecuter des requêtes
 // Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
@@ -25,7 +25,7 @@
         ->select('s')
 
 //              Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('leshow', $show)
+        ->setParameter('leShow', $leShow)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
         ->getQuery();
 
