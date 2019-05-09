@@ -1,4 +1,4 @@
-{% extends 'base.twig' %}
+{% extends 'base_admin.twig' %}
 
 {% block content %}
     <a id="article-anch" class="anch"></a>
@@ -40,7 +40,8 @@
                                     <p class="info">
                                         durée: {{ post.duree }} mn env.
                                     </p>
-                                    <p class="info ">A partir de: {{ post.min_age) }} ans</p>
+                                    <!-- @todo -->
+                                    <p class="info ">A partir de: {{ post.min_age }} ans</p>
                                 </div>
                             </a>
 
@@ -65,7 +66,7 @@
                                     </section>
 
 
-                                {% endif %}
+
                             {% endfor %}
 
                         </div>

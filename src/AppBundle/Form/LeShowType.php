@@ -101,12 +101,7 @@
 
 //--------------------------------------------------------------------
 
-// Présence d'un slider (booléen)
 
-        ->add('slider_boolean', CheckboxType::class, [
-          'label'    => 'Cochez si presence d\'un slider photo',
-          'required' => false,
-        ])
 
 
 // Images du slider
@@ -146,11 +141,6 @@
 
 //--------------------------------------------------------------------
 
-// Présence d'une video (booléen)
-        ->add('video_boolean', CheckboxType::class, [
-          'label'    => 'Cochez si presence d\'un insert video',
-          'required' => false,
-        ])
 // Le cas échéant: code d'intégration
         ->add('youtube')
 //--------------------------------------------------------------------

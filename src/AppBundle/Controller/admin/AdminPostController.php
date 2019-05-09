@@ -37,6 +37,28 @@
         ]);
     }
 // ----------------------------------------------------------------
+//  Afficher coté admin un article en fonction de l'id
+    /**
+     * @Route("/admin/post/{id}", name="admin_post")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function PostAdminIdAction($id)
+
+    {
+      {
+        $repository = $this->getDoctrine()->getRepository(Post::class);
+
+        $page = $repository->find($id);
+
+        return $this->render('@App/pages/Post.html.twig',
+          [
+            'post' => $post
+
+          ]);
+      }
+    }
+// ----------------------------------------------------------------
 //CREATION D'ARTICLE
     /**
      * @Route("/admin/create_post", name="create_post")

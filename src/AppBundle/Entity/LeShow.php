@@ -258,11 +258,7 @@
 //_____________________________________________________________________
 
 
-    // Presence slider booléen
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $slider_boolean;
+
 
     // image slider
 
@@ -332,10 +328,7 @@
 //  VIDEO
 //_____________________________________________________________
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $video_boolean;
+
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -751,21 +744,7 @@
       $this->text4 = $text4;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSliderBoolean()
-    {
-      return $this->slider_boolean;
-    }
 
-    /**
-     * @param mixed $slider_boolean
-     */
-    public function setSliderBoolean($slider_boolean): void
-    {
-      $this->slider_boolean = $slider_boolean;
-    }
 
     /**
      * @return mixed
@@ -911,21 +890,7 @@
       $this->sl_caption = $sl_caption;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getVideoBoolean()
-    {
-      return $this->video_boolean;
-    }
 
-    /**
-     * @param mixed $video_boolean
-     */
-    public function setVideoBoolean($video_boolean): void
-    {
-      $this->video_boolean = $video_boolean;
-    }
 
     /**
      * @return mixed
