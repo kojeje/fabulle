@@ -146,11 +146,10 @@
 
             {#SLIDER#}
             <div class="col-4 col-md-4">
-                <p>presence d'un slider photo?</p>
-                <p>
-                    {{ form_errors(formleshow.slider_boolean) }}
-                    {{ form_widget(formleshow.slider_boolean) }}
-                </p>
+                <label for="sl_boolean">presence d'un slider photo?</label>
+                <input type="checkbox" id="sl_boolean" name="sl_boolean" checked
+                       onclick="showHideSlider()">
+
             </div>
 
 
@@ -242,17 +241,21 @@
 
 
             {# VIDEO #}
+            <div>
+                <label for="v_boolean">presence d'un slider photo?</label>
+                <input type="checkbox" id="v_boolean" name="v_boolean" checked
+                       onclick="showHideVideo()">
+
+            </div>
 
             <div class="offset-md-2 d-none d-md-block"></div>
-            <div class="corps col-8 col-12 row">
+            <div id="video" class="corps col-8 col-md-12 row">
+
                 <h1 class="col-12">Vidéo</h1>
 
 
-                <p class="col-6 col-md-3">presence d'une video?</p>
-                <p class="col-6 col-md-3">
-                    {{ form_errors(formleshow.video_boolean) }}
-                    {{ form_widget(formleshow.video_boolean, {'attr': {'class':'case'}}) }}
-                </p>
+
+
                 <div class="offset-md-3 d none d-md-block"></div>
                 <div class="offset-md-3 d none d-md-block"></div>
                 <p class="col-12 col-md-3">code d'intégration youtube</p>

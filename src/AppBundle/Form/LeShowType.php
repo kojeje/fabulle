@@ -100,7 +100,8 @@
         // SLIDER
 
 //--------------------------------------------------------------------
-
+// @todo imbriquation simple evaluer pour imbriquation multiples
+//  ->add('image', ImageType::class) //
 
 
 

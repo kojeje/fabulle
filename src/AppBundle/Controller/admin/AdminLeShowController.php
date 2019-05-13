@@ -59,7 +59,7 @@
         /* Si le formulaire respecte les contraintes */
         if ($form->isValid()) {
           /* Upload d'image*/
-          /* Compteur pour limiter le nombre d'image, jusqu'à 6*/
+          /* Compteur pour limiter le nombre d'image, jusqu'à 6 */
           for ($i = 1; $i <= 6; $i++) {
 
             /* On récupère une entité photo grâce aux données envoyées par le formulaire */
