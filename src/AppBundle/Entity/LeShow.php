@@ -107,6 +107,10 @@
      * @ORM\Column(type="string", nullable=true)
      */
     private $img_alt1;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_title1;
 //-------------------------------------------------------------
 //  données sur le spectacle
 //_____________________________________________________________
@@ -205,6 +209,12 @@
      */
     private $img_alt2;
 
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_title2;
     //_____________________________________
 
     // sub_title optionnel
@@ -970,6 +980,38 @@
     public function setFichetek($fichetek): void
     {
       $this->fichetek = $fichetek;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgTitle1()
+    {
+      return $this->img_title1;
+    }
+
+    /**
+     * @param mixed $img_title1
+     */
+    public function setImgTitle1($img_title1): void
+    {
+      $this->img_title1 = $img_title1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgTitle2()
+    {
+      return $this->img_title2;
+    }
+
+    /**
+     * @param mixed $img_title2
+     */
+    public function setImgTitle2($img_title2): void
+    {
+      $this->img_title2 = $img_title2;
     }
 
 

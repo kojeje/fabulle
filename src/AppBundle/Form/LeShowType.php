@@ -9,6 +9,7 @@
   use Symfony\Component\Form\Extension\Core\Type\FileType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+  use Symfony\Component\Form\Extension\Core\Type\DateType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,9 +25,12 @@
         ->add('dispo_boolean', CheckboxType::class, [
           'label'    => 'Cochez si spectacle disponible',
           'required' => true,
-        ])
+        ]);
 // date de création du spectacle
-        ->add('creation_date')
+        $builder->add('creation_date', DateType::class, [
+          'widget' => 'choice',
+          'years' => range(2000, 2031)
+        ])
 
 //--------------------------------------------------------------------
 
@@ -53,6 +57,7 @@
           ]
         )
         ->add('img_alt1')
+        ->add('img_title1')
 
 //Sous-titre, texte et image optionnels
 
@@ -71,6 +76,7 @@
           ]
         )
         ->add('img_alt2')
+        ->add('img_title2')
 
 //Sous-titre et texte optionnels
         ->add('sub3')
@@ -100,11 +106,6 @@
         // SLIDER
 
 //--------------------------------------------------------------------
-// @todo imbriquation simple evaluer pour imbriquation multiples
-//  ->add('image', ImageType::class) //
-
-
-
 // Images du slider
 
 
@@ -140,7 +141,6 @@
 
         // Video
 
-//--------------------------------------------------------------------
 
 // Le cas échéant: code d'intégration
         ->add('youtube')
@@ -148,7 +148,7 @@
 
         // Renseignements et fiche technique du spectacle
 
-//--------------------------------------------------------------------
+
 
         ->add('genre', ChoiceType::class,
           [
@@ -158,12 +158,21 @@
             ]
           ]
         )
-        ->add('duree')
+        ->add('duree', ChoiceType::class,
+          [
+            'choices' => [
+              'environ 30mn' => 'environ 30mn',
+              'environ 45mn' => 'environ 45mn',
+              'environ 1h' => 'environ 1h',
+              'environ 1h15' => 'environ 1h15'
+            ]
+          ])
         ->add('min_age')
         ->add('max_age')
         ->add('min_artist')
         ->add('max_artist')
         ->add('tarif')
+
         // fiche technique (pdf)
         ->add('fichetek', FileType::class, [
             'data_class' => null,

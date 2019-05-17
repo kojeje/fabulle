@@ -1,5 +1,4 @@
-{% extends "@App/base.html.twig" %}
-
+{% extends "@App/base_security.html.twig" %}
 {% block connexioncontent %}
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

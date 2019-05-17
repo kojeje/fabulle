@@ -31,7 +31,7 @@
 
       $leShows = $repository->findAll();
 
-      return $this->render('@App/admin/shows.html.twig',
+      return $this->render('@App/public/shows.html.twig',
         [
           'leShows' => $leShows
         ]);
@@ -149,12 +149,12 @@
             'Le spectacle n\'a pas pu être enregistré'
           );
         }
-//                /* Je redirige ensuite sur la liste des pages*/
-                return $this->redirectToRoute('admin_shows');
+//      Je redirige ensuite sur la page de l'article
+        return $this->redirectToRoute('public_shows');
       }
 
-      /* Quand j'arrive sur la route "ajout_page_form" je vais directement sur le formulaire dont les champs sont définis dans le LeShowType,
-      et qui seront affichés dans la twig*/
+      /* Quand j'arrive sur la route "create_show" je vais directement sur le formulaire dont les champs sont définis dans  LeShowType,
+      et qui seront affichés grace à twig*/
       return $this->render('@App/admin/CreateLeShow.html.twig',
         [
           'formleshow' => $form->createView()

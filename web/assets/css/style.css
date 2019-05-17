@@ -18,6 +18,8 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
 
 .url:hover a { color: #ffffff !important; }
 
+#appbundle_show_submit:hover { background: #ffce30 !important; color: #000000 !important; border: 2px solid #ffffff !important; }
+
 @media screen and (min-width: 900px) and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 20vh; }
   h1 { font-size: 40px; }
@@ -113,7 +115,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .totop div, .totop p { text-align: center; }
   .img_alt img { display: block; width: 50%; margin: auto; }
   .medal-text { font-size: 12px; color: #ffce30; }
-  .date { font-size: 30px; color: #ffce30; width: 90%; margin: auto; margin-bottom: 70px; text-align: center; }
+  .date { width: 90%; margin: auto; margin-bottom: 70px; text-align: center; }
   .slide, .footer { z-index: 500; }
   .event-home-bloc p { padding-top: 30px; }
   .article-text-h2 { font-size: 2rem; }
@@ -123,9 +125,21 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .contact-title h1 { font-size: 80px !important; } }
 body { font-family: Comfortaa,sans-serif; }
 
-h1, h2, .statut { font-size: 25px !important; }
+a { color: #ffffff; text-decoration: none; }
+
+h1, h2 { font-size: 25px; }
 
 body { color: #ffffff; background: #000; width: 100%; }
+
+textarea, text { width: 100%; }
+
+.case { display: block; margin: auto; width: 20px !important; height: 20px !important; }
+
+.remember { width: 30%; margin-left: 45%; text-align: right; }
+
+.case2 { display: inline; }
+
+.case-label { width: 50%; display: inline; }
 
 img { display: block; width: 100%; }
 
@@ -135,7 +149,7 @@ img { display: block; width: 100%; }
 
 hr { color: #ffffff !important; border: 2px solid #ffce30 !important; width: 100% !important; height: 2px !important; z-index: 500; }
 
-input { display: block; width: 100%; }
+input { display: block; width: 100%; height: 60px; }
 
 .links a { color: #ffffff; }
 
@@ -145,18 +159,30 @@ input { display: block; width: 100%; }
 
 .link { text-decoration: none; }
 
-.field, h2, p { margin-top: 20px; }
+.field, h2, p { margin-top: 20px; margin-bottom: 20px; }
 
-.statut { color: #000; background: #ffb630; height: 150px; font-size: 40px; vertical-align: middle; }
+.statut { color: #ffffff; border: 2px solid #ffffff; -webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; padding: 40px; }
+
+.statut_it { text-align: center; font-size: 60px; }
+
+.statut p { font-size: 40px; color: #ffce30; }
 
 .corps { padding: 20px; border: 3px solid #ffb630; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; margin-bottom: 50px; }
 
 .corps p { text-align: center; }
 
-.case { width: 12px; height: 12px; }
+.case { width: 12px; height: 12px; margin: 20px; }
 
 .createUser_logo { margin-bottom: 30px; font-size: 25px; color: #ffb630; }
 
-.submit { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; }
+.submit button { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; background: transparent; width: 100%; cursor: pointer; }
+
+.login-field { width: 50%; margin: auto; }
+
+.login-field-submit { width: 15%; margin-left: 60%; }
+
+.login-field-submit, .login-field, .login-field-label { border-radius: 50px; text-align: center !important; }
+
+.login-field-label { margin-left: 28%; margin-top: 30px; }
 
 /*# sourceMappingURL=style.css.map */

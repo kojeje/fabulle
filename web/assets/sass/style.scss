@@ -2,15 +2,46 @@
 @import "partials/states";
 @import "partials/responsive";
 @import "partials/fonts";
-h1, h2, .statut
+a{
+  color: $white;
+  text-decoration: none;
+}
+h1, h2
 {
-  font-size: 25px !important;
+  font-size: 25px;
 }
 body
 {
   color: #ffffff;
   background: #000;
   width: 100%;
+}
+textarea, text
+{
+  width: 100%;
+}
+.case
+{
+  display: block;
+  margin: auto;
+  width: 20px !important;
+  height: 20px !important;
+
+}
+.remember
+{
+  width: 30%;
+  margin-left: 45%;
+  text-align: right;
+}
+.case2
+{
+  display: inline;
+}
+.case-label
+{
+  width: 50%;
+  display: inline;
 }
 img
 {
@@ -39,6 +70,7 @@ hr
 input{
   display:block;
   width: 100%;
+  height: 60px;
 }
 .links a
 {
@@ -63,14 +95,28 @@ input{
 .field, h2, p
 {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .statut
 {
-  color: #000;
-  background: #ffb630;
-  height: 150px;
+  color: $white;
+  border: 2px solid $white;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  padding: 40px;
+
+}
+.statut_it
+{
+  text-align: center;
+  font-size: 60px;
+
+}
+.statut p
+{
   font-size: 40px;
-  vertical-align: middle;
+  color: $link;
 }
 .corps
 {
@@ -90,6 +136,7 @@ input{
 {
   width: 12px;
   height: 12px;
+  margin: 20px;
 }
 .createUser_logo
 {
@@ -98,7 +145,7 @@ input{
   color:#ffb630;
 }
 
-.submit
+.submit button
 {
   border: 2px solid $white;
   -webkit-border-radius: 20px;
@@ -106,4 +153,29 @@ input{
   border-radius: 20px;
   padding: 10px;
   color: $white !important;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-field
+{
+  width: 50%;
+  margin: auto;
+}
+.login-field-submit {
+  width: 15%;
+  margin-left: 60%;
+}
+.login-field-submit, .login-field, .login-field-label
+{
+  border-radius: 50px;
+  text-align: center !important;
+
+}
+
+.login-field-label
+{
+  margin-left: 28%;
+  margin-top: 30px;
 }

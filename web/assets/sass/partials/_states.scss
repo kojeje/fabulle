@@ -54,4 +54,9 @@ a:hover
 {
   color: $white !important;
 }
-
+#appbundle_show_submit:hover
+{
+  background: $link !important;
+  color: $black !important;
+  border: 2px solid $white !important;
+}

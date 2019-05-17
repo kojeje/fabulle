@@ -49,7 +49,7 @@
       {
         $repository = $this->getDoctrine()->getRepository(Post::class);
 
-        $page = $repository->find($id);
+        $post = $repository->find($id);
 
         return $this->render('@App/pages/Post.html.twig',
           [
@@ -102,7 +102,7 @@
                 /* Si réussite, on transfert le fichier dans le bon repertoire*/
 
                 $File->move(
-                  $this->getParameter('pdf_directory'),
+                  $this->getParameter('img_directory'),
                   $filename
                 );
                 /* Si échec on affiche un message d'erreur*/
@@ -118,10 +118,6 @@
 
 
           }
-
-
-
-
 
 
           /* Je récupère l'entité manager de doctrine */

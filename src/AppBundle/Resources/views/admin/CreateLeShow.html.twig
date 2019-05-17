@@ -15,12 +15,15 @@
 
 {# ENTETE DU FORMULAIRE #}
         <div class="createUser_logo row">
-            <div class="offset-md-2 d-none d-md-block"></div>
-            <h2 class="statut col-6 col-md-4">{{ app.user.username }} !</h2>
-            <p class="statut col-6 col-md-4">
-                <span>Créez votre spectacle ! </span>
-            </p>
-            <div class="offset-md-2 d-block d-md-none"></div>
+            <div class="offset-md-1 d-none d-md-block"></div>
+            <div class="statut col-10 row">
+                <h2 class="statut_it col-6 col-md-4">{{ app.user.username }} !</h2>
+                <div class="offset-md-2 d-none d-md-block"></div>
+                <p class="statut_it col-6 col-md-6">
+                    <span>Créez votre spectacle ! </span>
+                </p>
+            </div>
+            <div class="offset-md-1 d-block d-md-none"></div>
         </div>
 
 
@@ -38,29 +41,30 @@
 
 
                 <h2 class="col-6 col-md-3">Le titre</h2>
-                <div class="field col-6 col-md-3">
+                <div class="field col-6 ">
                     {{ form_errors(formleshow.titre) }}
                     {{ form_widget(formleshow.titre, {'attr': {"class":'titre'}}) }}
                 </div>
-                <p class="col-6 col-md-3">dispo</p>
-                <div class="field col-6 col-md-3">
+                <div class="dispo col-md-3">
+                    <p>dispo</p>
+                    <div>
 
-                    {{ form_errors(formleshow.dispo_boolean) }}
-                    {{ form_widget(formleshow.dispo_boolean, {'attr': {"class":'bouton'}}) }}
+                        {{ form_errors(formleshow.dispo_boolean) }}
+                        {{ form_widget(formleshow.dispo_boolean, {'attr': {"class":'case'}}) }}
+                    </div>
                 </div>
-
 
                 <hr class="col-md-11">
 
-
-                <h2 class="col-8">Texte principal</h2>
-                <div class="offset-md-3 d-none d-md-block"></div>
                 <div class="offset-md-1 d-none d-md-block"></div>
-                <div class="textarea col-8">
+                <h2 class="col-10 title">Texte principal</h2>
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="offset-md-1 d-none d-md-block"></div>
+                <div class="textarea col-10">
                     {{ form_errors(formleshow.text1) }}
                     {{ form_widget(formleshow.text1) }}
                 </div>
-                <div class="offset-md-3 d-none d-md-block"></div>
+                <div class="offset-md-1 d-none d-md-block"></div>
 
 
                 <div class="offset-md-1 d-none d-md-block"></div>
@@ -74,6 +78,10 @@
                     <p>texte alternatif</p>
                     {{ form_errors(formleshow.img_alt1) }}
                     {{ form_widget(formleshow.img_alt1, {'attr': {"class":'alt'}}) }}
+
+                    <p>infobulle</p>
+                    {{ form_errors(formleshow.img_title1) }}
+                    {{ form_widget(formleshow.img_title1, {'attr': {"class":'alt'}}) }}
                 </div>
 
 
@@ -93,61 +101,70 @@
                     <p>texte alternatif</p>
                     {{ form_errors(formleshow.img_alt2) }}
                     {{ form_widget(formleshow.img_alt2, {'attr': {"class":'alt'}}) }}
-
+                    <p>infobulle</p>
+                    {{ form_errors(formleshow.img_title2) }}
+                    {{ form_widget(formleshow.img_title2, {'attr': {"class":'alt'}}) }}
                 </div>
 
                 <hr class="col-md-11">
-                <div class="sub col-8">
-                    <h2 class="col-12">sous-titre optionnel</h2>
-                    {{ form_errors(formleshow.sub2) }}
-                    {{ form_widget(formleshow.sub2) }}
+                <div class="row">
+
+
+                    <h2 class="col-12 col-md-4">sous-titre optionnel</h2>
+                    <div class="col-12 col-md-8 ">
+                        {{ form_errors(formleshow.sub2) }}
+                        {{ form_widget(formleshow.sub2, {'attr': {"class":'titre'}}) }}
+                    </div>
+
+                    <div class="offset-md-2 d-none d-md-block"></div>
+                    <div class="textarea col-9">
+
+                        <h2>texte optionnel</h2>
+                        {{ form_errors(formleshow.text2) }}
+                        {{ form_widget(formleshow.text2) }}
+
+                    </div>
+                    <div class="offset-md-4 d-none d-md-block"></div>
+                    <hr class="col-md-11">
+
+                    <h2 class="col-12 col-md-4">sous-titre optionnel</h2>
+                    <div class="col-12 col-md-8 ">
+                        {{ form_errors(formleshow.sub3) }}
+                        {{ form_widget(formleshow.sub3, {'attr': {"class":'titre'}}) }}
+                    </div>
+
+                    <div class="offset-md-2 d-none d-md-block"></div>
+                    <div class="textarea col-9">
+
+                        <h2>texte optionnel</h2>
+                        {{ form_errors(formleshow.text3) }}
+                        {{ form_widget(formleshow.text3) }}
+
+                    </div>
+                    <div class="offset-md-4 d-none d-md-block"></div>
+                    <hr class="col-md-11">
+                    <h2 class="col-12 col-md-4">sous-titre optionnel</h2>
+                    <div class="col-12 col-md-8 ">
+                        {{ form_errors(formleshow.sub4) }}
+                        {{ form_widget(formleshow.sub4, {'attr': {"class":'titre'}}) }}
+                    </div>
+
+                    <div class="offset-md-2 d-none d-md-block"></div>
+                    <div class="textarea col-9">
+
+                        <h2>texte optionnel</h2>
+                        {{ form_errors(formleshow.text4) }}
+                        {{ form_widget(formleshow.text4) }}
+
+                    </div>
+                    <div class="offset-md-4 d-none d-md-block"></div>
+                    <div class="offset-md-4 d-none d-md-block"></div>
                 </div>
-
-                <div class="offset-md-4 d-none d-md-block"></div>
-                <div class="textarea col-8">
-
-                    <h2>texte optionnel</h2>
-                    {{ form_errors(formleshow.text2) }}
-                    {{ form_widget(formleshow.text2) }}
-
-                </div>
-                <div class="offset-md-4 d-none d-md-block"></div>
-                <hr class="col-md-11">
-
-                <div class="sub col-8">
-                    <h2>sous-titre optionnel</h2>
-                    {{ form_errors(formleshow.sub3) }}
-                    {{ form_widget(formleshow.sub3) }}
-                </div>
-                <div class="offset-md-4 d-none d-md-block"></div>
-
-                <div class="textarea col-8">
-                    <h2>texte optionnel</h2>
-                    {{ form_errors(formleshow.text3) }}
-                    {{ form_widget(formleshow.text3) }}
-
-                </div>
-                <hr class="col-md-11">
-                <div class="sub col-8">
-                    <h2>sous-titre optionnel</h2>
-                    {{ form_errors(formleshow.sub4) }}
-                    {{ form_widget(formleshow.sub4) }}
-                </div>
-                <div class="offset-md-4 d-none d-md-block"></div>
-
-                <div class="textarea col-8">
-                    <h2>texte optionnel</h2>
-                    {{ form_errors(formleshow.text4) }}
-                    {{ form_widget(formleshow.text4) }}
-
-                </div>
-                <div class="offset-md-4 d-none d-md-block"></div>
             </div>
-
-            {#SLIDER#}
+            <!--SLIDER-->
             <div class="col-4 col-md-4">
                 <label for="sl_boolean">presence d'un slider photo?</label>
-                <input type="checkbox" id="sl_boolean" name="sl_boolean" checked
+                <input type="checkbox" class="case" id="sl_boolean" name="sl_boolean" checked
                        onclick="showHideSlider()">
 
             </div>
@@ -241,9 +258,9 @@
 
 
             {# VIDEO #}
-            <div>
+            <div class="col-4 col-md-4">
                 <label for="v_boolean">presence d'un slider photo?</label>
-                <input type="checkbox" id="v_boolean" name="v_boolean" checked
+                <input type="checkbox" class="case" id="v_boolean" name="v_boolean" checked
                        onclick="showHideVideo()">
 
             </div>
@@ -295,7 +312,7 @@
                 </h2>
                 <div class="field col-6 col-md-3">
                     {{ form_errors(formleshow.duree) }}
-                    {{ form_widget(formleshow.duree, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.duree) }}
 
                 </div>
                 <div class="offset-md-3"></div>
@@ -309,7 +326,7 @@
                 </p>
                 <div class="field col-6 col-md-2">
                     {{ form_errors(formleshow.min_age) }}
-                    {{ form_widget(formleshow.min_age, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.min_age) }}
 
                 </div>
                 <p class="field col-6 col-md-2">
@@ -317,7 +334,7 @@
                 </p>
                 <div class="field col-6 col-md-2">
                     {{ form_errors(formleshow.max_age) }}
-                    {{ form_widget(formleshow.max_age, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.max_age) }}
 
                 </div>
                 <hr class="col-md-11">
@@ -329,7 +346,7 @@
                 </p>
                 <div class="field col-6 col-md-2">
                     {{ form_errors(formleshow.min_artist) }}
-                    {{ form_widget(formleshow.min_artist, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.min_artist) }}
 
                 </div>
                 <p class="field col-6 col-md-2">
@@ -337,7 +354,7 @@
                 </p>
                 <div class="field col-6 col-md-2">
                     {{ form_errors(formleshow.max_artist) }}
-                    {{ form_widget(formleshow.max_artist, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.max_artist) }}
 
                 </div>
                 <hr class="col-md-11">
@@ -346,7 +363,7 @@
                 </h2>
                 <div class="field col-6">
                     {{ form_errors(formleshow.tarif) }}
-                    {{ form_widget(formleshow.tarif, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.tarif) }}
 
                 </div>
                 <h2 class="field col-6">
@@ -354,7 +371,7 @@
                 </h2>
                 <div class="field col-6">
                     {{ form_errors(formleshow.fichetek) }}
-                    {{ form_widget(formleshow.fichetek, {'attr': {"class":'date'}}) }}
+                    {{ form_widget(formleshow.fichetek) }}
 
                 </div>
 
@@ -364,7 +381,7 @@
             <div class="row">
                 <div class="offset-6"></div>
                 <div class="submit col-4 ">
-                    {{ form_widget(formleshow.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+                    {{ form_widget(formleshow.submit, { 'label': 'Publier' } ) }}
                 </div>
                 <div class="offset-md-2 offset-2"></div>
             </div>
