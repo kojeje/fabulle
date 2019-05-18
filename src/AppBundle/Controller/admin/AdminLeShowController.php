@@ -149,8 +149,8 @@
             'Le spectacle n\'a pas pu être enregistré'
           );
         }
-//      Je redirige ensuite sur la page de l'article
-        return $this->redirectToRoute('public_shows');
+//                /* Je redirige ensuite sur la liste des pages*/
+                return $this->redirectToRoute('create_show');
       }
 
       /* Quand j'arrive sur la route "create_show" je vais directement sur le formulaire dont les champs sont définis dans  LeShowType,

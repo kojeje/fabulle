@@ -79,10 +79,10 @@
     // texte principal
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="blob" )
      * @Assert\Length(
      *      min = 50,
-     *      max = 10000,
+     *      max = 100000,
      *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
@@ -185,7 +185,7 @@
     // Texte optionnel
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="blob", nullable=true )
      * @Assert\Length(
      *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
@@ -233,7 +233,7 @@
     // Texte optionnel
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="blob", nullable=true)
      * @Assert\Length(
      *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
@@ -255,7 +255,7 @@
     // texte optionnel
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="blob", nullable=true)
      * @Assert\Length(
      *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
