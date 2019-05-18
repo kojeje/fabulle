@@ -109,7 +109,7 @@
             try {
 
               $File->move(
-                $this->getParameter('img_directory'),
+                $this->getParameter('pdf_directory'),
                 $filename
               );
             } catch (FileException $e) {
