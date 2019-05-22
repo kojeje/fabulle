@@ -79,7 +79,7 @@
     // texte principal
 
     /**
-     * @ORM\Column(type="blob" )
+     * @ORM\Column(type="text" )
      * @Assert\Length(
      *      min = 50,
      *      max = 100000,
@@ -185,7 +185,7 @@
     // Texte optionnel
 
     /**
-     * @ORM\Column(type="blob", nullable=true )
+     * @ORM\Column(type="text", nullable=true )
      * @Assert\Length(
      *      max = 10000,
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
@@ -215,53 +215,7 @@
      * @ORM\Column(type="string", nullable=true)
      */
     private $img_title2;
-    //_____________________________________
 
-    // sub_title optionnel
-
-
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $sub3;
-
-    // Texte optionnel
-
-    /**
-     * @ORM\Column(type="blob", nullable=true)
-     * @Assert\Length(
-     *      max = 10000,
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text3;
-
-    // sub_title optionnel
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $sub4;
-
-    // texte optionnel
-
-    /**
-     * @ORM\Column(type="blob", nullable=true)
-     * @Assert\Length(
-     *      max = 10000,
-     *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
-     * )
-     */
-    private $text4;
 
 //--------------------------------------------------------------------
 //  SLIDER
@@ -333,7 +287,24 @@
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $sl_caption;
+    private $sl_caption1;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sl_caption2;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sl_caption3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sl_caption4;
+
+
 //-------------------------------------------------------------
 //  VIDEO
 //_____________________________________________________________
@@ -489,6 +460,8 @@
     {
       return $this->img_alt1;
     }
+
+
 
     /**
      * @param mixed $img_alt1
@@ -693,72 +666,6 @@
     /**
      * @return mixed
      */
-    public function getSub3()
-    {
-      return $this->sub3;
-    }
-
-    /**
-     * @param mixed $sub3
-     */
-    public function setSub3($sub3): void
-    {
-      $this->sub3 = $sub3;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getText3()
-    {
-      return $this->text3;
-    }
-
-    /**
-     * @param mixed $text3
-     */
-    public function setText3($text3): void
-    {
-      $this->text3 = $text3;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSub4()
-    {
-      return $this->sub4;
-    }
-
-    /**
-     * @param mixed $sub4
-     */
-    public function setSub4($sub4): void
-    {
-      $this->sub4 = $sub4;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getText4()
-    {
-      return $this->text4;
-    }
-
-    /**
-     * @param mixed $text4
-     */
-    public function setText4($text4): void
-    {
-      $this->text4 = $text4;
-    }
-
-
-
-    /**
-     * @return mixed
-     */
     public function getImg3()
     {
       return $this->img3;
@@ -887,18 +794,67 @@
     /**
      * @return mixed
      */
-    public function getSlCaption()
+    public function getSlCaption1()
     {
-      return $this->sl_caption;
+      return $this->sl_caption1;
     }
 
     /**
-     * @param mixed $sl_caption
+     * @param mixed $sl_caption1
      */
-    public function setSlCaption($sl_caption): void
+    public function setSlCaption1($sl_caption1): void
     {
-      $this->sl_caption = $sl_caption;
+      $this->sl_caption1 = $sl_caption1;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSlCaption2()
+    {
+      return $this->sl_caption2;
+    }
+
+    /**
+     * @param mixed $sl_caption2
+     */
+    public function setSlCaption2($sl_caption2): void
+    {
+      $this->sl_caption2 = $sl_caption2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlCaption3()
+    {
+      return $this->sl_caption3;
+    }
+
+    /**
+     * @param mixed $sl_caption3
+     */
+    public function setSlCaption3($sl_caption3): void
+    {
+      $this->sl_caption3 = $sl_caption3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlCaption4()
+    {
+      return $this->sl_caption4;
+    }
+
+    /**
+     * @param mixed $sl_caption4
+     */
+    public function setSlCaption4($sl_caption4): void
+    {
+      $this->sl_caption4 = $sl_caption4;
+    }
+
 
 
 

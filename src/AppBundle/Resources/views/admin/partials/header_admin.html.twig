@@ -8,20 +8,28 @@
         </div>
         <div class="offset-lg-2 d-none d-lg-block"></div>
         <nav class="nav d-none d-lg-block col-lg-8">
-            <ul class="links d-flex justify-content-around">
-
-                <a href="">
-                    <li class="link">Les Spectacles</li>
-                </a>
-                <a href="">
-                    <li class="link">Les Dates</li>
-                </a>
-                <a href="">
-                    <li class="link">Les Posts</li>
-                </a>
+            <div class="links d-flex justify-content-around">
 
 
-            </ul>
+                    <p class="link" id="popup-header-open" onclick="showAdminPopup()">
+                        Spectacles
+                    </p>
+                    <script>
+
+
+                        </script>
+                    {% include '@App/admin/partials/admin_shows_dropdown.html.twig' %}
+
+
+                <a href="">
+                    <p class="link">Evènements</p>
+                </a>
+                <a href="">
+                    <p class="link">Les Posts</p>
+                </a>
+
+
+            </div>
         </nav>
 
         {#<nav class="dropdown show nav d-lg-none d-block col-2">#}

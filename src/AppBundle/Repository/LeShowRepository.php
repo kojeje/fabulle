@@ -13,18 +13,20 @@
 
   class LeShowRepository extends EntityRepository
   {
-    public function getAllShow($leShow)
+    public function getAllLeShow($leShow)
     {
-// QueryBuilder => Pour éxecuter des requêtes
-// Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
+//  QueryBuilder => Pour éxecuter des requêtes
+
 
       $queryBuilder =$this
         ->createQueryBuilder('s');
       $query = $queryBuilder
-
+        ->leftJoin('s.post', 'p')
+        ->leftJoin('s.leEvent', 'e')
         ->select('s')
-
-//              Permet de définir un paramètre de requete de maniere sécurisée
+        ->addSelect('p')
+        ->addSelect('e')
+//      Permet de définir un paramètre de requete de maniere sécurisée
         ->setParameter('leShow', $leShow)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
         ->getQuery();
@@ -32,16 +34,20 @@
 //            eq fetch
       $results = $query->getArrayResult();
       return $results;
+
+
+
+
     }
 
-    public function getLeShowbyType($type)
+    public function getLeShowbyGenre($genre)
     {
       $queryBuilder =$this->createQueryBuilder('s');
 
       $query = $queryBuilder
         ->select('s')
-        ->where('s.type = :type')
-        ->setParameter('type', $type)
+        ->where('s.genre = :genre')
+        ->setParameter('genre', $genre)
         ->getQuery();
 //                    eq fetch
 

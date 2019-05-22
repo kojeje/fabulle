@@ -3,14 +3,22 @@
 <head>
     {% include "@App/default/head.html.twig" %}
 </head>
-<body>
+<body onload="hideAdminPopup()">
     {% include '@App/admin/partials/header_admin.html.twig'%}
     <div class="flash">
-    {% block flash %}{% endblock %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message|raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 </div>
     <div class="form">
     {% block form %}{% endblock %}
+    {% block tmp_slide %}{% endblock %}
     {% block content %}{% endblock %}
+    {% block adminFunction %}{% endblock %}
 </div>
 
     {% include "@App/default/footer.html.twig" %}

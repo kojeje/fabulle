@@ -7,9 +7,22 @@ function showHideSlider() {
 }
 
 function showHideVideo() {
-    if(document.getElementById('v_boolean').checked) {
-        document.getElementById('video').style.display='block';
+    if (document.getElementById('v_boolean').checked) {
+        document.getElementById('video').style.display = 'block';
     } else {
-        document.getElementById('video').style.display='none';
+        document.getElementById('video').style.display = 'none';
     }
 }
+
+function hideAdminPopup() {
+    if(document.getElementById('popup-header-close').click) {
+        document.getElementById('shows-admin-menu').style.display='none';
+    }
+}
+
+function showAdminPopup() {
+    if(document.getElementById('popup-header-open').click) {
+        document.getElementById('shows-admin-menu').style.display='block';
+    }
+}
+

@@ -2,14 +2,32 @@
 @import "partials/states";
 @import "partials/responsive";
 @import "partials/fonts";
+::-webkit-scrollbar {									/* Scrollbars */
+  width: 5px;
+  height: 14px;
+  background: transparent;
+}
+hr
+{
+  height: 1px;
+  color: $white;
+  opacity: 0.2;
+}
 a{
   color: $white;
   text-decoration: none;
+  cursor: pointer;
 }
 h1, h2
 {
   font-size: 25px;
 }
+
+p
+{
+  word-break: break-word;
+}
+
 body
 {
   color: #ffffff;
@@ -49,10 +67,28 @@ img
   width: 100%;
 
 }
-.flash-notice
+.success
+{
+  color:lawngreen;
+}
+.error
+{
+  color:red;
+}
+.flash-icon, .flash-notice, .flash-error
+{
+  padding: 40px;
+}
+
+.flash
 {
   background:rgba(0,0,0,0.8);
-  color: $link;
+  color: $white;
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 .genre, .date
 {
@@ -91,6 +127,7 @@ input{
 .link
 {
   text-decoration: none;
+  cursor: pointer;
 }
 .field, h2, p
 {
@@ -145,7 +182,7 @@ input{
   color:#ffb630;
 }
 
-.submit button
+.submit button, .update, .delete
 {
   border: 2px solid $white;
   -webkit-border-radius: 20px;
@@ -157,7 +194,19 @@ input{
   width: 100%;
   cursor: pointer;
 }
+.admin_link
+{
+  display: block;
+  width: 25%;
 
+}
+.admin_container
+{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
 .login-field
 {
   width: 50%;
@@ -178,4 +227,81 @@ input{
 {
   margin-left: 28%;
   margin-top: 30px;
+}
+.preview{
+  padding: 10px;
+}
+
+.post-link
+{
+  width: 100%;
+}
+.admin-menu
+{
+  border:1vh solid $link;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  position: fixed;
+  width: 98vw;
+  top:1vh;
+  background: $black;
+  padding: 60px;
+  padding-top: 0;
+  padding-bottom: 20px;
+  left:1vh;
+  overflow-y: auto;
+  z-index:500;
+  pointer-events: auto;
+  height: 98vh;
+}
+.show-line-titre
+{
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+.show-line-edit,.show-line-trash,.add
+{
+  font-size: 30px;
+  padding-top: 50px;
+}
+.fa-trash
+{
+  color: red ;
+}
+.fa-pen
+{
+  color: greenyellow;
+}
+.fa-plus
+{
+  margin-right: 20px;
+  padding-top: 55px;
+}
+.header-popup-title
+{
+  padding-top: 55px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: $link;
+}
+.popup-header
+{
+  position: sticky;
+  background: $black;
+  top: 0;
+  z-index: 600;
+}
+.show-line
+{
+  text-align: center;
+}
+.header-popup-title, .add-link
+{
+  display: block;
+  width: 80%;
+  text-align: center;
+  margin: auto;
 }

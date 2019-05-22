@@ -1,5 +1,7 @@
 @media screen and (min-width:768px)
-{}
+{
+
+}
 @media screen and (min-width:900px)
 {
   @media screen and (min-width:992px)
@@ -87,9 +89,9 @@
     .thumb-medal2 img
     {
       padding: 10px;
-      height: 200px;
-      width: auto;
-      margin: auto;
+      //height: 200px;
+      //width: auto;
+
 
     }
     .link
@@ -126,11 +128,18 @@
     }
 
     .caption{
-      margin-top: 1%;
+      position: absolute;
       padding: 10px;
-      padding-top: 100px;
-      padding-bottom: 300px;
+      padding-top: 200px;
+      padding-bottom: 100px;
+      padding-left: 30px;
+      padding-right: 30px;
       border-radius:50%;
+      font-size:40px;
+      top: 10vh;
+      background: rgba(0, 0, 0, 0.2);
+      bottom: auto !important;
+
     }
     .caption2
     {
@@ -158,7 +167,10 @@
     .loop-title
     {
       width: 50%;
-      margin-left: 50px;
+      margin: auto;
+      font-size:80px;
+      text-align: center;
+      margin-bottom: 30px;
 
     }
     .loop-title2
@@ -252,6 +264,7 @@
       opacity:0.2;
       transition:0.5s;
     }
+
     .article-h1
     {
       margin: auto;
@@ -682,6 +695,7 @@
 
       font-size: 80px !important;
     }
+
 
   }
 

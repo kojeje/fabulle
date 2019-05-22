@@ -28,6 +28,7 @@
 
 
 {# FORMULAIRE #}
+        {#{{ dump(formleshow) }}#}
         {{ form_start(formleshow, {attr: {novalidate: 'novalidate', class:'formulaire container'}}) }}
 
         <div class="form_container">
@@ -73,6 +74,7 @@
                     {{ form_errors(formleshow.img1) }}
                     {{ form_widget(formleshow.img1, {'attr': {"class":'img'}}) }}
                 </div>
+
                 <div class="offset-md-2 d-none d-md-block"></div>
                 <div class="field col-6 col-md-4">
                     <p>texte alternatif</p>
@@ -116,7 +118,7 @@
                         {{ form_widget(formleshow.sub2, {'attr': {"class":'titre'}}) }}
                     </div>
 
-                    <div class="offset-md-2 d-none d-md-block"></div>
+                    <div class="offset-md-3 d-none d-md-block"></div>
                     <div class="textarea col-9">
 
                         <h2>texte optionnel</h2>
@@ -124,41 +126,8 @@
                         {{ form_widget(formleshow.text2) }}
 
                     </div>
-                    <div class="offset-md-4 d-none d-md-block"></div>
-                    <hr class="col-md-11">
+                    <div class="offset-md-3 d-none d-md-block"></div>
 
-                    <h2 class="col-12 col-md-4">sous-titre optionnel</h2>
-                    <div class="col-12 col-md-8 ">
-                        {{ form_errors(formleshow.sub3) }}
-                        {{ form_widget(formleshow.sub3, {'attr': {"class":'titre'}}) }}
-                    </div>
-
-                    <div class="offset-md-2 d-none d-md-block"></div>
-                    <div class="textarea col-9">
-
-                        <h2>texte optionnel</h2>
-                        {{ form_errors(formleshow.text3) }}
-                        {{ form_widget(formleshow.text3) }}
-
-                    </div>
-                    <div class="offset-md-4 d-none d-md-block"></div>
-                    <hr class="col-md-11">
-                    <h2 class="col-12 col-md-4">sous-titre optionnel</h2>
-                    <div class="col-12 col-md-8 ">
-                        {{ form_errors(formleshow.sub4) }}
-                        {{ form_widget(formleshow.sub4, {'attr': {"class":'titre'}}) }}
-                    </div>
-
-                    <div class="offset-md-2 d-none d-md-block"></div>
-                    <div class="textarea col-9">
-
-                        <h2>texte optionnel</h2>
-                        {{ form_errors(formleshow.text4) }}
-                        {{ form_widget(formleshow.text4) }}
-
-                    </div>
-                    <div class="offset-md-4 d-none d-md-block"></div>
-                    <div class="offset-md-4 d-none d-md-block"></div>
                 </div>
             </div>
             <!--SLIDER-->
@@ -249,17 +218,35 @@
 
 
                 <div class="field col-12">
-                    <p>texte slider</p>
-                    {{ form_errors(formleshow.sl_caption) }}
-                    {{ form_widget(formleshow.sl_caption, {'attr': {"class":'alt'}}) }}
+                    <p>texte slider1</p>
+                    {{ form_errors(formleshow.sl_caption1) }}
+                    {{ form_widget(formleshow.sl_caption1, {'attr': {"class":'alt'}}) }}
 
                 </div>
+                 <div class="field col-12">
+                     <p>texte slider1</p>
+                     {{ form_errors(formleshow.sl_caption2) }}
+                     {{ form_widget(formleshow.sl_caption2, {'attr': {"class":'alt'}}) }}
+
+                 </div>
+                 <div class="field col-12">
+                     <p>texte slider1</p>
+                     {{ form_errors(formleshow.sl_caption3) }}
+                     {{ form_widget(formleshow.sl_caption3, {'attr': {"class":'alt'}}) }}
+
+                 </div>
+                 <div class="field col-12">
+                     <p>texte slider1</p>
+                     {{ form_errors(formleshow.sl_caption4) }}
+                     {{ form_widget(formleshow.sl_caption4, {'attr': {"class":'alt'}}) }}
+
+                 </div>
             </div>
 
 
             {# VIDEO #}
             <div class="col-4 col-md-4">
-                <label for="v_boolean">presence d'un slider photo?</label>
+                <label for="v_boolean">presence d'unlecteur video?</label>
                 <input type="checkbox" class="case" id="v_boolean" name="v_boolean" checked
                        onclick="showHideVideo()">
 

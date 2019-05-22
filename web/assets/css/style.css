@@ -20,6 +20,10 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
 
 #appbundle_show_submit:hover { background: #ffce30 !important; color: #000000 !important; border: 2px solid #ffffff !important; }
 
+.update:hover { background: blue !important; color: #ffffff !important; }
+
+.delete:hover { background: red !important; color: #ffffff !important; }
+
 @media screen and (min-width: 900px) and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 20vh; }
   h1 { font-size: 40px; }
@@ -33,18 +37,18 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .thumb { margin-bottom: 30px; }
   .thumb2 img { width: 80%; height: auto; padding: 10px; margin: auto; }
   .thumb-medal img { padding: 10px; width: 100%; }
-  .thumb-medal2 img { padding: 10px; height: 200px; width: auto; margin: auto; }
+  .thumb-medal2 img { padding: 10px; }
   .link { text-decoration: none; }
   .boucle { display: flex; justify-content: space-around; flex-wrap: wrap; }
   .the_post_medal { width: 35%; padding: 20px; border-bottom: 4px solid #ffce30; border-left: 4px solid #ffce30; margin-bottom: 30px; }
   .f_l { margin: auto; text-align: center; }
   .banner { margin: auto; width: 50%; margin-bottom: 20px; padding: 50px; }
-  .caption { margin-top: 1%; padding: 10px; padding-top: 100px; padding-bottom: 300px; border-radius: 50%; }
+  .caption { position: absolute; padding: 10px; padding-top: 200px; padding-bottom: 100px; padding-left: 30px; padding-right: 30px; border-radius: 50%; font-size: 40px; top: 10vh; background: rgba(0, 0, 0, 0.2); bottom: auto !important; }
   .caption2 { width: 40%; margin-left: 15%; }
   .banner img { width: 50%; }
   .titre { text-align: center; }
   .article-content { margin: 0; width: 100%; }
-  .loop-title { width: 50%; margin-left: 50px; }
+  .loop-title { width: 50%; margin: auto; font-size: 80px; text-align: center; margin-bottom: 30px; }
   .loop-title2 { width: 100%; margin: auto; margin-top: 20px; }
   .article-loop { display: flex; justify-content: space-around; flex-wrap: wrap; margin: auto; }
   .article-loop2 img { height: 120px; width: auto; margin: auto; margin-bottom: 10px; margin-top: 10px; }
@@ -125,9 +129,15 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .contact-title h1 { font-size: 80px !important; } }
 body { font-family: Comfortaa,sans-serif; }
 
-a { color: #ffffff; text-decoration: none; }
+::-webkit-scrollbar { /* Scrollbars */ width: 5px; height: 14px; background: transparent; }
+
+hr { height: 1px; color: #ffffff; opacity: 0.2; }
+
+a { color: #ffffff; text-decoration: none; cursor: pointer; }
 
 h1, h2 { font-size: 25px; }
+
+p { word-break: break-word; }
 
 body { color: #ffffff; background: #000; width: 100%; }
 
@@ -143,7 +153,13 @@ textarea, text { width: 100%; }
 
 img { display: block; width: 100%; }
 
-.flash-notice { background: rgba(0, 0, 0, 0.8); color: #ffce30; }
+.success { color: lawngreen; }
+
+.error { color: red; }
+
+.flash-icon, .flash-notice, .flash-error { padding: 40px; }
+
+.flash { background: rgba(0, 0, 0, 0.8); color: #ffffff; padding: 30px; font-size: 40px; text-align: center; display: flex; justify-content: center; }
 
 .genre, .date { border: 1px solid #ffce30; background: #ffffff; }
 
@@ -157,7 +173,7 @@ input { display: block; width: 100%; height: 60px; }
 
 .links { list-style-type: none; }
 
-.link { text-decoration: none; }
+.link { text-decoration: none; cursor: pointer; }
 
 .field, h2, p { margin-top: 20px; margin-bottom: 20px; }
 
@@ -175,7 +191,11 @@ input { display: block; width: 100%; height: 60px; }
 
 .createUser_logo { margin-bottom: 30px; font-size: 25px; color: #ffb630; }
 
-.submit button { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; background: transparent; width: 100%; cursor: pointer; }
+.submit button, .update, .delete { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; background: transparent; width: 100%; cursor: pointer; }
+
+.admin_link { display: block; width: 25%; }
+
+.admin_container { width: 80%; margin: auto; display: flex; justify-content: space-between; }
 
 .login-field { width: 50%; margin: auto; }
 
@@ -184,5 +204,29 @@ input { display: block; width: 100%; height: 60px; }
 .login-field-submit, .login-field, .login-field-label { border-radius: 50px; text-align: center !important; }
 
 .login-field-label { margin-left: 28%; margin-top: 30px; }
+
+.preview { padding: 10px; }
+
+.post-link { width: 100%; }
+
+.admin-menu { border: 1vh solid #ffce30; -webkit-border-radius: 50px; -moz-border-radius: 50px; border-radius: 50px; position: fixed; width: 98vw; top: 1vh; background: #000000; padding: 60px; padding-top: 0; padding-bottom: 20px; left: 1vh; overflow-y: auto; z-index: 500; pointer-events: auto; height: 98vh; }
+
+.show-line-titre { font-size: 20px; padding-top: 50px; }
+
+.show-line-edit, .show-line-trash, .add { font-size: 30px; padding-top: 50px; }
+
+.fa-trash { color: red; }
+
+.fa-pen { color: greenyellow; }
+
+.fa-plus { margin-right: 20px; padding-top: 55px; }
+
+.header-popup-title { padding-top: 55px; text-align: center; font-weight: 900; font-size: 30px; color: #ffce30; }
+
+.popup-header { position: sticky; background: #000000; top: 0; z-index: 600; }
+
+.show-line { text-align: center; }
+
+.header-popup-title, .add-link { display: block; width: 80%; text-align: center; margin: auto; }
 
 /*# sourceMappingURL=style.css.map */

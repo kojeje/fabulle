@@ -29,7 +29,8 @@
 // date de création du spectacle
         $builder->add('creation_date', DateType::class, [
           'widget' => 'choice',
-          'years' => range(2000, 2031)
+          'years' => range(2000, 2031),
+
         ])
 
 //--------------------------------------------------------------------
@@ -78,28 +79,7 @@
         ->add('img_alt2')
         ->add('img_title2')
 
-//Sous-titre et texte optionnels
-        ->add('sub3')
-        ->add('text3', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '10',
-              'cols' => '24'
-            ]
-          ]
-        )
-//Sous-titre et texte optionnels
-        ->add('sub4')
-        ->add('text4', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '10',
-              'cols' => '24'
-            ]
-          ]
-        )
+
 
 //--------------------------------------------------------------------
 
@@ -134,9 +114,11 @@
         )
         ->add('img_alt6')
 
-// Texte du slider
-        ->add('sl_caption')
-
+// Textes du slider
+        ->add('sl_caption1')
+        ->add('sl_caption2')
+        ->add('sl_caption3')
+        ->add('sl_caption4')
 //--------------------------------------------------------------------
 
         // Video

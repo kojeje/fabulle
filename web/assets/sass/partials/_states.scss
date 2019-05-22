@@ -60,3 +60,15 @@ a:hover
   color: $black !important;
   border: 2px solid $white !important;
 }
+.update:hover
+{
+  background: blue !important;
+  color: $white !important;
+
+}
+.delete:hover
+{
+  background: red !important;
+  color: $white !important;
+
+}
