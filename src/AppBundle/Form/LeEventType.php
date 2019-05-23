@@ -12,7 +12,7 @@
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\Form\Extension\Core\Type\DateType;
-  use Symfony\Component\Form\Extension\Core\Type\FileType;
+
   use Symfony\Component\Form\FormBuilderInterface;
 
 
@@ -24,6 +24,8 @@
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
       $builder
         ->add('category', ChoiceType::class,
           [
@@ -45,11 +47,7 @@
           ]
         )
         ->add('date',DateType::class)
-        ->add('img', FileType::class, [
-            'data_class' => null,
-            'label' => 'Image (jpg)',
-          ]
-        )
+
         ->add('img_alt')
 
         ->add('place',EntityType::class,
@@ -59,17 +57,24 @@
 //            'choice_label' => 'nom',
               'choice_label'=> function($place)
               {
-                return $place->getNom().' - '.$place->getCP().' - '.$place->getCommune;
+                return $place->getNom().' - '.$place->getCP().' - '.$place->getCommune();
 
               },
           ]
         )
-        ->add('show', EntityType::class,
-          [
-            'class' => 'AppBundle\Entity\Leshow',
-            'choice_label' => 'titre'
 
-          ])
+        ->add('leShow', EntityType::class,
+          [
+            'class' => 'AppBundle\Entity\LeShow',
+            'choice_label'=> function($leShow)
+            {
+
+                return $leShow->getTitre();
+
+            }
+          ]
+
+        )
         ->add('submit', SubmitType::class)
       ;
     }

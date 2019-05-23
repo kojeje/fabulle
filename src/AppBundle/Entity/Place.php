@@ -8,8 +8,6 @@
 
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
-  use Symfony\Component\Validator\Constraints as Assert;
-
 
   //    Colonnes de la table
   /**
@@ -101,20 +99,6 @@
     private $gmap;
 
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     * @Assert\File(maxSize="10000000",
-     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
-     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
-     * )
-     *
-     */
-    private $img;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt;
 
 
 // ---------------------------------------------------------------------------
@@ -323,38 +307,6 @@
     /**
      * @return mixed
      */
-    public function getImg()
-    {
-      return $this->img;
-    }
-
-    /**
-     * @param mixed $img
-     */
-    public function setImg($img): void
-    {
-      $this->img = $img;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt()
-    {
-      return $this->img_alt;
-    }
-
-    /**
-     * @param mixed $img_alt
-     */
-    public function setImgAlt($img_alt): void
-    {
-      $this->img_alt = $img_alt;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLeEvent()
     {
       return $this->leEvent;
@@ -367,12 +319,5 @@
     {
       $this->leEvent = $leEvent;
     }
-
-
-
-
-
-
-
 
   }

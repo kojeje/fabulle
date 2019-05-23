@@ -56,7 +56,7 @@
     // date de création
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      *
      */
     private $creation_date;
@@ -111,12 +111,11 @@
      * @ORM\Column(type="string", nullable=true)
      */
     private $img_title1;
+
+
 //-------------------------------------------------------------
 //  données sur le spectacle
 //_____________________________________________________________
-
-
-
 
     /**
      * @ORM\Column(type="string", nullable=true)

@@ -242,7 +242,7 @@
         }
 
       }
-//      var_dump($oldImages);die;
+
 
       //recherche entité leShow existant, puis créé la forme
       $form = $this->createForm(LeShowType::class, $leShow);

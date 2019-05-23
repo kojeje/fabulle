@@ -64,15 +64,7 @@
      */
     private $date;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $img;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $img_alt;
 
 // ---------------------------------------------------------------------------
     //  Relations
