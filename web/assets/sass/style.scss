@@ -95,6 +95,11 @@ img
   border: 1px solid $link;
   background: $white;
 }
+.date select
+{
+  width: 33%;
+  text-align: center;
+}
 hr
 {
   color:#ffffff !important;
@@ -197,12 +202,12 @@ input{
 .admin_link
 {
   display: block;
-  width: 25%;
+  width: 10%;
 
 }
 .admin_container
 {
-  width: 80%;
+  width: 30%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -304,4 +309,8 @@ input{
   width: 80%;
   text-align: center;
   margin: auto;
+}
+.img
+{
+  border: 1px solid $white ;
 }

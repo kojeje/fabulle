@@ -24,7 +24,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
 
 .delete:hover { background: red !important; color: #ffffff !important; }
 
-@media screen and (min-width: 900px) and (min-width: 992px) { body { font-size: 16px; }
+@media screen and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 20vh; }
   h1 { font-size: 40px; }
   iframe { width: 100%; height: 300px; }
@@ -127,6 +127,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .hall { color: #000000; }
   .cie-line { margin-bottom: 25vh; }
   .contact-title h1 { font-size: 80px !important; } }
+@media screen and (min-width: 1026px) { .img { border: none !important; } }
 body { font-family: Comfortaa,sans-serif; }
 
 ::-webkit-scrollbar { /* Scrollbars */ width: 5px; height: 14px; background: transparent; }
@@ -163,6 +164,8 @@ img { display: block; width: 100%; }
 
 .genre, .date { border: 1px solid #ffce30; background: #ffffff; }
 
+.date select { width: 33%; text-align: center; }
+
 hr { color: #ffffff !important; border: 2px solid #ffce30 !important; width: 100% !important; height: 2px !important; z-index: 500; }
 
 input { display: block; width: 100%; height: 60px; }
@@ -193,9 +196,9 @@ input { display: block; width: 100%; height: 60px; }
 
 .submit button, .update, .delete { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; background: transparent; width: 100%; cursor: pointer; }
 
-.admin_link { display: block; width: 25%; }
+.admin_link { display: block; width: 10%; }
 
-.admin_container { width: 80%; margin: auto; display: flex; justify-content: space-between; }
+.admin_container { width: 30%; margin: auto; display: flex; justify-content: space-between; }
 
 .login-field { width: 50%; margin: auto; }
 
@@ -228,5 +231,7 @@ input { display: block; width: 100%; height: 60px; }
 .show-line { text-align: center; }
 
 .header-popup-title, .add-link { display: block; width: 80%; text-align: center; margin: auto; }
+
+.img { border: 1px solid #ffffff; }
 
 /*# sourceMappingURL=style.css.map */

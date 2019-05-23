@@ -1,32 +1,40 @@
 <header class="header container-fluid">
     <div class="header_bloc row">
-
-        <div class="logo col-md-2">
+        {# logo #}
+        <div class="logo col-6 col-md-2">
             <a href="http://localhost:8000/">
                 <img class="logo_fabulle" src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">
             </a>
         </div>
-        <div class="offset-lg-2 d-none d-lg-block"></div>
+
+        {# Menu Administrateur #}
+
         <nav class="nav d-none d-lg-block col-lg-8">
             <div class="links d-flex justify-content-around">
+                <p class="link" id="popup-header-show-open" onclick="showAdminPopup()">
+                    Spectacles
+                </p>
+                {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
 
+                <p class="link" id="popup-header-event-open" onclick="eventAdminPopup()">
+                    Evènements
+                </p>
+                {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}
 
-                    <p class="link" id="popup-header-open" onclick="showAdminPopup()">
-                        Spectacles
-                    </p>
-                    <script>
+                <p class="link" id="popup-header-post-open" onclick="postAdminPopup()">
+                    Articles
+                </p>
+                {% include '@App/admin/partials/popup/admin_posts_dropdown.html.twig' %}
 
+                <p class="link" id="popup-header-places-open" onclick="placeAdminPopup()">
+                    Lieux
+                </p>
+                {% include '@App/admin/partials/popup/admin_places_dropdown.html.twig' %}
+                <p class="link" id="popup-header-referencies-open" onclick="referenciesAdminPopup()">
+                    Réferences
+                </p>
+                {% include '@App/admin/partials/popup/admin_referencies_dropdown.html.twig' %}
 
-                        </script>
-                    {% include '@App/admin/partials/admin_shows_dropdown.html.twig' %}
-
-
-                <a href="">
-                    <p class="link">Evènements</p>
-                </a>
-                <a href="">
-                    <p class="link">Les Posts</p>
-                </a>
 
 
             </div>

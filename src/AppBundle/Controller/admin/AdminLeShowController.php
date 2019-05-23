@@ -75,9 +75,14 @@
     public function formCreateShow(Request $request)
 
     {
-      $this->listShowsAdminAction();
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+
+      $leShows = $repository->findAll();
+
+
       /* Création d'un nouveau formulaire à partir d'un gabarit "LeShowType" */
       $form = $this->createForm(LeShowType::class, new LeShow);
+
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
       Donc la variable $form contient maintenant aussi les données de $_POST*/
@@ -194,7 +199,8 @@
       et qui seront affichés grace à twig*/
       return $this->render('@App/admin/CreateLeShow.html.twig',
         [
-          'formleshow' => $form->createView()
+          'formleshow' => $form->createView(),
+          'leShows' => $leShows
         ]);
 
 
@@ -216,17 +222,17 @@
       $leShow = $repository->find($id);
       $leShows = $repository->findAll();
 
-      for($i = 1; $i <= 6; $i++)  {
+      for ($i = 1; $i <= 6; $i++) {
 
-        $getter = 'getImg'.$i;
-        $setter = 'setImg'.$i;
+        $getter = 'getImg' . $i;
+        $setter = 'setImg' . $i;
 
         $oldImages[$i] = $leShow->$getter();
 
 
         // tester si image existe, alors récupère entité piece puis ajoute attribut Image qui est un string
 
-        if ($leShow->$getter()){
+        if ($leShow->$getter()) {
 
           //redéfinit Image
           $leShow->$setter(
@@ -235,8 +241,8 @@
 
         }
 
-
       }
+//      var_dump($oldImages);die;
 
       //recherche entité leShow existant, puis créé la forme
       $form = $this->createForm(LeShowType::class, $leShow);
@@ -245,6 +251,7 @@
       //à notre variable $form. Donc la variable $form contient maintenant aussi $_POST
       //handlerequest reremplit le formulaire, récupère données et les reinjecte dans formulaire
       $form->handleRequest($request);
+//      var_dump($form->getData()->getImg1());die;
 
       //isSubmitted vérifie si il y a bien un contenu form envoyé, puis on regarde si valide (à compléter plus tard)
 
@@ -253,80 +260,86 @@
         if ($form->isValid()) {
           $leShow = $form->getData();
 
-          for($i = 1; $i <= 6; $i++)  {
+          for ($i = 1; $i <= 6; $i++) {
 
-            $getter = 'getImg'.$i;
-            $setter = 'setImg'.$i;
+            $getter = 'getImg' . $i;
+            $setter = 'setImg' . $i;
 
-            $oldImages[$i] = $leShow->$getter();
+//            $oldImages[$i] = $leShow->$getter();
+//
 
-              if ($leShow->$getter() !== NULL) {
+            if ($leShow->$getter() !== NULL) {
 
-                // créé file avec getImg . $i, récupère string chemin image
+              // créé file avec getImg . $i, récupère string chemin image
 
-                $file = $leShow->$getter();
+              $file = $leShow->$getter();
 
-                /* Si il y a une image*/
-                if (!is_null($file)) {
+              /* Si il y a une image*/
+              if (!is_null($file)) {
 
-                  //génère nom unique pour le fichier image
-                  $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-
-
-                  try {
-                    $file->move(
-                      $this->getParameter('upl_directory'),
-                      $fileName
-                    );
+                //génère nom unique pour le fichier image
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
 
-                  } catch (FileException $e) {
-                    echo $e->getMessage();
-                    // ... handle exception if something happens during file upload
-                  }
-
-
-                  // important alimente modification !!!!!! chemin vers image
-
-
-                  $leShow->$setter(
+                try {
+                  $file->move(
+                    $this->getParameter('upl_directory'),
                     $fileName
                   );
+
+
+                } catch (FileException $e) {
+                  echo $e->getMessage();
+                  // ... handle exception if something happens during file upload
                 }
 
 
-              } else {
-                // si pas de changement on recupère l'ancien nom
-                $leShow->$setter($oldImages[$i]);
+                // important alimente modification !!!!!! chemin vers image
 
+
+                $leShow->$setter(
+                  $fileName
+                );
               }
+            } else {
+              // si pas de changement on recupère l'ancien nom
+              $leShow->$setter($oldImages[$i]);
 
             }
 
-        }
+          }
 
-          // je récupère l'entity manager de doctrine
-          $entityManager = $this->getDoctrine()->getManager();
+        // je récupère l'entity manager de doctrine
+        $entityManager = $this->getDoctrine()->getManager();
 
 
-          // j'enregistre en base de donnée, persist met dans zone tampon provisoire de l'unité de travail
-          $entityManager->persist($leShow);
-          //mise à jour BD, envoy à bd
-          $entityManager->flush();
+        // j'enregistre en base de donnée, persist met dans zone tampon provisoire de l'unité de travail
+        $entityManager->persist($leShow);
+        //mise à jour BD, envoy à bd
+        $entityManager->flush();
 
-          // Renvoi de confirmation d'enregistrement Message flash
+        // Renvoi de confirmation d'enregistrement Message flash
           $this->addFlash(
-            'notice',
-            'Votre spectacle a bien été modifié!'
+            'notice-icon',
+            '<i class="flash-icon success fal fa-check"></i>'
           );
-
-          return $this->redirectToRoute('admin_shows');
-        } else {
           $this->addFlash(
-            'notice',
-            'Votre spectacle n\'a pas été modifié!'
+          'notice',
+          'Votre spectacle a bien été modifié!'
+        );
+
+        return $this->redirectToRoute('admin_shows');
+      } else {
+          $this->addFlash(
+            'error-icon',
+            '<i class="flash-icon error fal fa-times"></i>'
           );
-        }
+        $this->addFlash(
+          'notice',
+          'Votre spectacle n\'a pas été modifié!'
+        );
+      }
+    }
 
 
       return $this->render(
@@ -356,6 +369,11 @@
       $entityManager->remove($leShow);
       $entityManager->flush();
       $this->addFlash(
+        'notice-icon',
+        '<i class="flash-icon success fal fa-check"></i>'
+      );
+      $this->addFlash(
+
         'notice',
         'Le spectacle a été supprimé'
       );

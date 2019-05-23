@@ -3,23 +3,27 @@
 <head>
     {% include "@App/default/head.html.twig" %}
 </head>
-<body onload="hideAdminPopup()">
-    {% include '@App/admin/partials/header_admin.html.twig'%}
-    <div class="flash">
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="flash-{{ label }}">
-                    {{ message|raw }}
-                </div>
+<body onload="hideAdminShowFieldandPopup()">
+
+
+
+
+        {% block tmp_slide %}{% endblock %}
+        {% include '@App/admin/partials/header_admin.html.twig'%}
+
+        <div class="flash">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-{{ label }}">
+                        {{ message|raw }}
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-</div>
-    <div class="form">
-    {% block form %}{% endblock %}
-    {% block tmp_slide %}{% endblock %}
-    {% block content %}{% endblock %}
-    {% block adminFunction %}{% endblock %}
-</div>
+        </div>
+        {% block form %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block adminFunction %}{% endblock %}
+
 
     {% include "@App/default/footer.html.twig" %}
     {% include "@App/default/up.html.twig" %}
