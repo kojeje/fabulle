@@ -40,21 +40,21 @@
 
             <div class="corps row">
 
-
+                {# Titre du spectacle #}
                 <h2 class="col-md-6 col-lg-3">Le titre</h2>
-                <div class="field col-6 ">
+                <div class="field col-12 ">
                     {{ form_errors(formleshow.titre) }}
                     {{ form_widget(formleshow.titre, {'attr': {"class":'titre'}}) }}
                 </div>
-                <div class="dispo col-md-12 col-lg-3">
-                    <p>dispo</p>
-                    <div>
+                {# Disponibilité du spectacle #}
+                <p class="dispo col-md-12 col-lg-3">
+                    <p>dispo
 
                         {{ form_errors(formleshow.dispo_boolean) }}
                         {{ form_widget(formleshow.dispo_boolean, {'attr': {"class":'case'}}) }}
-                    </div>
+                    </p>
                 </div>
-
+                {# Séparateur#}
                 <hr class="col-11">
 
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
@@ -67,44 +67,49 @@
                 </div>
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
 
+                {# Séparateur#}
+                <hr class="col-11">
 
-                <div class="offset-lg-1 d-md-none d-lg-block"></div>
-                <div class="field col-md-12 col-lg-6">
-                    <p>Image principale</p>
-                    {{ form_errors(formleshow.img1) }}
-                    {{ form_widget(formleshow.img1, {'attr': {"class":'img'}}) }}
+                <div class="row" id="img1">
+                    <div class="field col-lg-4 col-md-12">
+                        <p>Image principale</p>
+                        {{ form_errors(formleshow.img1) }}
+                        {{ form_widget(formleshow.img1, {'attr': {"class":'img'}}) }}
+                    </div>
+
+
+                    <div class="offset-lg-8 d-md-none d-lg-block"></div>
+                    <div class="field col-lg-12">
+                        <p>texte alternatif</p>
+                        {{ form_errors(formleshow.img_alt1) }}
+                        {{ form_widget(formleshow.img_alt1, {'attr': {"class":'alt'}}) }}
+
+                        <p>infobulle</p>
+                        {{ form_errors(formleshow.img_title1) }}
+                        {{ form_widget(formleshow.img_title1, {'attr': {"class":'alt'}}) }}
+                    </div>
+
+                    <hr class="col-lg-11">
                 </div>
 
-                <div class="offset-lg-2 d-md-none d-lg-block"></div>
-                <div class="field col-lg-4 col-md-12">
-                    <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt1) }}
-                    {{ form_widget(formleshow.img_alt1, {'attr': {"class":'alt'}}) }}
 
-                    <p>infobulle</p>
-                    {{ form_errors(formleshow.img_title1) }}
-                    {{ form_widget(formleshow.img_title1, {'attr': {"class":'alt'}}) }}
-                </div>
-
-                <hr class="col-lg-11">
-
-                <div class="offset-lg-1 d-md-none d-lg-block"></div>
-                <div class="field col-lg-4 col-md-12">
+                <div class="row" id="img2">
+                    <div class="field col-lg-4 col-md-12">
                     <p>Image optionnelle</p>
-                    {{ form_errors(formleshow.img2) }}
-                    {{ form_widget(formleshow.img2, {'attr': {"class":'img'}}) }}
+                        {{ form_errors(formleshow.img2) }}
+                        {{ form_widget(formleshow.img2, {'attr': {"class":'img'}}) }}
 
+                    </div>
+                    <div class="offset-lg-2 d-md-none d-lg-block"></div>
+                    <div class="field col-lg-4 col-md-12">
+                        <p>texte alternatif</p>
+                        {{ form_errors(formleshow.img_alt2) }}
+                        {{ form_widget(formleshow.img_alt2, {'attr': {"class":'alt'}}) }}
+                        <p>infobulle</p>
+                        {{ form_errors(formleshow.img_title2) }}
+                        {{ form_widget(formleshow.img_title2, {'attr': {"class":'alt'}}) }}
+                    </div>
                 </div>
-                <div class="offset-lg-2 d-md-none d-lg-block"></div>
-                <div class="field col-lg-4 col-md-12">
-                    <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt2) }}
-                    {{ form_widget(formleshow.img_alt2, {'attr': {"class":'alt'}}) }}
-                    <p>infobulle</p>
-                    {{ form_errors(formleshow.img_title2) }}
-                    {{ form_widget(formleshow.img_title2, {'attr': {"class":'alt'}}) }}
-                </div>
-
                 <hr class="col-lg-11">
                 <div class="row">
 
