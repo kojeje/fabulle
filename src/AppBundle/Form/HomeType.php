@@ -44,27 +44,6 @@
         ->add('img_alt1')
         ->add('img_title1')
 
-//Sous-titre, texte et image optionnels
-
-        ->add('sub2')
-        ->add('text2', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '10',
-              'cols' => '24'
-            ]
-          ]
-        )
-        ->add('img2', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt2')
-        ->add('img_title2')
-
-
-
 //--------------------------------------------------------------------
 
         // SLIDER
@@ -73,11 +52,18 @@
 // Images du slider
 
 
+        ->add('img2', FileType::class, [
+            'data_class' => null,
+          ]
+        )
+        ->add('img_alt2')
+
         ->add('img3', FileType::class, [
             'data_class' => null,
           ]
         )
         ->add('img_alt3')
+
 
         ->add('img4', FileType::class, [
             'data_class' => null,
@@ -85,30 +71,18 @@
         )
         ->add('img_alt4')
 
-
         ->add('img5', FileType::class, [
             'data_class' => null,
           ]
         )
         ->add('img_alt5')
 
-        ->add('img6', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt6')
-
 // Textes du slider
-        ->add('sl_caption1')
-        ->add('sl_caption2')
-        ->add('sl_caption3')
-        ->add('sl_caption4')
+        ->add('sl_caption')
+
 //--------------------------------------------------------------------
-
-        // Video
-
-
-// Le cas échéant: code d'intégration
+// Video
+// code d'intégration
         ->add('youtube')
 //--------------------------------------------------------------------
 

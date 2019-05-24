@@ -28,8 +28,8 @@
 
 
         {# FORMULAIRE #}
-        {#{{ dump(formleshow) }}#}
-        {{ form_start(formleshow, {attr: {novalidate: 'novalidate', class:'formulaire container'}}) }}
+        {#{{ dump(formhome) }}#}
+        {{ form_start(formhome, {attr: {novalidate: 'novalidate', class:'formulaire container'}}) }}
 
         <div class="form_container">
             <h1>Votre spectacle</h1>
@@ -43,27 +43,17 @@
                 {# Titre du spectacle #}
                 <h2 class="col-md-6 col-lg-3">Le titre</h2>
                 <div class="field col-12 ">
-                    {{ form_errors(formleshow.titre) }}
-                    {{ form_widget(formleshow.titre, {'attr': {"class":'titre'}}) }}
+                    {{ form_errors(formhome.titre) }}
+                    {{ form_widget(formhome.titre, {'attr': {"class":'titre'}}) }}
                 </div>
-                {# Disponibilité du spectacle #}
-                <p class="dispo col-md-12 col-lg-3">
-                <p>dispo
-
-                    {{ form_errors(formleshow.dispo_boolean) }}
-                    {{ form_widget(formleshow.dispo_boolean, {'attr': {"class":'case'}}) }}
-                </p>
-
-                {# Séparateur#}
                 <hr>
-
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
                 <h2 class="col-md-10 title">Texte principal</h2>
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
                 <div class="textarea col-md-12">
-                    {{ form_errors(formleshow.text1) }}
-                    {{ form_widget(formleshow.text1) }}
+                    {{ form_errors(formhome.text1) }}
+                    {{ form_widget(formhome.text1) }}
                 </div>
                 <div class="offset-lg-1 d-md-none d-lg-block"></div>
 
@@ -73,63 +63,23 @@
                 <div id="img1" class="col-12">
                     <div class="field">
                         <p>Image principale</p>
-                        {{ form_errors(formleshow.img1) }}
-                        {{ form_widget(formleshow.img1, {'attr': {"class":'img'}}) }}
+                        {{ form_errors(formhome.img1) }}
+                        {{ form_widget(formhome.img1, {'attr': {"class":'img'}}) }}
                     </div>
 
 
 
                     <div class="field">
                         <p>texte alternatif</p>
-                        {{ form_errors(formleshow.img_alt1) }}
-                        {{ form_widget(formleshow.img_alt1, {'attr': {"class":'alt'}}) }}
+                        {{ form_errors(formhome.ImgAlt1) }}
+                        {{ form_widget(formhome.ImgAlt1, {'attr': {"class":'alt'}}) }}
 
                         <p>infobulle</p>
-                        {{ form_errors(formleshow.img_title1) }}
-                        {{ form_widget(formleshow.img_title1, {'attr': {"class":'alt'}}) }}
+                        {{ form_errors(formhome.img_title1) }}
+                        {{ form_widget(formhome.img_title1, {'attr': {"class":'alt'}}) }}
                     </div>
                     {# Séparateur#}
                     <hr>
-                </div>
-
-
-                <div id="img2" class="col-lg-12">
-                    <div class="field">
-                        <p>Image optionnelle</p>
-                        {{ form_errors(formleshow.img2) }}
-                        {{ form_widget(formleshow.img2, {'attr': {"class":'img'}}) }}
-
-                    </div>
-                    <div class="offset-lg-8 d-md-none d-lg-block"></div>
-                    <div class="field col-12">
-                        <p>texte alternatif</p>
-                        {{ form_errors(formleshow.img_alt2) }}
-                        {{ form_widget(formleshow.img_alt2, {'attr': {"class":'alt'}}) }}
-                        <p>infobulle</p>
-                        {{ form_errors(formleshow.img_title2) }}
-                        {{ form_widget(formleshow.img_title2, {'attr': {"class":'alt'}}) }}
-                    </div>
-                </div>
-                <hr class="col-lg-11">
-                <div class="col-lg-12">
-
-
-                    <h2>sous-titre optionnel</h2>
-                    <div>
-                        {{ form_errors(formleshow.sub2) }}
-                        {{ form_widget(formleshow.sub2, {'attr': {"class":'titre'}}) }}
-                    </div>
-
-
-                    <div class="textarea">
-
-                        <h2>texte optionnel</h2>
-                        {{ form_errors(formleshow.text2) }}
-                        {{ form_widget(formleshow.text2) }}
-
-                    </div>
-
-
                 </div>
             </div>
         </div>
@@ -140,126 +90,84 @@
                    name="sl_boolean"
                    checked
                    onclick="showHideSlider()">
-
         </div>
-
-
         <div class="corps" id="slider">
-
             <H2 >SLIDER</H2>
-
-
-
-            <div class="row" id="img3">
+            <div class="row" id="img-home-2">
                 <div class="field col-lg-4 col-md-12">
                     <p>Image slider</p>
-                    {{ form_errors(formleshow.img3) }}
-                    {{ form_widget(formleshow.img3, {'attr': {"class":'img'}}) }}
+                    {{ form_errors(formhome.img2) }}
+                    {{ form_widget(formhome.img2, {'attr': {"class":'img'}}) }}
                 </div>
 
                 <div class="offset-lg-2 d-md-none d-lg-block"></div>
 
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt3) }}
-                    {{ form_widget(formleshow.img_alt3, {'attr': {"class":'alt'}}) }}
+                    {{ form_errors(formhome.ImgAlt2) }}
+                    {{ form_widget(formhome.ImgAlt2, {'attr': {"class":'alt'}}) }}
                 </div>
 
-                <div class="field col-12">
-                    <p>Texte slider 1</p>
-                    {{ form_errors(formleshow.sl_caption1) }}
-                    {{ form_widget(formleshow.sl_caption1, {'attr': {"class":'alt'}}) }}
-                </div>
             </div>
             <div class="col-md-4 col-lg-4">
                 <label for="img4-field">Autre image ?</label>
-                <input type="checkbox" class="case" id="img4-field"
+                <input type="checkbox" class="case" id="img3-home-field"
                        name="img4"
-                       onclick="showHideImg4()">
+                       onclick="showHideImgHome3()">
             </div>
 
             <hr class="col-11">
-            <div class="row" id="img4">
-                <div class="field col-12" id="img4">
+            <div class="row" id="img-home-4">
+                <div class="field col-12" id="img-home-3">
                     <p>Image slider</p>
 
-                    {{ form_errors(formleshow.img4) }}
-                    {{ form_widget(formleshow.img4, {'attr': {"class":'img'}}) }}
+                    {{ form_errors(formhome.img2) }}
+                    {{ form_widget(formhome.img2, {'attr': {"class":'img'}}) }}
 
                 </div>
                 <div class="offset-lg-2 d-md-none d-lg-block"></div>
 
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt4) }}
-                    {{ form_widget(formleshow.img_alt4, {'attr': {"class":'alt'}}) }}
-                </div>
-                <div class="field col-12">
-                    <p>texte slider 2</p>
-                    {{ form_errors(formleshow.sl_caption2) }}
-                    {{ form_widget(formleshow.sl_caption2, {'attr': {"class":'alt'}}) }}
-
+                    {{ form_errors(formhome.ImgAlt3) }}
+                    {{ form_widget(formhome.ImgAlt3, {'attr': {"class":'alt'}}) }}
                 </div>
                 <div class="col-md-4 col-lg-4">
                     <label for="img5-field">Autre image ?</label>
                     <input type="checkbox" class="case" id="img5-field"
                            name="img5"
-                           onclick="showHideImg5()">
+                           onclick="showHideImgHome4()">
                 </div>
 
                 <hr class="col-11">
             </div>
-            <div class="row" id="img5">
+            <div class="row" id="img-home-4">
                 <div class="field col-lg-4 col-12">
                     <p>Image slider</p>
 
-                    {{ form_errors(formleshow.img5) }}
-                    {{ form_widget(formleshow.img5, {'attr': {"class":'img'}}) }}
+                    {{ form_errors(formhome.img4) }}
+                    {{ form_widget(formhome.img4, {'attr': {"class":'img'}}) }}
 
                 </div>
 
                 <div class="offset-lg-2 d-md-none d-lg-block"></div>
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt5) }}
-                    {{ form_widget(formleshow.img_alt5, {'attr': {"class":'alt'}}) }}
-
-                </div>
-                <div class="field col-12">
-                    <p>texte slider 3</p>
-                    {{ form_errors(formleshow.sl_caption3) }}
-                    {{ form_widget(formleshow.sl_caption3, {'attr': {"class":'alt'}}) }}
+                    {{ form_errors(formhome.ImgAlt5) }}
+                    {{ form_widget(formhome.ImgAlt5, {'attr': {"class":'alt'}}) }}
 
                 </div>
                 <div class="col-md-4 col-lg-4">
                     <label for="img6-field">Autre image ?</label>
                     <input type="checkbox" class="case" id="img6-field"
                            name="img6"
-                           onclick="showHideImg6()">
+                           onclick="showHideImgHome5()">
 
                 </div>
-
-                <hr class="col-11">
-            </div>
-            <div class="row" id="img6">
-                <div class="field col-lg-4 col-12">
-                    <p>Image slider</p>
-
-                    {{ form_errors(formleshow.img6) }}
-                    {{ form_widget(formleshow.img6, {'attr': {"class":'img'}}) }}
-
-                </div>
-                <div class="offset-lg-2 d-md-none d-lg-block"></div>
                 <div class="field col-12">
-                    <p>texte alternatif</p>
-                    {{ form_errors(formleshow.img_alt6) }}
-                    {{ form_widget(formleshow.img_alt6, {'attr': {"class":'alt'}}) }}
-
-                </div>
-                <div class="field col-md-12">
-                    <p>texte slider 4</p>
-                    {{ form_errors(formleshow.sl_caption4) }}
-                    {{ form_widget(formleshow.sl_caption4, {'attr': {"class":'alt'}}) }}
+                    <p>texte slider 3</p>
+                    {{ form_errors(formhome.sl_caption) }}
+                    {{ form_widget(formhome.sl_caption, {'attr': {"class":'alt'}}) }}
 
                 </div>
                 <hr class="col-11">
@@ -286,8 +194,8 @@
 
             <p class="col-md-12 col-lg-3">code d'intégration youtube</p>
             <p class="col-md-12 col-lg-9">
-                {{ form_errors(formleshow.youtube) }}
-                {{ form_widget(formleshow.youtube) }}
+                {{ form_errors(formhome.youtube) }}
+                {{ form_widget(formhome.youtube) }}
         </div>
 
     </div>
@@ -298,8 +206,8 @@
             genre
         </h2>
         <div class="field col-md-12 col-lg-3">
-            {{ form_errors(formleshow.genre) }}
-            {{ form_widget(formleshow.genre, {'attr': {"class":'genre'}}) }}
+            {{ form_errors(formhome.genre) }}
+            {{ form_widget(formhome.genre, {'attr': {"class":'genre'}}) }}
 
         </div>
         <div class="offset-lg-3 d-md-none d-lg-block"></div>
@@ -309,8 +217,8 @@
         </h2>
         <div class="offset-md-2 offset-lg-4"></div>
         <div class="field col-lg-4 col-md-8">
-            {{ form_errors(formleshow.creation_date) }}
-            {{ form_widget(formleshow.creation_date, {'attr': {"class":'date'}}) }}
+            {{ form_errors(formhome.creation_date) }}
+            {{ form_widget(formhome.creation_date, {'attr': {"class":'date'}}) }}
 
             <div class="offset-md-2 offset-lg-4"></div>
         </div>
@@ -322,8 +230,8 @@
             durée
         </h2>
         <div class="field col-md-6 col-lg-3">
-            {{ form_errors(formleshow.duree) }}
-            {{ form_widget(formleshow.duree) }}
+            {{ form_errors(formhome.duree) }}
+            {{ form_widget(formhome.duree) }}
 
         </div>
         <div class="offset-lg-3"></div>
@@ -336,16 +244,16 @@
             de
         </p>
         <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.min_age) }}
-            {{ form_widget(formleshow.min_age) }}
+            {{ form_errors(formhome.min_age) }}
+            {{ form_widget(formhome.min_age) }}
 
         </div>
         <p class="field col-md-6 col-lg-2">
             à
         </p>
         <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.max_age) }}
-            {{ form_widget(formleshow.max_age) }}
+            {{ form_errors(formhome.max_age) }}
+            {{ form_widget(formhome.max_age) }}
 
         </div>
         <hr class="col-md-11">
@@ -356,16 +264,16 @@
             de
         </p>
         <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.min_artist) }}
-            {{ form_widget(formleshow.min_artist) }}
+            {{ form_errors(formhome.min_artist) }}
+            {{ form_widget(formhome.min_artist) }}
 
         </div>
         <p class="field col-md-6 col-lg-2">
             à
         </p>
         <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.max_artist) }}
-            {{ form_widget(formleshow.max_artist) }}
+            {{ form_errors(formhome.max_artist) }}
+            {{ form_widget(formhome.max_artist) }}
 
         </div>
         <hr class="col-md-11">
@@ -373,16 +281,16 @@
             Tarif:
         </h2>
         <div class="field col-6">
-            {{ form_errors(formleshow.tarif) }}
-            {{ form_widget(formleshow.tarif) }}
+            {{ form_errors(formhome.tarif) }}
+            {{ form_widget(formhome.tarif) }}
 
         </div>
         <h2 class="field col-md-12 col-lg-6">
             Fiche technique
         </h2>
         <div class="field col-md-12 col-lg-6">
-            {{ form_errors(formleshow.fichetek) }}
-            {{ form_widget(formleshow.fichetek, {'attr': {"class":'img'}}) }}
+            {{ form_errors(formhome.fichetek) }}
+            {{ form_widget(formhome.fichetek, {'attr': {"class":'img'}}) }}
 
         </div>
 
@@ -392,14 +300,14 @@
     <div class="row">
         <div class="offset-6"></div>
         <div class="submit col-lg-4 col-md-6 ">
-            {{ form_widget(formleshow.submit, { 'label': 'Publier' } ) }}
+            {{ form_widget(formhome.submit, { 'label': 'Publier' } ) }}
         </div>
         <div class="offset-lg-2 offset-md-none offset-lg-block"></div>
     </div>
 
 
 
-    {{ form_end(formleshow) }}
+    {{ form_end(formhome) }}
 
 
 {% endblock %}

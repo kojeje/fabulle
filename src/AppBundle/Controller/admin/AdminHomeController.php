@@ -155,7 +155,7 @@
       et qui seront affichés grace à twig*/
       return $this->render('@App/admin/EditHome.html.twig',
         [
-          'formleshow' => $form->createView(),
+          'formhome' => $form->createView(),
           'leShows' => $leShows
         ]);
     }
