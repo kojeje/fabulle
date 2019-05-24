@@ -7,17 +7,12 @@
    */
   namespace AppBundle\Controller\admin;
 
-
-
   use AppBundle\Entity\Place;
   use AppBundle\Form\PlaceType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
   use Symfony\Component\HttpFoundation\File\Exception\FileException;
-
-
-
 
   class AdminPlaceController extends Controller
   {
@@ -29,7 +24,6 @@
     public function formCreatePlace(Request $request)
 
     {
-
       /* Création d'un nouveau formulaire à partir d'un gabarit "Pagetype" */
       $form = $this->createForm(PlaceType::class, new Place);
 

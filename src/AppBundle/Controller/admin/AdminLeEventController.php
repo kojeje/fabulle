@@ -10,15 +10,10 @@
 
 
   use AppBundle\Entity\LeEvent;
-  use AppBundle\Entity\LeShow;
   use AppBundle\Form\LeEventType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
-
-
-
-
 
 
   class AdminLeEventController extends Controller
@@ -35,8 +30,7 @@
 
       /* Création d'un nouveau formulaire à partir d'un gabarit "Eventtype" */
       $form = $this->createForm(LeEventType::class, new LeEvent);
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
+
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
       Donc la variable $form contient maintenant aussi les données de $_POST*/
       $form->handleRequest($request);
@@ -89,8 +83,8 @@
       et qui seront affichés dans la twig*/
       return $this->render('@App/admin/CreateLeEvent.html.twig',
         [
-          'formEvent' => $form->createView(),
-          'leShows' => $leShows
+          'formleEvent' => $form->createView(),
+
         ]);
 
     }

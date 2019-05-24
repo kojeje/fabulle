@@ -43,9 +43,9 @@
 
           [
             'class' => 'AppBundle\Entity\LeEvent',
-            'choice_label'=> function($event)
+            'choice_label'=> function($leEvent)
             {
-              return $event->getTitre().' - '.$event->getdate().' - '.$event->getLeshow();
+              return $leEvent->getTitre().' - '.$leEvent->getDate().' - '.$leEvent->getLeShow();
 
             },
           ]
@@ -66,86 +66,7 @@
           ]
         )
         ->add('img_alt1')
-
-        ->add('sub2')
-        ->add('text2', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '20',
-              'cols' => '50'
-            ]
-          ]
-        )
-        ->add('img2', FileType::class, [
-            'data_class' => null,
-            'label' => 'Image2 (jpg)'
-          ]
-        )
-
-        ->add('img_alt2')
-        ->add('sub3')
-        ->add('text3', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '20',
-              'cols' => '50'
-            ]
-          ]
-        )
-        ->add('sub4')
-        ->add('text4', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '20',
-              'cols' => '50'
-            ]
-          ]
-        )
-
-
-
-// Présence d'un slider (booléen)
-
-        ->add('slider_boolean', CheckboxType::class, [
-          'label'    => 'Cochez si presence d\'un slider photo',
-          'required' => true,
-
-        ])
-
-
-// Images du slider
-
-
-        ->add('img3', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt3')
-
-        ->add('img4', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt4')
-
-
-        ->add('img5', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt5')
-
-        ->add('img6', FileType::class, [
-            'data_class' => null,
-          ]
-        )
-        ->add('img_alt6')
-
-// Texte du slider
-        ->add('sl_caption')
+        ->add('img_title1')
 
 //--------------------------------------------------------------------
 

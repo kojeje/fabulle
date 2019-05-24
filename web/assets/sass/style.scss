@@ -1,6 +1,5 @@
 @import "partials/var";
 @import "partials/states";
-@import "partials/responsive";
 @import "partials/fonts";
 ::-webkit-scrollbar {									/* Scrollbars */
   width: 5px;
@@ -20,7 +19,7 @@ a{
 }
 h1, h2
 {
-  font-size: 25px;
+  font-size: 15px;
 }
 
 p
@@ -152,12 +151,12 @@ input{
 .statut_it
 {
   text-align: center;
-  font-size: 60px;
+  font-size: 30px;
 
 }
 .statut p
 {
-  font-size: 40px;
+  font-size: 25px;
   color: $link;
 }
 .corps
@@ -167,7 +166,8 @@ input{
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-
+  width: 98%;
+  margin: auto;
   margin-bottom: 50px;
 
 }
@@ -266,7 +266,7 @@ input{
   padding-top: 50px;
 }
 
-.show-line-edit,.show-line-trash,.add
+.show-line-edit,.show-line-trash
 {
   font-size: 30px;
   padding-top: 50px;
@@ -279,11 +279,7 @@ input{
 {
   color: greenyellow;
 }
-.fa-plus
-{
-  margin-right: 20px;
-  padding-top: 55px;
-}
+
 .header-popup-title
 {
   padding-top: 55px;
@@ -310,7 +306,12 @@ input{
   text-align: center;
   margin: auto;
 }
+.add-link
+{
+  padding-top: 55px;
+}
 .img
 {
   border: 1px solid $white ;
 }
+@import "partials/responsive";

@@ -17,9 +17,8 @@ function showHideVideo() {
 // Mettre les popups en display none au chargement de la page (s'applique sur le body)
 function hideAdminShowFieldandPopup() {
     // Menus d'édition rapide
-        // Show
+    // Show
     document.getElementById('shows-admin-menu').style.display ='none';
-
     // Formulaire Show (images slider)
     document.getElementById('img4').style.display ='none';
     document.getElementById('img5').style.display ='none';

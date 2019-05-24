@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="fr">
 <head>
-{% include "@App/default/head.html.twig" %}
+    {% include "@App/default/head.html.twig" %}
 </head>
-
-
+<body onload="hideAdminShowFieldandPopup()">
+{% block tmp_slide %}{% endblock %}
+{% include '@App/default/header.html.twig'%}
+{% block content %}{% endblock %}
+{% include "@App/default/footer.html.twig" %}
 {% include "@App/default/up.html.twig" %}
 {% include "@App/default/script.html.twig" %}
-<body>
-
 </body>
 </html>

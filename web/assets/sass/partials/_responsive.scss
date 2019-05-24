@@ -14,8 +14,13 @@
     height: 20vh;
   }
   h1
-  {font-size: 40px;}
-
+  {
+    font-size: 40px;
+  }
+  h2
+  {
+    font-size: 25px;
+  }
   iframe
   {
     width: 100%;
@@ -283,7 +288,7 @@
   }
 
 
-;
+
 
   .a-l-affiche
   {
@@ -350,7 +355,10 @@
     font-size: 14px;
   }
 
-
+  .statut_it
+  {
+    font-size: 60px;
+  }
 
   .town-mini
   {
@@ -581,6 +589,12 @@
     width: 45%;
     padding-top: 10vh;
     padding-left: 20px;
+  }
+
+  .fa-times
+  {
+    padding-top: 55px;
+    font-size: 26px;
   }
   .ad
   {

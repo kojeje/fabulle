@@ -51,7 +51,7 @@
 
         $post = $repository->find($id);
 
-        return $this->render('@App/pages/Post.html.twig',
+        return $this->render('@App/admin/Post.html.twig',
           [
             'post' => $post
 
