@@ -27,7 +27,7 @@
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
 
-      return $this->render("@App/default/home.html.twig",
+      return $this->render("@App/home.html.twig",
         [
           'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
           'leShows' => $leShows,

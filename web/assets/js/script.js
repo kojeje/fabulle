@@ -14,6 +14,7 @@ function showHideVideo() {
         document.getElementById('video').style.display = 'none';
     }
 }
+
 // Mettre les popups en display none au chargement de la page (s'applique sur le body)
 function hideAdminShowFieldandPopup() {
     // Menus d'édition rapide
@@ -30,6 +31,12 @@ function hideAdminShowFieldandPopup() {
 function showAdminPopup() {
     if(document.getElementById('popup-header-show-open').click) {
         document.getElementById('shows-admin-menu').style.display = 'block';
+    }
+}
+//Masquer popup show en cliquant sur la croix
+function hideAdminShowPopup() {
+    if (document.getElementById('popup-header-show-close').click){
+        document.getElementById('show-admin-menu').style.display = 'none';
     }
 }
 

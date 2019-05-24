@@ -336,6 +336,10 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="leShow")
      */
     private $referencies;
+    /**
+     * @ORM\ManyToOne(targetEntity="Home", inversedBy="leShow")
+     */
+    private $home;
 
 //------------------------------------------------------------------------------
     //  Getters & Setters
@@ -919,6 +923,22 @@
     public function setReferencies($referencies): void
     {
       $this->referencies = $referencies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHome()
+    {
+      return $this->home;
+    }
+
+    /**
+     * @param mixed $home
+     */
+    public function setHome($home): void
+    {
+      $this->home = $home;
     }
 
     /**

@@ -122,19 +122,19 @@
               } catch (FileException $e) {
                 echo $e->getMessage();
               }
-
+              // important alimente nouveau nom fichier image
               $setImg = 'setImg' . $i;
               $img->$setImg($filename);
             }
           }
 
-//        Upload du fichier pdf (fiche technique du spectacle)
+          // Upload du fichier pdf (fiche technique du spectacle)
 
           $tek = $form->getData();
           $getFichetek = 'getFichetek';
           $File = $tek->$getFichetek();
 
-          /* Si il y a une image*/
+          /* Si il y a un fichier*/
           if (!is_null($File)) {
             $filename = md5(uniqid()) . '.' . $File->guessExtension();
 

@@ -217,7 +217,7 @@ input { display: block; width: 100%; height: 60px; }
   .h1-event span { text-align: center; padding: 10px; border-left: 1px solid #ffffff; border-bottom: 1px solid #ffffff; display: block; width: 70%; font-size: 25px; color: #ffce30; }
   .h1-event2 span { width: 90%; }
   .event { width: 45%; padding-top: 10vh; padding-left: 20px; }
-  .fa-times { padding-top: 55px; font-size: 26px; }
+  .fa-times { padding-top: 55px; font-size: 40px; }
   .ad { font-size: 12px; }
   .ad strong { font-size: 14px; color: #ffce30; }
   .adress { padding-top: 30px; padding-left: 30px; }

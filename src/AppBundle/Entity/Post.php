@@ -124,6 +124,11 @@
      */
     private $leShow;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Home", inversedBy="post")
+     */
+    private $home;
+
 //------------------------------------------------------------------------------
     //  Getters & Setters
 
@@ -318,6 +323,24 @@
     {
       $this->leShow = $leShow;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getHome()
+    {
+      return $this->home;
+    }
+
+    /**
+     * @param mixed $home
+     */
+    public function setHome($home): void
+    {
+      $this->home = $home;
+    }
+
+
 
 
 

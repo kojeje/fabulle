@@ -84,6 +84,11 @@
      */
     private $place;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Home", inversedBy="leEvent")
+     */
+    private $home;
+
 //------------------------------------------------------------------------------
     //  Getters & Setters
 
@@ -262,6 +267,22 @@
     public function setCategory($category): void
     {
       $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHome()
+    {
+      return $this->home;
+    }
+
+    /**
+     * @param mixed $home
+     */
+    public function setHome($home): void
+    {
+      $this->home = $home;
     }
 
 
