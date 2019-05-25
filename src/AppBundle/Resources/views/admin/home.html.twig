@@ -8,24 +8,24 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img3) }}" alt="First slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img2) }}" alt="First slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img4) }}" alt="Second slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img3) }}" alt="Second slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img5) }}" alt="Third slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img4) }}" alt="Third slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img6) }}" alt="Fourth slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img5) }}" alt="Fourth slide">
             </div>
         </div>
         <div class="carousel-caption d-none d-md-block caption caption2">
             <!-- texte -->
-            {{ Home.SlCaption }}
+            {{ home.SlCaption }}
             <!-- BOUTONS SCROLL-->
             <a href="#article-anch" class="anch">
                 <div class="button button-h">
@@ -72,15 +72,16 @@
                     <div class="img-alt-home d-md-block d-none">
                         <img src="{{ asset('assets/uploads/'~home.Img1) }}" alt="{{ home.ImgAlt1 }}" class="thumb-medal flex-thumb thumb-medal2">
                     </div>
+                    <!-- Titre paragraphe -->
+                    <h2 class="article-h1 article-h2">
+                        {{ home.titre }}
+                    </h2>
+                    <!-- Texte -->
+                    <p>
+                        {{home.text1}}
+                    </p>
                 </div>
-                <!-- Titre paragraphe -->
-                <h2 class="article-h1 article-h2">
-                    {{ home.titre }}
-                </h2>
-                <!-- Texte -->
-                <p>
-                    {{home.text1}}
-                </p>
+
                 <div class="offset-md-2"></div>
             </section>
         </div>
@@ -90,7 +91,7 @@
     <section class="article-loop article-loop2 video-bloc container-fluid">
         <div class="article-content row">
             <div class="article-loop video-content col-10 col-md-6" id="video">
-                {{ home.youtube }}
+                {{ home.youtube|raw }}
             </div>
             <div class="offset-lg-1 d-none d-lg-block video-offset"></div>
             <div class="title-bloc video-title-bloc col-md-5">
@@ -125,7 +126,7 @@
             </a>
         </div>
 
-        {% for show in shows %}
+        {% for leShow in leShows %}
 
             {% if leShow.DispoBoolean == true %}
 
@@ -135,11 +136,11 @@
                             {{ leShow.titre }}
                         </h2>
                         <div class="thumb-medal thumb-medal2 col-12 col-md-6">
-                            <img src="{{leShow.Img1}}" alt="{{ leShow.ImgAlt }}" class="affiche">
+                            <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}" class="affiche">
                         </div>
                         <div class="offset-md-6 d-md-block d-none"></div>
                         <p class=" medal-text col-md-12">
-                            {{ show.preview.read_more('lire la suite') }}
+                            {{ leShow.Text1 }}
                         </p>
                     </a>
                 </div>
@@ -150,37 +151,38 @@
 
     </section>
 
-    <a id="article-anch4" class="d-none d-md-block"></a>
-    <div class="article-loop row article-loop2 container-fluid event-list">
-        <h2 class="article-h1 h1-event-list col-md-5 col-12"><i class="fal fa-calendar"></i> Nous voir</h2>
-        <div class="offset-md-7"></div>
+    {#<a id="article-anch4" class="d-none d-md-block"></a>#}
+    {#<div class="article-loop row article-loop2 container-fluid event-list">#}
+        {#<h2 class="article-h1 h1-event-list col-md-5 col-12"><i class="fal fa-calendar"></i> Nous voir</h2>#}
+        {#<div class="offset-md-7"></div>#}
 
-        {% for show in shows %}
-            {% if show.get_field('dispo') %}
-                {% for event in events %}
-                    {% if show.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}
-                        {% if "now"|date < event.get_field('field_5cb4d81344d45')  %}
+        {#{% for leShow in leShows %}#}
 
-                            <section class="container">
-                                <a class="row event-home-bloc" href="{{ event.link }}">
-                                    <div class="thumb thumb2 col-md-3 d-none d-md-block">
-                                        <img src="{{ show.thumbnail.src }}" alt="thumb">
-                                    </div>
-                                    <h2 class="article-h3 col-12 d-md-none d-block">{{ show.title }}</h2>
-                                    <div class="offset-2 d-md-none d-block"></div>
-                                    <p class="date-list col-md-3 col-8">{{ event.get_field('field_5cb4d81344d45') }}</p>
-                                    <div class="offset-2 d-md-none d-block"></div>
-                                    <p class="salle col-md-3 col-12">{{ event.get_field('field_5cb4e5ba17780') }}</p>
-                                    <p class="col-md-3 col-12">{{ event.get_field('field_5cb4e62317783') }} {{ event.get_field('field_5cb4e63d17784') }}</p>
-                                </a>
-                            </section>
+            {#{% if leShow.DispoBoolean == true %}#}
+                {#{% for event in events %}#}
+                    {#{% if show.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}#}
+                        {#{% if "now"|date < event.get_field('field_5cb4d81344d45')  %}#}
 
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
-    </div>
+                            {#<section class="container">#}
+                                {#<a class="row event-home-bloc" href="{{ event.link }}">#}
+                                    {#<div class="thumb thumb2 col-md-3 d-none d-md-block">#}
+                                        {#<img src="{{ show.thumbnail.src }}" alt="thumb">#}
+                                    {#</div>#}
+                                    {#<h2 class="article-h3 col-12 d-md-none d-block">{{ show.title }}</h2>#}
+                                    {#<div class="offset-2 d-md-none d-block"></div>#}
+                                    {#<p class="date-list col-md-3 col-8">{{ event.get_field('field_5cb4d81344d45') }}</p>#}
+                                    {#<div class="offset-2 d-md-none d-block"></div>#}
+                                    {#<p class="salle col-md-3 col-12">{{ event.get_field('field_5cb4e5ba17780') }}</p>#}
+                                    {#<p class="col-md-3 col-12">{{ event.get_field('field_5cb4e62317783') }} {{ event.get_field('field_5cb4e63d17784') }}</p>#}
+                                {#</a>#}
+                            {#</section>#}
+
+                        {#{% endif %}#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
+            {#{% endif %}#}
+        {#{% endfor %}#}
+    {#</div>#}
 
 
 

@@ -450,8 +450,6 @@
       $this->img_alt5 = $img_alt5;
     }
 
-
-
     /**
      * @param mixed $sl_caption
      */
@@ -523,8 +521,6 @@
     {
       $this->leShow = $leShow;
     }
-
-
 
 
 

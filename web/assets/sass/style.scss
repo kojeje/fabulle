@@ -6,6 +6,13 @@
   height: 14px;
   background: transparent;
 }
+
+body
+{
+  color: #ffffff;
+  background: #000F28;
+  width: 100%;
+}
 hr
 {
   height: 1px;
@@ -25,13 +32,6 @@ h1, h2
 p
 {
   word-break: break-word;
-}
-
-body
-{
-  color: #ffffff;
-  background: #000;
-  width: 100%;
 }
 textarea, text
 {
@@ -81,7 +81,7 @@ img
 
 .flash
 {
-  background:rgba(0,0,0,0.8);
+  background: transparent;
   color: $white;
   padding: 30px;
   font-size: 40px;
@@ -107,10 +107,17 @@ hr
   height: 2px !important;
   z-index: 500
 }
-input{
-  display:block;
+input {
+  display: block;
   width: 100%;
   height: 60px;
+}
+input, textarea{
+  background-color: #fff2e0;
+  color: #0c0042;
+  border-radius: 50px;
+  padding: 30px;
+  border: 2px solid $white
 }
 .links a
 {
@@ -121,7 +128,8 @@ input{
   position: sticky;
   top: 0;
   z-index: 1000;
-  background:rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(to bottom, #000000, #0d0108, #120314, #10081e, #000f28);
+  opacity: 0.8;
 }
 
 .links

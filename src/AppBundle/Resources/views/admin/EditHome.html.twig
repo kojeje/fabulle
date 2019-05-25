@@ -20,7 +20,7 @@
                 <h2 class="statut_it col-md-6 col-lg-4">{{ app.user.username }} !</h2>
                 <div class="offset-md-2 d-md-none d-lg-block"></div>
                 <p class="statut_it col-md-6 col-lg-6">
-                    <span>Créez votre spectacle ! </span>
+                    <span>Edition page d'accueil ! </span>
                 </p>
             </div>
             <div class="offset-lg-1 d-md-block d-lg-none"></div>
@@ -71,8 +71,8 @@
 
                     <div class="field">
                         <p>texte alternatif</p>
-                        {{ form_errors(formhome.ImgAlt1) }}
-                        {{ form_widget(formhome.ImgAlt1, {'attr': {"class":'alt'}}) }}
+                        {{ form_errors(formhome.img_alt1) }}
+                        {{ form_widget(formhome.img_alt1, {'attr': {"class":'alt'}}) }}
 
                         <p>infobulle</p>
                         {{ form_errors(formhome.img_title1) }}
@@ -104,37 +104,37 @@
 
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formhome.ImgAlt2) }}
-                    {{ form_widget(formhome.ImgAlt2, {'attr': {"class":'alt'}}) }}
+                    {{ form_errors(formhome.img_alt2) }}
+                    {{ form_widget(formhome.img_alt2, {'attr': {"class":'alt'}}) }}
                 </div>
 
             </div>
             <div class="col-md-4 col-lg-4">
-                <label for="img4-field">Autre image ?</label>
+                <label for="img3-home-field">Autre image ?</label>
                 <input type="checkbox" class="case" id="img3-home-field"
                        name="img4"
                        onclick="showHideImgHome3()">
             </div>
 
             <hr class="col-11">
-            <div class="row" id="img-home-4">
+            <div class="row" id="img-home-3">
                 <div class="field col-12" id="img-home-3">
                     <p>Image slider</p>
 
-                    {{ form_errors(formhome.img2) }}
-                    {{ form_widget(formhome.img2, {'attr': {"class":'img'}}) }}
+                    {{ form_errors(formhome.img3) }}
+                    {{ form_widget(formhome.img3, {'attr': {"class":'img'}}) }}
 
                 </div>
                 <div class="offset-lg-2 d-md-none d-lg-block"></div>
 
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formhome.ImgAlt3) }}
-                    {{ form_widget(formhome.ImgAlt3, {'attr': {"class":'alt'}}) }}
+                    {{ form_errors(formhome.img_alt3) }}
+                    {{ form_widget(formhome.img_alt3, {'attr': {"class":'alt'}}) }}
                 </div>
                 <div class="col-md-4 col-lg-4">
-                    <label for="img5-field">Autre image ?</label>
-                    <input type="checkbox" class="case" id="img5-field"
+                    <label for="img4-home-field">Autre image ?</label>
+                    <input type="checkbox" class="case" id="img4-home-field"
                            name="img5"
                            onclick="showHideImgHome4()">
                 </div>
@@ -153,14 +153,14 @@
                 <div class="offset-lg-2 d-md-none d-lg-block"></div>
                 <div class="field col-12">
                     <p>texte alternatif</p>
-                    {{ form_errors(formhome.ImgAlt5) }}
-                    {{ form_widget(formhome.ImgAlt5, {'attr': {"class":'alt'}}) }}
+                    {{ form_errors(formhome.img_alt4) }}
+                    {{ form_widget(formhome.img_alt4, {'attr': {"class":'alt'}}) }}
 
                 </div>
                 <div class="col-md-4 col-lg-4">
-                    <label for="img6-field">Autre image ?</label>
-                    <input type="checkbox" class="case" id="img6-field"
-                           name="img6"
+                    <label for="img5-field">Autre image ?</label>
+                    <input type="checkbox" class="case" id="img5-field"
+                           name="img5-field"
                            onclick="showHideImgHome5()">
 
                 </div>
@@ -172,7 +172,33 @@
                 </div>
                 <hr class="col-11">
             </div>
-        </div>
+
+            <div class="row" id="img-home-5">
+                <div class="field col-lg-4 col-12">
+                    <p>Image slider</p>
+
+                    {{ form_errors(formhome.img5) }}
+                    {{ form_widget(formhome.img5, {'attr': {"class":'img'}}) }}
+
+                </div>
+
+                <div class="offset-lg-2 d-md-none d-lg-block"></div>
+                <div class="field col-12">
+                    <p>texte alternatif</p>
+                    {{ form_errors(formhome.img_alt5) }}
+                    {{ form_widget(formhome.img_alt5, {'attr': {"class":'alt'}}) }}
+
+                </div>
+            </div>
+            <div class="field col-12">
+                <p>texte slider 3</p>
+                {{ form_errors(formhome.sl_caption) }}
+                {{ form_widget(formhome.sl_caption, {'attr': {"class":'alt'}}) }}
+
+            </div>
+            <hr class="col-11">
+
+
 
 
         {# VIDEO #}
@@ -199,102 +225,10 @@
         </div>
 
     </div>
+    </div>
 
     <div class="offset-lg-2 d-md-none d-lg-block"></div>
-    <div class="corps row">
-        <h2 class="field col--12 col-lg-6">
-            genre
-        </h2>
-        <div class="field col-md-12 col-lg-3">
-            {{ form_errors(formhome.genre) }}
-            {{ form_widget(formhome.genre, {'attr': {"class":'genre'}}) }}
 
-        </div>
-        <div class="offset-lg-3 d-md-none d-lg-block"></div>
-        <hr class="col-md-11">
-        <h2 class="field col-md-12 col-lg-6">
-            date de création
-        </h2>
-        <div class="offset-md-2 offset-lg-4"></div>
-        <div class="field col-lg-4 col-md-8">
-            {{ form_errors(formhome.creation_date) }}
-            {{ form_widget(formhome.creation_date, {'attr': {"class":'date'}}) }}
-
-            <div class="offset-md-2 offset-lg-4"></div>
-        </div>
-        <div class="offset-lg-3"></div>
-        <hr class="col-11">
-
-
-        <h2 class="field col-6 col-md-6">
-            durée
-        </h2>
-        <div class="field col-md-6 col-lg-3">
-            {{ form_errors(formhome.duree) }}
-            {{ form_widget(formhome.duree) }}
-
-        </div>
-        <div class="offset-lg-3"></div>
-        <hr class="col-md-11">
-
-        <h2 class="field col-md-12 col-lg-12">
-            ages:
-        </h2>
-        <p class="field col-md-6 col-lg-2">
-            de
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formhome.min_age) }}
-            {{ form_widget(formhome.min_age) }}
-
-        </div>
-        <p class="field col-md-6 col-lg-2">
-            à
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formhome.max_age) }}
-            {{ form_widget(formhome.max_age) }}
-
-        </div>
-        <hr class="col-md-11">
-        <h2 class="field col-md-12 col-lg-12">
-            nombre d'artistes:
-        </h2>
-        <p class="field col-md-6 col-lg-2">
-            de
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formhome.min_artist) }}
-            {{ form_widget(formhome.min_artist) }}
-
-        </div>
-        <p class="field col-md-6 col-lg-2">
-            à
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formhome.max_artist) }}
-            {{ form_widget(formhome.max_artist) }}
-
-        </div>
-        <hr class="col-md-11">
-        <h2 class="field col-6">
-            Tarif:
-        </h2>
-        <div class="field col-6">
-            {{ form_errors(formhome.tarif) }}
-            {{ form_widget(formhome.tarif) }}
-
-        </div>
-        <h2 class="field col-md-12 col-lg-6">
-            Fiche technique
-        </h2>
-        <div class="field col-md-12 col-lg-6">
-            {{ form_errors(formhome.fichetek) }}
-            {{ form_widget(formhome.fichetek, {'attr': {"class":'img'}}) }}
-
-        </div>
-
-    </div>
 
 
     <div class="row">
