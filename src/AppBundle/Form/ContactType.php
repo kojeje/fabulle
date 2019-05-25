@@ -15,6 +15,7 @@
     use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
     use Symfony\Component\Form\Extension\Core\Type\IntegerType;
     use Symfony\Component\Form\Extension\Core\Type\FileType;
+    use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
     use Symfony\Component\Validator\Constraints\Email;
     use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -23,6 +24,9 @@
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             $builder
+// ------------------------------------------------------------------------------
+//      Données personnelles de l'expéditeur du message
+//      -------------------------------------------------------------------------
               // Civilité
               ->add('civilité', TextType::class, [
                 'attr' => [
@@ -58,7 +62,7 @@
               );
               // date de naissance
             $builder
-                ->add('creation_date', DateType::class, [
+                ->add('birth_date', DateType::class, [
                   'placeholder' => 'date de naissance',
                   'widget' => 'choice',
                   'years' => range(1912, 2012),
@@ -67,19 +71,28 @@
                 )
               // Statut de l'expéditeur
 
-              ->add('statut', ChoiceType::class, [
-                  'attr' => [
-                    'placeholder' => 'Vous êtes: ',
-                    'choices' => [
-                      'Diffuseur/programmateur de spectacles' => 'diffuseur',
-                      'Un Spectateur' => 'spectateur',
-                      'Autre' => 'autre'
+              ->add('statut', ChoiceType::class,
+                  [
+                    'attr' => [
+                      'placeholder' => 'Vous êtes: ',
+                      'choices' => [
+                          'Diffuseur/programmateur de spectacles' => 'diffuseur',
+                          'Un Spectateur' => 'spectateur',
+                          'Autre' => 'autre',
+                          'constraints' => [
+                            new NotBlank(
+                              [
+                                "message" => "Veuillez renseigner votre nom"
+                              ]
+                            )
+                        ]
+                      ]
                     ]
                   ]
-                ]
-              )
+                )
               // téléphone
-                ->add('tel', TelType::class, [
+                ->add('tel', TelType::class,
+                [
                   'attr' => [
                     'placeholder' => 'telephone'
                   ]
@@ -87,7 +100,8 @@
               )
 
               // adresse 1
-              ->add('add1', TextType::class, [
+              ->add('ad2', TextType::class,
+                [
                   'attr' => [
                     'placeholder' => 'adresse1'
                   ]
@@ -95,35 +109,34 @@
               )
 
               // adresse 2
-              ->add('add1', TextType::class, [
+              ->add('ad2', TextType::class,
+                [
                   'attr' => [
                     'placeholder' => 'adresse1'
                   ]
                 ]
               )
-
+              // CP
               ->add('ZIP', IntegerType::class,
                 [
                   'attr' => [
                     'placeholder' => 'code postal'
                   ]
                 ])
-
+              // Ville
               ->add('town', TextType::class,
                 [
                   'attr' => [
                     'placeholder' => 'Ville'
                   ]
                 ])
-
+              // Pays
               ->add('country', CountryType::class,
                 [
                   'attr' => [
                   'placeholder' => 'Country'
                 ]
               ])
-
-
               // Email
                 ->add('email', EmailType::class,
                 array(
@@ -137,7 +150,10 @@
                           "message" => "l'adresse email saisie semble invalide")),
                     )
                 ))
-
+// ------------------------------------------------------------------------------
+//      Message
+//      -------------------------------------------------------------------------
+              // Objet
               ->add('subject', TextType::class,
                 array(
                   'attr' => array(
@@ -148,6 +164,7 @@
                     "message" => "Merci saisir le sujet de votre message")),
                 )
               ))
+              // Corps du message
                 ->add('message', TextareaType::class,
                     array(
                         'attr' => array(
@@ -158,11 +175,30 @@
                         )
                     )
                 )
-
-
-
-
-            ;
+//              // Pièce Jointe
+//              ->add('file', FileType::class,
+//                [
+//                    'attr' => [
+//                      'placeholder' => 'piece jointe'
+//                    ]
+//                ])
+              // Newsletter
+              ->add('newsletter', CheckboxType::class,
+                [
+                  'required' => true
+                ])
+              // Consentement RGPD
+              ->add('consentement', TextType::class,
+                [
+                  'constraints' => [
+                    new NotBlank(
+                      [
+                        "message" => "Merci de saisir un message de consentement"
+                      ]
+                    )
+                  ]
+                ]
+              );
         }
 
         public function setDefaultOptions(OptionsResolver $resolver)

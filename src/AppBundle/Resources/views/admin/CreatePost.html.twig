@@ -132,15 +132,7 @@
 
             </div>
         </div>
-        <!--SLIDER-->
-        <div class="col-md-4 col-lg-4">
-            <label for="sl_boolean">presence d'un slider photo?</label>
-            <input type="checkbox" class="case" id="sl_boolean"
-                   name="sl_boolean"
-                   checked
-                   onclick="showHideSlider()">
 
-        </div>
 
 
 
@@ -171,99 +163,8 @@
 
     </div>
 
-    <div class="offset-lg-2 d-md-none d-lg-block"></div>
-    <div class="corps row">
-        <h2 class="field col--12 col-lg-6">
-            genre
-        </h2>
-        <div class="field col-md-12 col-lg-3">
-            {{ form_errors(formleshow.genre) }}
-            {{ form_widget(formleshow.genre, {'attr': {"class":'genre'}}) }}
-
-        </div>
-        <div class="offset-lg-3 d-md-none d-lg-block"></div>
-        <hr class="col-md-11">
-        <h2 class="field col-md-12 col-lg-6">
-            date de création
-        </h2>
-        <div class="offset-md-2 offset-lg-4"></div>
-        <div class="field col-lg-4 col-md-8">
-            {{ form_errors(formleshow.creation_date) }}
-            {{ form_widget(formleshow.creation_date, {'attr': {"class":'date'}}) }}
-
-            <div class="offset-md-2 offset-lg-4"></div>
-        </div>
-        <div class="offset-lg-3"></div>
-        <hr class="col-11">
 
 
-        <h2 class="field col-6 col-md-6">
-            durée
-        </h2>
-        <div class="field col-md-6 col-lg-3">
-            {{ form_errors(formleshow.duree) }}
-            {{ form_widget(formleshow.duree) }}
-
-        </div>
-        <div class="offset-lg-3"></div>
-        <hr class="col-md-11">
-
-        <h2 class="field col-md-12 col-lg-12">
-            ages:
-        </h2>
-        <p class="field col-md-6 col-lg-2">
-            de
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.min_age) }}
-            {{ form_widget(formleshow.min_age) }}
-
-        </div>
-        <p class="field col-md-6 col-lg-2">
-            à
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.max_age) }}
-            {{ form_widget(formleshow.max_age) }}
-
-        </div>
-        <hr class="col-md-11">
-        <h2 class="field col-md-12 col-lg-12">
-            nombre d'artistes:
-        </h2>
-        <p class="field col-md-6 col-lg-2">
-            de
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.min_artist) }}
-            {{ form_widget(formleshow.min_artist) }}
-
-        </div>
-        <p class="field col-md-6 col-lg-2">
-            à
-        </p>
-        <div class="field col-md-6 col-lg-2">
-            {{ form_errors(formleshow.max_artist) }}
-            {{ form_widget(formleshow.max_artist) }}
-
-        </div>
-        <hr class="col-md-11">
-        <h2 class="field col-6">
-            Tarif:
-        </h2>
-        <div class="field col-6">
-            {{ form_errors(formleshow.tarif) }}
-            {{ form_widget(formleshow.tarif) }}
-
-        </div>
-        <h2 class="field col-md-12 col-lg-6">
-            Fiche technique
-        </h2>
-        <div class="field col-md-12 col-lg-6">
-            {{ form_errors(formleshow.fichetek) }}
-            {{ form_widget(formleshow.fichetek, {'attr': {"class":'img'}}) }}
-
-        </div>
 
     </div>
 

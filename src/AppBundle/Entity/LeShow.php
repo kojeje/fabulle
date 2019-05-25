@@ -13,7 +13,7 @@
 
   //    Colonnes de la table
   /**
-   * @ORM\Table(name="leShow")
+   * @ORM\Table(name="contact")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\LeShowRepository")
    */
 
