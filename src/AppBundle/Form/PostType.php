@@ -23,12 +23,12 @@
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder
-        ->add('category',ChoiceType::class,
+        ->add('categorie',ChoiceType::class,
           [
             'choices' => [
               'Le petit mot' => 'le petit mot',
               'Actu' => 'actu',
-              'Histoire' => 'histoire'
+              'Page' => 'page'
             ]
           ]
         )
@@ -66,7 +66,45 @@
           ]
         )
         ->add('img_alt1')
-        ->add('img_title1')
+
+        ->add('img2', FileType::class, [
+            'data_class' => null,
+            'label' => 'Image2 (jpg)',
+          ]
+        )
+        ->add('img_alt2')
+
+//--------------------------------------------------------------------
+
+// SLIDER
+
+//--------------------------------------------------------------------
+// Images du slider
+
+
+        ->add('img3', FileType::class, [
+            'data_class' => null,
+          ]
+        )
+        ->add('img_alt3')
+
+        ->add('img4', FileType::class, [
+            'data_class' => null,
+          ]
+        )
+        ->add('img_alt4')
+
+
+        ->add('img5', FileType::class, [
+            'data_class' => null,
+          ]
+        )
+        ->add('img_alt5')
+
+
+
+// Textes du slider
+        ->add('sl_caption')
 
 //--------------------------------------------------------------------
 
@@ -74,11 +112,7 @@
 
 //--------------------------------------------------------------------
 
-// Présence d'une video (booléen)
-        ->add('video_boolean', CheckboxType::class, [
-          'label'    => 'Cochez si presence d\'un insert video',
-          'required' => false,
-        ])
+
 // Le cas échéant: code d'intégration
         ->add('youtube')
         ->add('submit', SubmitType::class)

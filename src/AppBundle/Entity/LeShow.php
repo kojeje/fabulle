@@ -13,7 +13,7 @@
 
   //    Colonnes de la table
   /**
-   * @ORM\Table(name="contact")
+   * @ORM\Table(name="leShow")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\LeShowRepository")
    */
 
@@ -308,14 +308,10 @@
 //  VIDEO
 //_____________________________________________________________
 
-
-
     /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $youtube;
-
-
 
 
 //------------------------------------------------------------------------------
@@ -332,14 +328,9 @@
      */
     private $post;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Referencies", mappedBy="leShow")
-     */
-    private $referencies;
-    /**
-     * @ORM\ManyToOne(targetEntity="Home", inversedBy="leShow")
-     */
-    private $home;
+
+
+
 
 //------------------------------------------------------------------------------
     //  Getters & Setters
@@ -909,37 +900,8 @@
       $this->post = $post;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getReferencies()
-    {
-      return $this->referencies;
-    }
 
-    /**
-     * @param mixed $referencies
-     */
-    public function setReferencies($referencies): void
-    {
-      $this->referencies = $referencies;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getHome()
-    {
-      return $this->home;
-    }
-
-    /**
-     * @param mixed $home
-     */
-    public function setHome($home): void
-    {
-      $this->home = $home;
-    }
 
     /**
      * @return mixed
@@ -989,5 +951,20 @@
       $this->img_title2 = $img_title2;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getVideoBoolean()
+    {
+      return $this->video_boolean;
+    }
 
-      }
+    /**
+     * @param mixed $video_boolean
+     */
+    public function setVideoBoolean($video_boolean): void
+    {
+      $this->video_boolean = $video_boolean;
+    }
+
+}

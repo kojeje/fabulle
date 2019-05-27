@@ -11,34 +11,34 @@
 
         <nav class="nav d-none d-lg-block col-lg-8">
             <div class="links d-flex justify-content-around">
-                <p class="link" id="popup-header-show-open" onclick="showAdminPopup()">
-                    Spectacles
-                </p>
-                {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
+                <a href="{{ path('admin_shows') }}">
+                    <p class="link" id="popup-header-show-open">
+                        Spectacles
+                    </p>
+                </a>
 
-                <p class="link" id="popup-header-event-open" onclick="eventAdminPopup()">
-                    Evènements
-                </p>
-                {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}
+                <a href="">
+                    <p class="link" id="popup-header-event-open">
+                        Evènements
+                    </p>
+                </a>
+                <a href="{{ path('admin_posts') }}">
+                    <p class="link" id="popup-header-post-open">
+                        Articles
+                    </p>
+                </a>
 
-                <p class="link" id="popup-header-post-open" onclick="postAdminPopup()">
-                    Articles
-                </p>
-                {% include '@App/admin/partials/popup/admin_posts_dropdown.html.twig' %}
-
-                <p class="link" id="popup-header-places-open" onclick="placeAdminPopup()">
-                    Lieux
-                </p>
-                {% include '@App/admin/partials/popup/admin_places_dropdown.html.twig' %}
-                <p class="link" id="popup-header-referencies-open" onclick="referenciesAdminPopup()">
-                    Réferences
-                </p>
-                {% include '@App/admin/partials/popup/admin_referencies_dropdown.html.twig' %}
-                <p>
-                    <a href="{{ path('fos_user_security_logout') }}">
+                <a href="">
+                    <p class="link" id="popup-header-places-open" onclick="placeAdminPopup()">
+                        Lieux
+                    </p>
+                </a>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    <p>
                         logout
-                    </a>
-                </p>
+                    </p>
+                </a>
+
             </div>
         </nav>
 

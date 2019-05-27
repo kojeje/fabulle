@@ -21,12 +21,10 @@
       $queryBuilder =$this
         ->createQueryBuilder('s');
       $query = $queryBuilder
-        ->leftJoin('s.post', 'p')
-        ->leftJoin('s.leEvent', 'e')
+
         ->select('s')
-        ->addSelect('p')
-        ->addSelect('e')
-//      Permet de définir un paramètre de requete de maniere sécurisée
+
+//  Permet de définir un paramètre de requete de maniere sécurisée
         ->setParameter('leShow', $leShow)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
         ->getQuery();

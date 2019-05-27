@@ -28,17 +28,17 @@
 
 // --------------------------------
 
-    // date de publication
-
-    public function __construct()
-    {
-      $this->setPubliele(new \DateTime());
-    }
-    /**
-     * @ORM\Column(type="datetimetz", nullable=true)
-     *
-     */
-    private $publiele;
+//    // date de publication
+//
+//    public function __construct()
+//    {
+//      $this->setPubliele(new \DateTime());
+//    }
+//    /**
+//     * @ORM\Column(type="datetimetz", nullable=true)
+//     *
+//     */
+//    private $publiele;
 
 
 
@@ -80,7 +80,7 @@
     private $statut;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="integer", length=10, nullable=true)
      *
      */
 
@@ -121,7 +121,7 @@
     private $country;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="simple_array", nullable=true)
      *
      */
 

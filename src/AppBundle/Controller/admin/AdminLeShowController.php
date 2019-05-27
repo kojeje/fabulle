@@ -7,7 +7,10 @@
 
 
 
+  use AppBundle\Entity\LeEvent;
   use AppBundle\Entity\LeShow;
+  use AppBundle\Entity\Post;
+  use AppBundle\Entity\Place;
   use AppBundle\Form\LeShowType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
@@ -29,13 +32,22 @@
     public function listShowsAdminAction()
     {
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
-
       $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
 
+
+//      var_dump($leShows);die;
       return $this->render('@App/admin/shows.html.twig',
         [
-          'leShows' => $leShows
+          'leShows' => $leShows,
+          'leEvents' => $leEvents,
+          'posts' => $posts
+
         ]);
+
     }
 //-----------------------------------------------------------------------------------------
   // Afficher un spectacle en fonction de l'id avec fonction d'administration
@@ -47,19 +59,38 @@
     public function AdminShowIdAction($id)
 
     {
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    on récupère l'article en fonction de l'id
+      $leShow = $repository->find($id);
+//    on récupère l'ensemble des articles
+      $leShows = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    on récupère l'ensemble des articles
+      $posts = $repository->findAll();
 
 
-        $repository = $this->getDoctrine()->getRepository(LeShow::class);
-
-        $leShow = $repository->find($id);
-        $leShows = $repository->findAll();
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//      on récupère l'ensemble des articles
+      $places = $repository->findAll();
 
 
 
       return $this->render('@App/admin/show.html.twig',
           [
+            'leShows' => $leShows,
             'leShow' => $leShow,
-            'leShows' => $leShows
+            'posts' => $posts,
+            'leEvents' => $leEvents,
+
           ]);
 
 
@@ -76,8 +107,11 @@
 
     {
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
-
       $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
 
 
       /* Création d'un nouveau formulaire à partir d'un gabarit "LeShowType" */
@@ -200,11 +234,13 @@
       return $this->render('@App/admin/CreateLeShow.html.twig',
         [
           'formleshow' => $form->createView(),
-          'leShows' => $leShows
+          'leShows' => $leShows,
+          'posts' => $posts,
+          'leEvents' => $leEvents
         ]);
 
 
-//
+
 
     }
 //--------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,6 +257,11 @@
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShow = $repository->find($id);
       $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
+
 
       for ($i = 1; $i <= 6; $i++) {
 
@@ -346,7 +387,9 @@
         '@App/admin/CreateLeShow.html.twig',
         [
           'formleshow' => $form->createView(),
-          'leShows' => $leShows
+          'leShows' => $leShows,
+          'posts' => $posts,
+          'leEvents' => $leEvents
         ]
       );
     }
@@ -362,6 +405,11 @@
     {
       //je sélectionne mon entity : "LeShow"
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
       //je recupère l'entity manager de doctrine pour avoir la fonction "remove"
       $entityManager = $this->getDoctrine()->getManager();
       //je sélectionne l'id de mon objet
@@ -377,6 +425,12 @@
         'notice',
         'Le spectacle a été supprimé'
       );
-      return $this->redirectToRoute('admin_shows');
+      return $this->redirectToRoute('admin_shows',
+        [
+
+          'leShows' => $leShows,
+          'posts' => $posts,
+          'leEvents' => $leEvents
+        ]);
     }
   }

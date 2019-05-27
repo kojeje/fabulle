@@ -38,7 +38,7 @@ h1, h2 { font-size: 15px; }
 
 p { word-break: break-word; }
 
-textarea, text { width: 100%; }
+textarea, text { width: 100%; height: 50vh; }
 
 .case { display: block; margin: auto; width: 20px !important; height: 20px !important; }
 
@@ -66,7 +66,7 @@ hr { color: #ffffff !important; border: 2px solid #ffce30 !important; width: 100
 
 input { display: block; width: 100%; height: 60px; }
 
-input, textarea { background-color: #fff2e0; color: #0c0042; border-radius: 50px; padding: 30px; border: 2px solid #ffffff; }
+input, textarea, select { background-color: #fff2e0; color: #0c0042; border-radius: 10px; padding: 5px; border: 2px solid #ffffff; width: 98%; }
 
 .links a { color: #ffffff; }
 
@@ -86,15 +86,21 @@ input, textarea { background-color: #fff2e0; color: #0c0042; border-radius: 50px
 
 .corps { padding: 20px; border: 3px solid #ffb630; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; width: 98%; margin: auto; margin-bottom: 50px; }
 
-.corps p { text-align: center; }
+.corps p, input, select { text-align: center; font-size: 10px; }
 
-.case { width: 12px; height: 12px; margin: 20px; }
+.case { width: 12px; margin: 20px; }
+
+.dispo { display: flex; justify-content: space-around; }
+
+.dispo input { margin: 0; margin-bottom: 20px; display: block; }
 
 .createUser_logo { margin-bottom: 30px; font-size: 25px; color: #ffb630; }
 
 .submit button, .update, .delete { border: 2px solid #ffffff; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding: 10px; color: #ffffff !important; background: transparent; width: 100%; cursor: pointer; }
 
 .admin_link { display: block; width: 10%; }
+
+.capt { width: 80%; margin: auto; padding: 20px; border: 1px solid #ffffff; }
 
 .admin_container { width: 30%; margin: auto; display: flex; justify-content: space-between; }
 
@@ -134,8 +140,9 @@ input, textarea { background-color: #fff2e0; color: #0c0042; border-radius: 50px
 
 @media screen and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 20vh; }
-  h1 { font-size: 40px; }
+  h1 { font-size: 30px; }
   h2 { font-size: 25px; }
+  input { font-size: 12px; }
   iframe { width: 100%; height: 300px; }
   .nav { padding-top: 50px; }
   .logo { margin-bottom: 20px; }
@@ -238,7 +245,9 @@ input, textarea { background-color: #fff2e0; color: #0c0042; border-radius: 50px
   .hall { color: #000000; }
   .cie-line { margin-bottom: 25vh; }
   .contact-title h1 { font-size: 80px !important; }
-  #home-img img { width: 70% !important; height: auto !important; } }
+  #home-img img { width: 70% !important; height: auto !important; }
+  .corps p, label, select { font-size: 16px; }
+  select { display: block; width: 100%; margin: auto; } }
 @media screen and (min-width: 1026px) { .img { border: none !important; } }
 
 /*# sourceMappingURL=style.css.map */

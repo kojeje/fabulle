@@ -70,11 +70,6 @@
     //  Relations
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leEvent")
-     */
-    private $post;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LeShow", inversedBy="leEvent")
      */
     private $leShow;
@@ -84,13 +79,10 @@
      */
     private $place;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Home", inversedBy="leEvent")
-     */
-    private $home;
+
 
 //------------------------------------------------------------------------------
-    //  Getters & Setters
+//  Getters & Setters
 
     /**
      * @return mixed
@@ -122,6 +114,22 @@
     public function setPubliele($publiele): void
     {
       $this->publiele = $publiele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+      return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+      $this->category = $category;
     }
 
     /**
@@ -175,54 +183,6 @@
     /**
      * @return mixed
      */
-    public function getImg()
-    {
-      return $this->img;
-    }
-
-    /**
-     * @param mixed $img
-     */
-    public function setImg($img): void
-    {
-      $this->img = $img;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImgAlt()
-    {
-      return $this->img_alt;
-    }
-
-    /**
-     * @param mixed $img_alt
-     */
-    public function setImgAlt($img_alt): void
-    {
-      $this->img_alt = $img_alt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPost()
-    {
-      return $this->post;
-    }
-
-    /**
-     * @param mixed $post
-     */
-    public function setPost($post): void
-    {
-      $this->post = $post;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLeShow()
     {
       return $this->leShow;
@@ -235,7 +195,6 @@
     {
       $this->leShow = $leShow;
     }
-
 
     /**
      * @return mixed
@@ -256,34 +215,22 @@
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getPost()
     {
-      return $this->category;
+      return $this->post;
     }
 
     /**
-     * @param mixed $category
+     * @param mixed $post
      */
-    public function setCategory($category): void
+    public function setPost($post): void
     {
-      $this->category = $category;
+      $this->post = $post;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getHome()
-    {
-      return $this->home;
-    }
 
-    /**
-     * @param mixed $home
-     */
-    public function setHome($home): void
-    {
-      $this->home = $home;
-    }
+
+
 
 
   }

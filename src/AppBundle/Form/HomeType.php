@@ -2,7 +2,7 @@
 
   namespace AppBundle\Form;
 
-  use AppBundle\Entity\Home;
+  use AppBundle\Entity\Post;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -97,7 +97,7 @@
     public function configureOptions(OptionsResolver $resolver)
     {
       $resolver->setDefaults(array(
-        'data_class' => Home::class,
+        'data_class' => Post::class,
       ));
     }
 

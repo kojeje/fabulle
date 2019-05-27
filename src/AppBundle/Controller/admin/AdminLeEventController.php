@@ -10,6 +10,7 @@
 
 
   use AppBundle\Entity\LeEvent;
+  use AppBundle\Entity\LeShow;
   use AppBundle\Form\LeEventType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +19,49 @@
 
   class AdminLeEventController extends Controller
   {
+
+    // Afficher tous les spectacles avec droits d'administration
+
+
+    /**
+     * @Route("/admin/events", name="admin_events")
+     */
+    public function listEventsAdminAction()
+    {
+
+   $repository = $this->getDoctrine()->getRepository(Post::class);
+//    on récupère l'ensemble des articles
+      $posts = $repository->findAll();
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//      on récupère l'ensemble des articles
+      $places = $repository->findAll();
+
+
+
+
+
+//      var_dump($leShows);die;
+      return $this->render('@App/admin/events.html.twig',
+        [
+
+          'posts' => $posts,
+          'leShows' => $leShows,
+          'leEvents' => $leEvents,
+
+
+
+        ]);
+
+    }
+
 
     /**
      * @Route("/admin/create_event", name="create_event")
@@ -54,14 +98,14 @@
           /* Je "pousse" les données dans la Bdd*/
           $entityManager->flush();
 
-          // Renvoi de confirmation d'enregistrement Message flash
+          /* J'affiche les messages flash confirmant l'enregistrement */
           $this->addFlash(
             'notice-icon',
             '<i class="flash-icon success fal fa-check"></i>'
           );
           $this->addFlash(
             'notice',
-            'Votre évènement a bien été modifié!'
+            '<h1 class="h1-flash">L\'évènement a été enregistré</h1>'
           );
 
           return $this->redirectToRoute('admin_events');
@@ -74,8 +118,17 @@
             'notice',
             'Votre évènement n\'a pas été modifié!'
           );
+          /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
+          $this->addFlash(
+            'error-icon',
+            '<i class="flash-icon error fal fa-times"></i>'
+          );
+          $this->addFlash(
+            'error',
+            '<h1 class="h1-flash">L\'évènement n\'a été enregistré</h1>'
+          );
         }
-//      /* Je redirige ensuite sur la liste des pages*/
+//      /* Je redirige ensuite sur la liste des évènements*/
 
       }
 

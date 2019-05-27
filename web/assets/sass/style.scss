@@ -36,6 +36,7 @@ p
 textarea, text
 {
   width: 100%;
+  height: 50vh;
 }
 .case
 {
@@ -89,6 +90,7 @@ img
   display: flex;
   justify-content: center;
 }
+
 .genre, .date
 {
   border: 1px solid $link;
@@ -99,6 +101,7 @@ img
   width: 33%;
   text-align: center;
 }
+
 hr
 {
   color:#ffffff !important;
@@ -107,17 +110,23 @@ hr
   height: 2px !important;
   z-index: 500
 }
+.select
+{
+
+}
 input {
   display: block;
   width: 100%;
   height: 60px;
 }
-input, textarea{
+input, textarea, select
+{
   background-color: #fff2e0;
   color: #0c0042;
-  border-radius: 50px;
-  padding: 30px;
-  border: 2px solid $white
+  border-radius: 10px;
+  padding: 5px;
+  border: 2px solid $white;
+  width: 98%;
 }
 .links a
 {
@@ -179,14 +188,26 @@ input, textarea{
   margin-bottom: 50px;
 
 }
-.corps p
+.corps p, input, select
 {
-  text-align: center;}
+  text-align: center;
+  font-size:10px;
+}
 .case
 {
   width: 12px;
-  height: 12px;
   margin: 20px;
+}
+.dispo
+{
+  display: flex;
+  justify-content: space-around;
+}
+.dispo input
+{
+  margin: 0;
+  margin-bottom: 20px;
+  display: block;
 }
 .createUser_logo
 {
@@ -212,6 +233,14 @@ input, textarea{
   display: block;
   width: 10%;
 
+}
+
+.capt
+{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  border:1px solid $white
 }
 .admin_container
 {

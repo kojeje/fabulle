@@ -15,11 +15,15 @@
   }
   h1
   {
-    font-size: 40px;
+    font-size: 30px;
   }
   h2
   {
     font-size: 25px;
+  }
+  input
+  {
+    font-size: 12px;
   }
   iframe
   {
@@ -713,6 +717,17 @@
     width: 70% !important;
     height: auto !important;
   }
+  .corps p, label, select
+  {
+    font-size: 16px;
+  }
+  select
+  {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
+
 
 }
 

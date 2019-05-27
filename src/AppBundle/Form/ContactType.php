@@ -14,7 +14,7 @@
     use Symfony\Component\Form\Extension\Core\Type\TelType;
     use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
     use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-    use Symfony\Component\Form\Extension\Core\Type\FileType;
+//    use Symfony\Component\Form\Extension\Core\Type\FileType;
     use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
     use Symfony\Component\Validator\Constraints\Email;
     use Symfony\Component\Validator\Constraints\NotBlank;
@@ -24,119 +24,11 @@
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             $builder
-// ------------------------------------------------------------------------------
-//      Données personnelles de l'expéditeur du message
-//      -------------------------------------------------------------------------
-              // Civilité
-              ->add('civilité', TextType::class, [
-                'attr' => [
-                  'placeholder' => 'civilité',
-                  'choices' => [
-                    'Mme' => 'mme',
-                    'Mr' => 'mr'
-                  ]
-                ]
-              ]
-            )
-              // Nom
-                ->add('first_name', TextType::class, [
-                  'attr' => [
-                    'placeholder' => 'prénom'
-                  ]
-                ]
-              )
-              // Prénom
-                ->add('last_name', TextType::class, [
-                  'attr' => [
-                    'placeholder' => 'nom',
-                    'constraints' => [
-                      new NotBlank(
-                        [
-                          "message" => "Veuillez renseigner votre nom"
-                        ]
-                      )
-                    ]
-                  ]
-                ]
-
-              );
-              // date de naissance
-            $builder
-                ->add('birth_date', DateType::class, [
-                  'placeholder' => 'date de naissance',
-                  'widget' => 'choice',
-                  'years' => range(1912, 2012),
-
-                  ]
+              ->add('name', TextType::class, array('attr' => array('placeholder' => 'nom'),
+                'constraints' => array(
+                  new NotBlank(array("message" => "Veuillez renseigner votre nom")),
                 )
-              // Statut de l'expéditeur
-
-              ->add('statut', ChoiceType::class,
-                  [
-                    'attr' => [
-                      'placeholder' => 'Vous êtes: ',
-                      'choices' => [
-                          'Diffuseur/programmateur de spectacles' => 'diffuseur',
-                          'Un Spectateur' => 'spectateur',
-                          'Autre' => 'autre',
-                          'constraints' => [
-                            new NotBlank(
-                              [
-                                "message" => "Veuillez renseigner votre nom"
-                              ]
-                            )
-                        ]
-                      ]
-                    ]
-                  ]
-                )
-              // téléphone
-                ->add('tel', TelType::class,
-                [
-                  'attr' => [
-                    'placeholder' => 'telephone'
-                  ]
-              ]
-              )
-
-              // adresse 1
-              ->add('ad2', TextType::class,
-                [
-                  'attr' => [
-                    'placeholder' => 'adresse1'
-                  ]
-                ]
-              )
-
-              // adresse 2
-              ->add('ad2', TextType::class,
-                [
-                  'attr' => [
-                    'placeholder' => 'adresse1'
-                  ]
-                ]
-              )
-              // CP
-              ->add('ZIP', IntegerType::class,
-                [
-                  'attr' => [
-                    'placeholder' => 'code postal'
-                  ]
-                ])
-              // Ville
-              ->add('town', TextType::class,
-                [
-                  'attr' => [
-                    'placeholder' => 'Ville'
-                  ]
-                ])
-              // Pays
-              ->add('country', CountryType::class,
-                [
-                  'attr' => [
-                  'placeholder' => 'Country'
-                ]
-              ])
+              ))
               // Email
                 ->add('email', EmailType::class,
                 array(
@@ -174,7 +66,7 @@
                               "message" => "Merci de saisir un message"))
                         )
                     )
-                )
+                );
 //              // Pièce Jointe
 //              ->add('file', FileType::class,
 //                [
@@ -183,22 +75,22 @@
 //                    ]
 //                ])
               // Newsletter
-              ->add('newsletter', CheckboxType::class,
-                [
-                  'required' => true
-                ])
-              // Consentement RGPD
-              ->add('consentement', TextType::class,
-                [
-                  'constraints' => [
-                    new NotBlank(
-                      [
-                        "message" => "Merci de saisir un message de consentement"
-                      ]
-                    )
-                  ]
-                ]
-              );
+//              ->add('newsletter', CheckboxType::class,
+//                [
+//                  'required' => true
+//                ])
+//              // Consentement RGPD
+//              ->add('consentement', TextType::class,
+//                [
+//                  'constraints' => [
+//                    new NotBlank(
+//                      [
+//                        "message" => "Merci de saisir un message de consentement"
+//                      ]
+//                    )
+//                  ]
+//                ]
+//              );
         }
 
         public function setDefaultOptions(OptionsResolver $resolver)

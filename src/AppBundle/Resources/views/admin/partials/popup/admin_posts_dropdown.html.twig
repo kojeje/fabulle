@@ -1,0 +1,67 @@
+{#<div class="admin-menu" id="posts-admin-menu">#}
+    {#<header class="popup-header row">#}
+
+
+        {#<div class="col-2">#}
+            {#<img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="">#}
+        {#</div>#}
+        {#<div class="col-12 col-md-2 header-popup-title">ADMIN Spectacles</div>#}
+        {#<div class="col-6 col-md-2 ">#}
+            {#<a href="{{ path('admin_shows') }}" class="add-link">#}
+                {#Les Spectacles#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-6 col-md-2">#}
+            {#<a href="{{ path('create_show') }}" class="add-link">#}
+                {#<i class="add fal fa-plus"></i>#}
+                {#Ajouter#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-1 link" id="popup-header-show-close" onclick="hideAdminShowPopup()">#}
+            {#<i class="add fas fa-times"></i>#}
+        {#</div>#}
+    {#</header>#}
+
+
+
+    {#<hr class="separation">#}
+
+    {#{% for leShow in leShows %}#}
+        {#{% if leShow %}#}
+            {#<div class="show-line row">#}
+                {#<div class="col-1 show-line-thumb">#}
+                    {#<a href="{{ path('admin_show_id', {'id': leShow.id}) }}">#}
+                        {#<img class="menu-thumb" src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}">#}
+                    {#</a>#}
+
+                {#</div>#}
+                {#<div class="col-7 show-line show-line-titre">#}
+                    {#<a href="{{ path('admin_show_id', {'id': leShow.id}) }}">#}
+                        {#{{ leShow.titre }}#}
+                    {#</a>#}
+                {#</div>#}
+                {#<div class="col-2 show-line show-line-edit">#}
+                    {#<a href="{{ path('admin_update_show', {'id': leShow.id}) }}">#}
+                        {#<i class="fal fa-pen"></i>#}
+                    {#</a>#}
+                {#</div>#}
+                {#<div class="col-2 show-line show-line-trash">#}
+                    {#<a href="{{ path('admin_delete_show', {'id': leShow.id}) }}">#}
+                        {#<i class="fal fa-trash"></i>#}
+                    {#</a>#}
+                {#</div>#}
+
+            {#</div>#}
+            {#<hr class="separation">#}
+        {#{% else %}#}
+            {#<div class="none ">#}
+                {#<i class="fas fa-question col-4"></i>#}
+                {#<div class="col-8">#}
+                    {#Aucun spectacle créé ...#}
+                {#</div>#}
+            {#</div>#}
+        {#{% endif %}#}
+
+
+    {#{% endfor %}#}
+{#</div>#}

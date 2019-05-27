@@ -7,7 +7,7 @@
 
 
 
-  use AppBundle\Entity\Home;
+  use AppBundle\Entity\Post;
   use AppBundle\Entity\LeShow;
   use AppBundle\Form\HomeType;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +19,7 @@
 
 
 
-  class AdminHomeController extends Controller
+  class AdminPageController extends Controller
   {
     // Afficher tous les spectacles avec droits d'administration
 
@@ -31,17 +31,51 @@
      * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
-    public function AdminHomeIdAction()
+    public function AdminHomeidAction()
     {
-      $repository = $this->getDoctrine()->getRepository(Home::class);
-
+      $repository = $this->getDoctrine()->getRepository(Post::class);
       $home = $repository->find(1);
+      $posts = $repository->findAll();
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+
+
+
+      return $this->render('@App/admin/home.html.twig',
+        [
+          'home' => $home,
+          'leShows' => $leShows,
+          'posts' => $posts,
+          'leEvents' => $leEvents,
+
+        ]);
+
+
+    }
+
+    //-----------------------------------------------------------------------------------------
+    // Afficher PAGE "La Cie"
+    /**
+     * @Route("/admin/cie", name="admin_cie_id")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function AdminCieIdAction()
+    {
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $cie = $repository->find(2);
+
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
 
       return $this->render('@App/admin/home.html.twig',
         [
-          'home' => $home,
+          'cie' => $cie,
           'leShows' => $leShows
         ]);
 
@@ -60,11 +94,11 @@
 //     * @Route("/admin/create_home", name="create_home")
 //     */
 
-//    public function formCreateHome(Request $request)
+//    pages function formCreateHome(Request $request)
 //
 //    {
 //      /* Création d'un nouveau formulaire à partir d'un gabarit "LeShowType" */
-//      $form = $this->createForm(HomeType::class, new Home);
+//      $form = $this->createForm(HomeType::class, new Post);
 //
 //
 //      /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
@@ -176,7 +210,7 @@
 
       // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
       // puis ->find( spectacle )
-      $repository = $this->getDoctrine()->getRepository(Home::class);
+      $repository = $this->getDoctrine()->getRepository(Post::class);
       $home = $repository->find(1);
 
       for ($i = 1; $i <= 5; $i++) {

@@ -3,7 +3,7 @@
    * Created by PhpStorm.
    * User: jeromesuhard
    * Date: 03/04/2019
-   * Time: 22:17
+   * Time: 22:44
    */
 
   namespace AppBundle\Entity;
@@ -11,10 +11,9 @@
   use Symfony\Component\Validator\Constraints as Assert;
 
 
-
   //    Colonnes de la table
   /**
-   * @ORM\Table(name="post")
+   * @ORM\Table(name="Post")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
    */
 
@@ -22,19 +21,22 @@
   {
     /**
      * @ORM\Column(type="integer")
+     *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
+// --------------------------------
+
+    // date de publication
 
     public function __construct()
     {
       $this->setPubliele(new \DateTime());
     }
-
     /**
-     * @ORM\Column(type="datetimetz")
+     * @ORM\Column(type="datetimetz", nullable=true)
      *
      */
     private $publiele;
@@ -43,7 +45,8 @@
      * @ORM\Column(type="string")
      *
      */
-    private $category;
+
+    private $categorie;
 
     // --------------------------------
 
@@ -62,9 +65,11 @@
     // texte principal
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text" )
      * @Assert\Length(
-     *      max = 10000,
+     *      min = 50,
+     *      max = 100000,
+     *      minMessage = "La longueur minimum du contenu doit-être de {{ limit }} caractères",
      *      maxMessage = "La longueur maximum du contenu doit-être de {{ limit }} caractères"
      * )
      */
@@ -89,20 +94,83 @@
      */
     private $img_alt1;
 
+
+
+//--------------------------------------------------------------------
+//  SLIDER
+//_____________________________________________________________________
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img2;
+
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $img_title1;
+    private $img_alt2;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\File(maxSize="10000000",
+     * mimeTypes = {"image/jpeg", "image/png", "image/gif", "image/jpg"},
+     * mimeTypesMessage = "Ce fichier doit être une image (jpg, jpeg, png)"
+     * )
+     *
+     */
+    private $img3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt3;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img4;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt4;
+
+    // image slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img5;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_alt5;
+
+    // Caption slider
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $sl_caption;
 
 
 //-------------------------------------------------------------
 //  VIDEO
 //_____________________________________________________________
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $video_boolean;
+
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -111,11 +179,13 @@
 
 
 
-// ---------------------------------------------------------------------------
-//  Relations
+
+//------------------------------------------------------------------------------
+
+    // Relations
 
     /**
-     * @ORM\ManyToOne(targetEntity="LeEvent", inversedBy="post")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\LeEvent", cascade={"persist"})
      */
     private $leEvent;
 
@@ -124,13 +194,10 @@
      */
     private $leShow;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Home", inversedBy="post")
-     */
-    private $home;
+
 
 //------------------------------------------------------------------------------
-    //  Getters & Setters
+//  Getters & Setters
 
     /**
      * @return mixed
@@ -162,22 +229,6 @@
     public function setPubliele($publiele): void
     {
       $this->publiele = $publiele;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategory()
-    {
-      return $this->category;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategory($category): void
-    {
-      $this->category = $category;
     }
 
     /**
@@ -263,17 +314,145 @@
     /**
      * @return mixed
      */
-    public function getVideoBoolean()
+    public function getImg2()
     {
-      return $this->video_boolean;
+      return $this->img2;
     }
 
     /**
-     * @param mixed $video_boolean
+     * @param mixed $img2
      */
-    public function setVideoBoolean($video_boolean): void
+    public function setImg2($img2): void
     {
-      $this->video_boolean = $video_boolean;
+      $this->img2 = $img2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt2()
+    {
+      return $this->img_alt2;
+    }
+
+    /**
+     * @param mixed $img_alt2
+     */
+    public function setImgAlt2($img_alt2): void
+    {
+      $this->img_alt2 = $img_alt2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg3()
+    {
+      return $this->img3;
+    }
+
+    /**
+     * @param mixed $img3
+     */
+    public function setImg3($img3): void
+    {
+      $this->img3 = $img3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt3()
+    {
+      return $this->img_alt3;
+    }
+
+    /**
+     * @param mixed $img_alt3
+     */
+    public function setImgAlt3($img_alt3): void
+    {
+      $this->img_alt3 = $img_alt3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg4()
+    {
+      return $this->img4;
+    }
+
+    /**
+     * @param mixed $img4
+     */
+    public function setImg4($img4): void
+    {
+      $this->img4 = $img4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt4()
+    {
+      return $this->img_alt4;
+    }
+
+    /**
+     * @param mixed $img_alt4
+     */
+    public function setImgAlt4($img_alt4): void
+    {
+      $this->img_alt4 = $img_alt4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg5()
+    {
+      return $this->img5;
+    }
+
+    /**
+     * @param mixed $img5
+     */
+    public function setImg5($img5): void
+    {
+      $this->img5 = $img5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgAlt5()
+    {
+      return $this->img_alt5;
+    }
+
+    /**
+     * @param mixed $img_alt5
+     */
+    public function setImgAlt5($img_alt5): void
+    {
+      $this->img_alt5 = $img_alt5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlCaption()
+    {
+      return $this->sl_caption;
+    }
+
+    /**
+     * @param mixed $sl_caption
+     */
+    public function setSlCaption($sl_caption): void
+    {
+      $this->sl_caption = $sl_caption;
     }
 
     /**
@@ -327,20 +506,18 @@
     /**
      * @return mixed
      */
-    public function getHome()
+    public function getCategorie()
     {
-      return $this->home;
+      return $this->categorie;
     }
 
     /**
-     * @param mixed $home
+     * @param mixed $categorie
      */
-    public function setHome($home): void
+    public function setCategorie($categorie): void
     {
-      $this->home = $home;
+      $this->categorie = $categorie;
     }
-
-
 
 
 

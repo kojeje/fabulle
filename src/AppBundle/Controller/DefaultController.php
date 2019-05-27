@@ -5,34 +5,87 @@
    */
   namespace AppBundle\Controller;
 
+  use AppBundle\Form\ContactType;
   use AppBundle\Entity\LeEvent;
-  use AppBundle\Entity\LeShow;
   use AppBundle\Entity\Post;
+  use AppBundle\Entity\LeShow;
+
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-//  use Symfony\Component\HttpFoundation\Request;
+  use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
 
   class DefaultController extends Controller{
 
-    /**
-     * @Route("/", name="home")
-     */
-    public function HomeAction(){
+    public function AdminHomeidAction()
+    {
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $home = $repository->find(1);
+
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
 
+      return $this->render('@App/admin/home.html.twig',
+        [
+          'home' => $home,
+          'leShows' => $leShows
+        ]);
+
+
+    }
+
+    //-----------------------------------------------------------------------------------------
+    // Afficher PAGE "La Cie"
+    /**
+     * @Route("/admin/cie", name="admin_cie_id")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function AdminCieIdAction()
+    {
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $cie = $repository->find(2);
+
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
-
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
 
-      return $this->render("@App/home.html.twig",
+
+
+
+
+      return $this->render('@App/admin/home.html.twig',
         [
-          'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+          'posts' => $posts,
           'leShows' => $leShows,
           'leEvents' => $leEvents,
-          'posts' => $posts
+          'cie' => $cie
+        ]);
+
+
+    }
+    // Afficher tous les spectacles avec droits d'administration
+
+
+    /**
+     * @Route("/shows", name="shows")
+     */
+    public function listShowsAction()
+    {
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
+
+      return $this->render('@App/pages/shows.html.twig',
+        [
+          'posts' => $posts,
+          'leShows' => $leShows,
+          'leEvents' => $leEvents
         ]);
     }
 
@@ -41,6 +94,14 @@
      */
     public function contactAction(Request $request)
     {
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
+
+
       // Create the form according to the FormType created previously.
       // And give the proper parameters
       $form = $this->createForm(ContactType::class,null,array(
@@ -60,15 +121,18 @@
             // Everything OK, redirect to wherever you want ! :
 
             return $this->redirectToRoute('contact_success');
-          }else{
+          } else {
             // An error ocurred, handle
             var_dump("Errooooor :(");
           }
         }
       }
 
-      return $this->render('@App/public/contact.html.twig', array(
-        'form' => $form->createView()
+      return $this->render('@App/pages/contact.html.twig', array(
+        'form' => $form->createView(),
+        'posts' => $posts,
+        'leShows' => $leShows,
+        'leEvents' => $leEvents
       ));
     }
 
@@ -100,10 +164,20 @@
 
     public function ContactSuccessAction ()
     {
-      return $this->render("@App/public/contact_success.html.twig",
-        [
-          'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR
 
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
+
+      return $this->render("@App/pages/contact_success.html.twig",
+        [
+          'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+          'posts' => $posts,
+          'leShows' => $leShows,
+          'leEvents' => $leEvents
         ]);
 
     }
