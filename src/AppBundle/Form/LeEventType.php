@@ -5,6 +5,7 @@
 
 
   use AppBundle\Entity\LeEvent;
+  use AppBundle\Entity\LeShow;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,7 +28,7 @@
 
 
       $builder
-        ->add('category', ChoiceType::class,
+        ->add('categorie', ChoiceType::class,
           [
             'choice_label' => [
               'Spectacle' => 'spectacle',
@@ -47,25 +48,29 @@
           ]
         )
         ->add('date',DateType::class)
-
+        ->add('img')
         ->add('img_alt')
+        ->add('img_title')
+
 
         ->add('place',EntityType::class,
 
           [
-            'class' => 'AppBundle\Entity\Place',
+              'class' => 'AppBundle:Place',
 //            'choice_label' => 'nom',
-              'choice_label'=> function($place)
+              'choices'=> function($place)
               {
-                return $place->getNom().' - '.$place->getCP().' - '.$place->getCommune();
+                return $place->getDate().' - '.$place->getCP().' - '.$place->getCommune();
+
 
               },
+
           ]
         )
 
         ->add('leShow', EntityType::class,
           [
-            'class' => 'AppBundle\Entity\LeShow',
+            'class' => LeShow::class,
             'choice_label'=> function($leShow)
             {
 

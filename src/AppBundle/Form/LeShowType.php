@@ -131,7 +131,7 @@
         ->add('genre', ChoiceType::class,
           [
             'choices' => [
-              'Conte musical' => 'conte_musical',
+              'Conte musical' => 'conte musical',
               'Concert' => 'concert'
             ]
           ]

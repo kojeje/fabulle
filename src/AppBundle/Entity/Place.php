@@ -39,16 +39,12 @@
 
 
     /**
-     * @ORM\Column(type="string")
-     */
-
-    private $nom;
-
-    /**
      * @ORM\Column(type="string", nullable=true)
      */
 
-    private $description;
+    private $place_name;
+
+
 
 
 
@@ -93,7 +89,7 @@
     private $email;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="blob", nullable=true)
      *
      */
     private $gmap;
@@ -104,7 +100,7 @@
 // ---------------------------------------------------------------------------
 //  Relations
     /**
-     * @ORM\OneToMany(targetEntity="LeEvent", mappedBy="place")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="place")
      */
     private $leEvent;
 

@@ -1,65 +1,66 @@
-{#<div class="admin-menu" id="places-admin-menu" onload="hideAdminFieldandPopup()>#}
-    {#<header class="popup-header row">#}
+<div class="admin-menu" id="places-admin-menu">
+    <div class="popup-header row">
 
 
-            {#<div class="col-2">#}
-                {#<img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="">#}
-            {#</div>#}
-            {#<div class="col-4 header-popup-title">ADMIN Salles</div>#}
-            {#<div class="col-4 add-link">#}
-                {#<a href="{{ path('create_place') }}">#}
-                    {#<i class="add fal fa-plus"></i>#}
-                    {#Ajouter un spectacle#}
-                {#</a>#}
-            {#</div>#}
-            {#<div class="offset-1"></div>#}
+        <div class="col-2">
+            <img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">
+        </div>
+        <div class="col-12 col-md-2 header-popup-title">ADMIN Articles</div>
+        <div class="col-6 col-md-2 ">
+            <a href="{{ path('admin_places') }}" class="add-link">
+                Les articles
+            </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a href="{{ path('create_place') }}" class="add-link">
+                <i class="add fal fa-plus"></i>
+                Ajouter
+            </a>
+        </div>
+        <div class="col-1 link" id="popup-header-place-close" onclick="hideAdminPlacePopup()">
+            <i class="add fas fa-times"></i>
+        </div>
+    </div>
 
 
-        {#<div class="col-1 link" id="popup-header-place-close" onclick="hideAdminPlacePopup()">#}
-            {#<i class="add fas fa-times"></i>#}
-        {#</div>#}
-    {#</header>#}
+
+    <hr class="separation">
+    {% for place in places %}
 
 
+    <div class="show-line row">
 
-    {#<hr class="separation">#}
+        <div class="col-4 show-line show-line-titre">
+            <a href="{{ path('admin_place_id', {'id': place.id}) }}">
+                {{ place.nom }}
+            </a>
+        </div>
+        {#{% if place.leEvent.date %}#}
 
-    {#{% for Place in Places %}#}
-        {#{% if Place %}#}
-        {#<div class="show-line row">#}
-            {#<div class="col-1 show-line-thumb">#}
-                {#<a href="{{ path('admin_place_id', {'id': Place.id}) }}">#}
-                    {#<img class="menu-thumb" src="{{ asset('assets/uploads/'~Place.Img1) }}" alt="{{ Place.ImgAlt1 }}">#}
-                {#</a>#}
+        {#<div class="col-4 show-line show-line-titre">#}
+            {#<a href="{{ path('admin_place_id', {'id': place.id}) }}">#}
+                {#{{ place.leEvent.Date}}#}
 
-            {#</div>#}
-            {#<div class="col-7 show-line show-line-titre">#}
-                {#<a href="{{ path('admin_place_id', {'id': Place.id}) }}">#}
-                    {#{{ Place.titre }}#}
-                {#</a>#}
-            {#</div>#}
-            {#<div class="col-2 show-line show-line-edit">#}
-                {#<a href="{{ path('admin_update_place', {'id': Place.id}) }}">#}
-                {#<i class="fal fa-pen"></i>#}
-                {#</a>#}
-            {#</div>#}
-            {#<div class="col-2 show-line show-line-trash">#}
-                {#<a href="{{ path('admin_delete_place', {'id': Place.id}) }}">#}
-                    {#<i class="fal fa-trash"></i>#}
-                {#</a>#}
-            {#</div>#}
-
-        {#</div>#}
-        {#<hr class="separation">#}
-        {#{% else %}#}
-        {#<div class="none ">#}
-            {#<i class="fas fa-question col-4"></i>#}
-            {#<div class="col-8">#}
-                {#Aucun spectacle créé ...#}
-            {#</div>#}
+            {#</a>#}
         {#</div>#}
         {#{% endif %}#}
 
+        <div class="col-2 show-line show-line-edit">
+            <a href="{{ path('admin_update_place', {'id': place.id}) }}">
+                <i class="fal fa-pen"></i>
+            </a>
+        </div>
+        <div class="col-2 show-line show-line-trash">
+            <a href="{{ path('admin_delete_place', {'id': place.id}) }}">
+                <i class="fal fa-trash"></i>
+            </a>
+        </div>
+        <hr class="separation">
+    </div>
+    {% endfor %}
+</div>
 
-    {#{% endfor %}#}
-{#</div>#}
+
+
+
+

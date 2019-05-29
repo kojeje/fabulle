@@ -3,11 +3,11 @@
 <head>
     {% include "@App/default/head.html.twig" %}
 </head>
-<body onload="hideAdminShowFieldandPopup()">
+<body id="body" onload="hideAdminPpopup() ; hideAdmin()" >
 {% block tmp_slide %}{% endblock %}
-{% include '@App/default/header.html.twig'%}
+{% include "@App/default/header.html.twig" %}
+{% block form %}{% endblock %}
 {% block content %}{% endblock %}
-{% block contact_form %}{% endblock %}
 {% include "@App/default/footer.html.twig" %}
 {% include "@App/default/up.html.twig" %}
 {% include "@App/default/script.html.twig" %}

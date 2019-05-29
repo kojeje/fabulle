@@ -9,25 +9,30 @@
   use AppBundle\Entity\LeEvent;
   use AppBundle\Entity\Post;
   use AppBundle\Entity\LeShow;
-
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
 
   class DefaultController extends Controller{
 
-    public function AdminHomeidAction()
+    /**
+     * @Route("/", name="home")
+     */
+    public function HomeidAction()
     {
+
       $repository = $this->getDoctrine()->getRepository(Post::class);
-      $home = $repository->find(1);
+      $post = $repository->find(1);
+      $posts = $repository->findAll();
 
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
 
-      return $this->render('@App/admin/home.html.twig',
+      return $this->render('@App/pages/home.html.twig',
         [
-          'home' => $home,
-          'leShows' => $leShows
+          'post' => $post,
+          'leShows' => $leShows,
+          'posts' => $posts
         ]);
 
 
@@ -37,7 +42,6 @@
     // Afficher PAGE "La Cie"
     /**
      * @Route("/admin/cie", name="admin_cie_id")
-     * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
     public function AdminCieIdAction()

@@ -1,4 +1,4 @@
-<header class="header container-fluid">
+<header class="header container-fluid" id="header">
     <div class="header_bloc row">
         {# logo #}
         <div class="logo col-6 col-md-2">
@@ -9,37 +9,37 @@
 
         {# Menu Administrateur #}
 
-        <nav class="nav d-none d-lg-block col-lg-8">
-            <div class="links d-flex justify-content-around">
-                <a href="{{ path('admin_shows') }}">
-                    <p class="link" id="popup-header-show-open">
-                        Spectacles
-                    </p>
-                </a>
+        <nav class="nav d-none d-lg-block col-md-10">
+        <div class="links d-md-flex justify-content-around">
+            <p class="link" id="popup-header-show-open" onclick="ShowAdminPopup()">
+                Spectacles
+            </p>
+            {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
 
-                <a href="">
-                    <p class="link" id="popup-header-event-open">
-                        Evènements
-                    </p>
-                </a>
-                <a href="{{ path('admin_posts') }}">
-                    <p class="link" id="popup-header-post-open">
-                        Articles
-                    </p>
-                </a>
+            <p class="link" id="popup-header-post-open" onclick="PostAdminPopup()">
+                Articles
+            </p>
+            {% include '@App/admin/partials/popup/admin_posts_dropdown.html.twig' %}
 
-                <a href="">
-                    <p class="link" id="popup-header-places-open" onclick="placeAdminPopup()">
-                        Lieux
-                    </p>
-                </a>
-                <a href="{{ path('fos_user_security_logout') }}">
-                    <p>
-                        logout
-                    </p>
-                </a>
+            <p class="link" id="popup-header-event-open" onclick="LeEventAdminPopup()">
+                Evènements
+            </p>
+            {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}
 
-            </div>
+            <p class="link" id="popup-header-places-open" onclick="PlaceAdminPopup()">
+                Lieux
+            </p>
+            {% include '@App/admin/partials/popup/admin_places_dropdown.html.twig' %}
+
+
+            <a href="{{ path('fos_user_security_logout') }}" id="logout-hover">
+
+                <p id="logout-ico">
+                    <i class="fal fa-sign-out"></i>
+                </p>
+            </a>
+
+        </div>
         </nav>
 
         {#<nav class="dropdown show nav d-lg-none d-block col-2">#}
@@ -58,3 +58,16 @@
 
     </div>
 </header>
+<div class="dropdown show" id="header-dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fal fa-chevron-circle-down"></i>
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{{ path('admin_shows') }}">SPECTACLES</a>
+        <a class="dropdown-item" href="{{ path('admin_posts') }}">Articles/Pages</a>
+        <a class="dropdown-item" href="{{ path('admin_events') }}">Évènements</a>
+        <a class="dropdown-item" href="{{ path('admin_places') }}">Évènements</a>
+
+    </div>
+</div>

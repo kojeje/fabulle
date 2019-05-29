@@ -1,12 +1,12 @@
 <header class="header container-fluid">
     <div class="header_bloc row">
 
-        <div class="logo col-md-2">
+        <div class="logo col-6 col-md-2">
             <a href="http://localhost:8000/">
                 <img class="logo_fabulle" src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">
             </a>
         </div>
-
+        <div class="offset-4 d-block d-lg-none"></div>
         <nav class="nav d-none d-lg-block col-lg-10">
             <ul class="links d-flex justify-content-around">
 
@@ -16,31 +16,29 @@
                 <a href="{{ path('shows') }}">
                     <li class="link">Les Spectacles</li>
                 </a>
-                <a href="">
+                <a href="events">
                     <li class="link">L'actu</li>
                 </a>
-                <a href="">
+                <a href="cie">
                     <li class="link">La Cie</li>
                 </a>
-                <a href="">
+                <a href="contact">
                     <li class="link">Contact</li>
                 </a>
 
             </ul>
         </nav>
 
-        {#<nav class="dropdown show nav d-lg-none d-block col-2">#}
+        <nav class="dropdown show nav d-lg-none d-block col-2">
 
-            {#<a href="#" class="btn btn-secondary dropdown-toggle links" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-                {#<p><i class="fas fa-bars"></i></p>#}
-            {#</a>#}
-            {#<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">#}
-            {#{% for item in menu.items %}#}
-                {#<a class="dropdown-item link" href="{{ item.link }}">{{ item.title }}</a>#}
-            {#{% endfor %}#}
-            {#</div>#}
+            <a href="#" class="btn btn-secondary dropdown-toggle links" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p><i class="fas fa-bars"></i></p>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-        {#</nav>#}
+            </div>
+
+        </nav>
 
 
     </div>

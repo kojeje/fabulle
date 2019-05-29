@@ -37,14 +37,17 @@
       $leEvents = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
 
 
-//      var_dump($leShows);die;
+
       return $this->render('@App/admin/shows.html.twig',
         [
           'leShows' => $leShows,
           'leEvents' => $leEvents,
-          'posts' => $posts
+          'posts' => $posts,
+          'places' => $places
 
         ]);
 
@@ -90,6 +93,7 @@
             'leShow' => $leShow,
             'posts' => $posts,
             'leEvents' => $leEvents,
+            'places' => $places
 
           ]);
 
@@ -112,6 +116,9 @@
       $leEvents = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+
 
 
       /* Création d'un nouveau formulaire à partir d'un gabarit "LeShowType" */
@@ -236,7 +243,8 @@
           'formleshow' => $form->createView(),
           'leShows' => $leShows,
           'posts' => $posts,
-          'leEvents' => $leEvents
+          'leEvents' => $leEvents,
+          'places' => $places
         ]);
 
 
@@ -270,7 +278,6 @@
 
         $oldImages[$i] = $leShow->$getter();
 
-
         // tester si image existe, alors récupère entité piece puis ajoute attribut Image qui est un string
 
         if ($leShow->$getter()) {
@@ -283,8 +290,6 @@
         }
 
       }
-
-
       //recherche entité leShow existant, puis créé la forme
       $form = $this->createForm(LeShowType::class, $leShow);
 

@@ -39,7 +39,7 @@
             {#CORPS DE LA PAGE#}
 
         <div class="corps row">
-
+            <h1 class="form-section-title">Section 1</h1>
             {# Titre du spectacle #}
             <h2 class="col-md-9 col-lg-3">Le titre</h2>
             <div class="field col-12 ">
@@ -94,6 +94,7 @@
 
 
             <div id="img2" class="col-lg-12">
+                <h1 class="form-section-title">Section 1</h1>
                 <div class="field">
                     <p>Image optionnelle</p>
                     {{ form_errors(formleshow.img2) }}
@@ -112,15 +113,11 @@
             </div>
             <hr class="col-lg-11">
             <div class="col-lg-12">
-
-
                 <h2>sous-titre optionnel</h2>
                 <div>
                     {{ form_errors(formleshow.sub2) }}
                     {{ form_widget(formleshow.sub2, {'attr': {"class":'titre'}}) }}
                 </div>
-
-
                 <div class="textarea">
 
                     <h2>texte optionnel</h2>
@@ -134,6 +131,7 @@
         </div>
     </div>
         <!--SLIDER-->
+        <h1 class="form-section-title">Section Slider</h1>
         <div class="col-md-4 col-lg-4 dispo">
             <label for="sl_boolean">presence d'un slider photo?</label>
             <input type="checkbox" class="case" id="sl_boolean"
@@ -172,7 +170,7 @@
                     <label for="img-field-2">Autre image ?</label>
                     <input type="checkbox" class="case" id="img-field-2"
                            name="img-field-2"
-                           onclick="showHideImg2()">
+                           onclick="ShowHideSlider()">
                 </div>
 
 
@@ -205,7 +203,7 @@
                     <label for="img-field-3">Autre image ?</label>
                     <input type="checkbox" class="case" id="img-field-3"
                            name="img-field-3"
-                           onclick="showHideImg3()">
+                           onclick="ShowHideSlider()">
                 </div>
 
                 <hr class="col-11">
@@ -236,7 +234,7 @@
                     <label for="img-field-4">Autre image ?</label>
                     <input type="checkbox" class="case" id="img-field-4"
                            name="img-field-4"
-                           onclick="showHideImg4()">
+                           onclick="ShowHideSlider()">
 
                 </div>
 
@@ -269,6 +267,7 @@
 
 
         {# VIDEO #}
+        <h1 class="form-section-title">Section Vidéo</h1>
         <div class="col-md-4 col-lg-4 dispo">
             <label for="v_boolean">presence d'un lecteur video?</label>
             <input type="checkbox" class="case" id="v_boolean" name="v_boolean"
@@ -295,6 +294,7 @@
 
     <div class="offset-lg-2 d-md-none d-lg-block"></div>
     <div class="corps row">
+        <h1 class="form-section-title">Informations</h1>
         <h2 class="field col--12 col-lg-6">
             genre
         </h2>

@@ -5,26 +5,26 @@
         <div class="contact-section2">
             <div class="id row">
 
-                <div class="offset-2 d-none d-md-block"></div>
-                <div class="col-12 col-md-4 coordonnees">
+
+                <div class="col-12 col-lg-6 coordonnees">
                     <img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" class="logo2" alt="contact">
                     <p>24 Rue du XIV Juillet</p>
                     <p>
                         <span>33400</span> <strong>Talence</strong>
                     </p>
 
-                    <p class="d-flex justify-content-start">
+                    <p class="d-flex justify-content-around">
                         <i class="fal fa-phone tel_flex"></i>
-                        <span class="tel_flex tel_flex2">06 28 23 01 11</span>
+                        <span class="tel_flex tel_flex2">  06 28 23 01 11</span>
                     </p>
                     <div class="contact-title">
                         <h1>CONTACT</h1>
                     </div>
                 </div>
 
-                <div class="form col-12 col-md-4">
+                <div class="form col-12 col-lg-6">
                     <div class=" cv_bloc cv_bloc2">
-                        <h1 class="subtitle_1 cv_h1">Me contacter</h1>
+                        <h1 class="subtitle_1 cv_h1">Nous contacter</h1>
                         <div class="mail_bloc2">
                         </div>
                         {{ form_start(form) }}
@@ -45,48 +45,6 @@
                                         {{ form_widget(form.name) }}
                                         {{ form_errors(form.name) }}
                                     </div>
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.birth_date, 'date de naissance') }}#}
-                                        {#{{ form_widget(form.last_name) }}#}
-                                        {#{{ form_errors(form.last_name) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.statut, 'Vous êtes:') }}#}
-                                        {#{{ form_widget(form.statut) }}#}
-                                        {#{{ form_errors(form.statut) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.tel, 'téléphone') }}#}
-                                        {#{{ form_widget(form.tel) }}#}
-                                        {#{{ form_errors(form.tel) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.ad1, 'téléphone') }}#}
-                                        {#{{ form_widget(form.ad1) }}#}
-                                        {#{{ form_errors(form.ad1) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.ad2, 'téléphone') }}#}
-                                        {#{{ form_widget(form.ad2) }}#}
-                                        {#{{ form_errors(form.ad2) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.ZIP, 'téléphone') }}#}
-                                        {#{{ form_widget(form.ZIP) }}#}
-                                        {#{{ form_errors(form.ZIP) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.town, 'téléphone') }}#}
-                                        {#{{ form_widget(form.town) }}#}
-                                        {#{{ form_errors(form.town) }}#}
-                                    {#</div>#}
-                                    {#<div class="mail_fields">#}
-                                        {#{{ form_label(form.country, 'téléphone') }}#}
-                                        {#{{ form_widget(form.country) }}#}
-                                        {#{{ form_errors(form.country) }}#}
-                                    {#</div>#}
-
-
                                     <div class="mail_fields">
                                         {{ form_label(form.email, 'Votre email') }}
                                         {{ form_widget(form.email) }}
@@ -107,52 +65,6 @@
                                     </div>
                                 </div>
 
-                                {#<div class="contacts">#}
-                                    {#<h2 class="subtitle3">#}
-                                        {#Coordonnées:#}
-                                    {#</h2>#}
-                                    {#<div class="coo_line nom_ad">#}
-                                        {#<p class="tel2"><i class="fas fa-user"></i></p>#}
-                                        {#<h3 class="tel">Jérôme Suhard</h3>#}
-
-
-                                    {#</div>#}
-                                    {#<div class="coo_line">#}
-                                        {#<p class="tel2"><i class="fas fa-phone"></i></p>#}
-                                        {#<p class="tel">06 50 71 71 58</p>#}
-                                    {#</div>#}
-
-                                    {#<a class="coo_line linkedin" href="https://www.linkedin.com/in/jerome-suhard/">#}
-                                        {#<p class="tel2"><i class="fab fa-linkedin-in"></i></p>#}
-
-                                        {#<p class="tel">#}
-                                            {#www.linkedin.com/in/jerome-suhard/#}
-
-
-                                        {#</p>#}
-                                    {#</a>#}
-
-                                    {#<div class="carte">#}
-
-
-                                        {#<div class="coo_line ad">#}
-                                            {#<p class="tel2"><i class="fas fa-map-marker-alt"></i></p>#}
-                                            {#<p class="tel">1 Le Grand Peyrot <br>33410 Sainte Croix du Mont</p>#}
-
-                                        {#</div>#}
-                                        {#<div class="coo_line ad">#}
-
-                                            {#<p class="map">#}
-
-                                                {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2841.3705704803456!2d-0.2681564844716293!3d44.589445579100335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd556cfe7d32dd8d%3A0x76098097be0d4143!2s1+Le+Grand+Peyrot%2C+33410+Sainte-Croix-du-Mont!5e0!3m2!1sfr!2sfr!4v1550917017836" width="600" height="450" frameborder="0" style="border:0"  allowfullscreen></iframe>#}
-                                            {#</p>#}
-
-                                        {#</div>#}
-
-
-                                    {#</div>#}
-
-                                {#</div>#}
                             </div>
 
                         </div>

@@ -1,123 +1,78 @@
-{% extends 'base_admin.twig' %}
+{% extends '@App/base_admin.html.twig' %}
 
 {% block content %}
-    <a id="article-anch" class="anch"></a>
+<a id="article-anch" class="anch"></a>
 
-    <div class="content-wrapper article_content" xmlns="http://www.w3.org/1999/html">
-        <article class="post" id="post-{{post.id}} container-fluid">
-            <a id="article-anch anch"></a>
-            <h1 class="loop-title">A l'affiche !</h1>
-            <div class="article-loop container-fluid">
+    <h1 class="loop-title">Le petit mot</h1>
+<div class="content-wrapper article_content" xmlns="http://www.w3.org/1999/html">
+    <article class="container-fluid">
+        <a id="article-anch anch"></a>
 
-                {% for post in posts %}
+        <div class="article-loop container-fluid">
 
+            {% for post in posts %}
 
-                        <div class="show show2 show3 show-medal row">
-                            <a class="row" href="{{ path('post_id') }}">
-                                <div class="offset-md-3 offset-3"></div>
-                                <div class="thumb-medal2 col-6 col-md-6">
+                {% if post.categorie != 'page' %}
+                    <div class="show show2 show3 show-medal row">
+                        <a class="row" href="{{ path('admin_post_id',{'id': post.id}) }}">
+                            <div class="offset-md-3 offset-3"></div>
+                            <div class="thumb-medal2 col-6 col-md-6">
 
-                                    <img src="{{post.img1}}" alt="{{ post.img_alt1 }}">
+                                <img src="{{asset('assets/uploads/'~post.Img1)}}" alt="{{ post.imgAlt1 }}">
 
-                                </div>
-                                <div class="offset-md-3 offset-3"></div>
-                                <div class="bloc2 col-md-12">
+                            </div>
+                            <div class="offset-md-3 offset-3"></div>
+                            <div class="bloc2 col-md-12">
 
-                                    <h1 class="article-h1 h1-event">
-                                        <span>
-                                            {{ post.titre }}
-                                        </span>
-                                    </h1>
+                                <h1 class="article-h1 h1-event">
+                                    <span>
+                                        {{ post.titre }}
+                                    </span>
+                                </h1>
 
-                                    <div class="preview">
-                                        <p class="info ">
-                                            {{ post.category }}
-                                        </p>
-                                        <p class="preview-content">
-                                            {{ post.text1 }}
-                                        </p>
-                                    </div>
-                                    <p class="info">
-                                        durée: {{ post.duree }} mn env.
+                                <div class="preview">
+
+                                    <p class="preview-content">
+                                        {{ post.text1 }}
                                     </p>
-                                    <!-- @todo -->
-                                    <p class="info ">A partir de: {{ post.min_age }} ans</p>
                                 </div>
-                            </a>
+                            </div>
+                        </a>
+                    </div>
 
-                            {% for event in events %}
-                                {% if show.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}
+                        {#{% for event in events %}#}
+                            {#{% if show.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}#}
 
-                                    <h4 class="next-date next-date3">PROCHAINES REPRÉSENTATIONS</h4>
+                                {#<h4 class="next-date next-date3">PROCHAINES REPRÉSENTATIONS</h4>#}
 
-                                    <section class="event-home container">
+                                {#<section class="event-home container">#}
 
-                                        <a class="row event-home-bloc event-home-bloc-medal" href="{{ event.link }}">
-                                            <div class="d-none d-md-block thumb thumb2 col-md-3">
-                                                <img src="{{ show.thumbnail.src }}" alt="thumb">
-                                            </div>
-                                            <h2 class="article-h1 d-md-none d-block">
-                                                {{ show.title }}
-                                            </h2>
-                                            <p class="col-md-3 col-12">{{ event.get_field('field_5cb4d81344d45') }}</p>
-                                            <p class="col-md-3 col-12">{{ event.get_field('field_5cb4e5ba17780') }}</p>
-                                            <p class="col-md-3 col-12">{{ event.get_field('field_5cb4e62317783') }} {{ event.get_field('field_5cb4e63d17784') }}</p>
-                                        </a>
-                                    </section>
+                                    {#<a class="row event-home-bloc event-home-bloc-medal" href="{{ event.link }}">#}
+                                        {#<div class="d-none d-md-block thumb thumb2 col-md-3">#}
+                                            {#<img src="{{ show.thumbnail.src }}" alt="thumb">#}
+                                        {#</div>#}
+                                        {#<h2 class="article-h1 d-md-none d-block">#}
+                                            {#{{ show.title }}#}
+                                        {#</h2>#}
+                                        {#<p class="col-md-3 col-12">{{ event.get_field('field_5cb4d81344d45') }}</p>#}
+                                        {#<p class="col-md-3 col-12">{{ event.get_field('field_5cb4e5ba17780') }}</p>#}
+                                        {#<p class="col-md-3 col-12">{{ event.get_field('field_5cb4e62317783') }} {{ event.get_field('field_5cb4e63d17784') }}</p>#}
+                                    {#</a>#}
+                                {#</section>#}
 
 
 
-                            {% endfor %}
 
-                        </div>
+            {% endif %}
+            {% endfor %}
 
-                    {% endif %}
-                {% endfor %}
+        </div>
 
-            </div>
-            <h1 class="loop-title">Ancien Spectacles</h1>
-            <div class="article-loop container-fluid">
+        {% include '@App/default/show-loop.html.twig' %}
 
-                {% for show in shows %}
+    </article>
+</div>
 
-                    {% if show.get_field('dispo')==false  %}
 
-                        <div class="show show2 show3 show-medal row">
-                            <a class="row" href="{{ show.link }}">
-                                <div class="offset-md-3 offset-3"></div>
-                                <div class="thumb-medal2 col-6 col-md-6">
-                                    <img src="{{show.thumbnail.src}}" alt="affiche">
-                                </div>
-                                <div class="offset-md-3 offset-3"></div>
-                                <div class="bloc2 col-md-12">
-
-                                    <h1 class="article-h1 h1-event">
-                                        <span>
-                                            {{ show.title }}
-                                        </span>
-                                    </h1>
-
-                                    <div class="preview">
-                                        <p class="info ">
-                                            {{ show.get_field('field_5cb19e8a1f92d') }}
-                                        </p>
-                                        <p class="preview-content">
-                                            {{ show.preview.read_more('').length(20) }}
-                                        </p>
-                                    </div>
-                                    <p class="info">
-                                        durée: {{ show.get_field('field_5cb19fe0cd2c3') }} mn env.
-                                    </p>
-                                    <p class="info ">A partir de: {{ show.get_field('field_5cb19f4acd2c1') }} ans</p>
-                                </div>
-                            </a>
-                        </div>
-
-                    {% endif %}
-                {% endfor %}
-
-            </div>
-        </article>
-    </div>
 
 {% endblock %}

@@ -94,6 +94,11 @@
      */
     private $img_alt1;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $img_title1;
+
 
 
 //--------------------------------------------------------------------

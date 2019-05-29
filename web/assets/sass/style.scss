@@ -1,5 +1,4 @@
 @import "partials/var";
-@import "partials/states";
 @import "partials/fonts";
 ::-webkit-scrollbar {									/* Scrollbars */
   width: 5px;
@@ -10,8 +9,16 @@
 body
 {
   color: #ffffff;
-  background: #000F28;
+  background: $dark-blue;
   width: 100%;
+}
+#header
+{
+  display: none;
+}
+#header-dropdown
+{
+  display: block;
 }
 hr
 {
@@ -24,9 +31,23 @@ a{
   text-decoration: none;
   cursor: pointer;
 }
-h1, h2
+h1
 {
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  background: $link;
+  color: $dark-blue;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+h2
+{
+  display: block;
   font-size: 15px;
+  margin: auto;
 }
 
 p
@@ -138,7 +159,7 @@ input, textarea, select
   top: 0;
   z-index: 1000;
   background-image: linear-gradient(to bottom, #000000, #0d0108, #120314, #10081e, #000f28);
-  opacity: 0.8;
+
 }
 
 .links
@@ -193,6 +214,35 @@ input, textarea, select
   text-align: center;
   font-size:10px;
 }
+.show2 {
+
+  width: 90%;
+  margin: auto;
+  font-size: 12px;
+  margin-bottom: 30vh;
+}
+.show2 h2
+{
+
+  padding-left: 20px;
+
+}
+.info
+{
+  display: none;
+}
+
+.form-section-title
+{
+  border: 2px solid $dark-blue;
+  border-radius: 10px;
+  color: $dark-blue;
+  background-color: $link;
+  display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
 .case
 {
   width: 12px;
@@ -228,10 +278,18 @@ input, textarea, select
   width: 100%;
   cursor: pointer;
 }
+.submit_mail
+{
+  width: 40%;
+  margin-left: 50%;
+  margin-top: 30px;
+  background: transparent;
+  color: $white
+}
 .admin_link
 {
   display: block;
-  width: 10%;
+  width: 40%;
 
 }
 
@@ -244,10 +302,11 @@ input, textarea, select
 }
 .admin_container
 {
-  width: 30%;
+
   margin: auto;
   display: flex;
   justify-content: space-between;
+  padding: 30px;
 }
 .login-field
 {
@@ -280,10 +339,7 @@ input, textarea, select
 }
 .admin-menu
 {
-  border:1vh solid $link;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
+
   position: fixed;
   width: 98vw;
   top:1vh;
@@ -296,6 +352,7 @@ input, textarea, select
   z-index:500;
   pointer-events: auto;
   height: 98vh;
+  opacity: 1 !important;
 }
 .show-line-titre
 {
@@ -351,4 +408,10 @@ input, textarea, select
 {
   border: 1px solid $white ;
 }
+.logo2
+{
+ display: none;
+}
+
+@import "partials/states";
 @import "partials/responsive";

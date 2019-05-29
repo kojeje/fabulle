@@ -27,7 +27,7 @@
     <hr class="separation">
 
     {% for leShow in leShows %}
-        {% if leShow %}
+
         <div class="show-line row">
             <div class="col-1 show-line-thumb">
                 <a href="{{ path('admin_show_id', {'id': leShow.id}) }}">
@@ -52,15 +52,8 @@
             </div>
 
         </div>
-        <hr class="separation">
-        {% else %}
-        <div class="none ">
-            <i class="fas fa-question col-4"></i>
-            <div class="col-8">
-                Aucun spectacle créé ...
-            </div>
-        </div>
-        {% endif %}
+
+
 
 
     {% endfor %}

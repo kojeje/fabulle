@@ -8,24 +8,24 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img2) }}" alt="First slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~post.Img2) }}" alt="First slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img3) }}" alt="Second slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~post.Img3) }}" alt="Second slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img4) }}" alt="Third slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~post.Img4) }}" alt="Third slide">
             </div>
             <div class="carousel-item">
                 <!-- IMAGE 1265 X 550 -->
-                <img class="d-block w-100" src="{{ asset('assets/uploads/'~home.Img5) }}" alt="Fourth slide">
+                <img class="d-block w-100" src="{{ asset('assets/uploads/'~post.Img5) }}" alt="Fourth slide">
             </div>
         </div>
         <div class="carousel-caption d-none d-md-block caption caption2">
             <!-- texte -->
-            {{ home.SlCaption }}
+            {{ post.SlCaption }}
             <!-- BOUTONS SCROLL-->
             <a href="#article-anch" class="anch">
                 <div class="button button-h">
@@ -53,11 +53,11 @@
     <a id="article-anch" class="anch d-none d-md-block"></a>
     <section class="article-loop article-loop2 container" id="article-loop">
         <div class="row">
-            <section class="article-content home row">
+            <section class="article-content post row">
                 <!-- TITRE de la Page-->
                 <div id="title-bloc" class="title-bloc flex-title-bloc col-12 col-md-3">
                     <h2 class="article-h1 flex-h1 h1-event-list" >
-                        <i class="fal fa-home-lg"> </i>
+                        <i class="fal fa-post-lg"> </i>
                         Accueil
                     </h2>
                     <a href="#article-anch2" class="flex-btn">
@@ -70,15 +70,15 @@
                 <!-- Image -->
                 <div class="col-md-8 col-12" id="home-img">
                     <div class="img-alt-home d-md-block d-none">
-                        <img src="{{ asset('assets/uploads/'~home.Img1) }}" alt="{{ home.ImgAlt1 }}" class="thumb-medal flex-thumb thumb-medal2">
+                        <img src="{{ asset('assets/uploads/'~post.Img1) }}" alt="{{ post.ImgAlt1 }}" class="thumb-medal flex-thumb thumb-medal2">
                     </div>
                     <!-- Titre paragraphe -->
                     <h2 class="article-h1 article-h2">
-                        {{ home.titre }}
+                        {{ post.titre }}
                     </h2>
                     <!-- Texte -->
                     <p>
-                        {{home.text1}}
+                        {{post.text1}}
                     </p>
                 </div>
 
@@ -91,7 +91,7 @@
     <section class="article-loop article-loop2 video-bloc container-fluid">
         <div class="article-content row">
             <div class="article-loop video-content col-10 col-md-6" id="video">
-                {{ home.youtube|raw }}
+                {{ post.youtube|raw }}
             </div>
             <div class="offset-lg-1 d-none d-lg-block video-offset"></div>
             <div class="title-bloc video-title-bloc col-md-5">
@@ -125,30 +125,6 @@
                 </div>
             </a>
         </div>
-
-        {% for leShow in leShows %}
-
-            {% if leShow.DispoBoolean == true %}
-
-                <div class="show_1 show4">
-                    <a class="row" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
-                        <h2 class="h1-medal col-md-6 col-12">
-                            {{ leShow.titre }}
-                        </h2>
-                        <div class="thumb-medal thumb-medal2 col-12 col-md-6">
-                            <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}" class="affiche">
-                        </div>
-                        <div class="offset-md-6 d-md-block d-none"></div>
-                        <p class=" medal-text col-md-12">
-                            {{ leShow.Text1 }}
-                        </p>
-                    </a>
-                </div>
-
-            {% endif %}
-        {% endfor %}
-
-
     </section>
 
     {#<a id="article-anch4" class="d-none d-md-block"></a>#}
@@ -164,7 +140,7 @@
     {#{% if "now"|date < event.get_field('field_5cb4d81344d45')  %}#}
 
     {#<section class="container">#}
-    {#<a class="row event-home-bloc" href="{{ event.link }}">#}
+    {#<a class="row event-post-bloc" href="{{ event.link }}">#}
     {#<div class="thumb thumb2 col-md-3 d-none d-md-block">#}
     {#<img src="{{ show.thumbnail.src }}" alt="thumb">#}
     {#</div>#}
@@ -185,7 +161,7 @@
     {#</div>#}
 
 
-
+    {% include"@App/default/show-loop.html.twig" %}
 
 {% endblock %}
 

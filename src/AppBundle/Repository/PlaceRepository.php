@@ -33,9 +33,12 @@
       $results = $query->getArrayResult();
       return $results;
     }
+
     public function getPlacebyEventId($id)
     {
-      $queryBuilder =$this->createQueryBuilder('pl');
+      $queryBuilder =$this
+        ->createQueryBuilder('pl');
+
 
       $query = $queryBuilder
         ->leftJoin('pl.event','pl')

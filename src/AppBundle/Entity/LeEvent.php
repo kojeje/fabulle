@@ -10,7 +10,6 @@
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
 
-
   /**
    * @ORM\Table(name="LeEvent")
    * @ORM\Entity(repositoryClass="AppBundle\Repository\LeEventRepository")
@@ -36,7 +35,7 @@
     /**
      * @ORM\Column(type="string")
      */
-    private $category;
+    private $categorie;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -119,17 +118,17 @@
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getCategorie()
     {
-      return $this->category;
+      return $this->categorie;
     }
 
     /**
      * @param mixed $category
      */
-    public function setCategory($category): void
+    public function setCategorie($categorie): void
     {
-      $this->category = $category;
+      $this->category = $categorie;
     }
 
     /**

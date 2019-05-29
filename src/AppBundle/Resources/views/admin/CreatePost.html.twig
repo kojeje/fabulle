@@ -98,6 +98,11 @@
                         {{ form_widget(formpost.img_alt1, {'attr': {"class":'alt'}}) }}
 
                     </div>
+                    <p>Infobulle</p>
+                    {{ form_errors(formpost.img_alt1) }}
+                    {{ form_widget(formpost.img_alt1, {'attr': {"class":'alt'}}) }}
+
+                </div>
                     {# Séparateur#}
                     <hr>
                 </div>
@@ -133,6 +138,8 @@
                     {{ form_errors(formpost.img_alt2) }}
                     {{ form_widget(formpost.img_alt2, {'attr': {"class":'alt'}}) }}
                 </div>
+
+
 
             </div>
             <div class="col-md-4 col-lg-4 dispo">

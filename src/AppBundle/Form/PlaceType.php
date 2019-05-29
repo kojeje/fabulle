@@ -3,13 +3,16 @@
 
   namespace AppBundle\Form;
 
+  use AppBundle\Entity\LeEvent;
   use AppBundle\Entity\Place;
+  use Doctrine\ORM\EntityRepository;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\Form\Extension\Core\Type\FileType;
-
+  use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+  use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
   class PlaceType extends AbstractType
   {
@@ -26,12 +29,8 @@
             ]
           ]
         )
-        ->add('img', FileType::class, [
-            'data_class' => null,
-            'label' => 'Image (jpg)',
-          ]
-        )
-        ->add('img_alt')
+
+
         ->add('ad1')
         ->add('ad2')
         ->add('cp')

@@ -10,54 +10,117 @@
                 {% if leShow.DispoBoolean==true %}
 
                     <div class="show show2 show3 show-medal row">
-                        <a class="row post-link" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
 
-                            <div class="thumb-medal2 col-4 col-md-4">
+                        <a class="row post-link" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
+                            <h2 class="col-12 article-h1 h1-event">
+                                        <span>
+                                            {{ leShow.Titre }}
+                                        </span>
+                            </h2>
+                            <div class="offset-3"></div>
+                            <div class="thumb-medal2 col-6 ">
 
                                 <img src="{{asset ('assets/uploads/'~leShow.img1)}}" alt="{{ leShow.ImgAlt1 }}" title="{{ leShow.ImgTitle1 }}">
 
                             </div>
-                            <div class="offset-md-2"></div>
+                            <div class="offset-3 "></div>
+                            <div class="offset-md-2 d-none d-md-block"></div>
 
-                            <h1 class="col-8 col-md-6 article-h1 h1-event">
+
+                            <div class="offset-md-2 d-none d-md-block"></div>
+
+                            {#<p class="preview col-md-12">#}
+                                {#{{ leShow.Text1 }}#}
+                            {#</p>#}
+
+
+                            <p class="info col-12">
+                                 {{ leShow.Genre }}
+                            </p>
+
+
+
+                            <p class="info col-12">
+                                durée: {{ leShow.duree }}.
+                            </p>
+
+                            <p class="info col-12">A partir de: {{ leShow.MinAge}} ans</p>
+                            <div class="admin_container">
+                                <a href="{{ path('admin_update_show',  {'id': leShow.id}) }}" class="admin_link update_link">
+                                    <i class="fal fa-pen"></i>
+                                </a>
+
+                                <a href="{{ path('admin_delete_show',  {'id': leShow.id}) }}" class="admin_link delete_link">
+                                    <i class="fal fa-trash"></i>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <h1 class="loop-title">Ancien Spectacles</h1>
+        <div class="article-loop container-fluid">
+
+            {% for leShow in leShows %}
+                {% if leShow.DispoBoolean != true %}
+
+                    <div class="show show2 show3 show-medal row">
+
+                        <a class="row post-link" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
+                            <h2 class="col-12 article-h1 h1-event">
                                         <span>
                                             {{ leShow.Titre }}
                                         </span>
-                            </h1>
+                            </h2>
+                            <div class="offset-3"></div>
+                            <div class="thumb-medal2 col-6 ">
 
-                            <div class="offset-md-2"></div>
-                            <p class="preview col-md-8">
-                                {{ leShow.Text1 }}
-                            </p>
-                            <div class="offset-md-2"></div>
-                            <div class="offset-md-1"></div>
-                            <p class="info col-4">
-                                 {{ leShow.Genre }}
-                            </p>
-                            <div class="offset-md-2"></div>
+                                <img src="{{asset ('assets/uploads/'~leShow.img1)}}" alt="{{ leShow.ImgAlt1 }}" title="{{ leShow.ImgTitle1 }}">
 
-                            <p class="info col-5">
+                            </div>
+                            <div class="offset-3 "></div>
+                            <div class="offset-md-2 d-none d-md-block"></div>
+
+
+                            <div class="offset-md-2 d-none d-md-block"></div>
+
+                            {#<p class="preview col-md-12">#}
+                                {#{{ leShow.Text1 }}#}
+                            {#</p>#}
+
+
+                            <p class="info col-12">
+                                {{ leShow.Genre }}
+                            </p>
+
+
+
+                            <p class="info col-12">
                                 durée: {{ leShow.duree }}.
                             </p>
-                            <div class="offset-md-4"></div>
-                            <p class="info col-md-4">A partir de: {{ leShow.MinAge}} ans</p>
 
-                        </a>
-                        <div class="admin_container row">
-
-                            <a href="{{ path('admin_update_show',  {'id': leShow.id}) }}" class="admin_link update_link">
-
+                            <p class="info col-12">A partir de: {{ leShow.MinAge}} ans</p>
+                            <div class="admin_container">
+                                <a href="{{ path('admin_update_show',  {'id': leShow.id}) }}" class="admin_link update_link">
                                     <i class="fal fa-pen"></i>
+                                </a>
 
-                            </a>
-                            <a href="{{ path('admin_delete_show',  {'id': leShow.id}) }}" class="admin_link delete_link">
-                                <i class="fal fa-trash"></i>
-                            </a>
-                        </div>
+                                <a href="{{ path('admin_delete_show',  {'id': leShow.id}) }}" class="admin_link delete_link">
+                                    <i class="fal fa-trash"></i>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
 
+        </div>
+    </article>
+{% endblock %}
 
-
-                        {#{% for event in events %}#}
+{#{% for event in events %}#}
                             {#{% if show.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}#}
 
                                 {#<h4 class="next-date next-date3">PROCHAINES REPRÉSENTATIONS</h4>#}
@@ -80,65 +143,3 @@
 
                             {#{% endif %}#}
                         {#{% endfor %}#}
-
-                    </div>
-
-                {% endif %}
-            {% endfor %}
-
-        </div>
-        <h1 class="loop-title">Ancien Spectacles</h1>
-        <div class="article-loop container-fluid">
-
-            {% for leShow in leShows %}
-
-                {% if leShow.DispoBoolean!=true %}
-
-                    <div class="show show2 show3 show-medal row">
-                        <a class="row" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
-                            <div class="offset-md-3 offset-3"></div>
-                            <div class="thumb-medal2 col-6 col-md-6">
-                                <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}">
-                            </div>
-                            <div class="offset-md-3 offset-3"></div>
-                            <div class="bloc2 col-md-12">
-
-                                <h1 class="article-h1 h1-event">
-                                        <span>
-                                            {{ leShow.titre }}
-                                        </span>
-                                </h1>
-
-                                <div class="preview">
-                                    <p class="info ">
-                                        {{ leShow.Genre }}
-                                    </p>
-                                    <p class="preview-content">
-                                        {{ leShow.text1 }}
-                                    </p>
-                                </div>
-                                <p class="info">
-                                    durée: {{ leShow.duree }} mn env.
-                                </p>
-                                <p class="info ">A partir de: {{ leShow.maxAge }} ans</p>
-                            </div>
-                        </a>
-                        <div class="admin_container row">
-
-                            <a href="{{ path('admin_update_show',  {'id': leShow.id}) }}" class="admin_link update_link">
-
-                                <i class="fal fa-pen"></i>
-
-                            </a>
-                            <a href="{{ path('admin_delete_show',  {'id': leShow.id}) }}" class="admin_link delete_link">
-                                <i class="fal fa-trash"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                {% endif %}
-            {% endfor %}
-
-        </div>
-    </article>
-{% endblock %}

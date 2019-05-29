@@ -9,7 +9,8 @@
 
   use AppBundle\Entity\Post;
   use AppBundle\Entity\LeShow;
-  use AppBundle\Form\HomeType;
+  use AppBundle\Entity\Place;
+  use AppBundle\Entity\LeEvent;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
@@ -27,7 +28,7 @@
 //-----------------------------------------------------------------------------------------
     // Afficher PAGE D'ACCUEIL
     /**
-     * @Route("/admin/home/", name="admin_home_id")
+     * @Route("/admin/", name="admin_home_id")
      * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
@@ -35,6 +36,7 @@
     {
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $home = $repository->find(1);
+
       $posts = $repository->findAll();
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
@@ -52,6 +54,7 @@
           'leShows' => $leShows,
           'posts' => $posts,
           'leEvents' => $leEvents,
+
 
         ]);
 
@@ -75,25 +78,25 @@
 
       return $this->render('@App/admin/home.html.twig',
         [
-          'cie' => $cie,
+
           'leShows' => $leShows
         ]);
 
 
     }
-// ----------------------------------------------------------------
-    //CREATION De la page d'accueil
-    // Ne servira qu'une fois: une méthode "update" permettra ensuite de la modifier à volonté...
-    //Ou au besoin sera rétablit par le développeur (maintenance - dépannage)
-    //----------------------------------------------------------------------------------
-    //LA FONCTION PAR DEFAULT EST ENTIÈREMENT COMMENTÉE ET INACCESSIBLE EN TEMPS NORMAL
-    //_----------------------------------------------------------------------------------
-    // Il N'Y A DONC QU'UNE SEULE PAGE D'ACCUEIL (ET UNE SEULE ID) EN BASE DE DONNÉES
-
+//// ----------------------------------------------------------------
+//    //CREATION De la page d'accueil
+//    // Ne servira qu'une fois: une méthode "update" permettra ensuite de la modifier à volonté...
+//    //Ou au besoin sera rétablit par le développeur (maintenance - dépannage)
+//    //----------------------------------------------------------------------------------
+//    //LA FONCTION PAR DEFAULT EST ENTIÈREMENT COMMENTÉE ET INACCESSIBLE EN TEMPS NORMAL
+//    //_----------------------------------------------------------------------------------
+//    // Il N'Y A DONC QU'UNE SEULE PAGE D'ACCUEIL (ET UNE SEULE ID) EN BASE DE DONNÉES
+//
 //    /**
 //     * @Route("/admin/create_home", name="create_home")
 //     */
-
+//
 //    pages function formCreateHome(Request $request)
 //
 //    {
@@ -197,151 +200,154 @@
 //          'leShows' => $leShows
 //        ]);
 //    }
-
-//--------------------------------------------------------------------------------------------------------------------------------------------
-
-    //UPDATE PAGE D'ACCUEIL
-
-    /**
-     * @Route("/admin/update_home/", name="admin_update_home")
-     */
-    public function UpdateLeShowAction(Request $request)
-    {
-
-      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-      // puis ->find( spectacle )
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-      $home = $repository->find(1);
-
-      for ($i = 1; $i <= 5; $i++) {
-
-        $getter = 'getImg' . $i;
-        $setter = 'setImg' . $i;
-
-        $oldImages[$i] = $home->$getter();
-
-
-        // tester si image existe, alors récupère entité piece puis ajoute attribut Image qui est un string
-
-        if ($home->$getter()) {
-
-          //redéfinit Image
-          $home->$setter(
-            new File($this->getParameter('upl_directory') . '/' . $home->$getter())
-          );
-
-        }
-
-      }
-
-
-      //recherche entité leShow existant, puis créé la forme
-      $form = $this->createForm(HomeType::class, $home);
-
-      // associe les données envoyées (éventuellement) par le client via le formulaire
-      //à notre variable $form. Donc la variable $form contient maintenant aussi $_POST
-      //handlerequest reremplit le formulaire, récupère données et les reinjecte dans formulaire
-      $form->handleRequest($request);
-//      var_dump($form->getData()->getImg1());die;
-
-      //isSubmitted vérifie si il y a bien un contenu form envoyé, puis on regarde si valide (à compléter plus tard)
-
-      /* Si le formulaire est soumis */
-      if ($form->isSubmitted()) {
-        if ($form->isValid()) {
-          $home = $form->getData();
-
-          for ($i = 1; $i <= 5; $i++) {
-
-            $getter = 'getImg' . $i;
-            $setter = 'setImg' . $i;
-
-//            $oldImages[$i] = $leShow->$getter();
 //
-
-            if ($home->$getter() !== NULL) {
-
-              // créé file avec getImg . $i, récupère string chemin image
-
-              $file = $home->$getter();
-
-              /* Si il y a une image*/
-              if (!is_null($file)) {
-
-                //génère nom unique pour le fichier image
-                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-
-
-                try {
-                  $file->move(
-                    $this->getParameter('upl_directory'),
-                    $fileName
-                  );
-
-
-                } catch (FileException $e) {
-                  echo $e->getMessage();
-                  // ... handle exception if something happens during file upload
-                }
-
-
-                // important alimente modification !!!!!! chemin vers image
-
-
-                $home->$setter(
-                  $fileName
-                );
-              }
-            } else {
-              // si pas de changement on recupère l'ancien nom
-              $home->$setter($oldImages[$i]);
-
-            }
-
-          }
-
-          // je récupère l'entity manager de doctrine
-          $entityManager = $this->getDoctrine()->getManager();
-
-
-          // j'enregistre en base de donnée, persist met dans zone tampon provisoire de l'unité de travail
-          $entityManager->persist($home);
-          //mise à jour BD, envoy à bd
-          $entityManager->flush();
-
-          // Renvoi de confirmation d'enregistrement Message flash
-          $this->addFlash(
-            'notice-icon',
-            '<i class="flash-icon success fal fa-check"></i>'
-          );
-          $this->addFlash(
-            'notice',
-            'Votre spectacle a bien été modifié!'
-          );
-
-          return $this->redirectToRoute('admin_home_id');
-        } else {
-          $this->addFlash(
-            'error-icon',
-            '<i class="flash-icon error fal fa-times"></i>'
-          );
-          $this->addFlash(
-            'notice',
-            'Votre spectacle n\'a pas été modifié!'
-          );
-        }
-      }
-
-      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-      // puis ->find( spectacle )
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
-      return $this->render('@App/admin/EditHome.html.twig',
-        [
-          'formhome' => $form->createView(),
-          'leShows' => $leShows
-        ]
-      );
-    }
+////--------------------------------------------------------------------------------------------------------------------------------------------
+//
+//    //UPDATE PAGE D'ACCUEIL
+//
+//    /**
+//     * @Route("/admin/update_home/", name="admin_update_home")
+//     */
+//    public function UpdateLeShowAction(Request $request)
+//    {
+//
+//      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
+//      // puis ->find( spectacle )
+//      $repository = $this->getDoctrine()->getRepository(Post::class);
+//      $home = $repository->find(1);
+//
+//      for ($i = 1; $i <= 5; $i++) {
+//
+//        $getter = 'getImg' . $i;
+//        $setter = 'setImg' . $i;
+//
+//        $oldImages[$i] = $home->$getter();
+//
+//
+//        // tester si image existe, alors récupère entité piece puis ajoute attribut Image qui est un string
+//
+//        if ($home->$getter()) {
+//
+//          //redéfinit Image
+//          $home->$setter(
+//            new File($this->getParameter('upl_directory') . '/' . $home->$getter())
+//          );
+//
+//        }
+//
+//      }
+//
+//
+//      //recherche entité leShow existant, puis créé la forme
+//      $form = $this->createForm(HomeType::class, $home);
+//
+//      // associe les données envoyées (éventuellement) par le client via le formulaire
+//      //à notre variable $form. Donc la variable $form contient maintenant aussi $_POST
+//      //handlerequest reremplit le formulaire, récupère données et les reinjecte dans formulaire
+//      $form->handleRequest($request);
+////      var_dump($form->getData()->getImg1());die;
+//
+//      //isSubmitted vérifie si il y a bien un contenu form envoyé, puis on regarde si valide (à compléter plus tard)
+//
+//      /* Si le formulaire est soumis */
+//      if ($form->isSubmitted()) {
+//        if ($form->isValid()) {
+//          $home = $form->getData();
+//
+//          for ($i = 1; $i <= 5; $i++) {
+//
+//            $getter = 'getImg' . $i;
+//            $setter = 'setImg' . $i;
+//
+////            $oldImages[$i] = $leShow->$getter();
+////
+//
+//            if ($home->$getter() !== NULL) {
+//
+//              // créé file avec getImg . $i, récupère string chemin image
+//
+//              $file = $home->$getter();
+//
+//              /* Si il y a une image*/
+//              if (!is_null($file)) {
+//
+//                //génère nom unique pour le fichier image
+//                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+//
+//
+//                try {
+//                  $file->move(
+//                    $this->getParameter('upl_directory'),
+//                    $fileName
+//                  );
+//
+//
+//                } catch (FileException $e) {
+//                  echo $e->getMessage();
+//                  // ... handle exception if something happens during file upload
+//                }
+//
+//
+//                // important alimente modification !!!!!! chemin vers image
+//
+//
+//                $home->$setter(
+//                  $fileName
+//                );
+//              }
+//            } else {
+//              // si pas de changement on recupère l'ancien nom
+//              $home->$setter($oldImages[$i]);
+//
+//            }
+//
+//          }
+//
+//          // je récupère l'entity manager de doctrine
+//          $entityManager = $this->getDoctrine()->getManager();
+//
+//
+//          // j'enregistre en base de donnée, persist met dans zone tampon provisoire de l'unité de travail
+//          $entityManager->persist($home);
+//          //mise à jour BD, envoy à bd
+//          $entityManager->flush();
+//
+//          /* J'affiche les messages flash confirmant l'enregistrement */
+//          $this->addFlash(
+//            'notice-icon',
+//            '<i class="flash-icon success fal fa-check"></i>'
+//          );
+//          $this->addFlash(
+//            'notice',
+//            '<h1 class="h1-flash">La page ou la page a été enregistré</h1>'
+//          );
+//
+////        /* Je redirige ensuite sur la page des articles */
+//          return $this->redirectToRoute('admin_posts');
+//
+//        } else {
+//          /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
+//          $this->addFlash(
+//            'error-icon',
+//            '<i class="flash-icon error fal fa-times"></i>'
+//          );
+//          $this->addFlash(
+//            'error',
+//            '<h1 class="h1-flash">La page ou la page n\'a pas été enregistré</h1>'
+//          );
+//        }
+//      }
+//
+//      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
+//      // puis ->find( spectacle )
+//      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//      $leShows = $repository->findAll();
+//      return $this->render('@App/admin/EditHome.html.twig',
+//        [
+//          'formhome' => $form->createView(),
+//          'leShows' => $leShows
+//        ]
+//      );
+//    }
 
   }

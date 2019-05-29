@@ -36,7 +36,11 @@
         ->add('leShow', EntityType::class,
           [
             'class'=> 'AppBundle\Entity\LeShow',
-            'choice_label'=> 'titre'
+            'choice_label'=> function($leShow)
+            {
+              return $leShow->getTitre();
+
+            },
           ]
         )
         ->add('leEvent', EntityType::class,
@@ -66,6 +70,7 @@
           ]
         )
         ->add('img_alt1')
+        ->add('img_title1')
 
         ->add('img2', FileType::class, [
             'data_class' => null,

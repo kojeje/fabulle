@@ -13,27 +13,41 @@
 
   class LeEventRepository extends EntityRepository
   {
-    public function getAllEvent($event)
-    {
-//    QueryBuilder => Pour éxecuter des requêtes
-//    Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
-
-      $queryBuilder =$this
-        ->createQueryBuilder('e');
+    public function getEventByShowTitre($titre)
+    {//recherche par nom client approximatif dans Client pour Administrateur !!!!!!!!!!!!!!
+      //crée objet constructeur de requete sur table r
+      $queryBuilder = $this->createQueryBuilder('e');
+      // utilisation du LIKE avec contrôle entrée setParameter;
       $query = $queryBuilder
-        ->leftJoin('e.place','pl')
-
         ->select('e')
-        ->addSelect('pl')
-
-//    Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('event', $event)
-//    recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
+        /* jointure table client*/
+        ->leftJoin('e.leShow', 's')
+        /* requete ciblée sur nom client, avec Like qui permet de retourner une liste de réservations
+        à partir des premières lettres d'un nom de Client */
+        ->where('s.titre LIKE :titre')
+        ->setParameter('titre', '%' . $titre . '%')// sécurité injection !!!
+        ->orderBy('e.date', 'DESC')
         ->getQuery();
-
-//    Eq fetch
-      $results = $query->getArrayResult();
+      $results = $query->getResult();
       return $results;
+////    QueryBuilder => Pour éxecuter des requêtes
+////    Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
+//
+//      $queryBuilder =$this
+//        ->createQueryBuilder('e');
+//      $query = $queryBuilder
+//        ->leftJoin('e.place','pl')
+//        ->select('e')
+//        ->addSelect('pl')
+//        ->where('pl.leEvent LIKE :leEvent')
+////    Permet de définir un paramètre de requete de maniere sécurisée
+//        ->setParameter('leEvent', '%'. $id .'%')
+////    recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
+//        ->getQuery();
+//
+////    Eq fetch
+//      $results = $query->getArrayResult();
+//      return $results;
     }
 
     public function getEventbyShowId($id)
@@ -54,21 +68,5 @@
       return $results;
     }
 
-    public function getEventbyPlaceId($id)
-    {
-      $queryBuilder =$this->createQueryBuilder('e');
 
-      $query = $queryBuilder
-        ->leftJoin('e.place','pl')
-        ->select('e')
-        ->addSelect('pl')
-        ->where('pl.id = :id')
-        ->setParameter('id', $id)
-        ->getQuery();
-//                    eq fetch
-
-      $results = $query->getResult();
-
-      return $results;
-    }
   }

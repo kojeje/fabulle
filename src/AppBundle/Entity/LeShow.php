@@ -67,7 +67,7 @@
     //Titre
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      */
 
@@ -79,7 +79,7 @@
     // texte principal
 
     /**
-     * @ORM\Column(type="text" )
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *      min = 50,
      *      max = 100000,
