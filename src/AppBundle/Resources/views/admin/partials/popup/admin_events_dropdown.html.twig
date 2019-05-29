@@ -1,66 +1,66 @@
-<div class="admin-menu" id="events-admin-menu">
-    <div class="popup-header row">
+{#<div class="admin-menu" id="events-admin-menu">#}
+    {#<div class="popup-header row">#}
 
 
-        <div class="col-2">
-            <img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">
-        </div>
-        <div class="col-12 col-md-2 header-popup-title">ADMIN Articles</div>
-        <div class="col-6 col-md-2 ">
-            <a href="{{ path('admin_events') }}" class="add-link">
-                Les articles
-            </a>
-        </div>
-        <div class="col-6 col-md-2">
-            <a href="{{ path('create_event') }}" class="add-link">
-                <i class="add fal fa-plus"></i>
-                Ajouter
-            </a>
-        </div>
-        <div class="col-1 link" id="popup-header-event-close" onclick="hideAdminLeEventPopup()">
-            <i class="add fas fa-times"></i>
-        </div>
-    </div>
-
-
-
-    <hr class="separation">
-    {% for leEvent in leEvents %}
-{{ dump(leEvent) }}
-            <i class="flash-icon error fal fa-times">Pas de dates prévuese...</i>
+        {#<div class="col-2">#}
+            {#<img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">#}
+        {#</div>#}
+        {#<div class="col-12 col-md-2 header-popup-title">ADMIN Articles</div>#}
+        {#<div class="col-6 col-md-2 ">#}
+            {#<a href="{{ path('admin_events') }}" class="add-link">#}
+                {#Les articles#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-6 col-md-2">#}
+            {#<a href="{{ path('create_event') }}" class="add-link">#}
+                {#<i class="add fal fa-plus"></i>#}
+                {#Ajouter#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-1 link" id="popup-header-event-close" onclick="hideAdminLeEventPopup()">#}
+            {#<i class="add fas fa-times"></i>#}
+        {#</div>#}
+    {#</div>#}
 
 
 
+    {#<hr class="separation">#}
+    {#{% for leEvent in leEvents %}#}
+{#{{ dump(leEvent) }}#}
+            {#<i class="flash-icon error fal fa-times">Pas de dates prévuese...</i>#}
 
-        <div class="show-line row">
-            {% for leShow in leShows %}
 
-            <div class="col-1 show-line-thumb">
-                <a href="{{ path('admin_event_id', {'id': leEvent.id}) }}">
-                    <img class="menu-thumb" src="{{ asset('assets/uploads/'~leEvent.leShow.Img1) }}" alt="{{ leEvent.leShow.ImgAlt1 }}">
-                </a>
 
-            </div>
 
-            {% endfor %}
-            <div class="col-7 show-line show-line-titre">
-                <a href="{{ path('admin_event_id', {'id': leEvent.id}) }}">
-                    {{ leEvent.titre }}
-                </a>
-            </div>
-            <div class="col-2 show-line show-line-edit">
-                <a href="{{ path('admin_update_event', {'id': leEvent.id}) }}">
-                    <i class="fal fa-pen"></i>
-                </a>
-            </div>
-            <div class="col-2 show-line show-line-trash">
-                <a href="{{ path('admin_delete_event', {'id': leEvent.id}) }}">
-                    <i class="fal fa-trash"></i>
-                </a>
-            </div>
-            <hr class="separation">
-        </div>
+        {#<div class="show-line row">#}
+            {#{% for leShow in leShows %}#}
 
-    {% endfor %}
-</div>
+            {#<div class="col-1 show-line-thumb">#}
+                {#<a href="{{ path('admin_event_id', {'id': leEvent.id}) }}">#}
+                    {#<img class="menu-thumb" src="{{ asset('assets/uploads/'~leEvent.leShow.Img1) }}" alt="{{ leEvent.leShow.ImgAlt1 }}">#}
+                {#</a>#}
+
+            {#</div>#}
+
+            {#{% endfor %}#}
+            {#<div class="col-7 show-line show-line-titre">#}
+                {#<a href="{{ path('admin_event_id', {'id': leEvent.id}) }}">#}
+                    {#{{ leEvent.titre }}#}
+                {#</a>#}
+            {#</div>#}
+            {#<div class="col-2 show-line show-line-edit">#}
+                {#<a href="{{ path('admin_update_event', {'id': leEvent.id}) }}">#}
+                    {#<i class="fal fa-pen"></i>#}
+                {#</a>#}
+            {#</div>#}
+            {#<div class="col-2 show-line show-line-trash">#}
+                {#<a href="{{ path('admin_delete_event', {'id': leEvent.id}) }}">#}
+                    {#<i class="fal fa-trash"></i>#}
+                {#</a>#}
+            {#</div>#}
+            {#<hr class="separation">#}
+        {#</div>#}
+
+    {#{% endfor %}#}
+{#</div>#}
 

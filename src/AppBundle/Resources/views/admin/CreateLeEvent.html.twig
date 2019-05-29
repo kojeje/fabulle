@@ -18,30 +18,72 @@
 
 
         </div>
-        {{ form_start(formEvent, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
+        {{ form_start(formleEvent, {attr: {novalidate: 'novalidate', class:'formulaire'}}) }}
         <div class="form_container">
             <h2>Votre référence</h2>
 
-            <div class="field col-md-4">
-                {{ form_errors(formEvent.place) }}
-                {{ form_label(formEvent.place,null,
-                    {
-                        'label':'nom de la salle',
-                    }
-                )
-                }}
-                {{ form_widget(formEvent.place, {'attr': {"class":'titre'}}) }}
-            </div>
+
 
             <div class="field col-md-4">
-                {{ form_errors(formEvent.date) }}
-                {{ form_label(formEvent.date,null,
+                {{ form_errors(formleEvent.date) }}
+                {{ form_label(formleEvent.date,null,
                     {
                         'label':'date',
                     }
                 )
                 }}
-                {{ form_widget(formEvent.date, {'attr': {"class":'titre'}}) }}
+                {{ form_widget(formleEvent.date, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">Nom du Lieux</h2>
+            <div class="field col-12 ">
+                {{ form_errors(formleEvent.place_name) }}
+                {{ form_widget(formleEvent.place_name, {'attr': {"class":'titre'}}) }}
+            </div>
+            categorie
+            <h2 class="col-12 col-lg-6">Description</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.description) }}
+                {{ form_widget(formleEvent.description, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">adresse l1</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.ad1) }}
+                {{ form_widget(formleEvent.ad1, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">adresse l2</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.ad2) }}
+                {{ form_widget(formleEvent.ad2, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">cp</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.cp) }}
+                {{ form_widget(formleEvent.cp, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">commune</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.commune) }}
+                {{ form_widget(formleEvent.commune, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">n° de téléphone</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.tel) }}
+                {{ form_widget(formleEvent.tel, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">site web</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.site) }}
+                {{ form_widget(formleEvent.site, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">email</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.email) }}
+                {{ form_widget(formleEvent.email, {'attr': {"class":'titre'}}) }}
+            </div>
+            <h2 class="col-12 col-lg-6">lien Gmap</h2>
+            <div class="field col-12 col-lg-6 ">
+                {{ form_errors(formleEvent.gmap) }}
+                {{ form_widget(formleEvent.gmap|raw, {'attr': {"class":'titre'}}) }}
             </div>
 
 
@@ -49,13 +91,13 @@
 
 
             <div class="f_type">
-                {{ form_widget(formEvent.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+                {{ form_widget(formleEvent.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
             </div>
 
         </div>
 
 
-        {{ form_end(formEvent) }}
+        {{ form_end(formleEvent) }}
     </div>
 {% endblock %}
 

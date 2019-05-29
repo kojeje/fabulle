@@ -38,35 +38,20 @@
           )
         ->add('titre')
 
-        ->add('description', TextareaType::class,
-          [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
-            ]
-          ]
-        )
+
         ->add('date',DateType::class)
         ->add('img')
         ->add('img_alt')
         ->add('img_title')
-
-
-        ->add('place',EntityType::class,
-
-          [
-              'class' => 'AppBundle:Place',
-//            'choice_label' => 'nom',
-              'choices'=> function($place)
-              {
-                return $place->getDate().' - '.$place->getCP().' - '.$place->getCommune();
-
-
-              },
-
-          ]
-        )
+        ->add('place_name')
+        ->add('ad1')
+        ->add('ad2')
+        ->add('cp')
+        ->add('commune')
+        ->add('tel')
+        ->add('site')
+        ->add('email')
+        ->add('gmap')
 
         ->add('leShow', EntityType::class,
           [
