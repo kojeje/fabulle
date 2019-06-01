@@ -13,60 +13,11 @@
 
   class LeShowRepository extends EntityRepository
   {
-    public function getAllLeShow($leShow)
-    {
-//  QueryBuilder => Pour éxecuter des requêtes
-
-
-      $queryBuilder =$this
-        ->createQueryBuilder('s');
-      $query = $queryBuilder
-
-        ->select('s')
-
-//  Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('leShow', $leShow)
-//              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
-        ->getQuery();
-
-//            eq fetch
-      $results = $query->getArrayResult();
-      return $results;
-
-
-
-
-    }
-
-    public function getLeShowbyGenre($genre)
-    {
-      $queryBuilder =$this->createQueryBuilder('s');
-
-      $query = $queryBuilder
-        ->select('s')
-        ->where('s.genre = :genre')
-        ->setParameter('genre', $genre)
-        ->getQuery();
-//                    eq fetch
-
-      $results = $query->getResult();
-
-      return $results;
-    }
-
-    public function getShowbyAge($min_age)
-    {
-      $queryBuilder =$this->createQueryBuilder('s');
-
-      $query = $queryBuilder
-        ->select('s')
-        ->where('s.min_age = :min_age')
-        ->setParameter('min_age', $min_age)
-        ->getQuery();
-//                    eq fetch
-
-      $results = $query->getResult();
-
-      return $results;
+    /**
+     * @return array
+     */
+    public function findAll(){
+      //requête en alphabétique
+      return $this->findBy(array(), ['titre' => 'ASC']);
     }
   }

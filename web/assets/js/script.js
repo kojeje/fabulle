@@ -5,24 +5,16 @@ function hideAdmin() {
         document.getElementById("slider").style.display = 'none';
         // Video
         document.getElementById("video").style.display = 'none';
-        document.getElementById("shows-admin-menu").style.display = 'none';
-        //LOGOUT
-
-
-
-    }
-}
-
-function hideAdminPpopup() {
-//  Masquer les popups au chargement dde la page (onload)
-    if (document.getElementById("body").onload) {
+        //popups
         document.getElementById("shows-admin-menu").style.display = 'none';
         document.getElementById("posts-admin-menu").style.display = 'none';
         document.getElementById('events-admin-menu').style.display = 'none';
-        // document.getElementById('places-admin-menu').style.display = 'none';
+        document.getElementById('places-admin-menu').style.display = 'none';
 
     }
 }
+
+
 
 
 function ShowAdminPopup() {
