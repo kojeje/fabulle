@@ -91,7 +91,7 @@
       $places = $repository->findAll();
 
 
-      return $this->render('@App/admin/place.html.twig',
+      return $this->render('@App/admin/event.html.twig',
         [
           'leEvent' => $leEvent,
           'leEvents' => $leEvents,
@@ -113,15 +113,16 @@
     public function formCreateleEvent(Request $request)
 
     {
+//
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//
 //    on récupère l'ensemble des articles
       $leShows = $repository->findAll();
+//      var_dump($leShows);die;
 
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
+//    on récupère l'ensemble des articles
       $leEvents = $repository->findAll();
 
 //    On récupère le contenu de l'Entity dans la variable repository
@@ -200,7 +201,7 @@
       return $this->render('@App/admin/CreateLeEvent.html.twig',
         [
           'formleEvent' => $form->createView(),
-          'LeShows' => $leShows,
+          'leShows' => $leShows,
           'leEvents' => $leEvents,
           'places' => $places,
           'posts' => $posts
@@ -285,9 +286,9 @@
 
 
       return $this->render(
-        '@App/admin/CreateLeShow.html.twig',
+        '@App/admin/CreateLeEvent.html.twig',
         [
-          'formleshow' => $form->createView(),
+          'formleEvent' => $form->createView(),
           'leShows' => $leShows,
           'posts' => $posts,
           'leEvents' => $leEvents

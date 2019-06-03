@@ -8,6 +8,7 @@
 
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
+
   use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -327,6 +328,13 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leShow")
      */
     private $post;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Place", mappedBy="leShow")
+     */
+    private $place;
+
+
 
 
 
@@ -900,8 +908,21 @@
       $this->post = $post;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPlace()
+    {
+      return $this->place;
+    }
 
-
+    /**
+     * @param mixed $place
+     */
+    public function setPlace($place): void
+    {
+      $this->place = $place;
+    }
 
     /**
      * @return mixed

@@ -8,10 +8,13 @@
   use AppBundle\Form\ContactType;
   use AppBundle\Entity\LeEvent;
   use AppBundle\Entity\Post;
+  use AppBundle\Entity\Place;
   use AppBundle\Entity\LeShow;
+  use Doctrine\ORM\EntityRepository;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
+  use AppBundle\Repository\DefaultRepository;
 
   class DefaultController extends Controller{
 
@@ -27,16 +30,24 @@
 
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+
 
       return $this->render('@App/pages/home.html.twig',
         [
           'post' => $post,
           'leShows' => $leShows,
-          'posts' => $posts
+          'leEvents' => $leEvents,
+          'posts' => $posts,
+          'places' => $places,
         ]);
 
 
     }
+
 
     //-----------------------------------------------------------------------------------------
     // Afficher PAGE "La Cie"
@@ -48,13 +59,13 @@
     {
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $cie = $repository->find(2);
-
+      $posts =$repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-      $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
 
 
 
@@ -62,16 +73,16 @@
 
       return $this->render('@App/admin/home.html.twig',
         [
-          'posts' => $posts,
           'leShows' => $leShows,
           'leEvents' => $leEvents,
+          'posts' => $posts,
+          'places' => $places,
           'cie' => $cie
         ]);
 
 
     }
-    // Afficher tous les spectacles avec droits d'administration
-
+    // Afficher tous les spectacles
 
     /**
      * @Route("/shows", name="shows")
@@ -84,13 +95,134 @@
       $leEvents = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+
+
 
       return $this->render('@App/pages/shows.html.twig',
         [
-          'posts' => $posts,
           'leShows' => $leShows,
-          'leEvents' => $leEvents
+          'leEvents' => $leEvents,
+          'posts' => $posts,
+          'places' => $places
+
         ]);
+    }
+    // Afficher un spectacle en fonction de l'id
+    /**
+     * @Route("/show/{id}", name="show_id")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function AdminShowIdAction($id)
+
+    {
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    on récupère l'article en fonction de l'id
+      $leShow = $repository->find($id);
+//    on récupère l'ensemble des articles
+      $leShows = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    on récupère l'ensemble des articles
+      $posts = $repository->findAll();
+
+
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//      on récupère l'ensemble des articles
+      $places = $repository->findAll();
+
+      return $this->render('@App/pages/show.html.twig',
+        [
+          'leShows' => $leShows,
+          'leShow' => $leShow,
+          'posts' => $posts,
+          'leEvents' => $leEvents,
+          'places' => $places
+
+        ]);
+
+  }
+
+
+  // Afficher tous les évènements
+
+  /**
+   * @Route("/events", name="events")
+   */
+  public function listEventsAction()
+  {
+    $repository = $this->getDoctrine()->getRepository(LeShow::class);
+    $leShows = $repository->findAll();
+    $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+    $leEvents = $repository->findAll();
+    $repository = $this->getDoctrine()->getRepository(Post::class);
+    $posts = $repository->findAll();
+    $repository = $this->getDoctrine()->getRepository(Place::class);
+    $places = $repository->findAll();
+
+
+
+    return $this->render('@App/pages/events.html.twig',
+      [
+        'leShows' => $leShows,
+        'leEvents' => $leEvents,
+        'posts' => $posts,
+        'places' => $places
+
+      ]);
+  }
+    // Afficher un évènement en fonction de l'id
+    /**
+     * @Route("/event/{id}", name="event_id")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function AdminEventIdAction($id)
+
+    {
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    on récupère l'ensemble des articles
+      $leShows = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+//    on récupère l'article en fonction de l'id
+      $leEvent = $repository->find($id);
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    on récupère l'ensemble des articles
+      $posts = $repository->findAll();
+
+
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//      on récupère l'ensemble des articles
+      $places = $repository->findAll();
+
+      return $this->render('@App/pages/event.html.twig',
+        [
+          'leShows' => $leShows,
+          'leEvent' => $leEvent,
+          'posts' => $posts,
+          'leEvents' => $leEvents,
+          'places' => $places
+
+        ]);
+
     }
 
     /**
@@ -185,6 +317,30 @@
         ]);
 
     }
+    /**
+     * @Route("/search", name="search")
+     */
+    public function AllByWordAction(Request $request)
+    {
+
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+
+      $word= $request->query->get('search');
+
+      $leShow = $repository->getAllByWord($word);
 
 
-}
+      return $this->render('@App/pages/shows.html.twig',
+        [
+          'leShow' => $leShow,
+          'leEvents' => $leEvents,
+          'places' => $places
+        ]);
+    }
+
+
+  }

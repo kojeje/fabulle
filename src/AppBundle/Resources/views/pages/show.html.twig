@@ -2,7 +2,7 @@
 
 {% block tmp_slide %}
 
-<!-- SLIDER -->
+    <!-- SLIDER -->
     {# Si Slider existe#}
     {% if leShow.Img3 %}
         <!-- IMAGES 1265 X 550 -->
@@ -92,7 +92,8 @@
 {% endblock %}
 
 {% block content %}
-<a id="article-anch" class="anch"></a>
+    <a id="article-anch" class="anch"></a>
+
 <article id="show-{{ leShow.Id }}" class="container">
 
     <div class="article-content row">
@@ -143,21 +144,20 @@
                 {{ leShow.youtube|raw}}
             </div>
         </div>
+
+
+
     {% else %}
 
         <div class="offset-md-1"></div>
         <div class="affiche col-md-3">
-            <img src="{{ asset('assets/uploads/'~leShow.Img2) }}"
-                 alt="{{ leShow.ImgAlt2 }}" title="{{ leShow.ImgTitle2 }}"
-                 class="affiche">
+            <img src="{{ asset('assets/uploads/'~leShow.Img2) }}" alt="{{ leShow.ImgAlt2 }}" title="{{ leShow.ImgTitle2 }}" class="affiche">
         </div>
         <div class="offset-md-2"></div>
     {% endif %}
-    {#<div class="offset-1"></div>#}
+    <div class="offset-1"></div>
     {% if leShow.DispoBoolean == true %}
-        <a id="article-anch3"></a>
         <div class="col-md-10 bref">
-            <a id="article-anch3" class="anch"></a>
             <h2 class="article-text-h2" id="title-spe">
                 {{ leShow.titre }}
             </h2>
@@ -195,38 +195,40 @@
 
 
 
-
                 </div>
             </div>
-
-
         </div>
 
 
 
-    {% else %}
+    {% endif %}
+    <a id="article-anch3"></a>
+    <h4 class="next-date next-date2">PROCHAINES REPRÉSENTATIONS</h4>
 
-        {% include"@App/default/show-loop.html.twig" %}
-    </div>
-</article>
+
+    {% if leShow.DispoBoolean == true %}
+
+        {% for leEvent in leEvents %}
+            {% if  leEvent.leShow == leShow %}
+
+                {%  for place in places %}
+                    {% if leEvent.place == place %}
+
+                        <section class="container">
+
+                            <a class="row event-home-bloc" href="{{ path('event_id', {'id': leEvent.id}) }}">
+                                <p class="col-md-2"><img src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}"></p>
+                                <p class="col-md-3">{{ leEvent.Date|date('d/m/Y') }}</p>
+                                <p class="col-md-3">{{ place.Name }}</p>
+                                <p class="col-md-3">{{ place.Cp }} {{ place.Commune }}</p>
+                                {% if place.Country != 'FR' %}
+                                    <p class="col-md-1">{{ place.Country }}</p>
+                                {% endif %}
+                            </a>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endblock %}
-
-{#{% for event in events %}#}
-                    {#{% if leShow.get_field('field_5cbc31c7f2c13') == event.get_field('field_5cbc31c7f2c13') %}#}
-                    {#{% if "now"|date < event.get_field('field_5cb4d81344d45')  %}#}
-                    {#<h4 class="next-date next-date2">PROCHAINES REPRÉSENTATIONS</h4>#}
-                    {#<section class="container">#}
-
-                    {#<a class="row event-home-bloc" href="{{ event.link }}">#}
-                    {#<div class="thumb thumb2 col-md-3">#}
-                    {#<img src="{{ leShow.thumbnail.src }}" alt="thumb">#}
-                    {#</div>#}
-                    {#<p class="col-md-3">{{ event.get_field('field_5cb4d81344d45') }}</p>#}
-                    {#<p class="col-md-3">{{ event.get_field('field_5cb4e5ba17780') }}</p>#}
-                    {#<p class="col-md-3">{{ event.get_field('field_5cb4e62317783') }} {{ event.get_field('field_5cb4e63d17784') }}</p>#}
-                    {#</a>#}
-                    {#</section>#}
-
-                    {#{% endif %}#}
-                    {#{% endif %}#}
-                    {#{% endfor %}#}

@@ -411,6 +411,7 @@
       //je sélectionne mon entity : "LeShow"
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
+      $leShow = $repository->find($id);
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Post::class);
@@ -418,8 +419,10 @@
       //je recupère l'entity manager de doctrine pour avoir la fonction "remove"
       $entityManager = $this->getDoctrine()->getManager();
       //je sélectionne l'id de mon objet
-      $leShow = $repository->find($id);
+
+
       $entityManager->remove($leShow);
+
       $entityManager->flush();
       $this->addFlash(
         'notice-icon',
@@ -435,7 +438,8 @@
 
           'leShows' => $leShows,
           'posts' => $posts,
-          'leEvents' => $leEvents
+          'leEvents' => $leEvents,
+          'leShow' => $leShow
         ]);
     }
   }

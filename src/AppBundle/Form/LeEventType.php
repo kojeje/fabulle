@@ -7,7 +7,7 @@
 //  use AppBundle\Entity\LeEvent;
 //  use AppBundle\Entity\LeShow;
   use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-//  use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+  use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -27,53 +27,38 @@
 
 
       $builder
-//        ->add('categorie', ChoiceType::class,
-//          [
-//            'choice_label' => [
-//              'Spectacle' => 'spectacle',
-//              'Actu' => 'actu'
-//            ]
-//          ]
-//          )
-        ->add('titre')
-
-        ->add('description', TextareaType::class,
+        ->add('categorie', ChoiceType::class,
           [
-            'attr' => [
-              'class'=>'textarea',
-              'rows' => '50',
-              'cols' => '50'
+            'choices' => [
+              'Spectacle' => 'spectacle',
+              'Actu' => 'actu'
             ]
           ]
-        )
+          )
+
+
+
         ->add('date',DateType::class)
-        ->add('img')
-        ->add('img_alt')
-        ->add('img_title')
 
 
-//        ->add('place',EntityType::class,
+
 //
-//          [
-//              'class' => 'AppBundle:Place',
-////            'choice_label' => 'nom',
-//              'choices'=> function($place)
-//              {
-//                return $place->getId().$place->getDate().' - '.$place->getCP().' - '.$place->getCommune();
-//
-//
-//              },
-//
-//          ]
-//        )
 
         ->add('leShow', EntityType::class,
           [
-            'class' => 'AppBundle\Entity\leShow',
-            'choice_label'=> 'titre'
+            'class' => 'AppBundle\Entity\LeShow',
+            'choice_label'=> 'titre',
+
           ]
 
         )
+        ->add('place', EntityType::class,
+          [
+            'class' => 'AppBundle\Entity\Place',
+            'choice_label' => 'name',
+          ]
+        )
+
         ->add('submit', SubmitType::class)
       ;
     }
@@ -83,7 +68,7 @@
     public function configureOptions(OptionsResolver $resolver)
     {
       $resolver->setDefaults(array(
-        'data_class' => 'AppBundle\Entity\leEvent'
+        'data_class' => 'AppBundle\Entity\LeEvent'
       ));
     }
 

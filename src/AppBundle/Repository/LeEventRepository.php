@@ -19,19 +19,32 @@
      */
     public function getLeEventByShow($leShow)
     {
-//requête par spectacle, ordre commence par la dernière date de réservation
+//requête par spectacle, ordre commence par la dernière date
       $queryBuilder = $this->createQueryBuilder('e');
 
       $query = $queryBuilder
         ->select('e')
         ->where('e.leShow.titre =:titre')
         ->setParameter('leShow', $leShow)
-        ->orderBy('e.date', 'DESC')
+        ->orderBy('e.date', 'ASC')
         ->getQuery();
       $results = $query->getResult();
       return $results;
     }
 
+    public function getLeEventByPlace($place)
+    {
+//requête par lieu, ordre commence par la dernière date
+      $queryBuilder = $this->createQueryBuilder('e');
 
+      $query = $queryBuilder
+        ->select('e')
+        ->where('e.place.name =:name')
+        ->setParameter('place', $place)
+        ->orderBy('e.date', 'ASC')
+        ->getQuery();
+      $results = $query->getResult();
+      return $results;
+    }
 
   }

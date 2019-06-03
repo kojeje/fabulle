@@ -20,4 +20,5 @@
       //requête en alphabétique
       return $this->findBy(array(), ['titre' => 'ASC']);
     }
+
   }

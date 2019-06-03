@@ -8,7 +8,7 @@
 
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
-  use Symfony\Component\Validator\Constraints as Assert;
+
 
   /**
    * @ORM\Table(name="LeEvent")
@@ -29,11 +29,12 @@
     }
     /**
      * @ORM\Column(type="datetimetz")
+     *
      */
     private $publiele;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $categorie;
 
@@ -51,6 +52,7 @@
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LeShow", inversedBy="leEvent")
+     *
      */
     private $leShow;
 

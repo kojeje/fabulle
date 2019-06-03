@@ -392,6 +392,7 @@ input, textarea, select
 .show-line
 {
   text-align: center;
+  width: 40%;
 }
 .header-popup-title, .add-link
 {
@@ -411,6 +412,17 @@ input, textarea, select
 .logo2
 {
  display: none;
+}
+.leshow-id
+{
+  max-height: 30px;
+}
+.edit
+{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin-bottom: 50px;
 }
 
 @import "partials/states";

@@ -16,16 +16,17 @@
                 <a href="{{ path('shows') }}">
                     <li class="link">Les Spectacles</li>
                 </a>
-                <a href="events">
+                <a href="{{ path('events') }}">
                     <li class="link">L'actu</li>
                 </a>
-                <a href="cie">
-                    <li class="link">La Cie</li>
-                </a>
-                <a href="contact">
+                <a href="{{ path('contact') }}">
                     <li class="link">Contact</li>
                 </a>
-
+                <li class="link">
+                <form class="form_search" action="{{ path('search') }}">
+                    <input class="search" type="text" placeholder="recherche" name="search">
+                    <input type="submit" class="search_sub">
+                </form>
             </ul>
         </nav>
 

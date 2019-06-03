@@ -160,7 +160,7 @@
           );
           $this->addFlash(
             'notice',
-            '<h1 class="h1-flash">Le Le Lieu a été enregistré</h1>'
+            '<h1 class="h1-flash">Le Lieu a été enregistré</h1>'
           );
         } else {
           /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
@@ -170,7 +170,7 @@
           );
           $this->addFlash(
             'error',
-            '<h1 class="h1-flash">Le Le Lieu n\'a été enregistré</h1>'
+            '<h1 class="h1-flash">Le Lieu n\'a été enregistré</h1>'
           );
         }
       }
@@ -179,7 +179,7 @@
       et qui seront affichés dans la twig*/
       return $this->render('@App/admin/CreatePlace.html.twig',
         [
-          'formPlace' => $form->createView(),
+          'formplace' => $form->createView(),
           'leShows' => $leShows,
           'posts' => $posts,
           'leEvents' => $leEvents,
@@ -246,7 +246,7 @@
           );
           $this->addFlash(
             'notice',
-            '<h1 class="h1-flash">Le Le Lieu a été enregistré</h1>'
+            '<h1 class="h1-flash">Le Lieu a été enregistré</h1>'
           );
         } else {
           /* Si les contraintes n'ont pas été respectées j'affice un message d'erreur */
@@ -256,7 +256,7 @@
           );
           $this->addFlash(
             'error',
-            '<h1 class="h1-flash">Le Le Lieu n\'a été enregistré</h1>'
+            '<h1 class="h1-flash">Le Lieu n\'a été enregistré</h1>'
           );
         }
       }

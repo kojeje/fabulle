@@ -40,7 +40,7 @@
      * @ORM\Column(type="string", nullable=true)
      */
 
-    private $place_name;
+    private $name;
 
 
     /**
@@ -77,6 +77,12 @@
      * @ORM\Column(type="string", nullable=true)
      *
      */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
     private $tel;
 
     /**
@@ -107,6 +113,10 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="place")
      */
     private $leEvent;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LeShow", inversedBy="place")
+     */
+    private $leShow;
 
 //------------------------------------------------------------------------------
 //  Getters & Setters
@@ -146,18 +156,19 @@
     /**
      * @return mixed
      */
-    public function getPlaceName()
+    public function getName()
     {
-      return $this->place_name;
+      return $this->name;
     }
 
     /**
-     * @param mixed $place_name
+     * @param mixed $name
      */
-    public function setPlaceName($place_name): void
+    public function setName($name): void
     {
-      $this->place_name = $place_name;
+      $this->name = $name;
     }
+
 
     /**
      * @return mixed
@@ -292,6 +303,9 @@
      */
     public function getGmap()
     {
+      if ($this->gmap != null)
+        return stream_get_contents($this->gmap);
+
       return $this->gmap;
     }
 
@@ -317,6 +331,40 @@
     public function setLeEvent($leEvent): void
     {
       $this->leEvent = $leEvent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLeShow()
+    {
+      return $this->leShow;
+    }
+
+    /**
+     * @param mixed $leShow
+     */
+    public function setLeShow($leShow): void
+    {
+      $this->leShow = $leShow;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+      return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country): void
+    {
+      $this->country = $country;
     }
 
 
