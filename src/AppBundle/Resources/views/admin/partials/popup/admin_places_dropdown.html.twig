@@ -1,64 +1,65 @@
-{#<div class="admin-menu" id="places-admin-menu">#}
-    {#<div class="popup-header row">#}
+<div class="admin-menu" id="places-admin-menu">
+    <div class="popup-header row">
 
 
-        {#<div class="col-2">#}
-            {#<img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">#}
-        {#</div>#}
-        {#<div class="col-12 col-md-2 header-popup-title">ADMIN Articles</div>#}
-        {#<div class="col-6 col-md-2 ">#}
-            {#<a href="{{ path('admin_places') }}" class="add-link">#}
-                {#Les articles#}
-            {#</a>#}
-        {#</div>#}
-        {#<div class="col-6 col-md-2">#}
-            {#<a href="{{ path('create_place') }}" class="add-link">#}
-                {#<i class="add fal fa-plus"></i>#}
-                {#Ajouter#}
-            {#</a>#}
-        {#</div>#}
-        {#<div class="col-1 link" id="popup-header-place-close" onclick="hideAdminPlacePopup()">#}
-            {#<i class="add fas fa-times"></i>#}
-        {#</div>#}
-    {#</div>#}
+        <div class="col-2">
+            <img src="{{ asset('assets/img/logo_faBulle_2019.png') }}" alt="logo">
+        </div>
+        <div class="col-12 col-md-2 header-popup-title">ADMIN Lieux</div>
+        <div class="col-6 col-md-2 ">
+            <a href="{{ path('admin_places') }}" class="add-link">
+                Lieux
+            </a>
+        </div>
+        <div class="col-6 col-md-2">
+            <a href="{{ path('create_place') }}" class="add-link">
+                <i class="add fal fa-plus"></i>
+                Ajouter
+            </a>
+        </div>
+        <div class="col-1 link" id="popup-header-places-close" onclick="hideAdminPlacePopup()">
+            <i class="add fas fa-times"></i>
+        </div>
+    </div>
 
 
 
-    {#<hr class="separation">#}
-    {#{% for place in places %}#}
+    <hr class="separation">
+    {% for place in places %}
+    {% for leEvent in leEvents %}
 
+        <div class="show-line row">
 
-    {#<div class="show-line row">#}
+            <div class="col-4 show-line show-line-titre">
+                <a href="{{ path('admin_place_id', {'id': place.Id}) }}">
+                    {{ place.name }}
+                </a>
+            </div>
+            {% if leEvent.date|date %}
 
-        {#<div class="col-4 show-line show-line-titre">#}
-            {#<a href="{{ path('admin_place_id', {'id': place.Id}) }}">#}
-                {#{{ place.nom }}#}
-            {#</a>#}
-        {#</div>#}
-        {#{% if place.leEvent.date %}#}
+            <div class="col-4 show-line show-line-titre">
+                <a href="{{ path('admin_place_id', {'id': place.id}) }}">
+                    {{ leEvent.date|date('d - m - Y')}}
 
-        {#<div class="col-4 show-line show-line-titre">#}
-            {#<a href="{{ path('admin_place_id', {'id': place.id}) }}">#}
-                {#{{ place.leEvent.Date}}#}
+                </a>
+            </div>
+            {% endif %}
 
-            {#</a>#}
-        {#</div>#}
-        {#{% endif %}#}
-
-        {#<div class="col-2 show-line show-line-edit">#}
-            {#<a href="{{ path('admin_update_place', {'id': place.Id}) }}">#}
-                {#<i class="fal fa-pen"></i>#}
-            {#</a>#}
-        {#</div>#}
-        {#<div class="col-2 show-line show-line-trash">#}
-            {#<a href="{{ path('admin_delete_place', {'id': place.Id}) }}">#}
-                {#<i class="fal fa-trash"></i>#}
-            {#</a>#}
-        {#</div>#}
-        {#<hr class="separation">#}
-    {#</div>#}
-    {#{% endfor %}#}
-{#</div>#}
+            <div class="col-2 show-line show-line-edit">
+                <a href="{{ path('admin_update_place', {'id': place.Id}) }}">
+                    <i class="fal fa-pen"></i>
+                </a>
+            </div>
+            <div class="col-2 show-line show-line-trash">
+                <a href="{{ path('admin_delete_place', {'id': place.Id}) }}">
+                    <i class="fal fa-trash"></i>
+                </a>
+            </div>
+            <hr class="separation">
+        </div>
+        {% endfor %}
+    {% endfor %}
+</div>
 
 
 

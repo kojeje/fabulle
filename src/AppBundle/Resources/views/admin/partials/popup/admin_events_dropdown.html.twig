@@ -25,41 +25,48 @@
 
 
     <hr class="separation">
-{% for leEvent in leEvents %}
     {% for leShow in leShows %}
+        {% if leShow.DispoBoolean == true %}
+            {% for leEvent in leEvents %}
+                {% if  leEvent.leShow == leShow %}
+                    {%  for place in places %}
+                        {% if leEvent.place == place %}
+                            {% if "now"|date < leEvent.date  %}
+                                <div class="show-line row">
+                                    <div class="col-md-2 link show-line-thumb">
 
-        <div class="show show2 show3 show-medal show-line row">
-            <div class="col-md-2 link show-line-thumb">
+                                            <img class="menu-thumb" src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}">
 
-                    <img class="menu-thumb" src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}">
+                                    </div>
+                                    <div class="col-5  show-line-titre">
+                                        <a href="{{ path('admin_show_id', {'id': leShow.id}) }}">
+                                            {{ leShow.titre }}
+                                        </a>
+                                    </div>
+                                    <div class="col-2  show-line-date">
+                                        <a href="{{ path('admin_update_event', {'id': leShow.id}) }}">
+                                            {{ leEvent.date|date('d - m - Y') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-1  show-line-edit">
+                                        <a href="{{ path('admin_update_event', {'id': leShow.id}) }}">
+                                            <i class="fal fa-pen"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-1 show-line show-line-trash">
+                                        <a href="{{ path('admin_delete_show', {'id': leShow.id}) }}">
+                                            <i class="fal fa-trash"></i>
+                                        </a>
+                                    </div>
 
-            </div>
-            <div class="col-5 show-line-titre">
-                <a href="{{ path('admin_show_id', {'id': leShow.id}) }}">
-                    {{ leShow.titre }}
-                </a>
-            </div>
-            <div class="col-2  show-line-date">
-                <a href="{{ path('admin_update_event', {'id': leShow.id}) }}">
-                    {{ leEvent.date|date('d - m - Y') }}
-                </a>
-            </div>
-            <div class="col-1  show-line-edit">
-                <a href="{{ path('admin_update_event', {'id': leShow.id}) }}">
-                    <i class="fal fa-pen"></i>
-                </a>
-            </div>
-            <div class="col-1 show-line show-line-trash">
-                <a href="{{ path('admin_delete_show', {'id': leShow.id}) }}">
-                    <i class="fal fa-trash"></i>
-                </a>
-            </div>
+                                </div>
+                                <hr>
 
-        </div>
-        <hr>
-
-
-
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     {% endfor %}
-{% endfor %}
 </div>

@@ -61,7 +61,7 @@
     {
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(Place::class);
-      $place = $repository->getPlaceByEventId($id);
+      $place = $repository->find($id);
 
 
 
@@ -85,7 +85,7 @@
 
 
 
-      return $this->render('@App/admin/place.html.twig',
+      return $this->render('@App/admin/admin_place_id.html.twig',
         [
           'leShows' => $leShows,
           'posts' => $posts,
@@ -202,12 +202,13 @@
       // puis ->find( spectacle )
       $repository = $this->getDoctrine()->getRepository(Place::class);
       $place = $repository->find($id);
+      $places = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-      $posts = $repository->findAll();
+
+
 
 
 
@@ -263,15 +264,64 @@
 
 
       return $this->render(
-        '@App/admin/CreateLeShow.html.twig',
+        '@App/admin/CreatePlace.html.twig',
         [
-          'formleshow' => $form->createView(),
+          'formplace' => $form->createView(),
           'leShows' => $leShows,
-          'posts' => $posts,
           'leEvents' => $leEvents,
-          'place' => $place
+          'place' => $place,
+          'places' => $places
 
 
         ]);
     }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------
+    //Delete Lieu
+
+    /**
+     * @Route("/admin/delete_place/{id}", name="admin_delete_place")
+     * Suppression d'un livre
+     */
+    public function supprLeShowAction($id)
+    {
+      //je sélectionne mon entity : "LeShow"
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+
+      //je sélectionne mon entity : "leEvent"
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      //je sélectionne mon entity : "Place"
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+      $place = $repository->find($id);
+
+      //je recupère l'entity manager de doctrine pour avoir la fonction "remove"
+      $entityManager = $this->getDoctrine()->getManager();
+      //je sélectionne l'id de mon objet
+
+
+      $entityManager->remove($place);
+
+      $entityManager->flush();
+      $this->addFlash(
+        'notice-icon',
+        '<i class="flash-icon success fal fa-check"></i>'
+      );
+      $this->addFlash(
+
+        'notice',
+        'Le spectacle a été supprimé'
+      );
+      return $this->redirectToRoute('admin_shows',
+        [
+
+          'leShows' => $leShows,
+          'places' => $places,
+          'leEvents' => $leEvents,
+          'place' => $place
+        ]);
+    }
+
   }

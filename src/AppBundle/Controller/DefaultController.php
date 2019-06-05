@@ -12,10 +12,12 @@
   use AppBundle\Entity\LeShow;
   use Doctrine\ORM\EntityRepository;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-  use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
   use AppBundle\Repository\PlaceRepository;
   use Doctrine\ORM\Query\ResultSetMappingBuilder;
+  use Symfony\Component\HttpFoundation\Request; // Handle the request in the controller
+  use ReCaptcha\ReCaptcha; // Include the recaptcha lib
+
 
   class DefaultController extends Controller{
 
@@ -225,6 +227,75 @@
         ]);
 
     }
+    /**
+     * @Route("/places", name="places")
+     */
+    public function listPlacesAction()
+    {
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+      $leShows = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+      $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+      $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
+
+
+
+      return $this->render('@App/pages/places.html.twig',
+        [
+          'leShows' => $leShows,
+          'leEvents' => $leEvents,
+          'posts' => $posts,
+          'places' => $places
+
+        ]);
+    }
+    // Afficher un évènement en fonction de l'id
+    /**
+     * @Route("/place/{id}", name="place_id")
+     * Je récupère une instance de Doctrine qui appelle une instense de repository
+     */
+
+    public function   PlaceIdAction($id)
+
+    {
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    on récupère l'ensemble des articles
+      $leShows = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+//
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    on récupère l'ensemble des articles
+      $posts = $repository->findAll();
+
+
+//      On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//      on récupère l'ensemble des articles
+      $places = $repository->findAll();
+//    on récupère l'article en fonction de l'id
+      $place = $repository->find($id);
+
+      return $this->render('@App/pages/place.html.twig',
+        [
+          'leShows' => $leShows,
+          'place' => $place,
+          'posts' => $posts,
+          'leEvents' => $leEvents,
+          'places' => $places
+
+        ]);
+
+    }
 
     /**
      * @Route("/contact", name="contact")
@@ -294,6 +365,8 @@
         ->setBody($data["message"]."ContactMail :".$data["email"]);
 
       return $mailer->send($message);
+
+
     }
     /**
      * @Route("/contact_success", name="contact_success")

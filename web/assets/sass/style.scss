@@ -251,13 +251,15 @@ input, textarea, select
 .dispo
 {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 30px;
 }
 .dispo input
 {
   margin: 0;
   margin-bottom: 20px;
   display: block;
+  margin-left: 20px;
 }
 .createUser_logo
 {
@@ -460,6 +462,38 @@ input, textarea, select
 .btn
 {
   border-radius: 0 10px 10px 0 !important;
+
+}
+.show>.btn-secondary.dropdown-toggle
+{
+  background-color: transparent !important;
+  border: none;
+}
+.dropdown-menu
+{
+  position: fixed !important;
+  background: $dark-blue;
+  transform: translate3d(150px, 102px, 0px) !important;
+
+
+}
+.dropdown-menu a
+{
+  color: $link !important;
+}
+.contact_bloc
+{
+  margin-top: 300px;
+  min-height: 80vh;
+}
+.answer_soon, .home_button
+{
+  text-align: center;
+}
+
+.ad
+{
+  text-align: center;
 }
 
 @import "partials/states";

@@ -1,8 +1,8 @@
 {% extends "@App/base.html.twig" %}
 {% block content %}
     <a  id="anch" class="anch1"></a>
-    <section class="container contact-section">
-        <div class="contact-section2">
+    <section class="contact-section">
+        <div class="container-fluid contact-section2">
             <div class="id row">
 
 
@@ -73,7 +73,9 @@
                         <div style="display:none">
                             {{ form_rest(form) }}
                         </div>
-
+                        <!-- Now add the widget with the sitekey that you retrieve in the registration -->
+                        <div class="g-recaptcha" data-sitekey="6LdGVqcUAAAAAE6W41wRMqgxr43eI95CyuFutM9j
+"></div>
                         <input class="submit_mail" type="submit" value="Envoyer">
 
                         {{ form_end(form) }}

@@ -183,19 +183,29 @@
                 </p>
 
 
-                <p class="bref-item">
+                <p>
                     tarif *: {{ leShow.tarif }} €
                 </p>
                 <p class="mentions">
                     <i>* hors frais de déplacement et conditions particulière</i>
                     <a href="">nous consulter</a>
                 </p>
-                <div>
+                <p>
+                    technique *:
+                </p>
+                <div class="pdf col-12">
+                    {#INTÈGRE UN LECTEUR PDF DANS LA PAGE POUR LA FICHE TECHNIQUE#}
+                        <object class="pdf-object" type="application/pdf">
+                        <param name="src" value="{{  asset('assets/uploads/'~ leShow.fichetek) }}" />
 
 
 
 
-                </div>
+                </object>
+            </div>
+
+
+
             </div>
         </div>
 

@@ -1,7 +1,18 @@
 @media screen and (min-width:768px) {
+
   .article-loop {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .dropdown-menu {
+    transform: translate3d(310px, 118px, 0px) !important;
+  }
+  .pdf-object{
+    width: 100%;
+    display: block;
+    margin: auto;
+    min-height: 100vh;
   }
   .show2 {
     border: 2px solid $link;
@@ -15,9 +26,7 @@
     font-size: 50%;
   }
   .preview {
-
     font-size: 12px;
-
   }
   .info {
     color: $link;
@@ -25,13 +34,9 @@
     margin-top: 5px;
     font-size: 18px;
     display: block;
-
   }
-
   .preview {
-
     font-size: 12px;
-
   }
   .coordonnees p {
     width: 70%;
@@ -49,9 +54,31 @@
   .mail_fields {
     margin-bottom: 30px;
   }
-
   .logo2 {
     display: block;
+  }
+  .contact-section2{
+
+  }
+  .id{
+    background-image: url("/web/assets/img/mati-bras.jpg") ;
+    width: 100%;
+    margin-top: 100px;
+    background-attachment: fixed;
+    background-position: center;
+    border-radius:50%;
+    background-color: $dark-blue;
+    overflow: hidden;
+    padding: 190px;
+  }
+  .form,
+  .coordonnees{
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    border: 1px solid $white;
+    z-index: 20;
+    padding-bottom: 20px;
+    box-shadow: 10px 5px 5px rgba( 0, 0, 0, 0.5);
   }
 }
 @media screen and (min-width: 992px) {
@@ -428,6 +455,7 @@
     -moz-border-radius: 20px;
     border-radius: 20px;
     margin: auto;
+    margin-bottom: 150px;
   }
   .bref-item {
     width: 40%;
@@ -686,6 +714,7 @@
   {
     font-size: 20px;
     text-align: center;
+    margin-top: 50px;
   }
   .event-show-link
   {
@@ -707,6 +736,15 @@
   {
     font-size: 25px;
   }
+  .pdf
+  {
+    border: 3px solid $link;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    padding: 40px !important;
+  }
+
 }
 
 

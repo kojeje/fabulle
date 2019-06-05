@@ -4,9 +4,8 @@ function hideAdmin() {
 
         //popups
         document.getElementById("shows-admin-menu").style.display = 'none';
-        // document.getElementById("posts-admin-menu").style.display = 'none';
         document.getElementById('events-admin-menu').style.display = 'none';
-        // document.getElementById('places-admin-menu').style.display = 'none';
+        document.getElementById('places-admin-menu').style.display = 'none';
         // Slider
         document.getElementById("slider").style.display = 'none';
         // Video
@@ -32,7 +31,15 @@ function ShowAdminPopup() {
 
 
         }
-}
+    }
+
+    function PlaceAdminPopup() {
+            if (document.getElementById("popup-header-places-open").onclick) {
+                document.getElementById("places-admin-menu").style.display = 'block';
+
+            }
+        }
+
 
 
 
@@ -111,6 +118,15 @@ function ShowAdminPopup() {
         }
 
     }
+//Masquer accès rapide au lieux (X admin)
+        function hideAdminPlacePopup() {
+            if (document.getElementById("popup-header-places-close").onclick) {
+                document.getElementById("places-admin-menu").style.display = 'none';
+
+            }
+        }
+
+
 
 
 
