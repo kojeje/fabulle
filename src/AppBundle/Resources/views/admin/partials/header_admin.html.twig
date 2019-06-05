@@ -11,17 +11,22 @@
 
         <nav class="nav d-none d-lg-block col-md-10">
         <div class="links d-md-flex justify-content-around">
-            <p class="link" id="popup-header-show-open" onclick="ShowAdminPopup()">
+            <p class="link">
+                <a href="{{ path('admin_home') }}">
+                    <i class="fal fa-home"></i>
+                </a>
+            </p>
+            <p class="link" id="popup-header-shows-open" onclick="ShowAdminPopup()">
                 Spectacles
             </p>
             {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
 
-            <p class="link" id="popup-header-post-open" onclick="PostAdminPopup()">
-                Articles
-            </p>
-            {% include '@App/admin/partials/popup/admin_posts_dropdown.html.twig' %}
+            {#<p class="link" id="popup-header-post-open" onclick="PostAdminPopup()">#}
+                {#Articles#}
+            {#</p>#}
+            {#{% include '@App/admin/partials/popup/admin_posts_dropdown.html.twig' %}#}
 
-            <p class="link" id="popup-header-event-open" onclick="LeEventAdminPopup()">
+            <p class="link" id="popup-header-events-open" onclick="LeEventAdminPopup()">
                 Evènements
             </p>
             {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}

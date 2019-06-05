@@ -365,6 +365,15 @@ input, textarea, select
   font-size: 30px;
   padding-top: 50px;
 }
+.show-line-date
+{
+  font-size:16px;
+  padding-top: 50px;
+}
+.show-line-date a
+{
+  color: $link;
+}
 .fa-trash
 {
   color: red ;
@@ -392,7 +401,7 @@ input, textarea, select
 .show-line
 {
   text-align: center;
-  width: 40%;
+
 }
 .header-popup-title, .add-link
 {
@@ -450,7 +459,7 @@ input, textarea, select
 }
 .btn
 {
-  border-radius: 0px 10px 10px 0px !important;
+  border-radius: 0 10px 10px 0 !important;
 }
 
 @import "partials/states";

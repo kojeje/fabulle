@@ -202,69 +202,16 @@
             </div>
         </div>
 
-
-
-    {% else %}
-
-        <a id="article-anch3" class="anch col-md-12"></a>
-
-        <h2 class="article-h1">A L'AFFICHE</h2>
-        <div class="article-loop article-loop2 container-fluid">
-            {% for leShow in leShows %}
-
-                {% if leShow.DispoBoolean %}
-
-                    <div class="show_1 row">
-                        <a class="row" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
-                            <h1 class="h1-medal col-12">
-                                {{ leShow.titre }}
-                            </h1>
-
-                            <div class="thumb-medal thumb-medal2 col-md-12">
-                                <img src="{{ asset('assets/uploads/' ~ leShow.img1) }}" alt="affiche" class="affiche">
-                            </div>
-                            <p class=" medal-text col-md-12">
-                                {{ leShow.text1 }}
-                            </p>
-                        </a>
-                    </div>
-                {% endif %}
-
-            {% endfor %}
-
-        </div>
         </div>
         </article>
 
+    {% else %}
+
+       {% include '@App/admin/partials/admin-new-shows-loop.html.twig' %}
+
+
     {% endif %}
-    <h4 class="next-date next-date2">PROCHAINES REPRÉSENTATIONS</h4>
-
-
-        {% if leShow.DispoBoolean == true %}
-
-            {% for leEvent in leEvents %}
-                {% if  leEvent.leShow == leShow %}
-
-                    {%  for place in places %}
-                        {% if leEvent.place == place %}
-
-                            <section class="container">
-
-                                <a class="row event-home-bloc" href="{{ path('admin_event_id', {'id': leEvent.id}) }}">
-                                    <p class="col-md-2"><img src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}"></p>
-                                    <p class="col-md-3">{{ leEvent.Date|date('d/m/Y') }}</p>
-                                    <p class="col-md-3">{{ place.Name }}</p>
-                                    <p class="col-md-3">{{ place.Cp }} {{ place.Commune }}</p>
-                                    {% if place.Country != 'FR' %}
-                                        <p class="col-md-1">{{ place.Country }}</p>
-                                    {% endif %}
-                                </a>
-                            </section>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+    {% include '@App/admin/partials/admin-events-loop.html.twig' %}
 
 
 

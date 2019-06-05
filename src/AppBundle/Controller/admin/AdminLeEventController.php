@@ -226,17 +226,17 @@
       // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
       // puis ->find( spectacle )
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShow = $repository->find($id);
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
+      $leEvent = $repository->find($id);
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
 
 
 
-      //recherche entité leShow existant, puis créé la forme
-      $form = $this->createForm(LeEventType::class, $leShow);
+      //recherche entité leEvent existant, puis créé la forme
+      $form = $this->createForm(LeEventType::class, $leEvent);
 
       // associe les données envoyées (éventuellement) par le client via le formulaire
       //à notre variable $form. Donc la variable $form contient maintenant aussi $_POST

@@ -231,7 +231,7 @@
       $leEvents = $repository->findAll();
 
 
-      for ($i = 1; $i <= 6; $i++) {
+      for ($i = 1; $i <= 5; $i++) {
 
         $getter = 'getImg' . $i;
         $setter = 'setImg' . $i;
@@ -266,7 +266,7 @@
         if ($form->isValid()) {
           $post = $form->getData();
 
-          for ($i = 1; $i <= 6; $i++) {
+          for ($i = 1; $i <= (5); $i++) {
 
             $getter = 'getImg' . $i;
             $setter = 'setImg' . $i;
@@ -349,7 +349,7 @@
 
 
       return $this->render(
-        '@App/admin/CreateLeShow.html.twig',
+        '@App/admin/CreatePost.html.twig',
         [
           'formpost' => $form->createView(),
           'posts' => $posts,

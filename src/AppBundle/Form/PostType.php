@@ -26,9 +26,10 @@
         ->add('categorie',ChoiceType::class,
           [
             'choices' => [
-              'Le petit mot' => 'le petit mot',
+              'Page' => 'page',
               'Actu' => 'actu',
-              'Page' => 'page'
+              'Le petit mot' => 'le petit mot'
+
             ]
           ]
         )
@@ -36,6 +37,7 @@
         ->add('leShow', EntityType::class,
           [
             'class'=> 'AppBundle\Entity\LeShow',
+            'placeholder' => 'Aucun',
             'choice_label'=> function($leShow)
             {
               return $leShow->getTitre();
@@ -43,17 +45,7 @@
             },
           ]
         )
-        ->add('leEvent', EntityType::class,
 
-          [
-            'class' => 'AppBundle\Entity\LeEvent',
-            'choice_label'=> function($leEvent)
-            {
-              return $leEvent->getTitre().' - '.$leEvent->getDate().' - '.$leEvent->getLeShow();
-
-            },
-          ]
-        )
         ->add('titre')
         ->add('text1', TextareaType::class,
           [

@@ -189,10 +189,6 @@
 
     // Relations
 
-    /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\LeEvent", cascade={"persist"})
-     */
-    private $leEvent;
 
     /**
      * @ORM\ManyToOne(targetEntity="LeShow", inversedBy="post")
@@ -476,22 +472,6 @@
     public function setYoutube($youtube): void
     {
       $this->youtube = $youtube;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLeEvent()
-    {
-      return $this->leEvent;
-    }
-
-    /**
-     * @param mixed $leEvent
-     */
-    public function setLeEvent($leEvent): void
-    {
-      $this->leEvent = $leEvent;
     }
 
     /**
