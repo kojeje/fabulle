@@ -229,6 +229,8 @@
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
 
 
       for ($i = 1; $i <= 5; $i++) {
@@ -355,7 +357,8 @@
           'posts' => $posts,
           'post' => $post,
           'leShows' => $leShows,
-          'leEvents' => $leEvents
+          'leEvents' => $leEvents,
+          'places' => $places
         ]
       );
     }

@@ -190,19 +190,17 @@
                     <i>* hors frais de déplacement et conditions particulière</i>
                     <a href="">nous consulter</a>
                 </p>
-                <p>
-                    technique *:
-                </p>
-                <div class="pdf col-12">
-                    {#INTÈGRE UN LECTEUR PDF DANS LA PAGE POUR LA FICHE TECHNIQUE#}
+                {% if leShow.fichetek %}
+                    <p>
+                        technique *:
+                    </p>
+                    <div class="pdf col-12">
+                        {#INTÈGRE UN LECTEUR PDF DANS LA PAGE POUR LA FICHE TECHNIQUE#}
                         <object class="pdf-object" type="application/pdf">
                         <param name="src" value="{{  asset('assets/uploads/'~ leShow.fichetek) }}" />
-
-
-
-
-                </object>
-            </div>
+                        </object>
+                    </div>
+                {% endif %}
 
 
 

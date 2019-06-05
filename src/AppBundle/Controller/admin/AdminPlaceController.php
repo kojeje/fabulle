@@ -35,17 +35,14 @@
       $repository = $this->getDoctrine()->getRepository(Post::class);
       $posts = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Place::class);
-      $place = $repository->findAll();
+      $places = $repository->findAll();
 
-
-
-//      var_dump($leShows);die;
-      return $this->render('@App/admin/shows.html.twig',
+      return $this->render('@App/admin/places.html.twig',
         [
           'leShows' => $leShows,
           'posts' => $posts,
           'leEvents' => $leEvents,
-          'place' => $place
+          'places' => $places
 
         ]);
 

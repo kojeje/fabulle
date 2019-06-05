@@ -10,65 +10,52 @@
         {# Menu Administrateur #}
 
         <nav class="nav d-none d-lg-block col-md-10">
-        <div class="links d-md-flex justify-content-around">
-            <p class="link">
-                <a href="{{ path('admin_home') }}">
-                    <i class="fal fa-home"></i>
-                </a>
-            </p>
-            <p class="link" id="popup-header-shows-open" onclick="ShowAdminPopup()">
-                Spectacles
-            </p>
-            {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
-
-
-            <p class="link" id="popup-header-events-open" onclick="LeEventAdminPopup()">
-                Evènements
-            </p>
-            {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}
-
-            <p class="link" id="popup-header-places-open" onclick="PlaceAdminPopup()">
-                Lieux
-            </p>
-            {% include '@App/admin/partials/popup/admin_places_dropdown.html.twig' %}
-
-
-            <a href="{{ path('fos_user_security_logout') }}" id="logout-hover">
-
-                <p id="logout-ico">
-                    <i class="fal fa-sign-out"></i>
+            <div class="links d-md-flex justify-content-around">
+                <p class="link">
+                    <a href="{{ path('admin_home') }}">
+                        <i class="fal fa-home"></i>
+                    </a>
                 </p>
-            </a>
+                <p class="link" id="popup-header-shows-open" onclick="ShowAdminPopup()">
+                    Spectacles
+                </p>
+                {% include '@App/admin/partials/popup/admin_shows_dropdown.html.twig' %}
 
-        </div>
+
+                <p class="link" id="popup-header-events-open" onclick="LeEventAdminPopup()">
+                    Evènements
+                </p>
+                {% include '@App/admin/partials/popup/admin_events_dropdown.html.twig' %}
+
+                <p class="link" id="popup-header-places-open" onclick="PlaceAdminPopup()">
+                    Lieux
+                </p>
+                {% include '@App/admin/partials/popup/admin_places_dropdown.html.twig' %}
+
+
+                <a href="{{ path('fos_user_security_logout') }}" id="logout-hover">
+
+                    <p id="logout-ico">
+                        <i class="fal fa-sign-out"></i>
+                    </p>
+                </a>
+
+            </div>
         </nav>
-
-        {#<nav class="dropdown show nav d-lg-none d-block col-2">#}
-
-        {#<a href="#" class="btn btn-secondary dropdown-toggle links" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-        {#<p><i class="fas fa-bars"></i></p>#}
-        {#</a>#}
-        {#<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">#}
-        {#{% for item in menu.items %}#}
-        {#<a class="dropdown-item link" href="{{ item.link }}">{{ item.title }}</a>#}
-        {#{% endfor %}#}
-        {#</div>#}
-
-        {#</nav>#}
-
-
     </div>
 </header>
-<div class="dropdown show" id="header-dropdown">
+<div class="dropdown show" id="header-admin-dropdown">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fal fa-chevron-circle-down"></i>
     </a>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{{ path('admin_home') }}">
+            <i class="fal fa-home"></i>
+        </a>
         <a class="dropdown-item" href="{{ path('admin_shows') }}">SPECTACLES</a>
         <a class="dropdown-item" href="{{ path('admin_posts') }}">Articles/Pages</a>
         <a class="dropdown-item" href="{{ path('admin_events') }}">Évènements</a>
         <a class="dropdown-item" href="{{ path('admin_places') }}">Évènements</a>
-
     </div>
 </div>

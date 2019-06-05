@@ -47,7 +47,7 @@
           'leShows' => $leShows,
           'leEvents' => $leEvents,
           'posts' => $posts,
-          'places' => $places,
+          'places' => $places
         ]);
 
 

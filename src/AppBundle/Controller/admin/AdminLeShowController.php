@@ -267,8 +267,8 @@
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-      $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
 
 
       for ($i = 1; $i <= 6; $i++) {
@@ -393,7 +393,7 @@
         [
           'formleshow' => $form->createView(),
           'leShows' => $leShows,
-          'posts' => $posts,
+          'places' => $places,
           'leEvents' => $leEvents
         ]
       );
