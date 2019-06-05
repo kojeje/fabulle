@@ -113,10 +113,6 @@
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeEvent", mappedBy="place")
      */
     private $leEvent;
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\LeShow", inversedBy="place")
-     */
-    private $leShow;
 
 //------------------------------------------------------------------------------
 //  Getters & Setters
@@ -333,21 +329,7 @@
       $this->leEvent = $leEvent;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getLeShow()
-    {
-      return $this->leShow;
-    }
 
-    /**
-     * @param mixed $leShow
-     */
-    public function setLeShow($leShow): void
-    {
-      $this->leShow = $leShow;
-    }
 
 
 

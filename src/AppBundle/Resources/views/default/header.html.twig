@@ -14,18 +14,18 @@
                     <li class="link">Accueil</li>
                 </a>
                 <a href="{{ path('shows') }}">
-                    <li class="link">Les Spectacles</li>
+                    <li class="link">Spectacles</li>
                 </a>
                 <a href="{{ path('events') }}">
-                    <li class="link">L'actu</li>
+                    <li class="link">Dates</li>
                 </a>
                 <a href="{{ path('contact') }}">
                     <li class="link">Contact</li>
                 </a>
-                <li class="link">
-                <form class="form_search" action="{{ path('search') }}">
-                    <input class="search" type="text" placeholder="recherche" name="search">
-                    <input type="submit" class="search_sub">
+                <li class="link search-link">
+                <form class="form_search" method="get" action="{{ path('result') }}">
+                    <input class="search" type="search" aria-label="Search" placeholder="Code postal" name="cp">
+                    <button class="btn btn-search btn-outline-success " type="submit"><i class="fal fa-search"></i></button>
                 </form>
             </ul>
         </nav>

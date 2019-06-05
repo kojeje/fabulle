@@ -46,7 +46,7 @@ hr { color: #ffffff !important; border: 2px solid #ffce30 !important; width: 100
 
 input { display: block; width: 100%; height: 60px; }
 
-input, textarea, select { background-color: #fff2e0; color: #0c0042; border-radius: 10px; padding: 5px; border: 2px solid #ffffff; width: 98%; }
+input, textarea, select { background-color: #fff2e0; color: #000F28; padding: 5px; border: 2px solid #ffffff; width: 98%; }
 
 .links a { color: #ffffff; }
 
@@ -134,6 +134,16 @@ input, textarea, select { background-color: #fff2e0; color: #0c0042; border-radi
 
 .edit { display: flex; justify-content: space-around; padding: 10px; margin-bottom: 50px; }
 
+.form_search { display: flex; justify-content: space-around; background: #fff2e0; color: #000F28; }
+
+.search { width: 80%; }
+
+.btn-search { text-align: center; padding: 1px; width: 20%; border: none; }
+
+.article-loop { min-height: 60vh; }
+
+.btn { border-radius: 0px 10px 10px 0px !important; }
+
 html { scroll-behavior: smooth; }
 
 a:hover { color: #ffce30 !important; text-decoration: none; }
@@ -162,6 +172,8 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
 
 .submit_mail:hover { background: #ffce30; color: #000F28; font-size: 20px; }
 
+.btn-outline-success:hover { background-color: #000F28; color: #ffce30; border: 1px solid #ffffff; }
+
 @media screen and (min-width: 768px) { .article-loop { display: flex; justify-content: space-around; }
   .show2 { border: 2px solid #ffce30; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 20px; margin: 10px; margin-bottom: 100px; width: 40%; font-size: 50%; }
   .preview { font-size: 12px; }
@@ -171,15 +183,15 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .coordonnees img { width: 50%; margin: auto; margin-top: 40px; margin-bottom: 100px; }
   .mail_fields { margin-bottom: 30px; }
   .logo2 { display: block; } }
-@media screen and (min-width: 768px) and (min-width: 992px) { body { font-size: 16px; }
-  .header { height: 20vh; }
+@media screen and (min-width: 992px) { body { font-size: 16px; }
+  .header { height: 15vh; }
   #header { display: block; }
   #header-dropdown { display: none; }
   h1 { font-size: 30px; }
   h2 { font-size: 25px; }
   input { font-size: 12px; }
   iframe { width: 100%; height: 300px; }
-  .nav { padding-top: 50px; }
+  .nav { padding-top: 20px; }
   .logo { margin-bottom: 20px; }
   .logo_fabulle { max-width: 100%; padding: 10px; }
   .logo-fabulle2 { max-width: 80%; margin: auto; }
@@ -194,7 +206,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .the_post_medal { width: 35%; padding: 20px; border-bottom: 4px solid #ffce30; border-left: 4px solid #ffce30; margin-bottom: 30px; }
   .f_l { margin: auto; text-align: center; }
   .banner { margin: auto; width: 50%; margin-bottom: 20px; padding: 50px; }
-  .caption { position: absolute; padding: 10px; padding-top: 200px; padding-bottom: 100px; padding-left: 30px; padding-right: 30px; border-radius: 50%; font-size: 40px; top: 10vh; background: rgba(0, 0, 0, 0.2); bottom: auto !important; }
+  .caption { position: absolute; padding: 10px; padding-top: 100px; padding-bottom: 100px; padding-left: 30px; padding-right: 30px; border-radius: 50%; font-size: 30px; top: 10vh; background: rgba(0, 0, 0, 0.2); bottom: auto !important; }
   .caption2 { width: 40%; margin-left: 15%; }
   .banner img { width: 50%; }
   .titre { text-align: center; }
@@ -202,7 +214,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .loop-title { width: 50%; margin: auto; font-size: 80px; text-align: center; margin-bottom: 30px; }
   .loop-title2 { width: 100%; margin: auto; margin-top: 20px; }
   .article-loop { display: flex; justify-content: space-around; flex-wrap: wrap; margin: auto; }
-  .article-loop2 img { height: 200px; width: auto; margin: auto; margin-bottom: 10px; margin-top: 10px; }
+  .article-loop2 img { margin: auto; margin-bottom: 10px; margin-top: 10px; }
   #article-loop { margin-bottom: 20vh; }
   .title-bloc img { width: 70% !important; margin: auto; }
   .bloc-title { margin-top: 30vh; margin-bottom: 20vh; }
@@ -263,9 +275,8 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .fa-times { padding-top: 55px; font-size: 40px; }
   .ad { font-size: 12px; }
   .ad strong { font-size: 14px; color: #ffce30; }
-  .adress, .map { padding: 30px; }
-  .map { width: 50%; }
-  .h1-medal { font-size: 20px; padding: 10px; margin-bottom: 30px; color: #ffffff; }
+  .map { width: 100%; }
+  .h1-medal { font-size: 16px; padding: 10px; margin-bottom: 30px; color: #ffffff; }
   .totop i { font-size: 40px; display: block; text-align: center; color: rgba(255, 255, 255, 0.6); }
   .totop { opacity: 0.5; position: sticky; bottom: 10vh; margin-left: 93%; cursor: pointer; padding: 30px; font-size: 8px; display: block; transition: 0.6s; z-index: 1; background: black; }
   .totop div, .totop p { text-align: center; }
@@ -278,10 +289,15 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .article-sub-h2 { font-size: 1.2rem; color: #ffffff; }
   .hall { color: #000000; }
   .cie-line { margin-bottom: 25vh; }
-  .contact-title h1 { font-size: 80px !important; }
+  .contact-title h1 { font-size: 40px !important; }
   #home-img img { width: 70% !important; height: auto !important; }
   .corps p, label, select { font-size: 16px; }
-  select { display: block; width: 100%; margin: auto; } }
+  select { display: block; width: 100%; margin: auto; }
+  .event-line img { margin-top: 40%; }
+  .form_search, .search { max-height: 30px; }
+  .form_search { -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+  .article-h3 { font-size: 20px; text-align: center; }
+  .event-show-link { font-size: 12px; } }
 @media screen and (min-width: 1026px) { .img { border: none !important; } }
 
 /*# sourceMappingURL=style.css.map */

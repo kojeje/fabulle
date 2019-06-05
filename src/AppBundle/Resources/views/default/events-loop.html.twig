@@ -4,22 +4,17 @@
 </h2>
 <div class="offset-md-7"></div>
 
-{% for leShow in leShows %}
-
-    {% if leShow.DispoBoolean == true %}
-
-        {% for leEvent in leEvents %}
-            {% if  leEvent.leShow == leShow %}
-
+{% for leEvent in leEvents %}
+    {% for leShow in leShows %}
+        {% if  leEvent.leShow == leShow %}
+            {% if leShow.DispoBoolean == true %}
                 {%  for place in places %}
                     {% if leEvent.place == place %}
                         {#{% if leShow.get_field('field_5cbc31c7f2c13') == leEvent.get_field('field_5cbc31c7f2c13') %}#}
                         {% if "now"|date < leEvent.date  %}
-
-
                             <section class="container event-line">
 
-                                <a class="row event-home-bloc" href="{{path ('admin_event_id', {'id': leEvent.id}) }}">
+                                <a class="row event-home-bloc" href="{{path ('event_id', {'id': leEvent.id}) }}">
                                     <div class="thumb  col-md-1 d-none d-md-block">
                                         <img src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}">
                                     </div>
@@ -35,8 +30,7 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-
             {% endif %}
-        {% endfor %}
-    {% endif %}
+        {% endif %}
+    {% endfor %}
 {% endfor %}

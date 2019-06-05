@@ -12,7 +12,7 @@
 
                                 <div class="show3 show2 article-loop show">
 
-                                    <a class="row" href="{{path ('show_id', {'id': leShow.id}) }}">
+                                    <a class="row event-show-link" href="{{path ('show_id', {'id': leShow.id}) }}">
 
                                         <h1 class="article-h1 col-12">
                                             {{ leShow.Titre }}
@@ -36,7 +36,7 @@
                                         </p>
                                         <div class="offset-md-3"></div>
                                         <p class="col-6">
-                                            durée: {{ leShow.Duree }} mn environ.
+                                            durée: {{ leShow.Duree }} .
                                         </p>
                                         <div class="offset-md-3"></div>
                                     </a>
@@ -94,7 +94,7 @@
                                             </div>
 
                                         </div>
-                                        <a href="{{ path('admin_events') }}">
+                                        <a href="{{ path('events') }}">
                                             <p class="back-link nest-date next-date-3">
                                                 <i class="fal fa-arrow-circle-left"></i> retour dates
                                             </p>

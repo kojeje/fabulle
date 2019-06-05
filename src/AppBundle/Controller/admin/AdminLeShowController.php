@@ -231,7 +231,7 @@
           );
           $this->addFlash(
             'error',
-            '<h1 class="h1-flash">Le spectacle n\'a été enregistré</h1>'
+            '<h1 class="h1-flash">Le spectacle n\'a pas été enregistré</h1>'
           );
         }
       }

@@ -142,9 +142,9 @@ input {
 }
 input, textarea, select
 {
-  background-color: #fff2e0;
-  color: #0c0042;
-  border-radius: 10px;
+  background-color: $fields;
+  color: $dark-blue;
+
   padding: 5px;
   border: 2px solid $white;
   width: 98%;
@@ -423,6 +423,34 @@ input, textarea, select
   justify-content: space-around;
   padding: 10px;
   margin-bottom: 50px;
+}
+.form_search
+{
+  display: flex;
+  justify-content: space-around;
+  background: $fields;
+  color: $dark-blue;
+}
+.search
+{
+  width: 80%;
+
+}
+.btn-search
+{
+
+  text-align: center;
+  padding: 1px;
+  width: 20%;
+  border:none;
+}
+.article-loop
+{
+  min-height:60vh;
+}
+.btn
+{
+  border-radius: 0px 10px 10px 0px !important;
 }
 
 @import "partials/states";

@@ -14,7 +14,8 @@
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
-  use AppBundle\Repository\DefaultRepository;
+  use AppBundle\Repository\PlaceRepository;
+  use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
   class DefaultController extends Controller{
 
@@ -187,7 +188,7 @@
      * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
-    public function AdminEventIdAction($id)
+    public function   EventIdAction($id)
 
     {
 //    On récupère le contenu de l'Entity dans la variable repository
@@ -318,27 +319,29 @@
 
     }
     /**
-     * @Route("/search", name="search")
+     * @Route("/result", name="result")
      */
-    public function AllByWordAction(Request $request)
-    {
-
-      $repository = $this->getDoctrine()->getRepository(Place::class);
-      $places = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-      $leEvents = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-
-      $word= $request->query->get('search');
-
-      $leShow = $repository->getAllByWord($word);
+    public function listLeEventByPlaceCPAction(Request $request){
 
 
-      return $this->render('@App/pages/shows.html.twig',
-        [
-          'leShow' => $leShow,
-          'leEvents' => $leEvents,
-          'places' => $places
+      // je genère le Repository de Doctrine
+
+      $placeRepository = $this->getDoctrine()->getRepository(Place::class);
+
+      /** @var $placeRepository PlaceRepository */ // je génère une requête par code postal via un formulaire
+      $cp = $request->query->get('cp');
+
+//    On va chercher la méthode de Repository qui contient la requête
+      $places = $placeRepository->getLeEventByPlace($cp);
+
+
+        //retourne la page html spectacles en utilisant le twig events by cp
+      return $this->render("@App/pages/events-by-cp.html.twig",
+        [ 'cp' => $cp,
+          'places' => $places,
+//
+
+
         ]);
     }
 

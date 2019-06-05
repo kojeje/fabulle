@@ -8,14 +8,10 @@
             Nous voir
         </h2>
         <div class="offset-md-7"></div>
-
-        {% for leShow in leShows %}
-
-            {% if leShow.DispoBoolean == true %}
-
-                {% for leEvent in leEvents %}
-                    {% if  leEvent.leShow == leShow %}
-
+        {% for leEvent in leEvents %}
+            {% for leShow in leShows %}
+                {% if  leEvent.leShow == leShow %}
+                    {% if leShow.DispoBoolean == true %}
                         {%  for place in places %}
                             {% if leEvent.place == place %}
                                 {#{% if leShow.get_field('field_5cbc31c7f2c13') == leEvent.get_field('field_5cbc31c7f2c13') %}#}
@@ -38,10 +34,9 @@
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-
                     {% endif %}
-                {% endfor %}
-            {% endif %}
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </div>
 {% endblock %}

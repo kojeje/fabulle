@@ -11,46 +11,38 @@
 
   use Doctrine\ORM\EntityRepository;
 
-  class PlaceRepository extends EntityRepository
+  class PlaceRepository extends \Doctrine\ORM\EntityRepository
   {
-    public function getAllPlace($place)
+
+
+    public function getLeEventByPlace($cp)
     {
-//    QueryBuilder => Pour éxecuter des requêtes
-//    Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
 
-      $queryBuilder =$this
-        ->createQueryBuilder('pl');
+//    requête par lieu, ordre commence par la prochaine date
+      $queryBuilder = $this->createQueryBuilder('p');
+///  querybuilder classe de doctrine permettant de créer des requêtes en php
       $query = $queryBuilder
-
-        ->select('pl')
-
-//    Permet de définir un paramètre de requete de maniere sécurisée
-        ->setParameter('place', $place)
-//    recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
+//    //equivalent de SELECT * FROM place
+        ->select('p')
+        /* jointures */
+          // avec LeEvent
+        ->join('p.leEvent', 'e')
+          // avec leShow
+        ->leftJoin('e.leShow', 's')
+        //On récupère les données des tables liées
+        ->addSelect('e')
+        ->addSelect('s')
+        // Si équivalence entre la saisie et le code postal du lieu
+        ->where('p.cp = :cp')
+        // Sécurise le formulaire contre des injections sql
+        ->setParameter('cp', $cp)
+        //trie par dates
+        ->orderBy('e.date', 'ASC')
+        // GO
         ->getQuery();
 
-//    Eq fetch
-      $results = $query->getArrayResult();
+
+      $results = $query->getResult();
       return $results;
     }
-
-//    public function getPlacebyEventId($id)
-//    {
-//      $queryBuilder =$this
-//        ->createQueryBuilder('pl');
-//
-//
-//      $query = $queryBuilder
-//        ->leftJoin('pl.event','e')
-//        ->select('pl')
-//        ->addSelect('e')
-//        ->where('e.id = :id')
-//        ->setParameter('id', $id)
-//        ->getQuery();
-////                    eq fetch
-//
-//      $results = $query->getResult();
-//
-//      return $results;
-//    }
   }
