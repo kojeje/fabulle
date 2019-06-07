@@ -10,86 +10,86 @@
                         {% for place in places %}
                             {% if place == leEvent.place %}
 
-                                <div class="show3 show2 article-loop show">
+                                    <div class="show3 show2 article-loop show">
 
-                                    <a class="row event-show-link" href="{{path ('show_id', {'id': leShow.id}) }}">
+                                        <a class="row event-show-link" href="{{path ('show_id', {'id': leShow.id}) }}">
 
-                                        <h1 class="article-h1 col-12">
-                                            {{ leShow.Titre }}
-                                        </h1>
-                                        <div class="offset-md-4"></div>
-                                        <div class="thumb-medal col-md-4">
-                                            <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}" class="affiche">
-                                        </div>
-                                        <div class="offset-md-4"></div>
+                                            <h1 class="article-h1 col-12">
+                                                {{ leShow.Titre }}
+                                            </h1>
+                                            <div class="offset-md-4"></div>
+                                            <div class="thumb-medal col-md-4">
+                                                <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}" class="affiche">
+                                            </div>
+                                            <div class="offset-md-4"></div>
 
-                                        <div class="offset-md-6"></div>
+                                            <div class="offset-md-6"></div>
 
-                                        <p class="info col-12 col-md-6">
-                                            {{ leShow.Genre }}
-                                        </p>
+                                            <p class="info col-12 col-md-6">
+                                                {{ leShow.Genre }}
+                                            </p>
 
-                                        <p class="info col-12 col-md-6">
-                                            A partir de: {{ leShow.MinAge }} ans
-                                        </p>
-                                        <div class="offset-md-3"></div>
-                                        <p class="info col-12 col-md-6">
-                                            durée: {{ leShow.Duree }} .
-                                        </p>
-                                        <div class="offset-md-3"></div>
-                                    </a>
-                                </div>
-                                <div class="event">
+                                            <p class="info col-12 col-md-6">
+                                                A partir de: {{ leShow.MinAge }} ans
+                                            </p>
+                                            <div class="offset-md-3"></div>
+                                            <p class="info col-12 col-md-6">
+                                                durée: {{ leShow.Duree }} .
+                                            </p>
+                                            <div class="offset-md-3"></div>
+                                        </a>
+                                    </div>
+                                    <div class="event">
 
-                                    <h1 class="date">Le {{ leEvent.Date|date("d/m/Y") }}</h1>
-                                    <div class="place container">
+                                        <h1 class="date">Le {{ leEvent.Date|date("d/m/Y") }}</h1>
+                                        <div class="place container">
 
-                                        <div class="endroit row">
+                                            <div class="endroit row">
 
-                                            <div class="adress col-md-5">
-                                                <h1 class="h1-medal hall">
-                                                    {{ place.name }}
-                                                </h1>
-                                                <p class="ad">
-                                                    {{ place.Ad1 }}
-                                                </p>
-                                                {% if place.ad2 %}
+                                                <div class="adress col-md-5">
+                                                    <h1 class="h1-medal hall">
+                                                        {{ place.name }}
+                                                    </h1>
                                                     <p class="ad">
-                                                        {{ place.Ad2 }}
+                                                        {{ place.Ad1 }}
                                                     </p>
-                                                {% endif %}
-                                                <p class="ad">
-                                                    <strong>
-                                                        {{ place.Cp }}
-                                                    </strong>
-
-                                                    <strong>
-                                                        {{ place.Commune }}
-                                                    </strong>
-                                                </p>
-                                                {% if place.Country != 'FR' %}
+                                                    {% if place.ad2 %}
+                                                        <p class="ad">
+                                                            {{ place.Ad2 }}
+                                                        </p>
+                                                    {% endif %}
                                                     <p class="ad">
                                                         <strong>
-                                                            {{ place.Country }}
+                                                            {{ place.Cp }}
+                                                        </strong>
+
+                                                        <strong>
+                                                            {{ place.Commune }}
                                                         </strong>
                                                     </p>
-                                                {% endif %}
+                                                    {% if place.Country != 'FR' %}
+                                                        <p class="ad">
+                                                            <strong>
+                                                                {{ place.Country }}
+                                                            </strong>
+                                                        </p>
+                                                    {% endif %}
 
 
-                                                <p class="ad tel">
-                                                    {{ place.tel }}
-                                                </p>
-                                                <p class="ad url">
-                                                    <a href="{{ place.Site }}" target="_blank">site web</a>
-                                                </p>
-                                                {% if place.email %}
-                                                    <a href="mailto:"{{ place.Email }} target="_blank">email</a>
-                                                {% endif %}
-                                            </div>
-                                            <div class="offset-md-1"></div>
-                                            <div class="map col-md-6">
-                                                {{ place.Gmap|raw  }}
-                                            </div>
+                                                    <p class="ad tel">
+                                                        {{ place.tel }}
+                                                    </p>
+                                                    <p class="ad url">
+                                                        <a href="{{ place.Site }}" target="_blank">site web</a>
+                                                    </p>
+                                                    {% if place.email %}
+                                                        <a href="mailto:"{{ place.Email }} target="_blank">email</a>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="offset-md-1"></div>
+                                                <div class="map col-md-6">
+                                                    {{ place.Gmap|raw  }}
+                                                </div>
 
                                         </div>
                                         <a href="{{ path('events') }}">
@@ -106,5 +106,6 @@
             </section>
         </article>
     </div>
+
 {% endblock %}
 

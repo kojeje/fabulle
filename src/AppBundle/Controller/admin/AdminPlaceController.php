@@ -58,9 +58,8 @@
     {
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    En fonction de l'id
       $place = $repository->find($id);
-
-
 
 //      on récupère l'ensemble des articles
       $places = $repository->findAll();

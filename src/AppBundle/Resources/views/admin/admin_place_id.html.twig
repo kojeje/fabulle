@@ -11,6 +11,7 @@
                             <h1 class="h1-medal hall">
                                 {{ place.name }}
                             </h1>
+
                             <p class="ad">
                                 {{ place.Ad1 }}
                             </p>
@@ -49,14 +50,11 @@
                     </div>
                     <div class="map col-md-6">
                             {{ place.Gmap|raw  }}
-                        </div>
-                </div>
-                <a href="{{ path('events') }}">
-                    <p class="back-link nest-date next-date-3">
-                        <i class="fal fa-arrow-circle-left"></i> retour dates
-                    </p>
+                        {% include '@App/admin/partials/admin-places-icons.html.twig' %}
+                    </div>
 
-                </a>
+                </div>
+
             </section>
         </article>
     </div>

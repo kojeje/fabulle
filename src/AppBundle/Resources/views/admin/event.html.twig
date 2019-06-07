@@ -12,41 +12,36 @@
 
                                 <div class="show3 show2 article-loop show">
 
-                                    <a class="row" href="{{path ('admin_show_id', {'id': leShow.id}) }}">
+                                    <a class="row event-show-link" href="{{path ('show_id', {'id': leShow.id}) }}">
 
                                         <h1 class="article-h1 col-12">
                                             {{ leShow.Titre }}
                                         </h1>
-                                        <div class="offset-md-4 d-none d-md-block"></div>
-                                        <div class="thumb-medal col-md-4 col-12">
+                                        <div class="offset-md-4"></div>
+                                        <div class="thumb-medal col-md-4">
                                             <img src="{{asset('assets/uploads/'~leShow.Img1)}}" alt="{{ leShow.ImgAlt1 }}" class="affiche">
                                         </div>
-                                        <div class="offset-md-4 d-none d-md-block"></div>
+                                        <div class="offset-md-4"></div>
 
-                                        <div class="offset-md-3 d-none d-md-block"></div>
+                                        <div class="offset-md-6"></div>
+
                                         <p class="info col-12 col-md-6">
                                             {{ leShow.Genre }}
                                         </p>
-                                        <div class="offset-md-3 d-none d-md-block"></div>
 
-
-                                        <div class="offset-md-3 d-none d-md-block"></div>
                                         <p class="info col-12 col-md-6">
                                             A partir de: {{ leShow.MinAge }} ans
                                         </p>
-                                        <div class="offset-md-3 d-none d-md-block"></div>
-                                        <div class="offset-md-3 d-none d-md-block"></div>
-                                        <p class="info col-md-6 col-12
-">
-                                            durée: {{ leShow.Duree }}.
+                                        <div class="offset-md-3"></div>
+                                        <p class="info col-12 col-md-6">
+                                            durée: {{ leShow.Duree }} .
                                         </p>
-                                        <div class="offset-md-3 d-none d-md-block"></div>
+                                        <div class="offset-md-3"></div>
                                     </a>
                                 </div>
                                 <div class="event">
 
                                     <h1 class="date">Le {{ leEvent.Date|date("d/m/Y") }}</h1>
-                                    {% include '@App/admin/partials/admin-events-icons.html.twig' %}
                                     <div class="place container">
 
                                         <div class="endroit row">
@@ -55,6 +50,7 @@
                                                 <h1 class="h1-medal hall">
                                                     {{ place.name }}
                                                 </h1>
+                                                {% include '@App/admin/partials/admin-events-icons.html.twig' %}
                                                 <p class="ad">
                                                     {{ place.Ad1 }}
                                                 </p>
@@ -97,7 +93,7 @@
                                             </div>
 
                                         </div>
-                                        <a href="{{ path('admin_events') }}">
+                                        <a href="{{ path('events') }}">
                                             <p class="back-link nest-date next-date-3">
                                                 <i class="fal fa-arrow-circle-left"></i> retour dates
                                             </p>
@@ -110,7 +106,7 @@
                 {% endfor %}
             </section>
         </article>
-        {% include '@App/admin/partials/admin-events-loop.html.twig' %}
     </div>
+
 {% endblock %}
 

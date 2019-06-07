@@ -97,7 +97,7 @@
           'leEvents' => $leEvents,
           'posts' => $posts,
           'places' => $places,
-          'leShows' => $leShows
+          'leShows' => $leShows,
 
         ]);
 
@@ -230,8 +230,8 @@
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
       $leEvent = $repository->find($id);
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-      $posts = $repository->findAll();
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $places = $repository->findAll();
 
 
 
@@ -290,8 +290,8 @@
         [
           'formleEvent' => $form->createView(),
           'leShows' => $leShows,
-          'posts' => $posts,
-          'leEvents' => $leEvents
+          'leEvents' => $leEvents,
+          'places' => $places
         ]
       );
     }

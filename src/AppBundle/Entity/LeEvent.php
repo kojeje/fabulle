@@ -61,6 +61,11 @@
      */
     private $place;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="leEvent")
+     */
+    private $Post;
+
 //------------------------------------------------------------------------------
 //  Getters & Setters
 
@@ -160,6 +165,22 @@
     public function setPlace($place): void
     {
       $this->place = $place;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+      return $this->Post;
+    }
+
+    /**
+     * @param mixed $Post
+     */
+    public function setPost($Post): void
+    {
+      $this->Post = $Post;
     }
 
 

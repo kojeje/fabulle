@@ -203,7 +203,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .coordonnees img { width: 50%; margin: auto; margin-top: 40px; margin-bottom: 100px; }
   .mail_fields { margin-bottom: 30px; }
   .logo2 { display: block; }
-  .id { background-image: url("/web/assets/img/mati-bras.jpg"); width: 100%; margin-top: 100px; background-attachment: fixed; background-position: center; border-radius: 50%; background-color: #000F28; overflow: hidden; padding: 190px; }
+  .id { background-image: url("/web/assets/img/mati-bras.jpg"); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; width: 100%; margin-top: 100px; border-radius: 50%; background-color: #000F28; overflow: hidden; padding: 190px; }
   .form, .coordonnees { background-color: rgba(0, 0, 0, 0.7); border-radius: 50px; border: 1px solid #ffffff; z-index: 20; padding-bottom: 20px; box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5); } }
 @media screen and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 15vh; }

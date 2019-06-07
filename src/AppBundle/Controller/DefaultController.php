@@ -14,7 +14,6 @@
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\Routing\Annotation\Route;
   use AppBundle\Repository\PlaceRepository;
-  use Doctrine\ORM\Query\ResultSetMappingBuilder;
   use Symfony\Component\HttpFoundation\Request; // Handle the request in the controller
   use ReCaptcha\ReCaptcha; // Include the recaptcha lib
 
@@ -190,13 +189,14 @@
      * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
-    public function   EventIdAction($id)
+    public function  EventIdAction($id)
 
     {
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
 //    on récupère l'ensemble des articles
       $leShows = $repository->findAll();
+
 
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
@@ -220,7 +220,6 @@
         [
           'leShows' => $leShows,
           'leEvent' => $leEvent,
-          'posts' => $posts,
           'leEvents' => $leEvents,
           'places' => $places
 
@@ -248,7 +247,8 @@
           'leShows' => $leShows,
           'leEvents' => $leEvents,
           'posts' => $posts,
-          'places' => $places
+          'places' => $places,
+
 
         ]);
     }

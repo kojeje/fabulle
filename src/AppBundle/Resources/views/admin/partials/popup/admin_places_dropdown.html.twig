@@ -26,24 +26,29 @@
 
     <hr class="separation">
     {% for place in places %}
-    {% for leEvent in leEvents %}
+
 
         <div class="show-line row">
 
-            <div class="col-4 show-line show-line-titre">
+            <div class="col-3 show-line show-line-titre">
                 <a href="{{ path('admin_place_id', {'id': place.Id}) }}">
                     {{ place.name }}
                 </a>
             </div>
-            {% if leEvent.date|date %}
+            <div class="col-2 show-line show-line-titre">
 
-            <div class="col-4 show-line show-line-titre">
-                <a href="{{ path('admin_place_id', {'id': place.id}) }}">
-                    {{ leEvent.date|date('d - m - Y')}}
+                    {{ place.cp }}
 
-                </a>
             </div>
-            {% endif %}
+            <div class="col-3 show-line show-line-titre">
+
+                {{ place.commune }}
+
+            </div>
+
+
+
+
 
             <div class="col-2 show-line show-line-edit">
                 <a href="{{ path('admin_update_place', {'id': place.Id}) }}">
@@ -57,7 +62,7 @@
             </div>
             <hr class="separation">
         </div>
-        {% endfor %}
+
     {% endfor %}
 </div>
 

@@ -61,11 +61,13 @@
 
   }
   .id{
-    background-image: url("/web/assets/img/mati-bras.jpg") ;
+    background-image: url("/web/assets/img/mati-bras.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     width: 100%;
     margin-top: 100px;
-    background-attachment: fixed;
-    background-position: center;
     border-radius:50%;
     background-color: $dark-blue;
     overflow: hidden;

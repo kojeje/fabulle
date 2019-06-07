@@ -114,6 +114,11 @@
      */
     private $leEvent;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="place")
+     */
+    private $post;
+
 //------------------------------------------------------------------------------
 //  Getters & Setters
 
@@ -347,6 +352,22 @@
     public function setCountry($country): void
     {
       $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+      return $this->post;
+    }
+
+    /**
+     * @param mixed $post
+     */
+    public function setPost($post): void
+    {
+      $this->post = $post;
     }
 
 

@@ -1,15 +1,31 @@
 <footer class="footer d-none d-md-block container-fluid">
     <div class="footer_bloc row">
-        <div class="f-link col-md-3"><a href="http://localhost:8000/">Accueil</a></div>
-        <div class="f-link col-md-2"><a href="http://localhost:8000/les-spectacles/">Les Spectacles</a></div>
+        <div class="f-link col-md-2">
+            <a href="{{ path('home') }}">
+                Accueil
+            </a>
+        </div>
+        <div class="f-link col-md-2">
+            <a href="{{ path('shows') }}">
+                Les Spectacles
+            </a>
+        </div>
 
-        <div class="logo col-md-2">
-            <a href="http://localhost:8000/">
+        <div class="logo col-md-4">
+            <a href="{{ path("home") }}/">
                 <img class="logo-fabulle2" src="{{ asset ('assets/img/logo_faBulle_2019.png')}}" alt="logo">
             </a>
         </div>
-        <div class="f-link col-md-2"><a href="">La Cie</a></div>
-        <div class="f-link col-md-3"><a href="">Contact</a></div>
+        <div class="f-link col-md-2">
+            <a href="{{ path('events') }}">
+                Dates
+            </a>
+        </div>
+        <div class="f-link col-md-2">
+            <a href="{{ path('contact') }}">
+                Contact
+            </a>
+        </div>
     </div>
 </footer>
 <footer class="footer d-md-none d-block container-fluid">

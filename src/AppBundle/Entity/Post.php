@@ -195,6 +195,16 @@
      */
     private $leShow;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="LeEvent", inversedBy="post")
+     */
+    private $leEvent;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Place", inversedBy="post")
+     */
+    private $place;
+
 
 
 
@@ -504,6 +514,38 @@
     public function setCategorie($categorie): void
     {
       $this->categorie = $categorie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLeEvent()
+    {
+      return $this->leEvent;
+    }
+
+    /**
+     * @param mixed $leEvent
+     */
+    public function setLeEvent($leEvent): void
+    {
+      $this->leEvent = $leEvent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlace()
+    {
+      return $this->place;
+    }
+
+    /**
+     * @param mixed $place
+     */
+    public function setPlace($place): void
+    {
+      $this->place = $place;
     }
 
 
