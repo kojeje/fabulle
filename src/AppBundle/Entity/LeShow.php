@@ -6,9 +6,12 @@
    * Time: 22:44
    */
 
-  namespace AppBundle\Entity;
-  use Doctrine\ORM\Mapping as ORM;
 
+  namespace AppBundle\Entity;
+// Appelle des classes Symfony et Doctrine
+//Doctrine ORM Gère le mapping et les requêtes en base de données
+  use Doctrine\ORM\Mapping as ORM;
+// Contraintes
   use Symfony\Component\Validator\Constraints as Assert;
 
 

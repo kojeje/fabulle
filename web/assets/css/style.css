@@ -4,10 +4,6 @@ body { font-family: Comfortaa,sans-serif; }
 
 body { color: #ffffff; background: #000F28; width: 100%; }
 
-#header { display: none; }
-
-#header-dropdown { display: block; }
-
 hr { height: 1px; color: #ffffff; opacity: 0.2; }
 
 a { color: #ffffff; text-decoration: none; cursor: pointer; }
@@ -207,8 +203,6 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .form, .coordonnees { background-color: rgba(0, 0, 0, 0.7); border-radius: 50px; border: 1px solid #ffffff; z-index: 20; padding-bottom: 20px; box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5); } }
 @media screen and (min-width: 992px) { body { font-size: 16px; }
   .header { height: 15vh; }
-  #header { display: block; }
-  #header-dropdown { display: none; }
   h1 { font-size: 30px; }
   h2 { font-size: 25px; }
   input { font-size: 12px; }
@@ -218,7 +212,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
   .logo_fabulle { max-width: 100%; padding: 10px; }
   .logo-fabulle2 { max-width: 80%; margin: auto; }
   .links { display: flex; justify-content: space-around; width: 100%; list-style-type: none; }
-  #article-anch, #article-anch2, #article-anch3, #article-anch4, #article-anch5, #article-anch6, #article-anch7, #article-anch8, #article-anch9 { display: block; height: 22vh; }
+  #article-anch, #article-anch2, #article-anch3, #article-anch4, #article-anch5, #article-anch6, #article-anch7, #article-anch8, #article-anch9 { display: block; height: 20vh; }
   .thumb { margin-bottom: 30px; }
   .thumb2 img { width: 80%; height: auto; padding: 10px; margin: auto; }
   .thumb-medal img { padding: 10px; width: 100%; }

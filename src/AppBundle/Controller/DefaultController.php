@@ -10,10 +10,9 @@
   use AppBundle\Entity\Post;
   use AppBundle\Entity\Place;
   use AppBundle\Entity\LeShow;
-  use Doctrine\ORM\EntityRepository;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\Routing\Annotation\Route;
-  use AppBundle\Repository\PlaceRepository;
+//  use AppBundle\Repository\PlaceRepository;
   use Symfony\Component\HttpFoundation\Request; // Handle the request in the controller
   use ReCaptcha\ReCaptcha; // Include the recaptcha lib
 
@@ -197,24 +196,22 @@
 //    on récupère l'ensemble des articles
       $leShows = $repository->findAll();
 
-
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
-//    on récupère l'article en fonction de l'id
-      $leEvent = $repository->find($id);
-
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
-      $posts = $repository->findAll();
-
-
 //      On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(Place::class);
 //      on récupère l'ensemble des articles
       $places = $repository->findAll();
+
+//    On récupère le contenu de l'Entity dans la variable repository
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    récupère l'article en fonction de l'id
+      $leEvent = $repository->find($id);
+
+//      on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
+//
+
+
+
 
       return $this->render('@App/pages/event.html.twig',
         [

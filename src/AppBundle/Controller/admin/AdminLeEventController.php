@@ -17,6 +17,7 @@
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
   use Symfony\Component\Routing\Annotation\Route;
+  use AppBundle\Repository\LeEventRepository;
 
 
   class AdminLeEventController extends Controller
@@ -67,7 +68,7 @@
      * Je récupère une instance de Doctrine qui appelle une instense de repository
      */
 
-    public function AdminEventIdAction($id)
+    public function AdminEventIdAction(Request $request,$id)
 
     {
 //    On récupère le contenu de l'Entity dans la variable repository
@@ -77,9 +78,10 @@
       $leShows = $repository->findAll();
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
+//    on récupère l'article en fonction de l'id
       $leEvent = $repository->find($id);
+//    on récupère l'ensemble des articles
+      $leEvents = $repository->findAll();
 
 //    On récupère le contenu de l'Entity dans la variable repository
       $repository = $this->getDoctrine()->getRepository(Post::class);
@@ -89,6 +91,7 @@
       $repository = $this->getDoctrine()->getRepository(Place::class);
 //      on récupère l'ensemble des articles
       $places = $repository->findAll();
+      $place =$repository->getPlaceByLeEvent();
 
 
       return $this->render('@App/admin/event.html.twig',
@@ -98,6 +101,7 @@
           'posts' => $posts,
           'places' => $places,
           'leShows' => $leShows,
+          'place' => $place
 
         ]);
 
@@ -232,6 +236,7 @@
       $leEvent = $repository->find($id);
       $repository = $this->getDoctrine()->getRepository(Place::class);
       $places = $repository->findAll();
+
 
 
 

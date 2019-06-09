@@ -1,25 +1,31 @@
 <?php
 
-
+//NameSpace
   namespace AppBundle\Form;
 
-  use AppBundle\Entity\LeEvent;
+//Se réfère à l'entité:
   use AppBundle\Entity\Place;
-  use Doctrine\ORM\EntityRepository;
+//active des classes symfony utilisé
+  use Symfony\Component\Form\Extension\Core\Type\EmailType;
+  use Symfony\Component\Form\Extension\Core\Type\TelType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
   use Symfony\Component\Form\AbstractType;
   use Symfony\Component\Form\Extension\Core\Type\SubmitType;
   use Symfony\Component\Form\FormBuilderInterface;
   use Symfony\Component\Form\Extension\Core\Type\CountryType;
+  use Symfony\Component\Form\Extension\Core\Type\UrlType;
   use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-  use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+// Classe de formulaire
   class PlaceType extends AbstractType
   {
+//  Méthode de construction de formulaire
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder
+//      Champ text
         ->add('name')
+//      Champ textarea
         ->add('presentation',TextareaType::class,
           [
             'attr' => [
@@ -29,16 +35,27 @@
             ]
           ]
         )
+//      Champ text
         ->add('ad1')
+//      Champ text
         ->add('ad2')
+//      Champ integer
         ->add('cp')
+//      Champ text
         ->add('commune')
+//      Champ de sélection de pays
         ->add('country',CountryType::class,[
+        // Choix par défaut
           'preferred_choices' => ['FR', 'France']])
-        ->add('tel')
-        ->add('site')
-        ->add('email')
+//      Champ n°de tel
+        ->add('tel',TelType::class)
+//      Champ Url
+        ->add('site',UrlType::class)
+//      Champ email
+        ->add('email',EmailType::class)
+//      Champ text
         ->add('gmap')
+//      Bouton submit
         ->add('submit', SubmitType::class)
       ;
     }

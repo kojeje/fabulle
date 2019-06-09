@@ -1,7 +1,6 @@
 function hideAdmin() {
     if (document.getElementById("body").onload) {
 //  Masquer les champs facultatifs au chargement du formulaire (onload)
-
         //popups
         document.getElementById("shows-admin-menu").style.display = 'none';
         document.getElementById('events-admin-menu').style.display = 'none';

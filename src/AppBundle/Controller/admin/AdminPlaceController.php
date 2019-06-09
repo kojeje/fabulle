@@ -125,7 +125,7 @@
       $posts = $repository->findAll();
 
 
-      /* Création d'un nouveau formulaire à partir d'un gabarit "Placetype" */
+      /* Création d'un nouvel objet "formulaire" à partir d'un gabarit "Placetype" */
       $form = $this->createForm(PlaceType::class, new Place);
 
       /* Associe les données envoyées (éventuellement) par le client via le formulaire à notre variable $form.
@@ -133,8 +133,8 @@
       $form->handleRequest($request);
 
 
+      /* Si le formulaire est soumis */
       if ($form->isSubmitted()) {
-
 
         /* Si le formulaire respecte les contraintes */
         if ($form->isValid()) {
@@ -195,7 +195,7 @@
     {
 
       // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-      // puis ->find( spectacle )
+      // puis ->find( id )
       $repository = $this->getDoctrine()->getRepository(Place::class);
       $place = $repository->find($id);
       $places = $repository->findAll();
@@ -203,11 +203,6 @@
       $leShows = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
       $leEvents = $repository->findAll();
-
-
-
-
-
 
 
       //recherche entité leShow existant, puis créé la forme
