@@ -9,14 +9,18 @@
   namespace AppBundle\Repository;
 
 
-
-
-
-
   class LeEventRepository extends \Doctrine\ORM\EntityRepository
 
 
     {
+    /**
+     * @return array
+     */
+    public function findAll(){
+        //requête EN DATES ASCENDANTE
+        return $this->findBy(array(), ['date' => 'ASC']);
+    }
+
 
 
 

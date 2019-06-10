@@ -41,6 +41,7 @@
 
           ]
         )
+// image alt
         ->add('img_alt1')
         ->add('img_title1')
 
@@ -51,43 +52,47 @@
 //--------------------------------------------------------------------
 // Images du slider
 
-
+      // nom du fichier
         ->add('img2', FileType::class, [
             'data_class' => null,
           ]
         )
+      // alt
         ->add('img_alt2')
-
+      // nom du fichier
         ->add('img3', FileType::class, [
             'data_class' => null,
           ]
         )
+      // alt
         ->add('img_alt3')
 
-
+      // nom du fichier
         ->add('img4', FileType::class, [
             'data_class' => null,
           ]
         )
+      // alt
         ->add('img_alt4')
-
+      // nom du fichier
         ->add('img5', FileType::class, [
             'data_class' => null,
           ]
         )
+      // alt
         ->add('img_alt5')
 
-// Textes du slider
+      // Textes du slider
         ->add('sl_caption')
 
 //--------------------------------------------------------------------
 // Video
-// code d'intégration
+    // code d'intégration
         ->add('youtube')
 //--------------------------------------------------------------------
 
 
-
+      // Submit
         ->add('submit', SubmitType::class)
       ;
     }

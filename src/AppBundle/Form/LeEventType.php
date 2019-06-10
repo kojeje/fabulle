@@ -27,6 +27,7 @@
 
 
       $builder
+        // Menu déroulant
         ->add('categorie', ChoiceType::class,
           [
             'choices' => [
@@ -37,13 +38,9 @@
           )
 
 
-
+        // date
         ->add('date',DateType::class)
-
-
-
-//
-
+        // Spectacle associé (menu déroulant par titre)
         ->add('leShow', EntityType::class,
           [
             'class' => 'AppBundle\Entity\LeShow',
@@ -52,13 +49,14 @@
           ]
 
         )
+        // lieu associé (menu déroulant par nom)
         ->add('place', EntityType::class,
           [
             'class' => 'AppBundle\Entity\Place',
             'choice_label' => 'name',
           ]
         )
-
+        // Submit
         ->add('submit', SubmitType::class)
       ;
     }

@@ -28,19 +28,26 @@
      */
     public function AdminHomeidAction()
     {
-
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère la page ayant une id précise
       $post = $repository->find(1);
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
-
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leShows = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leEvents = $repository->findAll();
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
-
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/home.html.twig',
         [
           'post' => $post,

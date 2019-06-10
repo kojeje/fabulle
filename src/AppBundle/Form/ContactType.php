@@ -24,7 +24,9 @@
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
             $builder
+              // Champs texte
               ->add('name', TextType::class, array('attr' => array('placeholder' => 'nom'),
+                //Contrainte
                 'constraints' => array(
                   new NotBlank(array("message" => "Veuillez renseigner votre nom")),
                 )
@@ -32,9 +34,12 @@
               // Email
                 ->add('email', EmailType::class,
                 array(
+                  //attributs
                   'attr' => array(
+                    //placeholder
                     'placeholder' => 'email'
                   ),
+                  //Contrainte
                     'constraints' => array(
                         new NotBlank(array(
                           "message" => "Merci de renseigner votre adresse email")),
@@ -45,7 +50,7 @@
 // ------------------------------------------------------------------------------
 //      Message
 //      -------------------------------------------------------------------------
-              // Objet
+              // Champ texte
               ->add('subject', TextType::class,
                 array(
                   'attr' => array(
@@ -56,7 +61,7 @@
                     "message" => "Merci saisir le sujet de votre message")),
                 )
               ))
-              // Corps du message
+              // Corps du message (textarea)
                 ->add('message', TextareaType::class,
                     array(
                         'attr' => array(
@@ -67,30 +72,7 @@
                         )
                     )
                 );
-//              // Pièce Jointe
-//              ->add('file', FileType::class,
-//                [
-//                    'attr' => [
-//                      'placeholder' => 'piece jointe'
-//                    ]
-//                ])
-              // Newsletter
-//              ->add('newsletter', CheckboxType::class,
-//                [
-//                  'required' => true
-//                ])
-//              // Consentement RGPD
-//              ->add('consentement', TextType::class,
-//                [
-//                  'constraints' => [
-//                    new NotBlank(
-//                      [
-//                        "message" => "Merci de saisir un message de consentement"
-//                      ]
-//                    )
-//                  ]
-//                ]
-//              );
+//
         }
 
         public function setDefaultOptions(OptionsResolver $resolver)

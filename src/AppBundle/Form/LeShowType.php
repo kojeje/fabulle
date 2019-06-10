@@ -50,19 +50,22 @@
             ]
           ]
         )
-// image principale (affiche, logo)
+// image
         ->add('img1', FileType::class, [
             'data_class' => null,
 
 
           ]
         )
+// alt
         ->add('img_alt1')
+// infobulle
         ->add('img_title1')
 
 //Sous-titre, texte et image optionnels
 
         ->add('sub2')
+// Textarea
         ->add('text2', TextareaType::class,
           [
             'attr' => [
@@ -72,11 +75,14 @@
             ]
           ]
         )
+// image
         ->add('img2', FileType::class, [
             'data_class' => null,
           ]
         )
+// alt
         ->add('img_alt2')
+// infobulle
         ->add('img_title2')
 
 
@@ -88,30 +94,34 @@
 //--------------------------------------------------------------------
 // Images du slider
 
-
+// image
         ->add('img3', FileType::class, [
           'data_class' => null,
           ]
         )
+// alt
         ->add('img_alt3')
-
+// image
         ->add('img4', FileType::class, [
           'data_class' => null,
           ]
         )
+// alt
         ->add('img_alt4')
 
-
+// image
         ->add('img5', FileType::class, [
           'data_class' => null,
             ]
         )
+// alt
         ->add('img_alt5')
-
+// image
         ->add('img6', FileType::class, [
             'data_class' => null,
           ]
         )
+// alt
         ->add('img_alt6')
 
 // Textes du slider
@@ -120,14 +130,14 @@
         ->add('sl_caption3')
         ->add('sl_caption4')
 //--------------------------------------------------------------------
-// Le cas échéant: code d'intégration
+// Le cas échéant: code d'intégration video
         ->add('youtube')
 //--------------------------------------------------------------------
 
         // Renseignements et fiche technique du spectacle
 
 
-
+// menu déroulant
         ->add('genre', ChoiceType::class,
           [
             'choices' => [
@@ -136,6 +146,7 @@
             ]
           ]
         )
+// menu déroulant
         ->add('duree', ChoiceType::class,
           [
             'choices' => [
@@ -145,20 +156,21 @@
               'environ 1h15' => 'environ 1h15'
             ]
           ])
+//Integers
         ->add('min_age')
         ->add('max_age')
         ->add('min_artist')
         ->add('max_artist')
         ->add('tarif')
 
-        // fiche technique (pdf)
+// fiche technique (pdf)
         ->add('fichetek', FileType::class, [
             'data_class' => null,
 
 
           ]
         )
-
+// submit
         ->add('submit', SubmitType::class)
         ;
     }

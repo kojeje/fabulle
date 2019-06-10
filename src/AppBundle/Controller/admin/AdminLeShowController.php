@@ -31,17 +31,27 @@
      */
     public function listShowsAdminAction()
     {
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-      $leEvents = $repository->findAll();
+      //    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
-
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/shows.html.twig',
         [
           'leShows' => $leShows,
@@ -62,31 +72,29 @@
     public function AdminShowIdAction($id)
 
     {
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//    on récupère l'article en fonction de l'id
-      $leShow = $repository->find($id);
-//    on récupère l'ensemble des articles
-      $leShows = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
-
-//    On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
-
-
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère un contenu en fonction de son id
+      $leShow = $repository->find($id);
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
-//      on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
-
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/show.html.twig',
           [
             'leShows' => $leShows,
@@ -110,13 +118,23 @@
     public function formCreateShow(Request $request)
 
     {
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-      $leEvents = $repository->findAll();
+      //    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
@@ -236,8 +254,7 @@
         }
       }
 
-      /* Quand j'arrive sur la route "create_show" je vais directement sur le formulaire dont les champs sont définis dans  LeShowType,
-      et qui seront affichés grace à twig*/
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/CreateLeShow.html.twig',
         [
           'formleshow' => $form->createView(),
@@ -259,15 +276,25 @@
      */
     public function UpdateLeShowAction(Request $request, $id)
     {
-      $this->listShowsAdminAction();
-      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-      // puis ->find( spectacle )
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $posts = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère un contenu en fonction de son id
       $leShow = $repository->find($id);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leShows = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leEvents = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
@@ -387,7 +414,7 @@
       }
     }
 
-
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render(
         '@App/admin/CreateLeShow.html.twig',
         [
@@ -408,21 +435,31 @@
      */
     public function supprLeShowAction($id)
     {
-      //je sélectionne mon entity : "LeShow"
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
-      $leShow = $repository->find($id);
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-      $leEvents = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
+//
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $places = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère un contenu en fonction de son id
+      $leShow = $repository->find($id);
       //je recupère l'entity manager de doctrine pour avoir la fonction "remove"
       $entityManager = $this->getDoctrine()->getManager();
-      //je sélectionne l'id de mon objet
-
-
+      //Suppression du contenu
       $entityManager->remove($leShow);
-
       $entityManager->flush();
       $this->addFlash(
         'notice-icon',
@@ -433,13 +470,15 @@
         'notice',
         'Le spectacle a été supprimé'
       );
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->redirectToRoute('admin_shows',
         [
 
           'leShows' => $leShows,
           'posts' => $posts,
           'leEvents' => $leEvents,
-          'leShow' => $leShow
+          'leShow' => $leShow,
+          'places' => $places
         ]);
     }
   }

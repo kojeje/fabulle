@@ -28,15 +28,26 @@
      */
     public function listPlacesAdminAction()
     {
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-      $leShows = $repository->findAll();
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-      $leEvents = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/places.html.twig',
         [
           'leShows' => $leShows,
@@ -56,31 +67,29 @@
     public function AdminPlaceIdAction($id)
 
     {
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(Place::class);
-//    En fonction de l'id
-      $place = $repository->find($id);
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
-//      on récupère l'ensemble des articles
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $posts = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère un contenu en fonction de son id
+      $place = $repository->find($id);
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//    on récupère l'ensemble des articles
-      $leShows = $repository->findAll();
 
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
-
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
-      $posts = $repository->findAll();
-
-
-
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/admin_place_id.html.twig',
         [
           'leShows' => $leShows,
@@ -103,26 +112,24 @@
     public function formCreatePlace(Request $request)
 
     {
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(Place::class);
-//      on récupère l'ensemble des articles
-      $places = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//    on récupère l'ensemble des articles
-      $leShows = $repository->findAll();
-
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
-
-
-//    On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $places = $repository->findAll();
 
 
       /* Création d'un nouvel objet "formulaire" à partir d'un gabarit "Placetype" */
@@ -171,8 +178,7 @@
         }
       }
 
-      /* Quand j'arrive sur la route "create_place" je vais directement sur le formulaire dont les champs sont définis dans le PlaceType,
-      et qui seront affichés dans la twig*/
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/CreatePlace.html.twig',
         [
           'formplace' => $form->createView(),
@@ -194,16 +200,26 @@
     public function UpdatePlaceAction(Request $request, $id)
     {
 
-      // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-      // puis ->find( id )
-      $repository = $this->getDoctrine()->getRepository(Place::class);
-      $place = $repository->find($id);
-      $places = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $posts = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leShows = $repository->findAll();
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leEvents = $repository->findAll();
 
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(Place::class);
+      $place = $repository->find($id);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $places = $repository->findAll();
 
       //recherche entité leShow existant, puis créé la forme
       $form = $this->createForm(PlaceType::class, $place);

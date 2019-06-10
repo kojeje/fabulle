@@ -23,6 +23,7 @@
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
       $builder
+        // Menu déroulant
         ->add('categorie',ChoiceType::class,
           [
             'choices' => [
@@ -33,7 +34,7 @@
             ]
           ]
         )
-
+        // Menu déroulant
         ->add('leShow', EntityType::class,
           [
             'class'=> 'AppBundle\Entity\LeShow',
@@ -45,8 +46,9 @@
             },
           ]
         )
-
+        // text
         ->add('titre')
+        //textarea
         ->add('text1', TextareaType::class,
           [
             'attr' => [
@@ -56,14 +58,17 @@
             ]
           ]
         )
+        //image
         ->add('img1', FileType::class, [
               'data_class' => null,
               'label' => 'Image1 (jpg)',
           ]
         )
+        //alt
         ->add('img_alt1')
+        //infobulle
         ->add('img_title1')
-
+        //image
         ->add('img2', FileType::class, [
             'data_class' => null,
             'label' => 'Image2 (jpg)',

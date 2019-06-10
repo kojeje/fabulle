@@ -31,24 +31,27 @@
      */
     public function listEventsAdminAction()
     {
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
       $leShows = $repository->findAll();
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//      on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $leEvents = $repository->findAll();
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
-//      on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
-//      var_dump($leShows);die;
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/events.html.twig',
         [
 
@@ -71,38 +74,37 @@
     public function AdminEventIdAction(Request $request, $id)
 
     {
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//
-//    on récupère l'ensemble des articles
-      $leShows = $repository->findAll();
-//    On récupère le contenu de l'Entity dans la variable repository
-      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//    on récupère l'article en fonction de l'id
-      $leEvent = $repository->find($id);
-//    on récupère l'ensemble des articles
-      $leEvents = $repository->findAll();
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
-//    On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $posts = $repository->findAll();
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leShows = $repository->findAll();
+//    On récupère l'entité
+      $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+      $leEvents = $repository->findAll();
+//    On récupère un contenu en fonction de son id
+      $leEvent = $repository->find($id);
+//    On récupère l'entité
       $repository = $this->getDoctrine()->getRepository(Place::class);
-//      on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
       $places = $repository->findAll();
 
 
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
       return $this->render('@App/admin/event.html.twig',
         [
           'leEvent' => $leEvent,
           'leEvents' => $leEvents,
           'posts' => $posts,
           'places' => $places,
-//          'id' => $id,
-//          'place' => $place,
           'leShows' => $leShows,
-//          'events' => $events
+
 
         ]);
 
@@ -118,28 +120,24 @@
   function formCreateleEvent(Request $request)
 
   {
-//
-//    On récupère le contenu de l'Entity dans la variable repository
-    $repository = $this->getDoctrine()->getRepository(LeShow::class);
-//    on récupère l'ensemble des articles
-    $leShows = $repository->findAll();
-//      var_dump($leShows);die;
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
 
-//    On récupère le contenu de l'Entity dans la variable repository
-    $repository = $this->getDoctrine()->getRepository(LeEvent::class);
-//    on récupère l'ensemble des articles
-    $leEvents = $repository->findAll();
-
-//    On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
     $repository = $this->getDoctrine()->getRepository(Post::class);
-//    on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
     $posts = $repository->findAll();
-
-//      On récupère le contenu de l'Entity dans la variable repository
+//    On récupère l'entité
+    $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+    $leShows = $repository->findAll();
+//    On récupère l'entité
+    $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+    $leEvents = $repository->findAll();
+//    On récupère l'entité
     $repository = $this->getDoctrine()->getRepository(Place::class);
-//      on récupère l'ensemble des articles
+//    On récupère tous les contenu de cette entité (menu admin)
     $places = $repository->findAll();
-
 
     /* Création d'un nouveau formulaire à partir d'un gabarit "Eventtype" */
     $form = $this->createForm(LeEventType::class, new LeEvent);
@@ -148,7 +146,7 @@
     Donc la variable $form contient maintenant aussi les données de $_POST*/
     $form->handleRequest($request);
 
-
+//  Si le formulaire est soumi
     if ($form->isSubmitted()) {
 
 
@@ -176,9 +174,11 @@
           'notice',
           '<h1 class="h1-flash">L\'évènement a été enregistré</h1>'
         );
-
+//      Et je renvoie vers la vue suivante
         return $this->redirectToRoute('admin_events');
+//    Sinon
       } else {
+        /* J'affiche les messages flash en cas d'échec */
         $this->addFlash(
           'error-icon',
           '<i class="flash-icon error fal fa-times"></i>'
@@ -197,12 +197,10 @@
           '<h1 class="h1-flash">L\'évènement n\'a été enregistré</h1>'
         );
       }
-//      /* Je redirige ensuite sur la liste des évènements*/
-
+//
     }
 
-    /* Quand j'arrive sur la route "ajout_page_form" je vais directement sur le formulaire dont les champs sont définis dans le PostType,
-    et qui seront affichés dans la twig*/
+//    On renvoie le résultat des requêtes vers la vue selon les variables:
     return $this->render('@App/admin/CreateLeEvent.html.twig',
       [
         'formleEvent' => $form->createView(),
@@ -229,14 +227,25 @@
   function UpdateLeEventAction(Request $request, $id)
   {
 
-    // cherche un spectacle avec instance de getDoctrine -> méthode get Repository
-    // puis ->find( spectacle )
+//    ON APPELLE LES ENTITÉS ET LES REQUETES VOULUES
+
+//    On récupère l'entité
+    $repository = $this->getDoctrine()->getRepository(Post::class);
+//    On récupère tous les contenu de cette entité (menu admin)
+    $posts = $repository->findAll();
+//    On récupère l'entité
     $repository = $this->getDoctrine()->getRepository(LeShow::class);
+//    On récupère tous les contenu de cette entité (menu admin)
     $leShows = $repository->findAll();
+//    On récupère l'entité
     $repository = $this->getDoctrine()->getRepository(LeEvent::class);
+//    On récupère tous les contenu de cette entité (menu admin)
     $leEvents = $repository->findAll();
+//  On récupère un contenu en fonction de son id
     $leEvent = $repository->find($id);
+//    On récupère l'entité
     $repository = $this->getDoctrine()->getRepository(Place::class);
+//    On récupère tous les contenu de cette entité (menu admin)
     $places = $repository->findAll();
 
 
