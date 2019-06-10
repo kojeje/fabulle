@@ -67,7 +67,7 @@ function ShowAdminPopup() {
                 document.getElementById("img-sl-3").style.display = 'none';
 
             }
-//      Si checkbox Image 4 est ok
+//      Si checkbo@x Image 4 est ok
             if (document.getElementById("img-field-4").checked) {
                 // afficher champs Image 4
                 document.getElementById("img-sl-4").style.display = 'block';

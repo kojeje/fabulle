@@ -10,14 +10,14 @@
             {% if leShow.DispoBoolean == true %}
                 {%  for place in places %}
                     {% if leEvent.place == place %}
-                        {#{% if leShow.get_field('field_5cbc31c7f2c13') == leEvent.get_field('field_5cbc31c7f2c13') %}#}
                         {% if "now"|date < leEvent.date  %}
                             <section class="container event-line">
 
                                 <a class="row event-home-bloc" href="{{path ('event_id', {'id': leEvent.id}) }}">
-                                    <div class="thumb  col-md-1 d-none d-md-block">
+                                    <div class="thumb col-md-1 col-4">
                                         <img src="{{ asset('assets/uploads/'~leShow.Img1) }}" alt="{{ leShow.ImgAlt1 }}">
                                     </div>
+                                    <div class="offset-2 d-block d-md-none"></div>
                                     <h2 class="article-h3 col-4 ">{{ leShow.Titre }}</h2>
 
                                     <p class="date-list col-md-2 col-8">{{ leEvent.Date|date("d/m/Y") }}</p>
@@ -26,6 +26,7 @@
 
                                 </a>
                             </section>
+                            <hr>
 
                         {% endif %}
                     {% endif %}

@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-md-2 header-popup-title">ADMIN Lieux</div>
         <div class="col-6 col-md-2 ">
-            <a href="{{ path('admin_places') }}" class="add-link">
+            <a href="{{ path('admin_places') }}" class="@-link">
                 Lieux
             </a>
         </div>
@@ -30,17 +30,17 @@
 
         <div class="show-line row">
 
-            <div class="col-3 show-line show-line-titre">
+            <div class="col-3 show-line-titre">
                 <a href="{{ path('admin_place_id', {'id': place.Id}) }}">
                     {{ place.name }}
                 </a>
             </div>
-            <div class="col-2 show-line show-line-titre">
+            <div class="col-2 show-line-titre">
 
                     {{ place.cp }}
 
             </div>
-            <div class="col-3 show-line show-line-titre">
+            <div class="col-3 show-line-titre">
 
                 {{ place.commune }}
 
@@ -50,12 +50,12 @@
 
 
 
-            <div class="col-2 show-line show-line-edit">
+            <div class="col-1 show-line-edit">
                 <a href="{{ path('admin_update_place', {'id': place.Id}) }}">
                     <i class="fal fa-pen"></i>
                 </a>
             </div>
-            <div class="col-2 show-line show-line-trash">
+            <div class="col-1 show-line-trash">
                 <a href="{{ path('admin_delete_place', {'id': place.Id}) }}">
                     <i class="fal fa-trash"></i>
                 </a>

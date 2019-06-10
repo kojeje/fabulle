@@ -1,15 +1,19 @@
 <nav class="dropdown show nav d-lg-none d-block col-2">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fal fa-chevron-circle-down"></i>
-    </a>
 
+    <a href="#" class="btn btn-secondary dropdown-toggle links" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p><i class="fas fa-bars"></i></p>
+    </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="{{ path('admin_home') }}">
-            <i class="fal fa-home"></i>
-        </a>
-        <a class="dropdown-item" href="{{ path('admin_shows') }}">SPECTACLES</a>
-        <a class="dropdown-item" href="{{ path('admin_posts') }}">Articles/Pages</a>
-        <a class="dropdown-item" href="{{ path('admin_events') }}">Évènements</a>
-        <a class="dropdown-item" href="{{ path('admin_places') }}">Évènements</a>
+
+        <a class="dropdown-item" href="{{ path('home') }}"><i class="fal fa-home"></i></a>
+        <a class="dropdown-item" href="{{ path('shows') }}"><i class="Dates">Spectacles</i></a>
+        <a class="dropdown-item" href="{{ path('events') }}"><i class="Dates">Dates</i></a>
+        <a class="dropdown-item" href="{{ path('contact') }}"><i class="Dates">Contact</i></a>
+        <form class="form_search" method="get" action="{{ path('result') }}">
+            <input class="search" type="search" aria-label="Search" placeholder="Code postal" name="cp">
+            <button class="btn btn-search btn-outline-success " type="submit"><i class="fal fa-search"></i></button>
+        </form>
+
     </div>
+
 </nav>

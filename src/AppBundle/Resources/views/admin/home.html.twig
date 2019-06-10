@@ -56,11 +56,11 @@
             <section class="article-content post row">
                 <!-- TITRE de la Page-->
                 <div id="title-bloc" class="title-bloc flex-title-bloc col-12 col-md-3">
-                    <h2 class="article-h1 flex-h1 h1-event-list" >
+                    <h2 class="article-h1 section-h1 flex-h1 h1-event-list" >
                         <i class="fal fa-post-lg"> </i>
                         Accueil
                     </h2>
-                    {% include '@App/admin/partials/admin-posts-icons.html.twig' %}
+
                     <a href="#article-anch2" class="flex-btn">
                         <div class="button button2 button3">
                             <p><i class="fas fa-chevron-down"></i></p>
@@ -91,12 +91,12 @@
     <a class="col-12 d-none d-md-block" id="article-anch2"></a>
     <section class="article-loop article-loop2 video-bloc container-fluid">
         <div class="article-content row">
-            <div class="article-loop video-content col-10 col-md-6" id="video">
+            <div class="article-loop video-content order-2 order-md-1 col-12 col-md-6" id="video">
                 {{ post.youtube|raw }}
             </div>
             <div class="offset-lg-1 d-none d-lg-block video-offset"></div>
-            <div class="title-bloc video-title-bloc col-md-5">
-                <h2 class="article-h1 h1-event-list" id="video-title">
+            <div class="title-bloc order-1 order-md-2 d-video-title-bloc col-md-5">
+                <h2 class="article-h1 section-h1 h1-event-list" id="video-title">
                     <i class="fal fa-video"></i> Videos
                 </h2>
                 <a href="#article-anch3" class="col-md-12 d-none d-md-block">
@@ -106,6 +106,7 @@
                         </p>
                     </div>
                 </a>
+                {% include '@App/admin/partials/admin-posts-icons.html.twig' %}
             </div>
         </div>
     </section>
@@ -124,7 +125,7 @@
 
 
 
-    {% include"@App/default/events-loop.html.twig" %}
+    {% include"@App/admin/partials/admin-events-loop.html.twig" %}
 
 {% endblock %}
 

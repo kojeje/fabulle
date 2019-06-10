@@ -3,15 +3,17 @@
     {% for leShow in leShows %}
         {% if leShow.DispoBoolean==true %}
 
-            <div class="show show2 show3 show-medal">
+            <div class="show show2 show3 show-medal row">
 
                 <a class="row post-link" href="{{path ('show_id', {'id': leShow.id}) }}">
-                    <h2 class="col-12 article-h1 show-title h1-event">
+                    <h2 class="col-6 article-h1 h1-event">
                                 <span>
                                     {{ leShow.Titre }}
                                 </span>
+
                     </h2>
-                    <div class="offset-3"></div>
+
+                    {#<div class="offset-3"></div>#}
                     <div class="thumb-medal2 col-6 ">
 
                         <img src="{{asset ('assets/uploads/'~leShow.img1)}}" alt="{{ leShow.ImgAlt1 }}" title="{{ leShow.ImgTitle1 }}">

@@ -1,15 +1,34 @@
 <nav class="dropdown show nav d-lg-none d-block col-2">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fal fa-chevron-circle-down"></i>
+        <i class="fas fa-bars"></i>
     </a>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="{{ path('admin_home') }}">
+        <a class="dropdown-item add-link add2" href="{{ path('admin_home') }}">
             <i class="fal fa-home"></i>
         </a>
-        <a class="dropdown-item" href="{{ path('admin_shows') }}">SPECTACLES</a>
-        <a class="dropdown-item" href="{{ path('admin_posts') }}">Articles/Pages</a>
-        <a class="dropdown-item" href="{{ path('admin_events') }}">Évènements</a>
-        <a class="dropdown-item" href="{{ path('admin_places') }}">Évènements</a>
+        <a class="add add-link dropdown-item" href="{{ path('create_show') }}">
+            <i class="fal fa-plus"></i>
+             SPECTACLES
+        </a>
+        <a class="add2 add-link dropdown-item" href="{{ path('admin_shows') }}">
+
+            SPECTACLES
+        </a>
+        <a class="add add-link dropdown-item" href="{{ path('create_event') }}">
+            <i class="fal fa-plus"></i>
+            DATES
+        </a>
+
+        <a class="add2 add-link dropdown-item" href="{{ path('admin_events') }}">
+            DATES
+        </a>
+        <a class="add add-link dropdown-item" href="{{ path('create_place') }}">
+            <i class="fal fa-plus"></i>
+            LIEUX
+        </a>
+        <a class="add2 add-link dropdown-item" href="{{ path('admin_places') }}">
+            LIEUX
+        </a>
     </div>
 </nav>

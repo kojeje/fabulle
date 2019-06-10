@@ -405,6 +405,8 @@
       $places = $placeRepository->getLeEventByPlace($cp);
 
 
+
+
         //retourne la page html spectacles en utilisant le twig events by cp
       return $this->render("@App/pages/events-by-cp.html.twig",
         [ 'cp' => $cp,
