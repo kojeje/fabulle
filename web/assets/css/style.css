@@ -154,7 +154,9 @@ input, textarea, select { background-color: #fff2e0; color: #000F28; padding: 5p
 
 .show > .btn-secondary.dropdown-toggle { background-color: transparent !important; border: none; }
 
-.dropdown-menu { background: #000F28; transform: translate3d(-80vw, 0px, 0px) !important; font-size: 15px; overflow-y: auto; pointer-events: auto; position: fixed; width: 98vw; top: 1vh; background: #000000; padding: 60px; padding-top: 0; padding-bottom: 20px; left: 1vh; overflow-y: auto; z-index: 500; pointer-events: auto; height: 98vh; opacity: 1 !important; }
+.dropdown-menu { background: #000F28; transform: translate3d(-84%, 0px, 0px) !important; font-size: 15px; overflow-y: auto; pointer-events: auto; position: fixed; width: 98vw; top: 1vh; background: #000000; padding: 60px; padding-top: 0; padding-bottom: 20px; left: 1vh; z-index: 500; height: 98vh; opacity: 1 !important; }
+
+.search-dropdown { margin-top: 20px; }
 
 .add-link { color: #ffce30 !important; padding-top: 55px; }
 
@@ -163,6 +165,8 @@ input, textarea, select { background-color: #fff2e0; color: #000F28; padding: 5p
 .add2 .fa-home { font-size: 30px; text-align: center; }
 
 .add2 { padding-top: 30px; padding-bottom: 30px; font-size: 26px; text-align: center; color: #ffce30; }
+
+add3 { font-size: 200%; }
 
 .contact_bloc { margin-top: 300px; min-height: 80vh; }
 
@@ -203,7 +207,7 @@ a:hover { color: #ffce30 !important; text-decoration: none; }
 .submit_mail:hover { background: #ffce30; color: #000F28; font-size: 20px; }
 
 @media screen and (min-width: 768px) { .article-loop { display: flex; justify-content: space-around; flex-wrap: wrap; }
-  .dropdown-menu { transform: translate3d(310px, 118px, 0px) !important; }
+  .dropdown-menu { transform: translate3d(-50vw, 118px, 0px) !important; }
   .pdf-object { width: 100%; display: block; margin: auto; min-height: 100vh; }
   .show2 { border: 2px solid #ffce30; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 20px; margin: 10px; margin-bottom: 100px; width: 40%; font-size: 50%; }
   .preview { font-size: 12px; }

@@ -491,7 +491,7 @@ input, textarea, select
   //position: fixed !important;
   //width: 100%;
   background: $dark-blue;
-  transform: translate3d( -80vw, 0px, 0px) !important;
+  transform: translate3d( -84%, 0px, 0px) !important;
   font-size:15px;
   overflow-y: auto;
   pointer-events: auto;
@@ -503,12 +503,14 @@ input, textarea, select
   padding-top: 0;
   padding-bottom: 20px;
   left:1vh;
-  overflow-y: auto;
   z-index:500;
-  pointer-events: auto;
   height: 98vh;
   opacity: 1 !important;
 
+}
+.search-dropdown
+{
+  margin-top: 20px;
 }
 
 .add-link
@@ -531,6 +533,9 @@ input, textarea, select
   text-align: center;
   color: $link;
 
+}
+add3{
+  font-size: 200%;
 }
 .contact_bloc {
   margin-top: 300px;

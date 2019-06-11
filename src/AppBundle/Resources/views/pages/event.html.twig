@@ -79,8 +79,12 @@
                                 <p class="ad url">
                                     <a href="{{ leEvent.place.site }}" target="_blank">site web</a>
                                 </p>
-                                {% if leEvent.place.email %}
-                                    <a href="mailto:"{{ leEvent.place.Email }} target="_blank">email</a>
+                                {% if leEvent.place.email%}
+                                    <p class="ad">
+                                        <a href="mailto:{{ leEvent.place.email }}">
+                                            email
+                                        </a>
+                                    </p>
                                 {% endif %}
                             </div>
                             <div class="offset-md-1"></div>
