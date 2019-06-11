@@ -332,10 +332,7 @@
      */
     private $post;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Place", mappedBy="leShow")
-     */
-    private $place;
+
 
 
 
